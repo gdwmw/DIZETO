@@ -71,13 +71,7 @@ export default function Main() {
             </Link>
           </div>
 
-          <div className="flex items-center justify-center">
-            <div className="grid gap-5 md:grid-cols-3 lg:grid-cols-4">
-              {landingPage.map((image, index) => (
-                <ImagesFrame key={index} src={require(`@/assets/images/thumbnail/landingPage/${image}`)} alt={image} database={landingPage} />
-              ))}
-            </div>
-          </div>
+          <ImagesFrame folder="landingPage" database={landingPage} />
         </Paper>
       </section>
     </main>
