@@ -6,7 +6,7 @@ import { Link as Scroll } from "react-scroll";
 
 // IMPORT COMPONENTS
 import imgDIZETO from "@/assets/images/logo/dizeto.svg";
-import ThemeSwitcher from "./ThemeSwitcher";
+import ThemeSwitcher from "./themeSwitcher/ThemeSwitcher";
 
 export default function Header() {
   return (
