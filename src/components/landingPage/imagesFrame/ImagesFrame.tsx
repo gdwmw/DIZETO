@@ -19,6 +19,7 @@ export default function ImagesFrame({ folder, database }: ImagesFrameProps) {
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const menuRef = useRef<HTMLDivElement | null>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -26,6 +27,9 @@ export default function ImagesFrame({ folder, database }: ImagesFrameProps) {
         setIsOpen(false);
         setImageLoaded(false);
         setIsLoading(true);
+        if (timeoutRef.current) {
+          clearTimeout(timeoutRef.current);
+        }
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
@@ -34,11 +38,18 @@ export default function ImagesFrame({ folder, database }: ImagesFrameProps) {
     };
   }, []);
 
-  const handleImageLoaded = () => {
-    setImageLoaded(true);
-    setTimeout(() => {
+  const ATimeout = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    timeoutRef.current = setTimeout(() => {
       setIsLoading(false);
     }, 1500);
+  };
+
+  const handleImageLoaded = () => {
+    setImageLoaded(true);
+    ATimeout();
   };
 
   const PreviousImage = () => {
