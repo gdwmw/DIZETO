@@ -1,8 +1,11 @@
 // IMPORT LIBRARIES
 import Image from "next/image";
+import Link from "next/link";
 
 // IMPORT COMPONENTS
 import imgDIZETO from "@/assets/images/logo/dizeto.svg";
+import ImagesFrame from "./imagesFrame/ImagesFrame";
+import { landingPage } from "@/database/database";
 
 type PaperProps = {
   id: string;
@@ -51,6 +54,28 @@ export default function Main() {
             </div>
             <div className="flex h-full w-full items-center justify-center">
               <Image src={imgDIZETO} alt="DIZETO" height={250} width={250} />
+            </div>
+          </div>
+        </Paper>
+
+        {/* PORTFOLIO */}
+        <Paper id="Portfolio">
+          <h2 className="text-center text-3xl font-semibold">
+            PORTFOL<span className="text-red-600">IO</span>
+            <div className="mx-auto h-px w-20 bg-red-600" />
+          </h2>
+
+          <div className="my-5 flex items-center justify-center">
+            <Link href={"/"} className="border-2 border-red-600 px-4 py-2 font-semibold text-red-600 hover:bg-red-600 hover:text-white">
+              CHECK ALL PORTFOLIO
+            </Link>
+          </div>
+
+          <div className="flex items-center justify-center">
+            <div className="grid gap-5 md:grid-cols-3 lg:grid-cols-4">
+              {landingPage.map((image, index) => (
+                <ImagesFrame key={index} src={require(`@/assets/images/thumbnail/landingPage/${image}`)} alt={image} database={landingPage} />
+              ))}
             </div>
           </div>
         </Paper>
