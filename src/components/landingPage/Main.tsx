@@ -75,7 +75,7 @@ export default function Main() {
             folder="landingPage"
             database={landingPage}
             link="https://dizeto-images.vercel.app/assets/uploads/dashboard/f1/"
-            copyright="© Copyright 2022 - DIZETO"
+            copyright="© 2022 DIZETO. All rights reserved."
           />
         </Paper>
       </section>
