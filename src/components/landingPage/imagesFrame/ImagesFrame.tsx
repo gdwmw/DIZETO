@@ -11,9 +11,10 @@ import imgLoading from "@/assets/loading/loading.svg";
 type ImagesFrameProps = {
   folder: string;
   database: string[];
+  link: string;
 };
 
-export default function ImagesFrame({ folder, database }: ImagesFrameProps) {
+export default function ImagesFrame({ folder, database, link }: ImagesFrameProps) {
   let [dataIndex, setDataIndex] = useState<number>(0);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
@@ -108,7 +109,7 @@ export default function ImagesFrame({ folder, database }: ImagesFrameProps) {
                 </div>
               )}
               <Image
-                src={`https://dizeto-images.vercel.app/assets/uploads/dashboard/f1/${database[dataIndex]}`}
+                src={`${link}${database[dataIndex]}`}
                 alt={database[dataIndex]}
                 height={imageLoaded ? 1000 : 200}
                 width={imageLoaded ? 1000 : 200}
