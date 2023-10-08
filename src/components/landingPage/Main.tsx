@@ -46,12 +46,12 @@ export default function Main() {
               <h3 className="text-2xl font-semibold">
                 <span className="text-red-600">W</span>hat is Dizeto?
               </h3>
-              <p className="text-justify">
+              <p className="text-justify font-semibold">
                 <span className="text-red-600">Dizeto</span> is a vendor that offers photography, videography, talent, and music services. We have a
                 professional team that can help you meet business needs, events, and your special moments to make them more beautiful, real, and
                 lasting. You can learn more about us by viewing our portfolio, YouTube channel, and customer testimonials.
               </p>
-              <p className="pt-5 text-red-600">*Please take note that we currently only offer photography and videography services.</p>
+              <p className="pt-5 font-semibold text-red-600">*Please take note that we currently only offer photography and videography services.</p>
             </div>
             <div className="flex h-full w-full items-center justify-center">
               <Image src={imgDIZETO} alt="DIZETO" height={250} width={250} />
