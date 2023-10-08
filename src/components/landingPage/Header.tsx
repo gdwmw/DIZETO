@@ -38,7 +38,7 @@ export default function Header() {
     <header id="Top">
       <nav
         id="Navbar"
-        className={`fixed left-0 top-0 flex h-16 w-full items-center justify-between px-10 ${
+        className={`fixed left-0 top-0 z-20 flex h-16 w-full items-center justify-between px-10 ${
           isActive && "shadow-md shadow-black/50 backdrop-blur-md dark:shadow-white/50"
         }`}
       >
