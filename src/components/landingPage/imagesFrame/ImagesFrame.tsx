@@ -19,6 +19,7 @@ export default function ImagesFrame({ folder, database, link }: ImagesFrameProps
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isLoadingInteractive, setIsLoadingInteractive] = useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -50,18 +51,21 @@ export default function ImagesFrame({ folder, database, link }: ImagesFrameProps
 
   const handleImageLoaded = () => {
     setImageLoaded(true);
+    setIsLoadingInteractive(false);
     ATimeout();
   };
 
   const PreviousImage = () => {
     if (dataIndex > 0) {
       setDataIndex(dataIndex - 1);
+      setIsLoadingInteractive(true);
     }
   };
 
   const NextImage = () => {
     if (dataIndex < database.length - 1) {
       setDataIndex(dataIndex + 1);
+      setIsLoadingInteractive(true);
     }
   };
 
@@ -108,12 +112,19 @@ export default function ImagesFrame({ folder, database, link }: ImagesFrameProps
                   <Image src={imgLoading} alt="Loading" height={100} width={100} />
                 </div>
               )}
+              <div
+                className={`pointer-events-none absolute flex h-full w-full items-center justify-center bg-white transition-opacity dark:bg-dark ${
+                  isLoadingInteractive ? "opacity-100" : "opacity-0"
+                }`}
+              >
+                <Image src={imgLoading} alt="Loading" height={100} width={100} />
+              </div>
               <Image
                 src={`${link}${database[dataIndex]}`}
                 alt={database[dataIndex]}
                 height={imageLoaded ? 1000 : 200}
                 width={imageLoaded ? 1000 : 200}
-                onLoad={handleImageLoaded}
+                onLoadCapture={handleImageLoaded}
                 className="transition-all duration-1000"
               />
             </div>
