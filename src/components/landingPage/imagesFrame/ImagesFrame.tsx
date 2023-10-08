@@ -90,18 +90,22 @@ export default function ImagesFrame({ folder, database, link }: ImagesFrameProps
       {isOpen && (
         <div className="fixed left-0 top-0 flex h-screen w-screen items-center justify-center bg-dark/50 px-5 backdrop-blur-md dark:bg-white/20">
           <div ref={menuRef} className="relative">
-            <div
+            <button
+              type="button"
               onClick={PreviousImage}
               className="absolute left-0 flex h-full w-56 items-center justify-start pl-5 text-white opacity-0 hover:opacity-100 dark:text-dark"
+              disabled={isLoadingInteractive ? true : false}
             >
               <FaChevronLeft size={50} />
-            </div>
-            <div
+            </button>
+            <button
+              type="button"
               onClick={NextImage}
               className="absolute right-0 flex h-full w-56 items-center justify-end pr-5 text-white opacity-0 hover:opacity-100 dark:text-dark"
+              disabled={isLoadingInteractive ? true : false}
             >
               <FaChevronRight size={50} />
-            </div>
+            </button>
             <div
               className={`flex h-fit min-h-[300px] w-fit min-w-[300px] items-center justify-center border-2 bg-white p-1 dark:border-gray-700 dark:bg-dark ${
                 isLoading && "relative"
