@@ -90,9 +90,6 @@ export default function Main() {
           <div className="mt-5 flex items-center justify-center">
             <div className="grid w-full gap-5 sm:grid-cols-2 xl:grid-cols-4">
               <PriceCard />
-              <PriceCard />
-              <PriceCard />
-              <PriceCard />
             </div>
           </div>
         </Paper>
