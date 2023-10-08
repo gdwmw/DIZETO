@@ -88,7 +88,9 @@ export default function Main() {
           </h2>
 
           <div className="mt-5 flex items-center justify-center">
-            <div className="grid w-full grid-cols-2 gap-5">
+            <div className="grid w-full gap-5 sm:grid-cols-2 xl:grid-cols-4">
+              <PriceCard />
+              <PriceCard />
               <PriceCard />
               <PriceCard />
             </div>
