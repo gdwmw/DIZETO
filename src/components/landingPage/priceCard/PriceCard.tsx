@@ -6,7 +6,7 @@ export default function PriceCard() {
       <div className="mt-20 h-fit w-full rounded-md border-4 dark:border-gray-700">
         <div className="relative flex h-40 w-full flex-col items-center justify-end bg-gray-200 text-black dark:bg-gray-700 dark:text-white">
           {/* --------------------------- */}
-          <div className="absolute -top-20 flex h-36 w-36 flex-col items-center justify-center rounded-full border-4 bg-red-600 text-white dark:border-gray-700">
+          <div className="absolute -top-20 z-10 flex h-36 w-36 flex-col items-center justify-center rounded-full border-4 bg-red-600 text-white dark:border-gray-700">
             <h2 className="text-3xl font-bold">IDR 1.5</h2>
             <p className="text-xl font-semibold">PACKAGE A</p>
           </div>
