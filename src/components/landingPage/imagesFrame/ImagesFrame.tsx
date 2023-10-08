@@ -12,9 +12,10 @@ type ImagesFrameProps = {
   folder: string;
   database: string[];
   link: string;
+  copyright: string;
 };
 
-export default function ImagesFrame({ folder, database, link }: ImagesFrameProps) {
+export default function ImagesFrame({ folder, database, link, copyright }: ImagesFrameProps) {
   let [dataIndex, setDataIndex] = useState<number>(0);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
@@ -82,7 +83,7 @@ export default function ImagesFrame({ folder, database, link }: ImagesFrameProps
               }}
               className="h-fit w-fit rounded-sm border-2 bg-white p-1 hover:border-red-600 dark:border-gray-700 dark:bg-dark dark:hover:border-red-600"
             >
-              <Image src={require(`@/assets/images/thumbnail/${folder}/${image}`)} alt={image} className="rounded-sm" />
+              <Image src={require(`@/assets/images/thumbnail/${folder}/${image}`)} alt={image} loading="lazy" className="rounded-sm" />
             </div>
           ))}
         </div>
@@ -93,7 +94,9 @@ export default function ImagesFrame({ folder, database, link }: ImagesFrameProps
             <button
               type="button"
               onClick={PreviousImage}
-              className="absolute left-0 flex h-full w-56 items-center justify-start pl-5 text-white opacity-0 hover:opacity-100 dark:text-dark"
+              className={`absolute left-0 flex h-full w-56 items-center justify-start pl-5 text-white opacity-0 hover:opacity-100 dark:text-dark ${
+                dataIndex === 0 && "hidden"
+              }`}
               disabled={isLoadingInteractive ? true : false}
             >
               <FaChevronLeft size={50} />
@@ -101,7 +104,9 @@ export default function ImagesFrame({ folder, database, link }: ImagesFrameProps
             <button
               type="button"
               onClick={NextImage}
-              className="absolute right-0 flex h-full w-56 items-center justify-end pr-5 text-white opacity-0 hover:opacity-100 dark:text-dark"
+              className={`absolute right-0 flex h-full w-56 items-center justify-end pr-5 text-white opacity-0 hover:opacity-100 dark:text-dark ${
+                dataIndex + 1 === database.length && "hidden"
+              }`}
               disabled={isLoadingInteractive ? true : false}
             >
               <FaChevronRight size={50} />
@@ -128,9 +133,14 @@ export default function ImagesFrame({ folder, database, link }: ImagesFrameProps
                 alt={database[dataIndex]}
                 height={imageLoaded ? 1000 : 200}
                 width={imageLoaded ? 1000 : 200}
+                loading="lazy"
                 onLoadCapture={handleImageLoaded}
                 className="transition-all duration-1000"
               />
+            </div>
+            <div className="ml-1 text-sm font-semibold text-white dark:text-dark">
+              <p>{copyright}</p>
+              <p>{`Image ${dataIndex + 1} of ${database.length}`}</p>
             </div>
           </div>
         </div>

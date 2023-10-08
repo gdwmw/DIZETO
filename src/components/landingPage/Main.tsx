@@ -71,7 +71,12 @@ export default function Main() {
             </Link>
           </div>
 
-          <ImagesFrame folder="landingPage" database={landingPage} link="https://dizeto-images.vercel.app/assets/uploads/dashboard/f1/" />
+          <ImagesFrame
+            folder="landingPage"
+            database={landingPage}
+            link="https://dizeto-images.vercel.app/assets/uploads/dashboard/f1/"
+            copyright="© Copyright 2022 - DIZETO"
+          />
         </Paper>
       </section>
     </main>
