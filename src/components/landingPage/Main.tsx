@@ -4,8 +4,8 @@ import Link from "next/link";
 
 // IMPORT COMPONENTS
 import imgDIZETO from "@/assets/images/logo/dizeto.svg";
-import ImagesFrame from "./imagesFrame/ImagesFrame";
 import { landingPage } from "@/database/database";
+import ImagesFrame from "./imagesFrame/ImagesFrame";
 
 type PaperProps = {
   id: string;

@@ -1,8 +1,8 @@
 "use client";
 
 // IMPORT LIBRARIES
-import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 // IMPORT COMPONENTS
