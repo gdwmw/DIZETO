@@ -89,7 +89,7 @@ export default function ImagesFrame({ folder, database, link, copyright }: Image
         </div>
       </div>
       {isOpen && (
-        <div className="fixed left-0 top-0 flex h-screen w-screen items-center justify-center bg-dark/50 px-5 backdrop-blur-md dark:bg-white/20">
+        <div className="fixed left-0 top-0 z-30 flex h-screen w-screen items-center justify-center bg-dark/50 px-5 backdrop-blur-md dark:bg-white/20">
           <div ref={menuRef} className="relative">
             <button
               type="button"
