@@ -6,6 +6,7 @@ import Link from "next/link";
 import imgDIZETO from "@/assets/images/logo/dizeto.svg";
 import { landingPage } from "@/database/database";
 import ImagesFrame from "./imagesFrame/ImagesFrame";
+import PriceCard from "./priceCard/PriceCard";
 
 type PaperProps = {
   id: string;
@@ -77,6 +78,21 @@ export default function Main() {
             link="https://dizeto-images.vercel.app/assets/uploads/dashboard/f1/"
             copyright="© 2022 DIZETO. All rights reserved."
           />
+        </Paper>
+
+        {/* PRICING */}
+        <Paper id="Pricing">
+          <h2 className="text-center text-3xl font-semibold">
+            PRICI<span className="text-red-600">NG</span>
+            <div className="mx-auto h-px w-20 bg-red-600" />
+          </h2>
+
+          <div className="mt-5 flex items-center justify-center">
+            <div className="grid w-full grid-cols-2 gap-5">
+              <PriceCard />
+              <PriceCard />
+            </div>
+          </div>
         </Paper>
       </section>
     </main>
