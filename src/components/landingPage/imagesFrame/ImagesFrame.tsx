@@ -89,33 +89,32 @@ export default function ImagesFrame({ folder, database, link, copyright }: Image
         </div>
       </div>
       {isOpen && (
-        <div className="fixed left-0 top-0 z-30 flex h-screen w-screen items-center justify-center bg-dark/50 px-5 backdrop-blur-md dark:bg-white/20">
-          <div ref={menuRef} className="relative">
-            <button
-              type="button"
-              onClick={PreviousImage}
-              className={`absolute left-0 flex h-full w-56 items-center justify-start pl-5 text-white opacity-0 hover:opacity-100 dark:text-dark ${
-                dataIndex === 0 && "hidden"
-              }`}
-              disabled={isLoadingInteractive ? true : false}
-            >
-              <FaChevronLeft size={50} />
-            </button>
-            <button
-              type="button"
-              onClick={NextImage}
-              className={`absolute right-0 flex h-full w-56 items-center justify-end pr-5 text-white opacity-0 hover:opacity-100 dark:text-dark ${
-                dataIndex + 1 === database.length && "hidden"
-              }`}
-              disabled={isLoadingInteractive ? true : false}
-            >
-              <FaChevronRight size={50} />
-            </button>
+        <div className="fixed left-0 top-0 z-30 flex h-screen w-screen items-center justify-center bg-dark/50 p-5 backdrop-blur-md dark:bg-white/20">
+          <div>
             <div
-              className={`flex h-fit min-h-[300px] w-fit min-w-[300px] items-center justify-center border-2 bg-white p-1 dark:border-gray-700 dark:bg-dark ${
-                isLoading && "relative"
-              }`}
+              ref={menuRef}
+              className="relative flex h-fit min-h-[300px] w-fit min-w-[300px] items-center justify-center border-2 bg-white p-1 dark:border-gray-700 dark:bg-dark"
             >
+              <button
+                type="button"
+                onClick={PreviousImage}
+                className={`absolute left-0 flex h-full w-56 items-center justify-start pl-5 text-white opacity-0 hover:opacity-100 dark:text-dark ${
+                  dataIndex === 0 && "hidden"
+                }`}
+                disabled={isLoadingInteractive ? true : false}
+              >
+                <FaChevronLeft size={50} />
+              </button>
+              <button
+                type="button"
+                onClick={NextImage}
+                className={`absolute right-0 flex h-full w-56 items-center justify-end pr-5 text-white opacity-0 hover:opacity-100 dark:text-dark ${
+                  dataIndex + 1 === database.length && "hidden"
+                }`}
+                disabled={isLoadingInteractive ? true : false}
+              >
+                <FaChevronRight size={50} />
+              </button>
               {isLoading && (
                 <div className="absolute flex h-full w-full items-center justify-center bg-white dark:bg-dark">
                   <Image src={imgLoading} alt="Loading" height={100} width={100} />
