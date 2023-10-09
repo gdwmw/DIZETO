@@ -101,7 +101,7 @@ export default function ImagesFrame({ folder, database, link, copyright }: Image
                 className={`absolute left-0 flex h-full w-56 items-center justify-start pl-5 text-white opacity-0 hover:opacity-100 dark:text-dark ${
                   dataIndex === 0 && "hidden"
                 }`}
-                disabled={isLoadingInteractive ? true : false}
+                disabled={!!isLoadingInteractive}
               >
                 <FaChevronLeft size={50} />
               </button>
@@ -111,7 +111,7 @@ export default function ImagesFrame({ folder, database, link, copyright }: Image
                 className={`absolute right-0 flex h-full w-56 items-center justify-end pr-5 text-white opacity-0 hover:opacity-100 dark:text-dark ${
                   dataIndex + 1 === database.length && "hidden"
                 }`}
-                disabled={isLoadingInteractive ? true : false}
+                disabled={!!isLoadingInteractive}
               >
                 <FaChevronRight size={50} />
               </button>
