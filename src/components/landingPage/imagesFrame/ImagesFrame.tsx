@@ -71,7 +71,7 @@ export default function ImagesFrame({ folder, database, link, copyright }: Image
   };
 
   return (
-    <div>
+    <>
       <div className="flex items-center justify-center">
         <div className="grid gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {database.map((image, index) => (
@@ -144,6 +144,6 @@ export default function ImagesFrame({ folder, database, link, copyright }: Image
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 }
