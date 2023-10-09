@@ -110,7 +110,7 @@ export default function Header() {
             <BsSunFill size={20} />
           </div>
         </div> */}
-        <div className="h-10 w-10"></div>
+        <div className="h-10 w-10" />
         {/* END MARK */}
       </nav>
       <ThemeSwitcher />
