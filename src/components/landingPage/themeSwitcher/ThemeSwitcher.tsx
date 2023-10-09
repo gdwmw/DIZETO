@@ -27,7 +27,7 @@ export default function ThemeSwitcher() {
   }
 
   return (
-    <div className="flex h-10 w-10 items-center justify-center">
+    <div className="fixed right-10 top-3 z-[21] flex h-10 w-10 items-center justify-center">
       <div onClick={() => setIsOpen(true)} className="cursor-pointer hover:text-red-600 dark:text-white dark:hover:text-red-600">
         {theme === "light" && <BsSunFill size={20} />}
         {theme === "dark" && <BsFillMoonStarsFill size={20} />}
@@ -36,7 +36,7 @@ export default function ThemeSwitcher() {
       {isOpen && (
         <ul
           ref={menuRef}
-          className="absolute right-3 top-20 flex flex-col items-center justify-center gap-5 rounded-lg border border-black/50 p-5 shadow-md shadow-black/50 backdrop-blur-md dark:border-white/50 dark:text-white dark:shadow-white/50"
+          className="absolute -right-7 top-16 flex flex-col items-center justify-center gap-5 rounded-lg border border-black/50 p-5 shadow-md shadow-black/50 backdrop-blur-md dark:border-white/50 dark:text-white dark:shadow-white/50"
         >
           <li
             onClick={() => {

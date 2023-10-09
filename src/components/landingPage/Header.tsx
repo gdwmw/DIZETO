@@ -8,6 +8,7 @@ import { Link as Scroll } from "react-scroll";
 // IMPORT COMPONENTS
 import imgDIZETO from "@/assets/images/logo/dizeto.svg";
 import ThemeSwitcher from "./themeSwitcher/ThemeSwitcher";
+// import { BsSunFill } from "react-icons/bs";
 
 export default function Header() {
   const [scrollPosition, setScrollPosition] = useState<number>(0);
@@ -103,8 +104,16 @@ export default function Header() {
             </Scroll>
           </li>
         </ul>
-        <ThemeSwitcher />
+        {/* MARK */}
+        {/* <div className="flex h-10 w-10 items-center justify-center">
+          <div className="cursor-pointer hover:text-red-600 dark:text-white dark:hover:text-red-600">
+            <BsSunFill size={20} />
+          </div>
+        </div> */}
+        <div className="h-10 w-10"></div>
+        {/* END MARK */}
       </nav>
+      <ThemeSwitcher />
     </header>
   );
 }
