@@ -7,7 +7,7 @@ export default function PriceCard() {
       {pricing.map((data, index) => (
         <div
           key={index}
-          className="mb-3 mt-20 w-full rounded-md border-4 transition-all duration-75 hover:scale-[1.025] hover:shadow-lg hover:shadow-black/30 dark:border-gray-700 dark:hover:shadow-white/20"
+          className="mb-3 mt-20 w-full rounded-md border-4 transition-priceCard duration-75 hover:scale-[1.025] hover:shadow-lg hover:shadow-black/30 dark:border-gray-700 dark:hover:shadow-white/20"
         >
           <div className="relative flex h-40 w-full flex-col items-center justify-end bg-gray-200 text-black dark:bg-gray-700 dark:text-white">
             {/* --------------------------- */}

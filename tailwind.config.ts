@@ -8,6 +8,9 @@ const config: Config = {
       colors: {
         dark: "#23272d",
       },
+      transitionProperty: {
+        priceCard: "transform, box-shadow",
+      },
     },
   },
   plugins: [],
