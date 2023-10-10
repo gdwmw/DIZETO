@@ -119,7 +119,7 @@ export default function Main() {
               alt="Image"
               height={128}
               width={128}
-              loading="eager"
+              quality={50}
               placeholder="blur"
               className="rounded-full"
             />
@@ -127,7 +127,7 @@ export default function Main() {
               <h3 className="text-lg font-semibold">{testimony[testimonyIndex].name}</h3>
               <p className="text-sm font-semibold text-red-600">{testimony[testimonyIndex].status}</p>
             </div>
-            <p className="font-semibold">{`"${testimony[testimonyIndex].comment}"`}</p>
+            <p className="h-12 w-[500px] text-center font-semibold">{`"${testimony[testimonyIndex].comment}"`}</p>
             <div className="mt-1 flex items-center justify-center gap-1">
               {testimony.map((_, index) => (
                 <div key={index} className={testimonyIndex === index ? "text-red-600" : "text-red-300"}>
