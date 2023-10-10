@@ -9,7 +9,7 @@ export default function PriceCard() {
           key={index}
           className="mb-3 mt-20 w-full rounded-md border-4 transition-priceCard duration-75 hover:scale-[1.025] hover:shadow-lg hover:shadow-black/30 dark:border-gray-700 dark:hover:shadow-white/20"
         >
-          <div className="relative flex h-40 w-full flex-col items-center justify-end bg-gray-200 text-black dark:bg-gray-700 dark:text-white">
+          <div className="relative flex h-40 w-full flex-col items-center justify-end bg-gray-200 dark:bg-gray-700 dark:text-white">
             {/* --------------------------- */}
             <div className="absolute -top-20 z-10 flex h-36 w-36 flex-col items-center justify-center rounded-full border-4 bg-red-600 text-white dark:border-gray-700">
               <h2 className="text-3xl font-bold">IDR {data.price}</h2>
@@ -24,7 +24,7 @@ export default function PriceCard() {
           </div>
           {/* --------------------------- */}
           <div className="flex items-start justify-center p-5">
-            <ul className="space-y-5 text-center text-lg font-semibold text-black dark:text-white">
+            <ul className="space-y-5 text-center text-lg font-semibold dark:text-white">
               {data.list.map((data, index) => (
                 <li key={index}>
                   <p>
