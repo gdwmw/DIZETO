@@ -152,4 +152,49 @@ const pricing = [
   },
 ];
 
-export { landingPage, pricing };
+const testimony = [
+  {
+    name: "Rangga Dewamoela",
+    status: "- Ginza's Birthday -",
+    comment: "You must give it a try because the photographs are good",
+    image: "rangga-dewamoela.webp",
+  },
+  {
+    name: "Rifa Anggyana",
+    status: "- Ikatan Remaja Masjid Jawa Barat -",
+    comment: "Alhamdulillah, the pictures are great, i'm very appreciative",
+    image: "rifa-anggyana.webp",
+  },
+  {
+    name: "Ratri Werdiningsih",
+    status: "- Rumah Batik Wijaya -",
+    comment: "The photographs are excellent, the service is inexpensive, and the workflow is quick",
+    image: "ratri-werdiningsih.webp",
+  },
+  {
+    name: "Vitto Safiy",
+    status: "- Safiy Kitchen -",
+    comment: "The cheerful color scheme appeals to me",
+    image: "vitto-safiy.webp",
+  },
+  {
+    name: "Gibran Farras",
+    status: "- Lentera Coffee -",
+    comment: "In any case, it's highly recommended",
+    image: "gibran-farras.jpg",
+  },
+  {
+    name: "Neneng Chamidah",
+    status: "- Eid Photo Shoot -",
+    comment: "Despite the fact that the photo was taken at my house, the outcome is satisfactory",
+    image: "neneng-camidah.webp",
+  },
+  {
+    name: "Novi",
+    status: "- Reunion Documentation -",
+    comment: "Thank you for the wonderful photographs",
+    image: "novi.webp",
+  },
+];
+
+export { landingPage, pricing, testimony };
