@@ -44,7 +44,7 @@ export default function Header() {
         }`}
       >
         <Scroll to="Top" smooth={true} offset={-84} duration={500} className="cursor-pointer">
-          <Image src={imgDIZETO} alt="DIZETO" width={40} height={40} />
+          <Image src={imgDIZETO} alt="DIZETO" width={40} height={40} priority={true} />
         </Scroll>
         <ul className="flex gap-10 text-lg font-bold dark:text-white">
           <li>

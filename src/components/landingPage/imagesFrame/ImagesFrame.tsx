@@ -83,7 +83,14 @@ export default function ImagesFrame({ folder, database, link, copyright }: Image
               }}
               className="h-fit w-fit rounded-sm border-2 bg-white p-1 hover:border-red-600 dark:border-gray-700 dark:bg-dark dark:hover:border-red-600"
             >
-              <Image src={require(`@/assets/images/thumbnail/${folder}/${image}`)} alt={image} loading="lazy" className="rounded-sm" />
+              <Image
+                src={require(`@/assets/images/thumbnail/${folder}/${image}`)}
+                alt={image}
+                quality={50}
+                loading="lazy"
+                placeholder="blur"
+                className="rounded-sm"
+              />
             </div>
           ))}
         </div>

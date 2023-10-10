@@ -70,7 +70,7 @@ export default function Main() {
               <p className="pt-5 font-semibold text-red-600">*Please take note that we currently only offer photography and videography services.</p>
             </div>
             <div className="flex h-full w-full items-center justify-center">
-              <Image src={imgDIZETO} alt="DIZETO" height={250} width={250} />
+              <Image src={imgDIZETO} alt="DIZETO" height={250} width={250} priority={true} />
             </div>
           </div>
         </Paper>
@@ -119,7 +119,8 @@ export default function Main() {
               alt="Image"
               height={128}
               width={128}
-              loading="lazy"
+              loading="eager"
+              placeholder="blur"
               className="rounded-full"
             />
             <div className="text-center">
