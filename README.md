@@ -1,36 +1,27 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Front End MVP Submission
 
-## Getting Started
+**Judul Proyek:** DIZETO  
+**Nama Peserta:** Gede Dewo Wahyu M.W  
+**Kelas:** D - FE  
 
-First, run the development server:
+**Deskripsi Produk:**  
+DIZETO adalah penyedia layanan yang menawarkan berbagai jenis jasa, seperti fotografi, videografi, talenta berbakat, dan musik. Website DIZETO adalah website perusahaan pribadi yang saya gunakan sebagai bagian dari strategi pemasaran untuk mempromosikan beragam layanan perusahaan.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**Spesifikasi Fitur Produk:**
+1. **Login:**  
+    Pemilik atau administrator dapat masuk ke halaman Pengelolaan Konten dengan menggunakan akun yang telah disediakan.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Pengelolaan Konten:**  
+    Pemilik atau administrator situs memiliki kemampuan untuk melakukan operasi CRUD (Create, Read, Update, Delete) terhadap konten di situs webnya. Ini memungkinkan pemilik atau administrator untuk mengelola konten dengan lebih mudah.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. **Asisten AI:**  
+    Pemilik atau administrator dapat memanfaatkan fitur asisten kecerdasan buatan (AI) untuk mencari ide konten. Ini memberikan solusi kreatif dalam pengembangan konten situs.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+4. **Multi-Bahasa:**  
+    Website mendukung dua bahasa, yaitu Bahasa Indonesia dan Bahasa Inggris, yang memungkinkan pengunjung untuk memilih atau mengganti bahasa dari situs.
 
-## Learn More
+5. **Thumbnail Portofolio Interaktif:**  
+    Menampilkan portofolio foto dengan ukuran kecil dan pengunjung dapat melihat foto-foto tersebut secara lebih rinci dengan mengklik thumbnail. Ketika thumbnail diklik, foto akan ditampilkan dalam ukuran besar dengan resolusi yang lebih tinggi.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+6. **Integrasi Google Maps:**  
+    Situs ini mencakup peta Google Maps yang menunjukkan lokasi kantor perusahaan.
