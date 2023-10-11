@@ -112,7 +112,7 @@ export default function Main() {
 
         {/* TESTIMONY */}
         <Paper id="Testimony" paperPadding={false}>
-          <div className="flex h-[450px] w-full flex-col items-center justify-center gap-5 bg-white dark:bg-dark dark:text-white">
+          <div className="animate-gradient flex h-[450px] w-full flex-col items-center justify-center gap-5 bg-gradient-to-r from-[#ffdcdc] via-white to-[#ffdcdc] bg-[400%,400%] bg-center dark:from-[#402227] dark:via-dark dark:to-[#402227] dark:text-white">
             <FaQuoteLeft size={30} />
             <Image
               src={require(`@/assets/images/testimony/${testimony[testimonyIndex].image}`)}
