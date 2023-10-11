@@ -18,7 +18,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`dark:bg-dark ${inter.className}`}>
+      <body
+        className={`animate-gradient bg-gradient-to-r from-[#ffdcdc] via-white to-[#ffdcdc] bg-[400%,400%] bg-center dark:from-[#402227] dark:via-dark dark:to-[#402227] ${inter.className}`}
+      >
         <NextThemeProvider>{children}</NextThemeProvider>
       </body>
     </html>
