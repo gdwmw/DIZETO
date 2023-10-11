@@ -33,12 +33,38 @@ const Paper = ({ id, paperPadding, children }: PaperProps) => (
 
 export default function Main() {
   const [testimonyIndex, setTestimonyIndex] = useState<number>(0);
+  const [dateTime, setDateTime] = useState<string>("00/00/0000 - 00:00:00");
+
   useEffect(() => {
-    const interval = setInterval(() => {
-      setTestimonyIndex((testimonyIndex + 1) % testimony.length);
+    const testimonyInterval = setInterval(() => {
+      setTestimonyIndex((prevIndex) => (prevIndex + 1) % testimony.length);
     }, 5000);
-    return () => clearInterval(interval);
-  }, [testimonyIndex]);
+
+    const dateTimeInterval = setInterval(() => {
+      const currentDate = new Date();
+      const formattedDate = currentDate
+        .toLocaleString("id-ID", {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: false,
+        })
+        .replace(" ", "")
+        .replace(",", " - ")
+        .replace(".", ":")
+        .replace(".", ":");
+
+      setDateTime(formattedDate);
+    }, 1000);
+
+    return () => {
+      clearInterval(testimonyInterval);
+      clearInterval(dateTimeInterval);
+    };
+  }, []);
   return (
     <main>
       {/* JUMBOTRON */}
@@ -112,28 +138,71 @@ export default function Main() {
 
         {/* TESTIMONY */}
         <Paper id="Testimony" paperPadding={false}>
-          <div className="animate-gradient flex h-[450px] w-full flex-col items-center justify-center gap-5 bg-gradient-to-r from-[#ffdcdc] via-white to-[#ffdcdc] bg-[400%,400%] bg-center dark:from-[#402227] dark:via-dark dark:to-[#402227] dark:text-white">
-            <FaQuoteLeft size={30} />
-            <Image
-              src={require(`@/assets/images/testimony/${testimony[testimonyIndex].image}`)}
-              alt="Image"
-              height={128}
-              width={128}
-              quality={50}
-              placeholder="blur"
-              className="rounded-full"
-            />
-            <div className="text-center">
-              <h3 className="text-lg font-semibold">{testimony[testimonyIndex].name}</h3>
-              <p className="text-sm font-semibold text-red-600">{testimony[testimonyIndex].status}</p>
+          <div className="animate-gradient bg-gradient-to-r from-[#ffdcdc] via-white to-[#ffdcdc] bg-[400%,400%] bg-center dark:from-[#402227] dark:via-dark dark:to-[#402227] dark:text-white">
+            <div className="flex h-[450px] w-full flex-col items-center justify-center gap-5">
+              <FaQuoteLeft size={30} />
+
+              <Image
+                src={require(`@/assets/images/testimony/${testimony[testimonyIndex].image}`)}
+                alt="Image"
+                height={128}
+                width={128}
+                quality={50}
+                placeholder="blur"
+                className="rounded-full"
+              />
+
+              <div className="text-center">
+                <h3 className="text-lg font-semibold">{testimony[testimonyIndex].name}</h3>
+                <p className="text-sm font-semibold text-red-600">{testimony[testimonyIndex].status}</p>
+              </div>
+
+              <p className="h-12 w-[500px] text-center font-semibold">{`"${testimony[testimonyIndex].comment}"`}</p>
+
+              <div className="mt-1 flex items-center justify-center gap-1">
+                {testimony.map((_, index) => (
+                  <div key={index} className={testimonyIndex === index ? "text-red-600" : "text-red-300"}>
+                    <GoDotFill size={25} />
+                  </div>
+                ))}
+              </div>
             </div>
-            <p className="h-12 w-[500px] text-center font-semibold">{`"${testimony[testimonyIndex].comment}"`}</p>
-            <div className="mt-1 flex items-center justify-center gap-1">
-              {testimony.map((_, index) => (
-                <div key={index} className={testimonyIndex === index ? "text-red-600" : "text-red-300"}>
-                  <GoDotFill size={25} />
+
+            <div className="flex h-32 w-full items-center justify-evenly bg-white/50 dark:bg-dark/50">
+              <div className="flex flex-col items-center justify-center">
+                <div className="flex items-center justify-center gap-2">
+                  <FaRegThumbsUp size={25} />
+                  <p className="text-2xl font-bold text-red-600">48</p>
                 </div>
-              ))}
+                <h4 className="text-xl font-semibold">Happy Client</h4>
+              </div>
+
+              <div className="h-16 w-px bg-black dark:bg-white" />
+
+              <div className="flex flex-col items-center justify-center">
+                <div className="flex items-center justify-center gap-2">
+                  <FaToolbox size={25} />
+                  <p className="text-2xl font-bold text-red-600">50</p>
+                </div>
+                <h4 className="text-xl font-semibold">Completed Projects</h4>
+              </div>
+
+              <div className="h-16 w-px bg-black dark:bg-white" />
+
+              <div className="flex flex-col items-center justify-center">
+                <div className="flex items-center justify-center gap-2">
+                  <FaUserAlt size={25} />
+                  <p className="text-2xl font-bold text-red-600">8</p>
+                </div>
+                <h4 className="text-xl font-semibold">Subscriber</h4>
+              </div>
+
+              <div className="h-16 w-px bg-black dark:bg-white" />
+
+              <div className="flex flex-col items-center justify-center">
+                <p className="w-[250px] text-center text-xl font-bold text-red-600">{dateTime}</p>
+                <h4 className="text-xl font-semibold">Date - Time</h4>
+              </div>
             </div>
           </div>
         </Paper>
