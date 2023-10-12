@@ -83,6 +83,17 @@ export default function Header() {
           </li>
           <li>
             <Scroll
+              to="Testimony"
+              smooth={true}
+              offset={-84}
+              duration={500}
+              className="cursor-pointer hover:text-red-600 dark:text-white dark:hover:text-red-600"
+            >
+              Testimony
+            </Scroll>
+          </li>
+          <li>
+            <Scroll
               to="Clients"
               smooth={true}
               offset={-84}
