@@ -1,5 +1,6 @@
 "use client";
 // IMPORT LIBRARIES
+import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -32,6 +33,7 @@ const Paper = ({ id, paperPadding, children }: PaperProps) => (
 );
 
 export default function Main() {
+  const theme = useTheme();
   const [testimonyIndex, setTestimonyIndex] = useState<number>(0);
   const [dateTime, setDateTime] = useState<string>("00/00/0000 - 00:00:00");
 
@@ -202,6 +204,125 @@ export default function Main() {
               <div className="flex flex-col items-center justify-center">
                 <p className="w-[250px] text-center text-xl font-bold text-red-600">{dateTime}</p>
                 <h4 className="text-xl font-semibold">Date - Time</h4>
+              </div>
+            </div>
+          </div>
+
+          {/* CLIENTS */}
+          <div id="Clients" className="my-14">
+            <h2 className="text-center text-3xl font-semibold">
+              CLIEN<span className="text-red-600">TS</span>
+              <div className="mx-auto h-px w-20 bg-red-600" />
+            </h2>
+
+            <div className="mt-5 space-y-5">
+              <div className="flex items-center justify-evenly">
+                {theme.theme === "light" && (
+                  <Image
+                    src={require("@/assets/images/clients/ma-gray.svg")}
+                    alt="Muhibah Angklung"
+                    height={100}
+                    quality={50}
+                    loading="lazy"
+                    className="opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100"
+                  />
+                )}
+                {theme.theme === "light" && (
+                  <Image
+                    src={require("@/assets/images/clients/rbw-gray.svg")}
+                    alt="Rumah Batik Wijaya"
+                    height={100}
+                    quality={50}
+                    loading="lazy"
+                    className="opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100"
+                  />
+                )}
+                {theme.theme === "dark" && (
+                  <Image
+                    src={require("@/assets/images/clients/ma-white.svg")}
+                    alt="Muhibah Angklung"
+                    height={100}
+                    quality={50}
+                    loading="lazy"
+                    className="opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100"
+                  />
+                )}
+                {theme.theme === "dark" && (
+                  <Image
+                    src={require("@/assets/images/clients/rbw-white.svg")}
+                    alt="Rumah Batik Wijaya"
+                    height={100}
+                    quality={50}
+                    loading="lazy"
+                    className="opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100"
+                  />
+                )}
+                <Image
+                  src={require("@/assets/images/clients/irma.png")}
+                  alt="IRMA"
+                  height={100}
+                  quality={50}
+                  loading="lazy"
+                  className="opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100"
+                />
+              </div>
+              <div className="flex items-center justify-evenly">
+                <Image
+                  src={require("@/assets/images/clients/kp.png")}
+                  alt="Kopi Purnama"
+                  height={100}
+                  quality={50}
+                  loading="lazy"
+                  className="opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100"
+                />
+                {theme.theme === "light" && (
+                  <Image
+                    src={require("@/assets/images/clients/lc-gray.svg")}
+                    alt="Lentera Coffee"
+                    height={100}
+                    quality={50}
+                    loading="lazy"
+                    className="opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100"
+                  />
+                )}
+                {theme.theme === "dark" && (
+                  <Image
+                    src={require("@/assets/images/clients/lc-white.svg")}
+                    alt="Lentera Coffee"
+                    height={100}
+                    quality={50}
+                    loading="lazy"
+                    className="opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100"
+                  />
+                )}
+                <Image
+                  src={require("@/assets/images/clients/sk.png")}
+                  alt="Safiy Kitchen"
+                  height={100}
+                  quality={50}
+                  loading="lazy"
+                  className="opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100"
+                />
+                {theme.theme === "light" && (
+                  <Image
+                    src={require("@/assets/images/clients/ma-gray.svg")}
+                    alt="Al-'Ashr Al-Madani"
+                    height={100}
+                    quality={50}
+                    loading="lazy"
+                    className="opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100"
+                  />
+                )}
+                {theme.theme === "dark" && (
+                  <Image
+                    src={require("@/assets/images/clients/ma-white.svg")}
+                    alt="Al-'Ashr Al-Madani"
+                    height={100}
+                    quality={50}
+                    loading="lazy"
+                    className="opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100"
+                  />
+                )}
               </div>
             </div>
           </div>
