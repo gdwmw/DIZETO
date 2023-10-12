@@ -219,7 +219,7 @@ export default function Main() {
               <div className="mx-auto h-px w-20 bg-red-600" />
             </h2>
 
-            {mounted && (
+            {mounted ? (
               <div className="mt-5 space-y-5">
                 <div className="flex items-center justify-evenly">
                   {theme.resolvedTheme === "light" && (
@@ -330,6 +330,8 @@ export default function Main() {
                   )}
                 </div>
               </div>
+            ) : (
+              <Image src={require("@/assets/loading/loading.svg")} alt="Loading" height={100} width={100} className="mx-auto mt-14" />
             )}
           </div>
         </Paper>
