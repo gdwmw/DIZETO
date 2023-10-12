@@ -11,6 +11,7 @@ export default function ThemeSwitcher() {
 
   useEffect(() => {
     setMounted(true);
+
     function handleClickOutside(e: MouseEvent) {
       if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
         setIsOpen(false);
@@ -23,7 +24,7 @@ export default function ThemeSwitcher() {
   }, []);
 
   if (!mounted) {
-    return <div className="h-10 w-10"></div>;
+    return <div className="fixed right-10 top-3 z-[21] h-10 w-10" />;
   }
 
   return (
