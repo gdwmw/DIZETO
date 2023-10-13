@@ -9,29 +9,11 @@ import { FaQuoteLeft, FaRegThumbsUp, FaToolbox, FaUserAlt } from "react-icons/fa
 import { GoDotFill } from "react-icons/go";
 
 // IMPORT COMPONENTS
+import Paper from "./paper/Paper";
 import imgDIZETO from "@/assets/images/logo/dizeto.svg";
 import { landingPage, testimony } from "@/database/database";
 import ImagesFrame from "./imagesFrame/ImagesFrame";
 import PriceCard from "./priceCard/PriceCard";
-
-type PaperProps = {
-  id: string;
-  paperPadding: boolean;
-  children: React.ReactNode;
-};
-
-// PAPER COMPONENTS
-const Paper = ({ id, paperPadding, children }: PaperProps) => (
-  <section id={id}>
-    <div
-      className={`h-fit w-full overflow-hidden rounded-xl border border-black/50 bg-white shadow-md shadow-black/50 dark:border-white/50 dark:bg-dark dark:text-white dark:shadow-white/50 ${
-        paperPadding ? "p-5" : "p-0"
-      }`}
-    >
-      {children}
-    </div>
-  </section>
-);
 
 export default function Main() {
   const [mounted, setMounted] = useState<boolean>(false);
