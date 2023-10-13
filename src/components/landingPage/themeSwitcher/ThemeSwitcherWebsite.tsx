@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { BsFillMoonStarsFill, BsSunFill } from "react-icons/bs";
 import { SiMoonrepo } from "react-icons/si";
 
-export default function ThemeSwitcher() {
+export default function ThemeSwitcherWebsite() {
   const [mounted, setMounted] = useState<boolean>(false);
   const { theme, setTheme } = useTheme();
   const [isOpen, setIsOpen] = useState<boolean>(false);
