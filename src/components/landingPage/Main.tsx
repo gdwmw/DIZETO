@@ -226,112 +226,101 @@ export default function Main() {
                     <Image
                       src={require("@/assets/images/clients/ma-gray.svg")}
                       alt="Muhibah Angklung"
-                      height={100}
                       quality={50}
                       loading="lazy"
-                      className="opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100"
+                      className="h-20 w-auto opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100 lg:h-28"
                     />
                   )}
                   {theme.resolvedTheme === "light" && (
                     <Image
                       src={require("@/assets/images/clients/rbw-gray.svg")}
                       alt="Rumah Batik Wijaya"
-                      height={100}
                       quality={50}
                       loading="lazy"
-                      className="opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100"
+                      className="h-20 w-auto opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100 lg:h-28"
                     />
                   )}
                   {theme.resolvedTheme === "dark" && (
                     <Image
                       src={require("@/assets/images/clients/ma-white.svg")}
                       alt="Muhibah Angklung"
-                      height={100}
                       quality={50}
                       loading="lazy"
-                      className="opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100"
+                      className="h-20 w-auto opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100 lg:h-28"
                     />
                   )}
                   {theme.resolvedTheme === "dark" && (
                     <Image
                       src={require("@/assets/images/clients/rbw-white.svg")}
                       alt="Rumah Batik Wijaya"
-                      height={100}
                       quality={50}
                       loading="lazy"
-                      className="opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100"
+                      className="h-20 w-auto opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100 lg:h-28"
                     />
                   )}
                   <Image
                     src={require("@/assets/images/clients/irma.png")}
                     alt="IRMA"
-                    height={100}
                     quality={50}
                     loading="lazy"
-                    className="opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100"
+                    className="h-20 w-auto opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100 lg:h-28"
                   />
                 </div>
                 <div className="flex items-center justify-evenly">
                   <Image
                     src={require("@/assets/images/clients/kp.png")}
                     alt="Kopi Purnama"
-                    height={100}
                     quality={50}
                     loading="lazy"
-                    className="opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100"
+                    className="h-20 w-auto opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100 lg:h-28"
                   />
                   {theme.resolvedTheme === "light" && (
                     <Image
                       src={require("@/assets/images/clients/lc-gray.svg")}
                       alt="Lentera Coffee"
-                      height={100}
                       quality={50}
                       loading="lazy"
-                      className="opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100"
+                      className="h-20 w-auto opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100 lg:h-28"
                     />
                   )}
                   {theme.resolvedTheme === "dark" && (
                     <Image
                       src={require("@/assets/images/clients/lc-white.svg")}
                       alt="Lentera Coffee"
-                      height={100}
                       quality={50}
                       loading="lazy"
-                      className="opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100"
+                      className="h-20 w-auto opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100 lg:h-28"
                     />
                   )}
                   <Image
                     src={require("@/assets/images/clients/sk.png")}
                     alt="Safiy Kitchen"
-                    height={100}
                     quality={50}
                     loading="lazy"
-                    className="opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100"
+                    className="h-20 w-auto opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100 lg:h-28"
                   />
                   {theme.resolvedTheme === "light" && (
                     <Image
                       src={require("@/assets/images/clients/ma-gray.svg")}
                       alt="Al-'Ashr Al-Madani"
-                      height={100}
                       quality={50}
                       loading="lazy"
-                      className="opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100"
+                      className="h-20 w-auto opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100 lg:h-28"
                     />
                   )}
                   {theme.resolvedTheme === "dark" && (
                     <Image
                       src={require("@/assets/images/clients/ma-white.svg")}
                       alt="Al-'Ashr Al-Madani"
-                      height={100}
                       quality={50}
                       loading="lazy"
-                      className="opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100"
+                      className="h-20 w-auto opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100 lg:h-28"
                     />
                   )}
                 </div>
               </div>
             ) : (
-              <Image src={require("@/assets/loading/loading.svg")} alt="Loading" height={100} width={100} className="mx-auto mt-14" />
+              <Image src={require("@/assets/loading/loading.svg")} alt="Loading" width={100} className="mx-auto mt-14" />
             )}
           </div>
         </Paper>
