@@ -70,7 +70,7 @@ export default function Main() {
 
       <section className="container mx-auto space-y-10 px-5">
         {/* ABOUT */}
-        <Paper id="About" paperPadding={true}>
+        <Paper id="About" paperBackground={true} paperPadding={true}>
           <h2 className="text-center text-3xl font-semibold">
             ABO<span className="text-red-600">UT</span>
             <div className="mx-auto h-px w-20 bg-red-600" />
@@ -95,7 +95,7 @@ export default function Main() {
         </Paper>
 
         {/* PORTFOLIO */}
-        <Paper id="Portfolio" paperPadding={true}>
+        <Paper id="Portfolio" paperBackground={true} paperPadding={true}>
           <h2 className="text-center text-3xl font-semibold">
             PORTFOL<span className="text-red-600">IO</span>
             <div className="mx-auto h-px w-20 bg-red-600" />
@@ -116,7 +116,7 @@ export default function Main() {
         </Paper>
 
         {/* PRICING */}
-        <Paper id="Pricing" paperPadding={true}>
+        <Paper id="Pricing" paperBackground={true} paperPadding={true}>
           <h2 className="text-center text-3xl font-semibold">
             PRICI<span className="text-red-600">NG</span>
             <div className="mx-auto h-px w-20 bg-red-600" />
@@ -130,76 +130,74 @@ export default function Main() {
         </Paper>
 
         {/* TESTIMONY */}
-        <Paper id="Testimony" paperPadding={false}>
-          <div className="animate-gradient bg-gradient-to-r from-[#ffdcdc] via-white to-[#ffdcdc] bg-[400%,400%] bg-center dark:from-[#402227] dark:via-dark dark:to-[#402227] dark:text-white">
-            <div className="flex h-[450px] w-full flex-col items-center justify-center gap-5">
-              <FaQuoteLeft size={30} />
+        <Paper id="Testimony" paperBackground={false} paperPadding={false}>
+          <div className="flex h-[450px] w-full flex-col items-center justify-center gap-5 dark:text-white">
+            <FaQuoteLeft size={30} />
 
-              <Image
-                src={require(`@/assets/images/testimony/${testimony[testimonyIndex].image}`)}
-                alt="Image"
-                height={128}
-                width={128}
-                quality={50}
-                className="rounded-full"
-              />
+            <Image
+              src={require(`@/assets/images/testimony/${testimony[testimonyIndex].image}`)}
+              alt="Image"
+              height={128}
+              width={128}
+              quality={50}
+              className="rounded-full"
+            />
 
-              <div className="text-center">
-                <h3 className="text-lg font-semibold">{testimony[testimonyIndex].name}</h3>
-                <p className="text-sm font-semibold text-red-600">{testimony[testimonyIndex].status}</p>
-              </div>
-
-              <p className="h-12 w-[500px] text-center font-semibold">{`"${testimony[testimonyIndex].comment}"`}</p>
-
-              <div className="mt-1 flex items-center justify-center gap-1">
-                {testimony.map((_, index) => (
-                  <div key={index} className={testimonyIndex === index ? "text-red-600" : "text-red-300"}>
-                    <GoDotFill size={25} />
-                  </div>
-                ))}
-              </div>
+            <div className="text-center">
+              <h3 className="text-lg font-semibold">{testimony[testimonyIndex].name}</h3>
+              <p className="text-sm font-semibold text-red-600">{testimony[testimonyIndex].status}</p>
             </div>
 
-            <div className="flex h-32 w-full items-center justify-evenly bg-white/50 dark:bg-dark/50">
-              <div className="flex flex-col items-center justify-center">
-                <div className="flex items-center justify-center gap-2">
-                  <FaRegThumbsUp size={25} />
-                  <p className="text-2xl font-bold text-red-600">48</p>
+            <p className="h-12 w-[500px] text-center font-semibold">{`"${testimony[testimonyIndex].comment}"`}</p>
+
+            <div className="mt-1 flex items-center justify-center gap-1">
+              {testimony.map((_, index) => (
+                <div key={index} className={testimonyIndex === index ? "text-red-600" : "text-red-300"}>
+                  <GoDotFill size={25} />
                 </div>
-                <h4 className="text-xl font-semibold">Happy Client</h4>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex h-32 w-full items-center justify-evenly bg-white/50 dark:bg-dark/50">
+            <div className="flex flex-col items-center justify-center">
+              <div className="flex items-center justify-center gap-2">
+                <FaRegThumbsUp size={25} />
+                <p className="text-2xl font-bold text-red-600">48</p>
               </div>
+              <h4 className="text-xl font-semibold">Happy Client</h4>
+            </div>
 
-              <div className="h-16 w-px bg-black dark:bg-white" />
+            <div className="h-16 w-px bg-black dark:bg-white" />
 
-              <div className="flex flex-col items-center justify-center">
-                <div className="flex items-center justify-center gap-2">
-                  <FaToolbox size={25} />
-                  <p className="text-2xl font-bold text-red-600">50</p>
-                </div>
-                <h4 className="text-xl font-semibold">Completed Projects</h4>
+            <div className="flex flex-col items-center justify-center">
+              <div className="flex items-center justify-center gap-2">
+                <FaToolbox size={25} />
+                <p className="text-2xl font-bold text-red-600">50</p>
               </div>
+              <h4 className="text-xl font-semibold">Completed Projects</h4>
+            </div>
 
-              <div className="h-16 w-px bg-black dark:bg-white" />
+            <div className="h-16 w-px bg-black dark:bg-white" />
 
-              <div className="flex flex-col items-center justify-center">
-                <div className="flex items-center justify-center gap-2">
-                  <FaUserAlt size={25} />
-                  <p className="text-2xl font-bold text-red-600">8</p>
-                </div>
-                <h4 className="text-xl font-semibold">Subscriber</h4>
+            <div className="flex flex-col items-center justify-center">
+              <div className="flex items-center justify-center gap-2">
+                <FaUserAlt size={25} />
+                <p className="text-2xl font-bold text-red-600">8</p>
               </div>
+              <h4 className="text-xl font-semibold">Subscriber</h4>
+            </div>
 
-              <div className="hidden h-16 w-px bg-black dark:bg-white lg:block" />
+            <div className="hidden h-16 w-px bg-black dark:bg-white lg:block" />
 
-              <div className="hidden flex-col items-center justify-center lg:flex">
-                <p className="w-[250px] text-center text-xl font-bold text-red-600">{dateTime}</p>
-                <h4 className="text-xl font-semibold">Date - Time</h4>
-              </div>
+            <div className="hidden flex-col items-center justify-center lg:flex">
+              <p className="w-[250px] text-center text-xl font-bold text-red-600">{dateTime}</p>
+              <h4 className="text-xl font-semibold">Date - Time</h4>
             </div>
           </div>
 
           {/* CLIENTS */}
-          <div id="Clients" className="my-14">
+          <div id="Clients" className="bg-white py-14 dark:bg-dark">
             <h2 className="text-center text-3xl font-semibold">
               CLIEN<span className="text-red-600">TS</span>
               <div className="mx-auto h-px w-20 bg-red-600" />
