@@ -8,10 +8,12 @@ import { useEffect, useState } from "react";
 import { FaQuoteLeft, FaRegThumbsUp, FaToolbox, FaUserAlt } from "react-icons/fa";
 import { GoDotFill } from "react-icons/go";
 
-// IMPORT COMPONENTS
-import Paper from "./paper/Paper";
+// IMPORT DATABASE
 import { landingPage, testimony } from "@/database/database";
+
+// IMPORT COMPONENTS
 import ImagesFrame from "./imagesFrame/ImagesFrame";
+import Paper from "./paper/Paper";
 import PriceCard from "./priceCard/PriceCard";
 
 export default function Main() {

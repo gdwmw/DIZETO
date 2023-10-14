@@ -2,9 +2,9 @@
 
 // IMPORT LIBRARIES
 import Image from "next/image";
-import { useEffect, useState, useRef } from "react";
-import { Link as Scroll } from "react-scroll";
+import { useEffect, useRef, useState } from "react";
 import { FiMenu } from "react-icons/fi";
+import { Link as Scroll } from "react-scroll";
 
 // IMPORT COMPONENTS
 import ThemeSwitcherMobile from "../themeSwitcher/ThemeSwitcherMobile";
