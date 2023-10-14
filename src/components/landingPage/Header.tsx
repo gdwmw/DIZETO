@@ -4,8 +4,10 @@ import NavbarMobile from "./navbar/NavbarMobile";
 export default function Header() {
   return (
     <header id="Top">
-      <NavbarWebsite />
-      <NavbarMobile />
+      <nav>
+        <NavbarWebsite />
+        <NavbarMobile />
+      </nav>
     </header>
   );
 }

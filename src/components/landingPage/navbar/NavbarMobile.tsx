@@ -51,7 +51,7 @@ export default function NavbarMobile() {
   }, [scrollPosition]);
 
   return (
-    <nav className="min-[840px]:hidden">
+    <div className="min-[840px]:hidden">
       {!isOpen && (
         <div
           className={`fixed left-0 top-0 z-20 flex h-16 w-full items-center justify-between px-10 ${
@@ -153,6 +153,6 @@ export default function NavbarMobile() {
           <ThemeSwitcherMobile />
         </div>
       )}
-    </nav>
+    </div>
   );
 }

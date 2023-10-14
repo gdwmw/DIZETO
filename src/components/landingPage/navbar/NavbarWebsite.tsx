@@ -36,7 +36,7 @@ export default function NavbarWebsite() {
     }
   }, [scrollPosition]);
   return (
-    <nav className="hidden min-[840px]:block">
+    <div className="hidden min-[840px]:block">
       <div
         className={`fixed left-0 top-0 z-20 flex h-16 w-full items-center justify-between px-10 ${
           isActive && "shadow-md shadow-black/50 backdrop-blur-md dark:shadow-white/50"
@@ -124,6 +124,6 @@ export default function NavbarWebsite() {
         {/* END MARK */}
       </div>
       <ThemeSwitcherWebsite />
-    </nav>
+    </div>
   );
 }
