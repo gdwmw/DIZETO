@@ -5,9 +5,6 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-// IMPORT COMPONENTS
-import imgLoading from "@/assets/loading/loading.svg";
-
 type ImagesFrameProps = {
   folder: string;
   database: string[];
@@ -124,7 +121,7 @@ export default function ImagesFrame({ folder, database, link, copyright }: Image
               </button>
               {isLoading && (
                 <div className="absolute flex h-full w-full items-center justify-center bg-white dark:bg-dark">
-                  <Image src={imgLoading} alt="Loading" height={100} width={100} />
+                  <Image src={require("@/assets/loading/loading.svg")} alt="Loading" height={100} width={100} quality={50} />
                 </div>
               )}
               <div
@@ -132,14 +129,14 @@ export default function ImagesFrame({ folder, database, link, copyright }: Image
                   isLoadingInteractive ? "opacity-100" : "opacity-0"
                 }`}
               >
-                <Image src={imgLoading} alt="Loading" height={100} width={100} />
+                <Image src={require("@/assets/loading/loading.svg")} alt="Loading" height={100} width={100} quality={50} />
               </div>
               <Image
                 src={`${link}${database[dataIndex]}`}
                 alt={database[dataIndex]}
                 height={imageLoaded ? 1000 : 200}
                 width={imageLoaded ? 1000 : 200}
-                loading="lazy"
+                priority={true}
                 onLoadCapture={handleImageLoaded}
                 className="transition-all duration-1000"
               />

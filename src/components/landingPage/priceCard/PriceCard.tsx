@@ -1,3 +1,4 @@
+// IMPORT LIBRARIES
 import Link from "next/link";
 import { pricing } from "@/database/database";
 

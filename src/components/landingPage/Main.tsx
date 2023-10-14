@@ -10,7 +10,6 @@ import { GoDotFill } from "react-icons/go";
 
 // IMPORT COMPONENTS
 import Paper from "./paper/Paper";
-import imgDIZETO from "@/assets/images/logo/dizeto.svg";
 import { landingPage, testimony } from "@/database/database";
 import ImagesFrame from "./imagesFrame/ImagesFrame";
 import PriceCard from "./priceCard/PriceCard";
@@ -84,7 +83,7 @@ export default function Main() {
               <p className="pt-5 font-semibold text-red-600">*Please take note that we currently only offer photography and videography services.</p>
             </div>
             <div className="flex h-full w-full items-center justify-center">
-              <Image src={imgDIZETO} alt="DIZETO" height={250} width={250} priority={true} />
+              <Image src={require("@/assets/images/logo/dizeto.svg")} alt="DIZETO" height={250} width={250} quality={50} priority={true} />
             </div>
           </div>
         </Paper>
@@ -136,7 +135,6 @@ export default function Main() {
                 height={128}
                 width={128}
                 quality={50}
-                placeholder="blur"
                 className="rounded-full"
               />
 
@@ -302,7 +300,7 @@ export default function Main() {
                 </div>
               </div>
             ) : (
-              <Image src={require("@/assets/loading/loading.svg")} alt="Loading" width={100} className="mx-auto mt-14" />
+              <Image src={require("@/assets/loading/loading.svg")} alt="Loading" width={100} quality={50} className="mx-auto mt-14" />
             )}
           </div>
         </Paper>

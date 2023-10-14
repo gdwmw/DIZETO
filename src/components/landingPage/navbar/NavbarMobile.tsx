@@ -7,7 +7,6 @@ import { Link as Scroll } from "react-scroll";
 import { FiMenu } from "react-icons/fi";
 
 // IMPORT COMPONENTS
-import imgDIZETO from "@/assets/images/logo/dizeto.svg";
 import ThemeSwitcherMobile from "../themeSwitcher/ThemeSwitcherMobile";
 
 export default function NavbarMobile() {
@@ -59,7 +58,7 @@ export default function NavbarMobile() {
           }`}
         >
           <Scroll to="Top" smooth={true} offset={-84} duration={500} className="cursor-pointer">
-            <Image src={imgDIZETO} alt="DIZETO" width={40} height={40} priority={true} />
+            <Image src={require("@/assets/images/logo/dizeto.svg")} alt="DIZETO" width={40} height={40} quality={50} priority={true} />
           </Scroll>
 
           {mounted ? (
@@ -71,7 +70,7 @@ export default function NavbarMobile() {
             </div>
           ) : (
             <div className="fixed right-10 top-3 z-[21] h-10 w-10">
-              <Image src={require("@/assets/loading/loading.svg")} alt="Loading" height={40} width={40} />
+              <Image src={require("@/assets/loading/loading.svg")} alt="Loading" height={40} width={40} quality={50} />
             </div>
           )}
         </div>
@@ -83,7 +82,7 @@ export default function NavbarMobile() {
           className="fixed left-0 top-0 z-[22] flex h-80 w-full flex-col items-center justify-center gap-5 shadow-md shadow-black/50 backdrop-blur-md dark:shadow-white/50"
         >
           <Scroll to="Top" smooth={true} offset={-84} duration={500} className="cursor-pointer">
-            <Image src={imgDIZETO} alt="DIZETO" width={80} height={80} priority={true} />
+            <Image src={require("@/assets/images/logo/dizeto.svg")} alt="DIZETO" width={80} height={80} quality={50} priority={true} />
           </Scroll>
           <ul className="flex flex-col items-center justify-center gap-5 text-lg font-bold dark:text-white">
             <li className="space-x-10">

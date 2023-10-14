@@ -1,3 +1,4 @@
+// IMPORT LIBRARIES
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
@@ -27,7 +28,7 @@ export default function ThemeSwitcherWebsite() {
   if (!mounted) {
     return (
       <div className="fixed right-10 top-3 z-[21] h-10 w-10">
-        <Image src={require("@/assets/loading/loading.svg")} alt="Loading" height={40} width={40} />
+        <Image src={require("@/assets/loading/loading.svg")} alt="Loading" height={40} width={40} quality={50} />
       </div>
     );
   }

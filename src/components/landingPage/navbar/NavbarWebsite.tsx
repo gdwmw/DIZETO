@@ -6,9 +6,7 @@ import { useEffect, useState } from "react";
 import { Link as Scroll } from "react-scroll";
 
 // IMPORT COMPONENTS
-import imgDIZETO from "@/assets/images/logo/dizeto.svg";
 import ThemeSwitcherWebsite from "../themeSwitcher/ThemeSwitcherWebsite";
-// import { BsSunFill } from "react-icons/bs";
 
 export default function NavbarWebsite() {
   const [scrollPosition, setScrollPosition] = useState<number>(0);
@@ -43,7 +41,7 @@ export default function NavbarWebsite() {
         }`}
       >
         <Scroll to="Top" smooth={true} offset={-84} duration={500} className="cursor-pointer">
-          <Image src={imgDIZETO} alt="DIZETO" width={40} height={40} priority={true} />
+          <Image src={require("@/assets/images/logo/dizeto.svg")} alt="DIZETO" width={40} height={40} quality={50} priority={true} />
         </Scroll>
         <ul className="flex gap-10 text-lg font-bold dark:text-white">
           <li>
@@ -115,11 +113,6 @@ export default function NavbarWebsite() {
           </li>
         </ul>
         {/* MARK */}
-        {/* <div className="flex h-10 w-10 items-center justify-center">
-            <div className="cursor-pointer hover:text-red-600 dark:text-white dark:hover:text-red-600">
-              <BsSunFill size={20} />
-            </div>
-          </div> */}
         <div className="h-10 w-10" />
         {/* END MARK */}
       </div>
