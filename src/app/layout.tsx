@@ -28,6 +28,16 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    site: "@dizeto_id",
+    creator: "@dizeto_id",
+    title: "DIZETO | PROFESSIONAL SERVICES",
+    description: "Dizeto is a vendor that offers photography, videography, talent, and music services.",
+    images: {
+      url: "https://dizeto-dev.vercel.app/dizeto.svg",
+    },
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
