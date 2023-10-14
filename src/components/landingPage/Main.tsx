@@ -22,11 +22,18 @@ export default function Main() {
 
   useEffect(() => {
     setMounted(true);
+  }, []);
 
+  useEffect(() => {
     const testimonyInterval = setInterval(() => {
       setTestimonyIndex((prevIndex) => (prevIndex + 1) % testimony.length);
     }, 5000);
+    return () => {
+      clearInterval(testimonyInterval);
+    };
+  }, []);
 
+  useEffect(() => {
     const dateTimeInterval = setInterval(() => {
       const currentDate = new Date();
       const formattedDate = currentDate
@@ -48,7 +55,6 @@ export default function Main() {
     }, 1000);
 
     return () => {
-      clearInterval(testimonyInterval);
       clearInterval(dateTimeInterval);
     };
   }, []);

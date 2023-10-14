@@ -18,22 +18,14 @@ export default function NavbarMobile() {
 
   useEffect(() => {
     setMounted(true);
+  }, []);
 
-    function handleClickOutside(e: MouseEvent) {
-      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
-        setIsOpen(false);
-      }
-    }
-
-    document.addEventListener("mousedown", handleClickOutside);
-
+  useEffect(() => {
     function handleScroll() {
       setScrollPosition(window.pageYOffset);
     }
-
     window.addEventListener("scroll", handleScroll);
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
@@ -48,6 +40,18 @@ export default function NavbarMobile() {
       }
     }
   }, [scrollPosition]);
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <div className="min-[840px]:hidden">

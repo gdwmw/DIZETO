@@ -13,7 +13,9 @@ export default function ThemeSwitcherWebsite() {
 
   useEffect(() => {
     setMounted(true);
+  }, []);
 
+  useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
       if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
         setIsOpen(false);
