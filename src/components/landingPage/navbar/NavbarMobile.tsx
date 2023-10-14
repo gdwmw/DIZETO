@@ -1,4 +1,4 @@
-"use client";
+
 
 // IMPORT LIBRARIES
 import Image from "next/image";

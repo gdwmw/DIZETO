@@ -1,4 +1,4 @@
-"use client";
+
 
 // IMPORT LIBRARIES
 import { useTheme } from "next-themes";

@@ -1,5 +1,3 @@
-"use client";
-
 // IMPORT LIBRARIES
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
