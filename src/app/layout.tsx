@@ -15,6 +15,7 @@ export const metadata: Metadata = {
   title: "DIZETO | PROFESSIONAL SERVICES",
   description: "Dizeto is a vendor that offers photography, videography, talent, and music services.",
   keywords: "DIZETO, Photography, Videography, Talent, Music, Jasa Foto, Jasa Video, Bandung",
+  metadataBase: new URL("https://dizeto-dev.vercel.app"),
   openGraph: {
     type: "website",
     url: "https://dizeto-dev.vercel.app/",
