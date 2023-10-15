@@ -97,7 +97,7 @@ export default function ImagesFrame({ folder, database, link, copyright }: Image
               <button
                 type="button"
                 onClick={PreviousImage}
-                className={`photo-frame-previous-button ${dataIndex === 0 && "hidden"}`}
+                className={dataIndex !== 0 ? "photo-frame-previous-button" : "hidden"}
                 disabled={!!isLoadingInteractive}
               >
                 <FaChevronLeft size={50} />
@@ -105,7 +105,7 @@ export default function ImagesFrame({ folder, database, link, copyright }: Image
               <button
                 type="button"
                 onClick={NextImage}
-                className={`photo-frame-next-button ${dataIndex + 1 === database.length && "hidden"}`}
+                className={dataIndex + 1 !== database.length ? "photo-frame-next-button" : "hidden"}
                 disabled={!!isLoadingInteractive}
               >
                 <FaChevronRight size={50} />
