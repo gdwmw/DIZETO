@@ -43,16 +43,13 @@ export default function ThemeSwitcherWebsite() {
         {theme === "system" && <SiMoonrepo size={20} />}
       </div>
       {isOpen && (
-        <ul
-          ref={menuRef}
-          className="absolute -right-7 top-16 flex flex-col items-center justify-center gap-5 rounded-lg border border-black/50 p-5 shadow-md shadow-black/50 backdrop-blur-md dark:border-white/50 dark:text-white dark:shadow-white/50"
-        >
+        <ul ref={menuRef} className="theme-menu-website">
           <li
             onClick={() => {
               setTheme("light");
               setIsOpen(false);
             }}
-            className="flex cursor-pointer items-center gap-2 hover:text-red-600 dark:text-white dark:hover:text-red-600"
+            className="theme-menu-website-options"
           >
             <BsSunFill size={20} />
             <span className="font-bold">Light</span>
@@ -62,7 +59,7 @@ export default function ThemeSwitcherWebsite() {
               setTheme("dark");
               setIsOpen(false);
             }}
-            className="flex cursor-pointer items-center gap-2 hover:text-red-600 dark:text-white dark:hover:text-red-600"
+            className="theme-menu-website-options"
           >
             <BsFillMoonStarsFill size={20} />
             <span className="font-bold">Dark</span>
@@ -72,7 +69,7 @@ export default function ThemeSwitcherWebsite() {
               setTheme("system");
               setIsOpen(false);
             }}
-            className="flex cursor-pointer items-center gap-2 hover:text-red-600 dark:text-white dark:hover:text-red-600"
+            className="theme-menu-website-options"
           >
             <SiMoonrepo size={20} />
             <span className="font-bold">System</span>

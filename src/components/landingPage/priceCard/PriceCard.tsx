@@ -8,12 +8,9 @@ export default function PriceCard() {
   return (
     <>
       {pricing.map((data, index) => (
-        <div
-          key={index}
-          className="mb-3 mt-20 w-full rounded-md border-4 transition-priceCard duration-75 hover:scale-[1.025] hover:shadow-lg hover:shadow-black/30 dark:border-gray-700 dark:hover:shadow-white/20"
-        >
+        <div key={index} className="price-card">
           <div className="relative flex h-40 w-full flex-col items-center justify-end bg-gray-200 dark:bg-gray-700 dark:text-white">
-            <div className="absolute -top-20 z-10 flex h-36 w-36 flex-col items-center justify-center rounded-full border-4 bg-red-600 text-white dark:border-gray-700">
+            <div className="price-card-circle">
               <h2 className="text-3xl font-bold">IDR {data.price}</h2>
               <p className="text-lg font-semibold">PACKAGE {data.package}</p>
             </div>
@@ -43,7 +40,7 @@ export default function PriceCard() {
               </li>
               <li>
                 <div className="flex items-center justify-center">
-                  <Link href={"/"} className="border-2 border-red-600 px-4 py-2 font-semibold text-red-600 hover:bg-red-600 hover:text-white">
+                  <Link href={"/"} className="red-line-button">
                     BOOKING
                   </Link>
                 </div>

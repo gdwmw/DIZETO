@@ -1,5 +1,3 @@
-
-
 // IMPORT LIBRARIES
 import { useTheme } from "next-themes";
 import Image from "next/image";
@@ -65,7 +63,7 @@ export default function Main() {
   return (
     <main>
       {/* JUMBOTRON */}
-      <section id="Jumbotron" className="container mx-auto flex h-[600px] w-full flex-col items-center justify-center gap-3 px-5 dark:text-white">
+      <section id="Jumbotron" className="jumbotron">
         <h1 className="text-8xl font-semibold">
           <span className="text-red-600">DI</span>ZETO
         </h1>
@@ -106,7 +104,7 @@ export default function Main() {
           </h2>
 
           <div className="my-5 flex items-center justify-center">
-            <Link href={"/"} className="border-2 border-red-600 px-4 py-2 font-semibold text-red-600 hover:bg-red-600 hover:text-white">
+            <Link href={"/"} className="red-line-button">
               CHECK ALL PORTFOLIO
             </Link>
           </div>
@@ -216,7 +214,7 @@ export default function Main() {
                       alt="Muhibah Angklung"
                       quality={50}
                       loading="lazy"
-                      className="h-20 w-auto opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100 lg:h-28"
+                      className="clients-img"
                     />
                   )}
                   {theme.resolvedTheme === "light" && (
@@ -225,7 +223,7 @@ export default function Main() {
                       alt="Rumah Batik Wijaya"
                       quality={50}
                       loading="lazy"
-                      className="h-20 w-auto opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100 lg:h-28"
+                      className="clients-img"
                     />
                   )}
                   {theme.resolvedTheme === "dark" && (
@@ -234,7 +232,7 @@ export default function Main() {
                       alt="Muhibah Angklung"
                       quality={50}
                       loading="lazy"
-                      className="h-20 w-auto opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100 lg:h-28"
+                      className="clients-img"
                     />
                   )}
                   {theme.resolvedTheme === "dark" && (
@@ -243,32 +241,20 @@ export default function Main() {
                       alt="Rumah Batik Wijaya"
                       quality={50}
                       loading="lazy"
-                      className="h-20 w-auto opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100 lg:h-28"
+                      className="clients-img"
                     />
                   )}
-                  <Image
-                    src={require("@/assets/images/clients/irma.png")}
-                    alt="IRMA"
-                    quality={50}
-                    loading="lazy"
-                    className="h-20 w-auto opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100 lg:h-28"
-                  />
+                  <Image src={require("@/assets/images/clients/irma.png")} alt="IRMA" quality={50} loading="lazy" className="clients-img" />
                 </div>
                 <div className="flex items-center justify-evenly">
-                  <Image
-                    src={require("@/assets/images/clients/kp.png")}
-                    alt="Kopi Purnama"
-                    quality={50}
-                    loading="lazy"
-                    className="h-20 w-auto opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100 lg:h-28"
-                  />
+                  <Image src={require("@/assets/images/clients/kp.png")} alt="Kopi Purnama" quality={50} loading="lazy" className="clients-img" />
                   {theme.resolvedTheme === "light" && (
                     <Image
                       src={require("@/assets/images/clients/lc-gray.svg")}
                       alt="Lentera Coffee"
                       quality={50}
                       loading="lazy"
-                      className="h-20 w-auto opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100 lg:h-28"
+                      className="clients-img"
                     />
                   )}
                   {theme.resolvedTheme === "dark" && (
@@ -277,23 +263,17 @@ export default function Main() {
                       alt="Lentera Coffee"
                       quality={50}
                       loading="lazy"
-                      className="h-20 w-auto opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100 lg:h-28"
+                      className="clients-img"
                     />
                   )}
-                  <Image
-                    src={require("@/assets/images/clients/sk.png")}
-                    alt="Safiy Kitchen"
-                    quality={50}
-                    loading="lazy"
-                    className="h-20 w-auto opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100 lg:h-28"
-                  />
+                  <Image src={require("@/assets/images/clients/sk.png")} alt="Safiy Kitchen" quality={50} loading="lazy" className="clients-img" />
                   {theme.resolvedTheme === "light" && (
                     <Image
                       src={require("@/assets/images/clients/ma-gray.svg")}
                       alt="Al-'Ashr Al-Madani"
                       quality={50}
                       loading="lazy"
-                      className="h-20 w-auto opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100 lg:h-28"
+                      className="clients-img"
                     />
                   )}
                   {theme.resolvedTheme === "dark" && (
@@ -302,7 +282,7 @@ export default function Main() {
                       alt="Al-'Ashr Al-Madani"
                       quality={50}
                       loading="lazy"
-                      className="h-20 w-auto opacity-70 hover:opacity-100 dark:opacity-50 dark:hover:opacity-100 lg:h-28"
+                      className="clients-img"
                     />
                   )}
                 </div>

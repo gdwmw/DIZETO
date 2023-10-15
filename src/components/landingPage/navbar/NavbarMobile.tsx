@@ -1,5 +1,3 @@
-
-
 // IMPORT LIBRARIES
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
@@ -81,74 +79,34 @@ export default function NavbarMobile() {
       )}
 
       {isOpen && (
-        <div
-          ref={menuRef}
-          className="fixed left-0 top-0 z-[22] flex h-80 w-full flex-col items-center justify-center gap-5 shadow-md shadow-black/50 backdrop-blur-md dark:shadow-white/50"
-        >
+        <div ref={menuRef} className="navbar-menu-mobile">
           <Scroll to="Top" smooth={true} offset={-84} duration={500} className="cursor-pointer">
             <Image src={require("@/assets/images/logo/dizeto.svg")} alt="DIZETO" width={80} height={80} quality={50} priority={true} />
           </Scroll>
           <ul className="flex flex-col items-center justify-center gap-5 text-lg font-bold dark:text-white">
             <li className="space-x-10">
-              <Scroll
-                to="About"
-                spy={true}
-                smooth={true}
-                offset={-84}
-                duration={500}
-                className="cursor-pointer hover:text-red-600 dark:text-white dark:hover:text-red-600"
-              >
+              <Scroll to="About" spy={true} smooth={true} offset={-84} duration={500} className="navbar-menu-mobile-options">
                 About
               </Scroll>
 
-              <Scroll
-                to="Portfolio"
-                smooth={true}
-                offset={-84}
-                duration={500}
-                className="cursor-pointer hover:text-red-600 dark:text-white dark:hover:text-red-600"
-              >
+              <Scroll to="Portfolio" smooth={true} offset={-84} duration={500} className="navbar-menu-mobile-options">
                 Portfolio
               </Scroll>
 
-              <Scroll
-                to="Pricing"
-                smooth={true}
-                offset={-84}
-                duration={500}
-                className="cursor-pointer hover:text-red-600 dark:text-white dark:hover:text-red-600"
-              >
+              <Scroll to="Pricing" smooth={true} offset={-84} duration={500} className="navbar-menu-mobile-options">
                 Pricing
               </Scroll>
             </li>
             <li className="space-x-10">
-              <Scroll
-                to="Testimony"
-                smooth={true}
-                offset={-84}
-                duration={500}
-                className="cursor-pointer hover:text-red-600 dark:text-white dark:hover:text-red-600"
-              >
+              <Scroll to="Testimony" smooth={true} offset={-84} duration={500} className="navbar-menu-mobile-options">
                 Testimony
               </Scroll>
 
-              <Scroll
-                to="Clients"
-                smooth={true}
-                offset={-84}
-                duration={500}
-                className="cursor-pointer hover:text-red-600 dark:text-white dark:hover:text-red-600"
-              >
+              <Scroll to="Clients" smooth={true} offset={-84} duration={500} className="navbar-menu-mobile-options">
                 Clients
               </Scroll>
 
-              <Scroll
-                to="Contact"
-                smooth={true}
-                offset={-84}
-                duration={500}
-                className="cursor-pointer hover:text-red-600 dark:text-white dark:hover:text-red-600"
-              >
+              <Scroll to="Contact" smooth={true} offset={-84} duration={500} className="navbar-menu-mobile-options">
                 Contact
               </Scroll>
             </li>

@@ -42,69 +42,32 @@ export default function NavbarWebsite() {
         </Scroll>
         <ul className="flex gap-10 text-lg font-bold dark:text-white">
           <li>
-            <Scroll
-              to="About"
-              spy={true}
-              smooth={true}
-              offset={-84}
-              duration={500}
-              className="cursor-pointer hover:text-red-600 dark:text-white dark:hover:text-red-600"
-            >
+            <Scroll to="About" spy={true} smooth={true} offset={-84} duration={500} className="navbar-website-options">
               About
             </Scroll>
           </li>
           <li>
-            <Scroll
-              to="Portfolio"
-              smooth={true}
-              offset={-84}
-              duration={500}
-              className="cursor-pointer hover:text-red-600 dark:text-white dark:hover:text-red-600"
-            >
+            <Scroll to="Portfolio" smooth={true} offset={-84} duration={500} className="navbar-website-options">
               Portfolio
             </Scroll>
           </li>
           <li>
-            <Scroll
-              to="Pricing"
-              smooth={true}
-              offset={-84}
-              duration={500}
-              className="cursor-pointer hover:text-red-600 dark:text-white dark:hover:text-red-600"
-            >
+            <Scroll to="Pricing" smooth={true} offset={-84} duration={500} className="navbar-website-options">
               Pricing
             </Scroll>
           </li>
           <li>
-            <Scroll
-              to="Testimony"
-              smooth={true}
-              offset={-84}
-              duration={500}
-              className="cursor-pointer hover:text-red-600 dark:text-white dark:hover:text-red-600"
-            >
+            <Scroll to="Testimony" smooth={true} offset={-84} duration={500} className="navbar-website-options">
               Testimony
             </Scroll>
           </li>
           <li>
-            <Scroll
-              to="Clients"
-              smooth={true}
-              offset={-84}
-              duration={500}
-              className="cursor-pointer hover:text-red-600 dark:text-white dark:hover:text-red-600"
-            >
+            <Scroll to="Clients" smooth={true} offset={-84} duration={500} className="navbar-website-options">
               Clients
             </Scroll>
           </li>
           <li>
-            <Scroll
-              to="Contact"
-              smooth={true}
-              offset={-84}
-              duration={500}
-              className="cursor-pointer hover:text-red-600 dark:text-white dark:hover:text-red-600"
-            >
+            <Scroll to="Contact" smooth={true} offset={-84} duration={500} className="navbar-website-options">
               Contact
             </Scroll>
           </li>
