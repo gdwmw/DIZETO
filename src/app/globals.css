@@ -6,6 +6,10 @@
   @apply fixed -z-10 h-full w-screen animate-gradient bg-gradient-to-r from-[#ffdcdc] via-white to-[#ffdcdc] bg-[length:400%_100%] bg-no-repeat dark:from-[#402227] dark:via-dark dark:to-[#402227];
 }
 
+.navbar-loading {
+  @apply animate-navbarLoading h-5 w-[620px] min-[840px]:rounded-full min-[840px]:bg-gradient-to-r min-[840px]:from-red-600 min-[840px]:via-[#ffdcdc] min-[840px]:to-red-600 min-[840px]:bg-[length:200%_100%] min-[840px]:bg-no-repeat min-[840px]:dark:from-red-600 min-[840px]:dark:via-[#402227] min-[840px]:dark:to-red-600;
+}
+
 .navbar-website-options {
   @apply cursor-pointer hover:text-red-600 dark:text-white dark:hover:text-red-600;
 }

@@ -14,17 +14,18 @@ const config: Config = {
       keyframes: {
         gradient: {
           "0%": {
-            backgroundPosition: "0% 50%",
+            backgroundPosition: "0% 0%",
           },
           "50%": {
-            backgroundPosition: "100% 50%",
+            backgroundPosition: "100% 0%",
           },
           "100%": {
-            backgroundPosition: "0% 50%",
+            backgroundPosition: "0% 0%",
           },
         },
       },
       animation: {
+        navbarLoading: "gradient 1s ease infinite",
         gradient: "gradient 15s ease infinite",
       },
     },
