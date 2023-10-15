@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.background-gradient-animation {
+  @apply fixed -z-10 h-screen w-screen animate-gradient bg-gradient-to-r from-[#ffdcdc] via-white to-[#ffdcdc] bg-[length:400%_100%] bg-no-repeat dark:from-[#402227] dark:via-dark dark:to-[#402227];
+}
+
 .navbar-website-options {
   @apply cursor-pointer hover:text-red-600 dark:text-white dark:hover:text-red-600;
 }
