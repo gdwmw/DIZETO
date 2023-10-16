@@ -29,6 +29,23 @@ export default function NavbarWebsite() {
       }
     }
   }, [scrollPosition]);
+
+  const handleTopSmoothScroll = (e: any) => {
+    e.preventDefault();
+    const targetElement = document.getElementById("Top");
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const handleSmoothScroll = (e: any) => {
+    e.preventDefault();
+    const targetId = e.target.getAttribute("href").substring(1);
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <div className="hidden min-[840px]:block">
       <div
@@ -36,37 +53,37 @@ export default function NavbarWebsite() {
           isActive && "shadow-md shadow-black/50 backdrop-blur-md dark:shadow-white/50"
         }`}
       >
-        <a href="#Top" className="cursor-pointer">
+        <a href="#Top" className="cursor-pointer" onClick={handleTopSmoothScroll}>
           <Image src={require("@/assets/images/logo/dizeto.svg")} alt="DIZETO" width={40} height={40} quality={50} priority={true} />
         </a>
         <ul className="flex gap-10 text-lg font-bold dark:text-white">
           <li>
-            <a href="#About" className="navbar-website-options">
+            <a href="#About" className="navbar-website-options" onClick={handleSmoothScroll}>
               About
             </a>
           </li>
           <li>
-            <a href="#Portfolio" className="navbar-website-options">
+            <a href="#Portfolio" className="navbar-website-options" onClick={handleSmoothScroll}>
               Portfolio
             </a>
           </li>
           <li>
-            <a href="#Pricing" className="navbar-website-options">
+            <a href="#Pricing" className="navbar-website-options" onClick={handleSmoothScroll}>
               Pricing
             </a>
           </li>
           <li>
-            <a href="#Testimony" className="navbar-website-options">
+            <a href="#Testimony" className="navbar-website-options" onClick={handleSmoothScroll}>
               Testimony
             </a>
           </li>
           <li>
-            <a href="#Clients" className="navbar-website-options">
+            <a href="#Clients" className="navbar-website-options" onClick={handleSmoothScroll}>
               Clients
             </a>
           </li>
           <li>
-            <a href="#Contact" className="navbar-website-options">
+            <a href="#Contact" className="navbar-website-options" onClick={handleSmoothScroll}>
               Contact
             </a>
           </li>
