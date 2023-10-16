@@ -28,10 +28,7 @@ export default function ListPortfolio() {
               <p className="text-end text-lg font-semibold">- DIZETO -</p>
             </div>
             <div className="hidden items-center justify-center gap-5 md:flex">
-              <Link
-                href={"/"}
-                className="flex h-10 w-10 items-center justify-center rounded-md border-2 border-red-600 text-lg font-semibold text-red-600 hover:bg-red-600 hover:text-white"
-              >
+              <Link href={"/"} className="back-red-line-button">
                 <FaArrowLeft size={18} />
               </Link>
               {Array.from({ length: totalPages }, (_, i) => (
@@ -50,10 +47,7 @@ export default function ListPortfolio() {
             <div className="h-0.5 w-full bg-red-600" />
           </section>
           <div className="mb-6 mt-5 flex items-center justify-center gap-5 md:hidden">
-            <Link
-              href={"/"}
-              className="flex h-10 w-10 items-center justify-center rounded-md border-2 border-red-600 text-lg font-semibold text-red-600 hover:bg-red-600 hover:text-white"
-            >
+            <Link href={"/"} className="back-red-line-button">
               <FaArrowLeft size={18} />
             </Link>
             {Array.from({ length: totalPages }, (_, i) => (
