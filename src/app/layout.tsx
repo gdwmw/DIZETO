@@ -14,7 +14,8 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   title: "DIZETO | PROFESSIONAL SERVICES",
   description: "Dizeto is a vendor that offers photography, videography, talent, and music services.",
-  keywords: "DIZETO, Photography, Videography, Talent, Music, Jasa Foto, Jasa Video, Bandung",
+  keywords:
+    "dizeto, bandung, indonesia, vendor, jasa foto, jasa video, jasa fotografer, jasa videografer, pre-wedding, wedding, dokumentasi, foto produk, fotografi, videografi",
   metadataBase: new URL("https://dizeto-dev.vercel.app"),
   openGraph: {
     type: "website",
