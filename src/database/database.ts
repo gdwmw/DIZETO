@@ -15,6 +15,7 @@ const landingPage = [
 
 const pricing = [
   {
+    id: "1",
     price: "1.5",
     package: "A",
     title: ["PHOTO", "PRE-WEDDING"],
@@ -46,6 +47,7 @@ const pricing = [
     ],
   },
   {
+    id: "2",
     price: "1.0",
     package: "D",
     title: ["PHOTO", "PRE-WEDDING"],
@@ -77,6 +79,7 @@ const pricing = [
     ],
   },
   {
+    id: "3",
     price: "1.5",
     package: "B",
     title: ["PHOTO", "DOCUMENTATION"],
@@ -112,6 +115,7 @@ const pricing = [
     ],
   },
   {
+    id: "4",
     price: "0.6",
     package: "A",
     title: ["PHOTO", "CATALOG PRODUCT"],
@@ -154,42 +158,49 @@ const pricing = [
 
 const testimony = [
   {
+    id: "1",
     name: "Rangga Dewamoela",
     status: "- Ginza's Birthday -",
     comment: "You must give it a try because the photographs are good",
     image: "rangga-dewamoela.webp",
   },
   {
+    id: "2",
     name: "Rifa Anggyana",
     status: "- Ikatan Remaja Masjid Jawa Barat -",
     comment: "Alhamdulillah, the pictures are great, i'm very appreciative",
     image: "rifa-anggyana.webp",
   },
   {
+    id: "3",
     name: "Ratri Werdiningsih",
     status: "- Rumah Batik Wijaya -",
     comment: "The photographs are excellent, the service is inexpensive, and the workflow is quick",
     image: "ratri-werdiningsih.webp",
   },
   {
+    id: "4",
     name: "Vitto Safiy",
     status: "- Safiy Kitchen -",
     comment: "The cheerful color scheme appeals to me",
     image: "vitto-safiy.webp",
   },
   {
+    id: "5",
     name: "Gibran Farras",
     status: "- Lentera Coffee -",
     comment: "In any case, it's highly recommended",
     image: "gibran-farras.jpg",
   },
   {
+    id: "6",
     name: "Neneng Chamidah",
     status: "- Eid Photo Shoot -",
     comment: "Despite the fact that the photo was taken at my house, the outcome is satisfactory",
     image: "neneng-camidah.webp",
   },
   {
+    id: "7",
     name: "Novi",
     status: "- Reunion Documentation -",
     comment: "Thank you for the wonderful photographs",
