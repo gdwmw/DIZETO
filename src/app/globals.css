@@ -34,8 +34,14 @@
   @apply container mx-auto flex h-[600px] w-full flex-col items-center justify-center gap-3 px-5 dark:text-white;
 }
 
+/* TODO jangan lupa untuk pertimbangkan pemakaian overflow-hidden */
+
 .paper {
   @apply h-fit w-full overflow-hidden rounded-xl border border-black/50 shadow-md shadow-black/50 dark:border-white/50 dark:text-white dark:shadow-white/50;
+}
+
+.paper-portfolio {
+  @apply min-h-screen w-full space-y-5 overflow-hidden rounded-xl border border-black/50 bg-white p-5 shadow-md shadow-black/50 dark:border-white/50 dark:bg-dark dark:text-white dark:shadow-white/50;
 }
 
 .red-line-button {
