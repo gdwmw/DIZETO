@@ -75,7 +75,7 @@ export default function Main() {
           <div className="paper bg-white p-5 dark:bg-dark">
             <h2 className="text-center text-3xl font-semibold">
               ABO<span className="text-red-600">UT</span>
-              <div className="mx-auto h-0.5 w-20 bg-red-600" />
+              <div className="mx-auto h-0.5 w-20 rounded-full bg-red-600" />
             </h2>
 
             <div className="my-10 space-y-14 md:grid md:grid-cols-2 md:space-y-0">
@@ -104,7 +104,7 @@ export default function Main() {
           <div className="paper bg-white p-5 dark:bg-dark">
             <h2 className="text-center text-3xl font-semibold">
               PORTFOL<span className="text-red-600">IO</span>
-              <div className="mx-auto h-0.5 w-20 bg-red-600" />
+              <div className="mx-auto h-0.5 w-20 rounded-full bg-red-600" />
             </h2>
 
             <div className="my-5 flex items-center justify-center">
@@ -127,7 +127,7 @@ export default function Main() {
           <div className="paper bg-white p-5 dark:bg-dark">
             <h2 className="text-center text-3xl font-semibold">
               PRICI<span className="text-red-600">NG</span>
-              <div className="mx-auto h-0.5 w-20 bg-red-600" />
+              <div className="mx-auto h-0.5 w-20 rounded-full bg-red-600" />
             </h2>
 
             <div className="mt-5 flex items-center justify-center">
@@ -210,7 +210,7 @@ export default function Main() {
             <div id="Clients" className="bg-white py-14 dark:bg-dark">
               <h2 className="text-center text-3xl font-semibold">
                 CLIEN<span className="text-red-600">TS</span>
-                <div className="mx-auto h-0.5 w-20 bg-red-600" />
+                <div className="mx-auto h-0.5 w-20 rounded-full bg-red-600" />
               </h2>
 
               {mounted ? (
@@ -335,7 +335,7 @@ export default function Main() {
           <div className="paper bg-white p-5 dark:bg-dark">
             <h2 className="text-center text-3xl font-semibold">
               CONTA<span className="text-red-600">CT</span>
-              <div className="mx-auto h-0.5 w-20 bg-red-600" />
+              <div className="mx-auto h-0.5 w-20 rounded-full bg-red-600" />
             </h2>
 
             <iframe
