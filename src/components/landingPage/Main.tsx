@@ -1,4 +1,5 @@
 // IMPORT LIBRARIES
+import dynamic from "next/dynamic";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
@@ -14,6 +15,10 @@ import { landingPage, testimony } from "@/database/database";
 // IMPORT COMPONENTS
 import ImagesFrame from "./imagesFrame/ImagesFrame";
 import PriceCard from "./priceCard/PriceCard";
+const DynamicGoogleMaps = dynamic(() => import("./googleMaps/GoogleMaps"), {
+  ssr: false,
+  loading: () => <div className="my-5 h-[500px] w-full rounded-md border border-black dark:border-white" />,
+});
 
 export default function Main() {
   const [mounted, setMounted] = useState<boolean>(false);
@@ -338,12 +343,7 @@ export default function Main() {
               <div className="mx-auto h-0.5 w-20 rounded-full bg-red-600" />
             </h2>
 
-            <iframe
-              title="Google Maps"
-              loading="lazy"
-              className="my-5 h-[500px] w-full rounded-md border border-black dark:border-white"
-              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15844.143343315141!2d107.6504268!3d-6.8863111!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e76a1e6f56f3%3A0x8649ff7558d15108!2sDIZETO!5e0!3m2!1sid!2sid!4v1697306682702!5m2!1sid!2sid"
-            />
+            <DynamicGoogleMaps />
 
             <ul className="space-y-2 dark:text-white">
               <li className="flex gap-2">
