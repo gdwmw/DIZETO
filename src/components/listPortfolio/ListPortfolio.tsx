@@ -42,7 +42,7 @@ export default function ListPortfolio() {
                 </button>
               ))}
             </div>
-            <div className="h-0.5 w-full bg-red-600" />
+            <div className="h-0.5 w-full rounded-full bg-red-600" />
           </section>
           <div className="mb-6 mt-5 flex items-center justify-center gap-5 md:hidden">
             <Link href={"/"} className="back-red-line-button">
