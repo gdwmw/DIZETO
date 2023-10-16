@@ -178,7 +178,7 @@ export default function Main() {
                 <h4 className="text-xl font-semibold">Happy Client</h4>
               </div>
 
-              <div className="h-16 w-px bg-black dark:bg-white" />
+              <div className="h-16 w-0.5 rounded-full bg-black dark:bg-white" />
 
               <div className="flex flex-col items-center justify-center">
                 <div className="flex items-center justify-center gap-2">
@@ -188,7 +188,7 @@ export default function Main() {
                 <h4 className="text-xl font-semibold">Completed Projects</h4>
               </div>
 
-              <div className="h-16 w-px bg-black dark:bg-white" />
+              <div className="h-16 w-0.5 rounded-full bg-black dark:bg-white" />
 
               <div className="flex flex-col items-center justify-center">
                 <div className="flex items-center justify-center gap-2">
@@ -198,7 +198,7 @@ export default function Main() {
                 <h4 className="text-xl font-semibold">Subscriber</h4>
               </div>
 
-              <div className="hidden h-16 w-px bg-black dark:bg-white lg:block" />
+              <div className="hidden h-16 w-0.5 rounded-full bg-black dark:bg-white lg:block" />
 
               <div className="hidden flex-col items-center justify-center lg:flex">
                 <p className="w-[250px] text-center text-xl font-bold text-red-600">{dateTime}</p>
