@@ -97,3 +97,7 @@
 .back-red-line-button {
   @apply flex h-10 w-10 items-center justify-center rounded-md border-2 border-red-600 text-lg font-semibold text-red-600 hover:bg-red-600 hover:text-white;
 }
+
+.pagination-red-line-button {
+  @apply h-10 w-10 rounded-md border-2 border-red-600 text-lg font-semibold hover:bg-red-600 hover:text-white;
+}

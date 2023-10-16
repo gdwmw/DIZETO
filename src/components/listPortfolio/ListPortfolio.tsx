@@ -36,9 +36,7 @@ export default function ListPortfolio() {
                   key={i}
                   type="button"
                   onClick={() => handlePageChange(i + 1)}
-                  className={`h-10 w-10 rounded-md border-2 border-red-600 text-lg font-semibold text-red-600 hover:bg-red-600 hover:text-white ${
-                    currentPage === i + 1 ? "bg-red-600 text-white" : ""
-                  }`}
+                  className={`pagination-red-line-button ${currentPage === i + 1 ? "bg-red-600 text-white" : "text-red-600"}`}
                 >
                   {i + 1}
                 </button>
@@ -55,9 +53,7 @@ export default function ListPortfolio() {
                 key={i}
                 type="button"
                 onClick={() => handlePageChange(i + 1)}
-                className={`h-10 w-10 rounded-md border-2 border-red-600 text-lg font-semibold text-red-600 hover:bg-red-600 hover:text-white ${
-                  currentPage === i + 1 ? "bg-red-600 text-white" : ""
-                }`}
+                className={`pagination-red-line-button ${currentPage === i + 1 ? "bg-red-600 text-white" : "text-red-600"}`}
               >
                 {i + 1}
               </button>
