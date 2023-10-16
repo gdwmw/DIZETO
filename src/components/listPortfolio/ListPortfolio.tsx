@@ -28,7 +28,7 @@ export default function ListPortfolio() {
               <p className="text-end text-lg font-semibold">- DIZETO -</p>
             </div>
             <div className="hidden items-center justify-center gap-5 md:flex">
-              <Link href={"/"} className="back-red-line-button">
+              <Link href={"/"} aria-label="Landing Page" className="back-red-line-button">
                 <FaArrowLeft size={18} />
               </Link>
               {Array.from({ length: totalPages }, (_, i) => (
@@ -45,7 +45,7 @@ export default function ListPortfolio() {
             <div className="h-0.5 w-full rounded-full bg-red-600" />
           </section>
           <div className="mb-6 mt-5 flex items-center justify-center gap-5 md:hidden">
-            <Link href={"/"} className="back-red-line-button">
+            <Link href={"/"} aria-label="Landing Page" className="back-red-line-button">
               <FaArrowLeft size={18} />
             </Link>
             {Array.from({ length: totalPages }, (_, i) => (
@@ -71,13 +71,14 @@ export default function ListPortfolio() {
                     alt="Test"
                     height={300}
                     width={300}
-                    quality={50}
+                    quality={30}
                     placeholder="blur"
+                    priority
                     className="rounded-md"
                   />
                   <div className="mx-auto my-3 h-0.5 w-24 rounded-full bg-red-600" />
                   <div>
-                    <h4 className="font-semibold text-red-600">{data.title}</h4>
+                    <h3 className="font-semibold text-red-600">{data.title}</h3>
                     <p className="text-xs font-semibold text-gray-500 dark:text-gray-300">{data.category}</p>
                   </div>
                 </div>
