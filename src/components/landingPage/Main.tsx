@@ -217,82 +217,110 @@ export default function Main() {
                 <div className="mt-5 space-y-5">
                   <div className="flex items-center justify-evenly">
                     {theme.resolvedTheme === "light" && (
-                      <Image
-                        src={require("@/assets/images/clients/ma-gray.svg")}
-                        alt="Muhibah Angklung"
-                        quality={50}
-                        loading="lazy"
-                        className="clients-img"
-                      />
+                      <a href="http://www.angklungmuhibah.id" target="_blank" rel="noopener noreferrer">
+                        <Image
+                          src={require("@/assets/images/clients/ma-gray.svg")}
+                          alt="Muhibah Angklung"
+                          quality={50}
+                          loading="lazy"
+                          className="clients-img"
+                        />
+                      </a>
                     )}
                     {theme.resolvedTheme === "light" && (
-                      <Image
-                        src={require("@/assets/images/clients/rbw-gray.svg")}
-                        alt="Rumah Batik Wijaya"
-                        quality={50}
-                        loading="lazy"
-                        className="clients-img"
-                      />
+                      <a href="https://www.instagram.com/rumahbatikwijaya/?hl=id" target="_blank" rel="noopener noreferrer">
+                        <Image
+                          src={require("@/assets/images/clients/rbw-gray.svg")}
+                          alt="Rumah Batik Wijaya"
+                          quality={50}
+                          loading="lazy"
+                          className="clients-img"
+                        />
+                      </a>
                     )}
                     {theme.resolvedTheme === "dark" && (
-                      <Image
-                        src={require("@/assets/images/clients/ma-white.svg")}
-                        alt="Muhibah Angklung"
-                        quality={50}
-                        loading="lazy"
-                        className="clients-img"
-                      />
+                      <a href="http://www.angklungmuhibah.id" target="_blank" rel="noopener noreferrer">
+                        <Image
+                          src={require("@/assets/images/clients/ma-white.svg")}
+                          alt="Muhibah Angklung"
+                          quality={50}
+                          loading="lazy"
+                          className="clients-img"
+                        />
+                      </a>
                     )}
                     {theme.resolvedTheme === "dark" && (
-                      <Image
-                        src={require("@/assets/images/clients/rbw-white.svg")}
-                        alt="Rumah Batik Wijaya"
-                        quality={50}
-                        loading="lazy"
-                        className="clients-img"
-                      />
+                      <a href="https://www.instagram.com/rumahbatikwijaya/?hl=id" target="_blank" rel="noopener noreferrer">
+                        <Image
+                          src={require("@/assets/images/clients/rbw-white.svg")}
+                          alt="Rumah Batik Wijaya"
+                          quality={50}
+                          loading="lazy"
+                          className="clients-img"
+                        />
+                      </a>
                     )}
-                    <Image src={require("@/assets/images/clients/irma.png")} alt="IRMA" quality={50} loading="lazy" className="clients-img" />
+                    <a href="https://irmajabar.com/" target="_blank" rel="noopener noreferrer">
+                      <Image src={require("@/assets/images/clients/irma.png")} alt="IRMA" quality={50} loading="lazy" className="clients-img" />
+                    </a>
                   </div>
                   <div className="flex items-center justify-evenly">
-                    <Image src={require("@/assets/images/clients/kp.png")} alt="Kopi Purnama" quality={50} loading="lazy" className="clients-img" />
-                    {theme.resolvedTheme === "light" && (
+                    <a
+                      href="https://shopee.co.id/topnapurnama?categoryId=100629&entryPoint=ShopByPDP&itemId=15208206609"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Image src={require("@/assets/images/clients/kp.png")} alt="Kopi Purnama" quality={50} loading="lazy" className="clients-img" />
+                    </a>
+                    <a href="https://gofood.link/a/DVoCLZN" target="_blank" rel="noopener noreferrer">
+                      {theme.resolvedTheme === "light" && (
+                        <Image
+                          src={require("@/assets/images/clients/lc-gray.svg")}
+                          alt="Lentera Coffee"
+                          quality={50}
+                          loading="lazy"
+                          className="clients-img"
+                        />
+                      )}
+                      {theme.resolvedTheme === "dark" && (
+                        <Image
+                          src={require("@/assets/images/clients/lc-white.svg")}
+                          alt="Lentera Coffee"
+                          quality={50}
+                          loading="lazy"
+                          className="clients-img"
+                        />
+                      )}
+                    </a>
+                    <a href="https://www.youtube.com/@vittosafiy748" target="_blank" rel="noopener noreferrer">
                       <Image
-                        src={require("@/assets/images/clients/lc-gray.svg")}
-                        alt="Lentera Coffee"
+                        src={require("@/assets/images/clients/sk.png")}
+                        alt="Safiy Kitchen"
                         quality={50}
                         loading="lazy"
                         className="clients-img"
                       />
-                    )}
-                    {theme.resolvedTheme === "dark" && (
-                      <Image
-                        src={require("@/assets/images/clients/lc-white.svg")}
-                        alt="Lentera Coffee"
-                        quality={50}
-                        loading="lazy"
-                        className="clients-img"
-                      />
-                    )}
-                    <Image src={require("@/assets/images/clients/sk.png")} alt="Safiy Kitchen" quality={50} loading="lazy" className="clients-img" />
-                    {theme.resolvedTheme === "light" && (
-                      <Image
-                        src={require("@/assets/images/clients/ma-gray.svg")}
-                        alt="Al-'Ashr Al-Madani"
-                        quality={50}
-                        loading="lazy"
-                        className="clients-img"
-                      />
-                    )}
-                    {theme.resolvedTheme === "dark" && (
-                      <Image
-                        src={require("@/assets/images/clients/ma-white.svg")}
-                        alt="Al-'Ashr Al-Madani"
-                        quality={50}
-                        loading="lazy"
-                        className="clients-img"
-                      />
-                    )}
+                    </a>
+                    <a href="https://pesantrentahfidzashrmadani.wordpress.com/" target="_blank" rel="noopener noreferrer">
+                      {theme.resolvedTheme === "light" && (
+                        <Image
+                          src={require("@/assets/images/clients/ma-gray.svg")}
+                          alt="Al-'Ashr Al-Madani"
+                          quality={50}
+                          loading="lazy"
+                          className="clients-img"
+                        />
+                      )}
+                      {theme.resolvedTheme === "dark" && (
+                        <Image
+                          src={require("@/assets/images/clients/ma-white.svg")}
+                          alt="Al-'Ashr Al-Madani"
+                          quality={50}
+                          loading="lazy"
+                          className="clients-img"
+                        />
+                      )}
+                    </a>
                   </div>
                 </div>
               ) : (
