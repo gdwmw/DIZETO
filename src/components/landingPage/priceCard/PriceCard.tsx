@@ -7,8 +7,8 @@ import { pricing } from "@/database/database";
 export default function PriceCard() {
   return (
     <>
-      {pricing.map((data, index) => (
-        <div key={index} className="price-card">
+      {pricing.map((data) => (
+        <div key={data.id} className="price-card">
           <div className="relative flex h-40 w-full flex-col items-center justify-end bg-gray-200 dark:bg-gray-700 dark:text-white">
             <div className="price-card-circle">
               <h2 className="text-3xl font-bold">IDR {data.price}</h2>
