@@ -1,8 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
 import { sortedListPortfolio } from "@/database/database";
+import { useState } from "react";
 
 export default function ListPortfolio() {
+  const itemsPerPage = 20;
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = Math.ceil(sortedListPortfolio.length / itemsPerPage);
+  const getDataForPage = () => {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    return sortedListPortfolio.slice(startIndex, endIndex);
+  };
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
   return (
     <div className="container mx-auto my-10 px-5">
       <div className="paper-portfolio">
@@ -14,13 +26,41 @@ export default function ListPortfolio() {
               </h2>
               <p className="text-end text-lg font-semibold">- DIZETO -</p>
             </div>
+            <div className="hidden items-center justify-center gap-5 md:flex">
+              {Array.from({ length: totalPages }, (_, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  onClick={() => handlePageChange(i + 1)}
+                  className={`h-10 w-10 rounded-md border-2 border-red-600 text-lg font-semibold text-red-600 hover:bg-red-600 hover:text-white ${
+                    currentPage === i + 1 ? "bg-red-600 text-white" : ""
+                  }`}
+                >
+                  {i + 1}
+                </button>
+              ))}
+            </div>
             <div className="h-0.5 w-full bg-red-600" />
           </section>
+          <div className="mb-6 mt-5 flex items-center justify-center gap-5 md:hidden">
+            {Array.from({ length: totalPages }, (_, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => handlePageChange(i + 1)}
+                className={`h-10 w-10 rounded-md border-2 border-red-600 text-lg font-semibold text-red-600 hover:bg-red-600 hover:text-white ${
+                  currentPage === i + 1 ? "bg-red-600 text-white" : ""
+                }`}
+              >
+                {i + 1}
+              </button>
+            ))}
+          </div>
         </header>
 
         <main className="flex items-start justify-center">
           <div className="grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-            {sortedListPortfolio.map((data) => (
+            {getDataForPage().map((data) => (
               <Link key={data.id} href={`/listportfolio/${data.link}`}>
                 <div className="portfolio-card">
                   <Image
