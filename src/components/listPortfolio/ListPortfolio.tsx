@@ -19,15 +19,15 @@ export default function ListPortfolio() {
         </header>
 
         <main className="flex items-start justify-center">
-          <div className="grid grid-cols-2 gap-5 sm:md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-            {sortedListPortfolio.map((data, index) => (
+          <div className="grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+            {sortedListPortfolio.map((data) => (
               <Link key={data.id} href={`/listportfolio/${data.link}`}>
-                <div className="h-fit w-fit rounded-lg border-2 bg-white p-3 hover:border-red-600 dark:border-gray-700 dark:bg-dark dark:hover:border-red-600">
+                <div className="portfolio-card">
                   <Image
                     src={require(`@/assets/images/thumbnail/portfolio/${data.image}`)}
                     alt="Test"
                     height={300}
-                    width={0}
+                    width={300}
                     quality={50}
                     placeholder="blur"
                     className="rounded-md"
@@ -35,7 +35,7 @@ export default function ListPortfolio() {
                   <div className="mx-auto my-3 h-0.5 w-24 rounded-full bg-red-600" />
                   <div>
                     <h4 className="font-semibold text-red-600">{data.title}</h4>
-                    <p className="text-xs font-semibold text-gray-300">{data.category}</p>
+                    <p className="text-xs font-semibold text-gray-500 dark:text-gray-300">{data.category}</p>
                   </div>
                 </div>
               </Link>

@@ -34,8 +34,6 @@
   @apply container mx-auto flex h-[600px] w-full flex-col items-center justify-center gap-3 px-5 dark:text-white;
 }
 
-/* TODO jangan lupa untuk pertimbangkan pemakaian overflow-hidden */
-
 .paper {
   @apply h-fit w-full rounded-xl border border-black/50 shadow-md shadow-black/50 dark:border-white/50 dark:text-white dark:shadow-white/50;
 }
@@ -90,4 +88,8 @@
 
 .footer-paper {
   @apply flex h-28 w-full items-center justify-center rounded-xl border border-black/50 bg-red-600 px-5 text-white shadow-md shadow-black/50 dark:border-white/50 dark:shadow-white/50;
+}
+
+.portfolio-card {
+  @apply h-fit w-fit rounded-lg border-2 border-gray-300 bg-white p-3 hover:border-red-600 dark:border-gray-700 dark:bg-dark dark:hover:border-red-600;
 }
