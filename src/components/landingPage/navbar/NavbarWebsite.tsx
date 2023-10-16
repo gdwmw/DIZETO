@@ -1,9 +1,10 @@
 // IMPORT LIBRARIES
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
 // IMPORT COMPONENTS
-import ThemeSwitcherWebsite from "../themeSwitcher/ThemeSwitcherWebsite";
+const DynamicThemeSwitcherWebsite = dynamic(() => import("../themeSwitcher/ThemeSwitcherWebsite"));
 
 export default function NavbarWebsite() {
   const [scrollPosition, setScrollPosition] = useState<number>(0);
@@ -92,7 +93,7 @@ export default function NavbarWebsite() {
         <div className="h-10 w-10" />
         {/* END MARK */}
       </div>
-      <ThemeSwitcherWebsite />
+      <DynamicThemeSwitcherWebsite />
     </div>
   );
 }

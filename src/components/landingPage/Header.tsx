@@ -1,7 +1,11 @@
+// IMPORT LIBRARIES
+import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
-import NavbarMobile from "./navbar/NavbarMobile";
-import NavbarWebsite from "./navbar/NavbarWebsite";
+
+// IMPORT COMPONENTS
 import NavbarLoading from "./navbar/NavbarLoading";
+const DynamicNavbarWebsite = dynamic(() => import("./navbar/NavbarWebsite"), { loading: () => <NavbarLoading /> });
+const DynamicNavbarMobile = dynamic(() => import("./navbar/NavbarMobile"), { loading: () => <NavbarLoading /> });
 
 export default function Header() {
   const [navbar, setNavbar] = useState<React.ReactNode>(<NavbarLoading />);
@@ -9,9 +13,9 @@ export default function Header() {
   const handleResize = () => {
     const newWidth = window.innerWidth;
     if (newWidth >= 840) {
-      setNavbar(<NavbarWebsite />);
+      setNavbar(<DynamicNavbarWebsite />);
     } else {
-      setNavbar(<NavbarMobile />);
+      setNavbar(<DynamicNavbarMobile />);
     }
   };
 
