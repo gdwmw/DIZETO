@@ -8,7 +8,6 @@ import Footer from "@/components/landingPage/Footer";
 export default function page() {
   return (
     <>
-      <div className="background-gradient-animation" />
       <Header />
       <Main />
       <Footer />

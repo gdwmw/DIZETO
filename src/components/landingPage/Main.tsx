@@ -13,7 +13,6 @@ import { landingPage, testimony } from "@/database/database";
 
 // IMPORT COMPONENTS
 import ImagesFrame from "./imagesFrame/ImagesFrame";
-import Paper from "./paper/Paper";
 import PriceCard from "./priceCard/PriceCard";
 
 export default function Main() {
@@ -72,289 +71,302 @@ export default function Main() {
 
       <section className="container mx-auto space-y-10 px-5">
         {/* ABOUT */}
-        <Paper id="About" paperBackground={true} paperPadding={true}>
-          <h2 className="text-center text-3xl font-semibold">
-            ABO<span className="text-red-600">UT</span>
-            <div className="mx-auto h-px w-20 bg-red-600" />
-          </h2>
-
-          <div className="my-10 space-y-14 md:grid md:grid-cols-2 md:space-y-0">
-            <div className="space-y-5">
-              <h3 className="text-2xl font-semibold">
-                <span className="text-red-600">W</span>hat is Dizeto?
-              </h3>
-              <p className="text-justify font-semibold">
-                <span className="text-red-600">Dizeto</span> is a vendor that offers photography, videography, talent, and music services. We have a
-                professional team that can help you meet business needs, events, and your special moments to make them more beautiful, real, and
-                lasting. You can learn more about us by viewing our portfolio, YouTube channel, and customer testimonials.
-              </p>
-              <p className="pt-5 font-semibold text-red-600">*Please take note that we currently only offer photography and videography services.</p>
-            </div>
-            <div className="flex h-full w-full items-center justify-center">
-              <Image src={require("@/assets/images/logo/dizeto.svg")} alt="DIZETO" height={250} width={250} quality={50} priority={true} />
-            </div>
-          </div>
-        </Paper>
-
-        {/* PORTFOLIO */}
-        <Paper id="Portfolio" paperBackground={true} paperPadding={true}>
-          <h2 className="text-center text-3xl font-semibold">
-            PORTFOL<span className="text-red-600">IO</span>
-            <div className="mx-auto h-px w-20 bg-red-600" />
-          </h2>
-
-          <div className="my-5 flex items-center justify-center">
-            <Link href={"/"} className="red-line-button">
-              CHECK ALL PORTFOLIO
-            </Link>
-          </div>
-
-          <ImagesFrame
-            folder="landingPage"
-            database={landingPage}
-            link="https://dizeto-images.vercel.app/assets/uploads/dashboard/f1/"
-            copyright="© 2022 DIZETO. All rights reserved."
-          />
-        </Paper>
-
-        {/* PRICING */}
-        <Paper id="Pricing" paperBackground={true} paperPadding={true}>
-          <h2 className="text-center text-3xl font-semibold">
-            PRICI<span className="text-red-600">NG</span>
-            <div className="mx-auto h-px w-20 bg-red-600" />
-          </h2>
-
-          <div className="mt-5 flex items-center justify-center">
-            <div className="grid w-full gap-5 sm:grid-cols-2 xl:grid-cols-4">
-              <PriceCard />
-            </div>
-          </div>
-        </Paper>
-
-        {/* TESTIMONY */}
-        <Paper id="Testimony" paperBackground={false} paperPadding={false}>
-          <div className="flex h-[450px] w-full flex-col items-center justify-center gap-5 dark:text-white">
-            <FaQuoteLeft size={30} />
-
-            <Image
-              src={require(`@/assets/images/testimony/${testimony[testimonyIndex].image}`)}
-              alt="Image"
-              height={128}
-              width={128}
-              quality={50}
-              className="rounded-full"
-            />
-
-            <div className="text-center">
-              <h3 className="text-lg font-semibold">{testimony[testimonyIndex].name}</h3>
-              <p className="text-sm font-semibold text-red-600">{testimony[testimonyIndex].status}</p>
-            </div>
-
-            <p className="h-12 w-[500px] text-center font-semibold">{`"${testimony[testimonyIndex].comment}"`}</p>
-
-            <div className="mt-1 flex items-center justify-center gap-1">
-              {testimony.map((_, index) => (
-                <div key={index} className={testimonyIndex === index ? "text-red-600" : "text-red-300"}>
-                  <GoDotFill size={25} />
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="flex h-32 w-full items-center justify-evenly bg-white/50 dark:bg-dark/50">
-            <div className="flex flex-col items-center justify-center">
-              <div className="flex items-center justify-center gap-2">
-                <FaRegThumbsUp size={25} />
-                <p className="text-2xl font-bold text-red-600">48</p>
-              </div>
-              <h4 className="text-xl font-semibold">Happy Client</h4>
-            </div>
-
-            <div className="h-16 w-px bg-black dark:bg-white" />
-
-            <div className="flex flex-col items-center justify-center">
-              <div className="flex items-center justify-center gap-2">
-                <FaToolbox size={25} />
-                <p className="text-2xl font-bold text-red-600">50</p>
-              </div>
-              <h4 className="text-xl font-semibold">Completed Projects</h4>
-            </div>
-
-            <div className="h-16 w-px bg-black dark:bg-white" />
-
-            <div className="flex flex-col items-center justify-center">
-              <div className="flex items-center justify-center gap-2">
-                <FaUserAlt size={25} />
-                <p className="text-2xl font-bold text-red-600">8</p>
-              </div>
-              <h4 className="text-xl font-semibold">Subscriber</h4>
-            </div>
-
-            <div className="hidden h-16 w-px bg-black dark:bg-white lg:block" />
-
-            <div className="hidden flex-col items-center justify-center lg:flex">
-              <p className="w-[250px] text-center text-xl font-bold text-red-600">{dateTime}</p>
-              <h4 className="text-xl font-semibold">Date - Time</h4>
-            </div>
-          </div>
-
-          {/* CLIENTS */}
-          <div id="Clients" className="bg-white py-14 dark:bg-dark">
+        <section id="About">
+          <div className="paper bg-white p-5 dark:bg-dark">
             <h2 className="text-center text-3xl font-semibold">
-              CLIEN<span className="text-red-600">TS</span>
+              ABO<span className="text-red-600">UT</span>
               <div className="mx-auto h-px w-20 bg-red-600" />
             </h2>
 
-            {mounted ? (
-              <div className="mt-5 space-y-5">
-                <div className="flex items-center justify-evenly">
-                  {theme.resolvedTheme === "light" && (
-                    <Image
-                      src={require("@/assets/images/clients/ma-gray.svg")}
-                      alt="Muhibah Angklung"
-                      quality={50}
-                      loading="lazy"
-                      className="clients-img"
-                    />
-                  )}
-                  {theme.resolvedTheme === "light" && (
-                    <Image
-                      src={require("@/assets/images/clients/rbw-gray.svg")}
-                      alt="Rumah Batik Wijaya"
-                      quality={50}
-                      loading="lazy"
-                      className="clients-img"
-                    />
-                  )}
-                  {theme.resolvedTheme === "dark" && (
-                    <Image
-                      src={require("@/assets/images/clients/ma-white.svg")}
-                      alt="Muhibah Angklung"
-                      quality={50}
-                      loading="lazy"
-                      className="clients-img"
-                    />
-                  )}
-                  {theme.resolvedTheme === "dark" && (
-                    <Image
-                      src={require("@/assets/images/clients/rbw-white.svg")}
-                      alt="Rumah Batik Wijaya"
-                      quality={50}
-                      loading="lazy"
-                      className="clients-img"
-                    />
-                  )}
-                  <Image src={require("@/assets/images/clients/irma.png")} alt="IRMA" quality={50} loading="lazy" className="clients-img" />
-                </div>
-                <div className="flex items-center justify-evenly">
-                  <Image src={require("@/assets/images/clients/kp.png")} alt="Kopi Purnama" quality={50} loading="lazy" className="clients-img" />
-                  {theme.resolvedTheme === "light" && (
-                    <Image
-                      src={require("@/assets/images/clients/lc-gray.svg")}
-                      alt="Lentera Coffee"
-                      quality={50}
-                      loading="lazy"
-                      className="clients-img"
-                    />
-                  )}
-                  {theme.resolvedTheme === "dark" && (
-                    <Image
-                      src={require("@/assets/images/clients/lc-white.svg")}
-                      alt="Lentera Coffee"
-                      quality={50}
-                      loading="lazy"
-                      className="clients-img"
-                    />
-                  )}
-                  <Image src={require("@/assets/images/clients/sk.png")} alt="Safiy Kitchen" quality={50} loading="lazy" className="clients-img" />
-                  {theme.resolvedTheme === "light" && (
-                    <Image
-                      src={require("@/assets/images/clients/ma-gray.svg")}
-                      alt="Al-'Ashr Al-Madani"
-                      quality={50}
-                      loading="lazy"
-                      className="clients-img"
-                    />
-                  )}
-                  {theme.resolvedTheme === "dark" && (
-                    <Image
-                      src={require("@/assets/images/clients/ma-white.svg")}
-                      alt="Al-'Ashr Al-Madani"
-                      quality={50}
-                      loading="lazy"
-                      className="clients-img"
-                    />
-                  )}
-                </div>
+            <div className="my-10 space-y-14 md:grid md:grid-cols-2 md:space-y-0">
+              <div className="space-y-5">
+                <h3 className="text-2xl font-semibold">
+                  <span className="text-red-600">W</span>hat is Dizeto?
+                </h3>
+                <p className="text-justify font-semibold">
+                  <span className="text-red-600">Dizeto</span> is a vendor that offers photography, videography, talent, and music services. We have a
+                  professional team that can help you meet business needs, events, and your special moments to make them more beautiful, real, and
+                  lasting. You can learn more about us by viewing our portfolio, YouTube channel, and customer testimonials.
+                </p>
+                <p className="pt-5 font-semibold text-red-600">
+                  *Please take note that we currently only offer photography and videography services.
+                </p>
               </div>
-            ) : (
-              <Image src={require("@/assets/loading/loading.svg")} alt="Loading" width={100} quality={50} className="mx-auto mt-14" />
-            )}
+              <div className="flex h-full w-full items-center justify-center">
+                <Image src={require("@/assets/images/logo/dizeto.svg")} alt="DIZETO" height={250} width={250} quality={50} priority={true} />
+              </div>
+            </div>
           </div>
-        </Paper>
+        </section>
 
-        <Paper id="Contact" paperBackground={true} paperPadding={true}>
-          <h2 className="text-center text-3xl font-semibold">
-            CONTA<span className="text-red-600">CT</span>
-            <div className="mx-auto h-px w-20 bg-red-600" />
-          </h2>
+        {/* PORTFOLIO */}
+        <section id="Portfolio">
+          <div className="paper bg-white p-5 dark:bg-dark">
+            <h2 className="text-center text-3xl font-semibold">
+              PORTFOL<span className="text-red-600">IO</span>
+              <div className="mx-auto h-px w-20 bg-red-600" />
+            </h2>
 
-          <iframe
-            title="Google Maps"
-            loading="lazy"
-            className="my-5 h-[500px] w-full rounded-md border border-black dark:border-white"
-            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15844.143343315141!2d107.6504268!3d-6.8863111!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e76a1e6f56f3%3A0x8649ff7558d15108!2sDIZETO!5e0!3m2!1sid!2sid!4v1697306682702!5m2!1sid!2sid"
-          />
+            <div className="my-5 flex items-center justify-center">
+              <Link href={"/"} className="red-line-button">
+                CHECK ALL PORTFOLIO
+              </Link>
+            </div>
 
-          <ul className="space-y-2 dark:text-white">
-            <li className="flex gap-2">
-              <div className="min-h-fit min-w-fit">
-                <MdLocationOn size={20} />
+            <ImagesFrame
+              folder="landingPage"
+              database={landingPage}
+              link="https://dizeto-images.vercel.app/assets/uploads/dashboard/f1/"
+              copyright="© 2022 DIZETO. All rights reserved."
+            />
+          </div>
+        </section>
+
+        {/* PRICING */}
+        <section id="Pricing">
+          <div className="paper bg-white p-5 dark:bg-dark">
+            <h2 className="text-center text-3xl font-semibold">
+              PRICI<span className="text-red-600">NG</span>
+              <div className="mx-auto h-px w-20 bg-red-600" />
+            </h2>
+
+            <div className="mt-5 flex items-center justify-center">
+              <div className="grid w-full gap-5 sm:grid-cols-2 xl:grid-cols-4">
+                <PriceCard />
               </div>
-              <p className="font-bold">Address:</p>
-              <a
-                href="https://www.google.com/search?q=dizeto&oq=dizeto&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgcIARAAGKIEMgcIAhAAGKIEMgcIAxAAGKIEMgYIBBBFGDwyBggFEEUYPDIGCAYQRRhAMgYIBxBFGDwyBggIEEUYPNIBCDQwMzlqMGo5qAIAsAIA&sourceid=chrome&ie=UTF-8"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-red-600"
-              >
-                Blk. A-B No.a8, Cibeunying, Kec. Cimenyan, Kabupaten Bandung, Jawa Barat 40191, Indonesia
-              </a>
-            </li>
-            <li className="flex gap-2">
-              <div className="min-h-fit min-w-fit">
-                <MdEmail size={20} />
+            </div>
+          </div>
+        </section>
+
+        {/* TESTIMONY */}
+        <section id="Testimony">
+          <div className="paper">
+            <div className="flex h-[450px] w-full flex-col items-center justify-center gap-5 dark:text-white">
+              <FaQuoteLeft size={30} />
+
+              <Image
+                src={require(`@/assets/images/testimony/${testimony[testimonyIndex].image}`)}
+                alt="Image"
+                height={128}
+                width={128}
+                quality={50}
+                className="rounded-full"
+              />
+
+              <div className="text-center">
+                <h3 className="text-lg font-semibold">{testimony[testimonyIndex].name}</h3>
+                <p className="text-sm font-semibold text-red-600">{testimony[testimonyIndex].status}</p>
               </div>
-              <p className="font-bold">Email:</p>
-              <a
-                href="https://mail.google.com/mail/u/?authuser=dizetobs@gmail.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-red-600"
-              >
-                dizetobs@gmail.com
-              </a>
-            </li>
-            <li className="flex gap-2">
-              <div className="min-h-fit min-w-fit">
-                <MdPhone size={20} />
+
+              <p className="h-12 w-[500px] text-center font-semibold">{`"${testimony[testimonyIndex].comment}"`}</p>
+
+              <div className="mt-1 flex items-center justify-center gap-1">
+                {testimony.map((_, index) => (
+                  <div key={index} className={testimonyIndex === index ? "text-red-600" : "text-red-300"}>
+                    <GoDotFill size={25} />
+                  </div>
+                ))}
               </div>
-              <p className="font-bold">Phone:</p>
-              <a href="/" className="hover:text-red-600">
-                +62 000-0000-0000
-              </a>
-            </li>
-            <li className="flex gap-2">
-              <div className="min-h-fit min-w-fit">
-                <TbWorldWww size={20} />
+            </div>
+
+            <div className="flex h-32 w-full items-center justify-evenly bg-white/50 dark:bg-dark/50">
+              <div className="flex flex-col items-center justify-center">
+                <div className="flex items-center justify-center gap-2">
+                  <FaRegThumbsUp size={25} />
+                  <p className="text-2xl font-bold text-red-600">48</p>
+                </div>
+                <h4 className="text-xl font-semibold">Happy Client</h4>
               </div>
-              <p className="font-bold">Website:</p>
-              <a href="https://dizeto.vercel.app/" target="_blank" rel="noopener noreferrer" className="hover:text-red-600">
-                https://dizeto.vercel.app/
-              </a>
-            </li>
-          </ul>
-        </Paper>
+
+              <div className="h-16 w-px bg-black dark:bg-white" />
+
+              <div className="flex flex-col items-center justify-center">
+                <div className="flex items-center justify-center gap-2">
+                  <FaToolbox size={25} />
+                  <p className="text-2xl font-bold text-red-600">50</p>
+                </div>
+                <h4 className="text-xl font-semibold">Completed Projects</h4>
+              </div>
+
+              <div className="h-16 w-px bg-black dark:bg-white" />
+
+              <div className="flex flex-col items-center justify-center">
+                <div className="flex items-center justify-center gap-2">
+                  <FaUserAlt size={25} />
+                  <p className="text-2xl font-bold text-red-600">8</p>
+                </div>
+                <h4 className="text-xl font-semibold">Subscriber</h4>
+              </div>
+
+              <div className="hidden h-16 w-px bg-black dark:bg-white lg:block" />
+
+              <div className="hidden flex-col items-center justify-center lg:flex">
+                <p className="w-[250px] text-center text-xl font-bold text-red-600">{dateTime}</p>
+                <h4 className="text-xl font-semibold">Date - Time</h4>
+              </div>
+            </div>
+
+            {/* CLIENTS */}
+            <div id="Clients" className="bg-white py-14 dark:bg-dark">
+              <h2 className="text-center text-3xl font-semibold">
+                CLIEN<span className="text-red-600">TS</span>
+                <div className="mx-auto h-px w-20 bg-red-600" />
+              </h2>
+
+              {mounted ? (
+                <div className="mt-5 space-y-5">
+                  <div className="flex items-center justify-evenly">
+                    {theme.resolvedTheme === "light" && (
+                      <Image
+                        src={require("@/assets/images/clients/ma-gray.svg")}
+                        alt="Muhibah Angklung"
+                        quality={50}
+                        loading="lazy"
+                        className="clients-img"
+                      />
+                    )}
+                    {theme.resolvedTheme === "light" && (
+                      <Image
+                        src={require("@/assets/images/clients/rbw-gray.svg")}
+                        alt="Rumah Batik Wijaya"
+                        quality={50}
+                        loading="lazy"
+                        className="clients-img"
+                      />
+                    )}
+                    {theme.resolvedTheme === "dark" && (
+                      <Image
+                        src={require("@/assets/images/clients/ma-white.svg")}
+                        alt="Muhibah Angklung"
+                        quality={50}
+                        loading="lazy"
+                        className="clients-img"
+                      />
+                    )}
+                    {theme.resolvedTheme === "dark" && (
+                      <Image
+                        src={require("@/assets/images/clients/rbw-white.svg")}
+                        alt="Rumah Batik Wijaya"
+                        quality={50}
+                        loading="lazy"
+                        className="clients-img"
+                      />
+                    )}
+                    <Image src={require("@/assets/images/clients/irma.png")} alt="IRMA" quality={50} loading="lazy" className="clients-img" />
+                  </div>
+                  <div className="flex items-center justify-evenly">
+                    <Image src={require("@/assets/images/clients/kp.png")} alt="Kopi Purnama" quality={50} loading="lazy" className="clients-img" />
+                    {theme.resolvedTheme === "light" && (
+                      <Image
+                        src={require("@/assets/images/clients/lc-gray.svg")}
+                        alt="Lentera Coffee"
+                        quality={50}
+                        loading="lazy"
+                        className="clients-img"
+                      />
+                    )}
+                    {theme.resolvedTheme === "dark" && (
+                      <Image
+                        src={require("@/assets/images/clients/lc-white.svg")}
+                        alt="Lentera Coffee"
+                        quality={50}
+                        loading="lazy"
+                        className="clients-img"
+                      />
+                    )}
+                    <Image src={require("@/assets/images/clients/sk.png")} alt="Safiy Kitchen" quality={50} loading="lazy" className="clients-img" />
+                    {theme.resolvedTheme === "light" && (
+                      <Image
+                        src={require("@/assets/images/clients/ma-gray.svg")}
+                        alt="Al-'Ashr Al-Madani"
+                        quality={50}
+                        loading="lazy"
+                        className="clients-img"
+                      />
+                    )}
+                    {theme.resolvedTheme === "dark" && (
+                      <Image
+                        src={require("@/assets/images/clients/ma-white.svg")}
+                        alt="Al-'Ashr Al-Madani"
+                        quality={50}
+                        loading="lazy"
+                        className="clients-img"
+                      />
+                    )}
+                  </div>
+                </div>
+              ) : (
+                <Image src={require("@/assets/loading/loading.svg")} alt="Loading" width={100} quality={50} className="mx-auto mt-14" />
+              )}
+            </div>
+          </div>
+        </section>
+
+        {/* CONTACT */}
+        <section id="Contact">
+          <div className="paper bg-white p-5 dark:bg-dark">
+            <h2 className="text-center text-3xl font-semibold">
+              CONTA<span className="text-red-600">CT</span>
+              <div className="mx-auto h-px w-20 bg-red-600" />
+            </h2>
+
+            <iframe
+              title="Google Maps"
+              loading="lazy"
+              className="my-5 h-[500px] w-full rounded-md border border-black dark:border-white"
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15844.143343315141!2d107.6504268!3d-6.8863111!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e76a1e6f56f3%3A0x8649ff7558d15108!2sDIZETO!5e0!3m2!1sid!2sid!4v1697306682702!5m2!1sid!2sid"
+            />
+
+            <ul className="space-y-2 dark:text-white">
+              <li className="flex gap-2">
+                <div className="min-h-fit min-w-fit">
+                  <MdLocationOn size={20} />
+                </div>
+                <p className="font-bold">Address:</p>
+                <a
+                  href="https://www.google.com/search?q=dizeto&oq=dizeto&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgcIARAAGKIEMgcIAhAAGKIEMgcIAxAAGKIEMgYIBBBFGDwyBggFEEUYPDIGCAYQRRhAMgYIBxBFGDwyBggIEEUYPNIBCDQwMzlqMGo5qAIAsAIA&sourceid=chrome&ie=UTF-8"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-red-600"
+                >
+                  Blk. A-B No.a8, Cibeunying, Kec. Cimenyan, Kabupaten Bandung, Jawa Barat 40191, Indonesia
+                </a>
+              </li>
+              <li className="flex gap-2">
+                <div className="min-h-fit min-w-fit">
+                  <MdEmail size={20} />
+                </div>
+                <p className="font-bold">Email:</p>
+                <a
+                  href="https://mail.google.com/mail/u/?authuser=dizetobs@gmail.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-red-600"
+                >
+                  dizetobs@gmail.com
+                </a>
+              </li>
+              <li className="flex gap-2">
+                <div className="min-h-fit min-w-fit">
+                  <MdPhone size={20} />
+                </div>
+                <p className="font-bold">Phone:</p>
+                <a href="/" className="hover:text-red-600">
+                  +62 000-0000-0000
+                </a>
+              </li>
+              <li className="flex gap-2">
+                <div className="min-h-fit min-w-fit">
+                  <TbWorldWww size={20} />
+                </div>
+                <p className="font-bold">Website:</p>
+                <a href="https://dizeto.vercel.app/" target="_blank" rel="noopener noreferrer" className="hover:text-red-600">
+                  https://dizeto.vercel.app/
+                </a>
+              </li>
+            </ul>
+          </div>
+        </section>
       </section>
     </main>
   );

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .background-gradient-animation {
-  @apply fixed -z-10 h-full w-screen animate-backgroundGradient bg-gradient-to-r from-[#ffdcdc] via-white to-[#ffdcdc] bg-[length:400%_100%] bg-no-repeat dark:from-[#402227] dark:via-dark dark:to-[#402227];
+  @apply animate-backgroundGradient bg-gradient-to-r from-[#ffdcdc] via-white to-[#ffdcdc] bg-[length:400%_100%] bg-fixed bg-no-repeat dark:from-[#402227] dark:via-dark dark:to-[#402227];
 }
 
 .navbar-loading-animation {
