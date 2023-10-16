@@ -1,7 +1,6 @@
 // IMPORT LIBRARIES
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { Link as Scroll } from "react-scroll";
 
 // IMPORT COMPONENTS
 import ThemeSwitcherWebsite from "../themeSwitcher/ThemeSwitcherWebsite";
@@ -37,39 +36,39 @@ export default function NavbarWebsite() {
           isActive && "shadow-md shadow-black/50 backdrop-blur-md dark:shadow-white/50"
         }`}
       >
-        <Scroll to="Top" smooth={true} offset={-84} duration={500} className="cursor-pointer">
+        <a href="#Top" className="cursor-pointer">
           <Image src={require("@/assets/images/logo/dizeto.svg")} alt="DIZETO" width={40} height={40} quality={50} priority={true} />
-        </Scroll>
+        </a>
         <ul className="flex gap-10 text-lg font-bold dark:text-white">
           <li>
-            <Scroll to="About" spy={true} smooth={true} offset={-84} duration={500} className="navbar-website-options">
+            <a href="#About" className="navbar-website-options">
               About
-            </Scroll>
+            </a>
           </li>
           <li>
-            <Scroll to="Portfolio" smooth={true} offset={-84} duration={500} className="navbar-website-options">
+            <a href="#Portfolio" className="navbar-website-options">
               Portfolio
-            </Scroll>
+            </a>
           </li>
           <li>
-            <Scroll to="Pricing" smooth={true} offset={-84} duration={500} className="navbar-website-options">
+            <a href="#Pricing" className="navbar-website-options">
               Pricing
-            </Scroll>
+            </a>
           </li>
           <li>
-            <Scroll to="Testimony" smooth={true} offset={-84} duration={500} className="navbar-website-options">
+            <a href="#Testimony" className="navbar-website-options">
               Testimony
-            </Scroll>
+            </a>
           </li>
           <li>
-            <Scroll to="Clients" smooth={true} offset={-84} duration={500} className="navbar-website-options">
+            <a href="#Clients" className="navbar-website-options">
               Clients
-            </Scroll>
+            </a>
           </li>
           <li>
-            <Scroll to="Contact" smooth={true} offset={-84} duration={500} className="navbar-website-options">
+            <a href="#Contact" className="navbar-website-options">
               Contact
-            </Scroll>
+            </a>
           </li>
         </ul>
         {/* MARK */}

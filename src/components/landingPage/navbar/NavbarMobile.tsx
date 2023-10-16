@@ -2,7 +2,6 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { FiMenu } from "react-icons/fi";
-import { Link as Scroll } from "react-scroll";
 
 // IMPORT COMPONENTS
 import ThemeSwitcherMobile from "../themeSwitcher/ThemeSwitcherMobile";
@@ -59,9 +58,9 @@ export default function NavbarMobile() {
             isActive && "shadow-md shadow-black/50 backdrop-blur-md dark:shadow-white/50"
           }`}
         >
-          <Scroll to="Top" smooth={true} offset={-84} duration={500} className="cursor-pointer">
+          <a href="#Top" className="cursor-pointer">
             <Image src={require("@/assets/images/logo/dizeto.svg")} alt="DIZETO" width={40} height={40} quality={50} priority={true} />
-          </Scroll>
+          </a>
 
           {mounted ? (
             <div
@@ -80,35 +79,35 @@ export default function NavbarMobile() {
 
       {isOpen && (
         <div ref={menuRef} className="navbar-menu-mobile">
-          <Scroll to="Top" smooth={true} offset={-84} duration={500} className="cursor-pointer">
+          <a href="#Top" className="cursor-pointer">
             <Image src={require("@/assets/images/logo/dizeto.svg")} alt="DIZETO" width={80} height={80} quality={50} priority={true} />
-          </Scroll>
+          </a>
           <ul className="flex flex-col items-center justify-center gap-5 text-lg font-bold dark:text-white">
             <li className="space-x-10">
-              <Scroll to="About" spy={true} smooth={true} offset={-84} duration={500} className="navbar-menu-mobile-options">
+              <a href="#About" className="navbar-website-options">
                 About
-              </Scroll>
+              </a>
 
-              <Scroll to="Portfolio" smooth={true} offset={-84} duration={500} className="navbar-menu-mobile-options">
+              <a href="#Portfolio" className="navbar-website-options">
                 Portfolio
-              </Scroll>
+              </a>
 
-              <Scroll to="Pricing" smooth={true} offset={-84} duration={500} className="navbar-menu-mobile-options">
+              <a href="#Pricing" className="navbar-website-options">
                 Pricing
-              </Scroll>
+              </a>
             </li>
             <li className="space-x-10">
-              <Scroll to="Testimony" smooth={true} offset={-84} duration={500} className="navbar-menu-mobile-options">
+              <a href="#Testimony" className="navbar-website-options">
                 Testimony
-              </Scroll>
+              </a>
 
-              <Scroll to="Clients" smooth={true} offset={-84} duration={500} className="navbar-menu-mobile-options">
+              <a href="#Clients" className="navbar-website-options">
                 Clients
-              </Scroll>
+              </a>
 
-              <Scroll to="Contact" smooth={true} offset={-84} duration={500} className="navbar-menu-mobile-options">
+              <a href="#Contact" className="navbar-website-options">
                 Contact
-              </Scroll>
+              </a>
             </li>
           </ul>
           <ThemeSwitcherMobile />

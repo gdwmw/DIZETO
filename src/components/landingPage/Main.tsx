@@ -71,7 +71,7 @@ export default function Main() {
 
       <section className="container mx-auto space-y-10 px-5">
         {/* ABOUT */}
-        <section id="About">
+        <section id="About" className="scroll-mt-[84px]">
           <div className="paper bg-white p-5 dark:bg-dark">
             <h2 className="text-center text-3xl font-semibold">
               ABO<span className="text-red-600">UT</span>
@@ -100,7 +100,7 @@ export default function Main() {
         </section>
 
         {/* PORTFOLIO */}
-        <section id="Portfolio">
+        <section id="Portfolio" className="scroll-mt-[84px]">
           <div className="paper bg-white p-5 dark:bg-dark">
             <h2 className="text-center text-3xl font-semibold">
               PORTFOL<span className="text-red-600">IO</span>
@@ -123,7 +123,7 @@ export default function Main() {
         </section>
 
         {/* PRICING */}
-        <section id="Pricing">
+        <section id="Pricing" className="scroll-mt-[84px]">
           <div className="paper bg-white p-5 dark:bg-dark">
             <h2 className="text-center text-3xl font-semibold">
               PRICI<span className="text-red-600">NG</span>
@@ -139,7 +139,7 @@ export default function Main() {
         </section>
 
         {/* TESTIMONY */}
-        <section id="Testimony">
+        <section id="Testimony" className="scroll-mt-[84px]">
           <div className="paper">
             <div className="flex h-[450px] w-full flex-col items-center justify-center gap-5 dark:text-white">
               <FaQuoteLeft size={30} />
@@ -207,7 +207,7 @@ export default function Main() {
             </div>
 
             {/* CLIENTS */}
-            <div id="Clients" className="bg-white py-14 dark:bg-dark">
+            <div id="Clients" className="scroll-mt-[84px] bg-white py-14 dark:bg-dark">
               <h2 className="text-center text-3xl font-semibold">
                 CLIEN<span className="text-red-600">TS</span>
                 <div className="mx-auto h-0.5 w-20 rounded-full bg-red-600" />
@@ -331,7 +331,7 @@ export default function Main() {
         </section>
 
         {/* CONTACT */}
-        <section id="Contact">
+        <section id="Contact" className="scroll-mt-[84px]">
           <div className="paper bg-white p-5 dark:bg-dark">
             <h2 className="text-center text-3xl font-semibold">
               CONTA<span className="text-red-600">CT</span>
