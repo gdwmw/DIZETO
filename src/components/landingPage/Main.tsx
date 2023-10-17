@@ -331,7 +331,7 @@ export default function Main() {
                   </div>
                 </div>
               ) : (
-                <Image src={require("@/assets/loading/loading.svg")} alt="Loading" width={100} quality={50} className="mx-auto mt-14" />
+                <Image src={require("@/assets/loading/loading.svg")} alt="Loading" width={100} quality={50} className="mx-auto my-20" />
               )}
             </div>
           </div>
