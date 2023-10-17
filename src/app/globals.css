@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  @apply bg-white;
+}
+
+[class="dark"] {
+  @apply bg-dark;
+}
+
 .background-gradient-animation {
   @apply animate-backgroundGradient bg-gradient-to-r from-[#ffdcdc] via-white to-[#ffdcdc] bg-[length:400%_100%] bg-fixed bg-no-repeat dark:from-[#402227] dark:via-dark dark:to-[#402227];
 }
