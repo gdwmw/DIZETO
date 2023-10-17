@@ -60,6 +60,8 @@ export default function Main() {
       setDateTime(formattedDate);
     }, 1000);
 
+    window.innerWidth < 1024 && clearInterval(dateTimeInterval);
+
     return () => {
       clearInterval(dateTimeInterval);
     };
