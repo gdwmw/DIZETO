@@ -3,6 +3,8 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { FiMenu } from "react-icons/fi";
 
+// TODO: Jangan lupa pertimbangkan inisial import menggunakan @/ atau ../
+
 // IMPORT COMPONENTS
 import ThemeSwitcherMobile from "../themeSwitcher/ThemeSwitcherMobile";
 
