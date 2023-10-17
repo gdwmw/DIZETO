@@ -25,7 +25,6 @@ const config: Config = {
         },
       },
       animation: {
-        navbarLoading: "gradient 1s ease infinite",
         backgroundGradient: "gradient 15s ease infinite",
       },
     },

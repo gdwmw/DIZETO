@@ -4,7 +4,13 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 // IMPORT COMPONENTS
-const DynamicThemeSwitcherWebsite = dynamic(() => import("../themeSwitcher/ThemeSwitcherWebsite"));
+const DynamicThemeSwitcherWebsite = dynamic(() => import("../themeSwitcher/ThemeSwitcherWebsite"), {
+  loading: () => (
+    <div className="fixed right-10 top-3 z-[21] h-10 w-10">
+      <Image src={require("@/assets/loading/loading.svg")} alt="Loading" height={40} width={40} quality={50} />
+    </div>
+  ),
+});
 
 export default function NavbarWebsite() {
   const [scrollPosition, setScrollPosition] = useState<number>(0);
