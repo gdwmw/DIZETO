@@ -3,15 +3,35 @@
 @tailwind utilities;
 
 :root {
-  @apply bg-white;
+  --gradient-color-start: #ffdcdc;
+  --gradient-color-middle: #ffffff;
+  --gradient-color-end: #ffdcdc;
 }
 
-[class="dark"] {
-  @apply bg-dark;
+:root[class="dark"] {
+  --gradient-color-start: #402227;
+  --gradient-color-middle: #23272d;
+  --gradient-color-end: #402227;
 }
 
-.background-gradient-animation {
-  @apply animate-backgroundGradient bg-gradient-to-r from-[#ffdcdc] via-white to-[#ffdcdc] bg-[length:400%_100%] bg-fixed bg-no-repeat dark:from-[#402227] dark:via-dark dark:to-[#402227];
+body {
+  background: linear-gradient(90deg, var(--gradient-color-start), var(--gradient-color-middle), var(--gradient-color-end));
+  background-size: 400% 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .navbar-website-options {

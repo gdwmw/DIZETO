@@ -45,7 +45,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`background-gradient-animation ${inter.className}`}>
+      <body className={inter.className}>
         <NextThemeProvider>
           {children}
           <Footer />
