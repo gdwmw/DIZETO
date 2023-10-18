@@ -2,12 +2,11 @@
 import Link from "next/link";
 
 // IMPORT DATABASE
-import { pricing } from "@/database/database";
 
-export default function PriceCard() {
+export default function PriceCard({ pricing, code }: { pricing: any; code: number }) {
   return (
     <>
-      {pricing.map((data) => (
+      {pricing.map((data: any) => (
         <div key={data.id} className="price-card">
           <div className="relative flex h-40 w-full flex-col items-center justify-end bg-gray-200 dark:bg-gray-700 dark:text-white">
             <div className="price-card-circle">
@@ -15,17 +14,17 @@ export default function PriceCard() {
               <p className="text-lg font-semibold">PACKAGE {data.package}</p>
             </div>
             <h3 className="mb-5 text-center text-2xl font-semibold">
-              {data.title[0]}
+              {data.title.lang[code][0]}
               <br />
-              {data.title[1]}
+              {data.title.lang[code][1]}
             </h3>
           </div>
           <div className="flex items-start justify-center p-5">
             <ul className="space-y-5 text-center text-lg font-semibold dark:text-white">
-              {data.list.map((data, index) => (
+              {data.list.map((data: any, index: any) => (
                 <li key={index}>
                   <p>
-                    <span className="text-red-600">{data.qty}</span> {data.label}
+                    <span className="text-red-600">{data.qty}</span> {data.label.lang[code]}
                   </p>
                 </li>
               ))}

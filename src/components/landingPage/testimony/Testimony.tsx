@@ -6,9 +6,7 @@ import { useEffect, useState } from "react";
 import { FaQuoteLeft, FaRegThumbsUp, FaToolbox, FaUserAlt } from "react-icons/fa";
 import { GoDotFill } from "react-icons/go";
 
-import { testimony } from "@/database/database";
-
-export default function Testimony() {
+export default function Testimony({ testimony, code, testimonyStatistics }: { testimony: any; code: number; testimonyStatistics: any }) {
   const [mounted, setMounted] = useState<boolean>(false);
   const theme = useTheme();
   const [testimonyIndex, setTestimonyIndex] = useState<number>(0);
@@ -74,10 +72,10 @@ export default function Testimony() {
             <p className="text-sm font-semibold text-red-600">{testimony[testimonyIndex].status}</p>
           </div>
 
-          <p className="h-12 w-[500px] text-center font-semibold">{`"${testimony[testimonyIndex].comment}"`}</p>
+          <p className="h-12 w-[500px] text-center font-semibold">{`"${testimony[testimonyIndex].comment.lang[code]}"`}</p>
 
           <div className="mt-1 flex items-center justify-center gap-1">
-            {testimony.map((_, index) => (
+            {testimony.map((_: any, index: any) => (
               <div key={index} className={testimonyIndex === index ? "text-red-600" : "text-red-300"}>
                 <GoDotFill size={25} />
               </div>
@@ -89,7 +87,7 @@ export default function Testimony() {
           <div className="flex flex-col items-center justify-center">
             <div className="flex items-center justify-center gap-2">
               <FaRegThumbsUp size={25} />
-              <p className="text-2xl font-bold text-red-600">48</p>
+              <p className="text-2xl font-bold text-red-600">{testimonyStatistics.happyClient}</p>
             </div>
             <h4 className="text-xl font-semibold">Happy Client</h4>
           </div>
@@ -99,7 +97,7 @@ export default function Testimony() {
           <div className="flex flex-col items-center justify-center">
             <div className="flex items-center justify-center gap-2">
               <FaToolbox size={25} />
-              <p className="text-2xl font-bold text-red-600">50</p>
+              <p className="text-2xl font-bold text-red-600">{testimonyStatistics.completedProjects}</p>
             </div>
             <h4 className="text-xl font-semibold">Completed Projects</h4>
           </div>
@@ -109,7 +107,7 @@ export default function Testimony() {
           <div className="flex flex-col items-center justify-center">
             <div className="flex items-center justify-center gap-2">
               <FaUserAlt size={25} />
-              <p className="text-2xl font-bold text-red-600">8</p>
+              <p className="text-2xl font-bold text-red-600">{testimonyStatistics.subscriber}</p>
             </div>
             <h4 className="text-xl font-semibold">Subscriber</h4>
           </div>

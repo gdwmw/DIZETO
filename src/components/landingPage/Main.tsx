@@ -13,7 +13,12 @@ import ImagesFrame from "./imagesFrame/ImagesFrame";
 import PriceCard from "./priceCard/PriceCard";
 import Testimony from "./testimony/Testimony";
 
-export default function Main() {
+export default async function Main() {
+  const response = await fetch("http://localhost:3000/api/landingpage");
+  const result = await response.json();
+  const preset = 0;
+  const code = 0;
+  const data = result[preset];
   return (
     <main>
       {/* JUMBOTRON */}
@@ -36,16 +41,13 @@ export default function Main() {
             <div className="my-10 space-y-14 md:grid md:grid-cols-2 md:space-y-0">
               <div className="space-y-5">
                 <h3 className="text-2xl font-semibold">
-                  <span className="text-red-600">W</span>hat is Dizeto?
+                  <span className="text-red-600">{data.about.lang[code].titleRedTxt}</span>
+                  {data.about.lang[code].title}
                 </h3>
                 <p className="text-justify font-semibold">
-                  <span className="text-red-600">Dizeto</span> is a vendor that offers photography, videography, talent, and music services. We have a
-                  professional team that can help you meet business needs, events, and your special moments to make them more beautiful, real, and
-                  lasting. You can learn more about us by viewing our portfolio, YouTube channel, and customer testimonials.
+                  <span className="text-red-600">{data.about.lang[code].descRedTxt}</span> {data.about.lang[code].desc}
                 </p>
-                <p className="pt-5 font-semibold text-red-600">
-                  *Please take note that we currently only offer photography and videography services.
-                </p>
+                <p className="pt-5 font-semibold text-red-600">{data.about.lang[code].note}</p>
               </div>
               <div className="flex h-full w-full items-center justify-center">
                 <Image src={logoDIZETO} alt="DIZETO" height={250} width={250} quality={50} priority={true} />
@@ -68,12 +70,21 @@ export default function Main() {
               </Link>
             </div>
 
-            <ImagesFrame
-              folder="landingPage"
-              database={landingPage}
-              link="https://dizeto-images.vercel.app/assets/uploads/dashboard/f1/"
-              copyright="© 2022 DIZETO. All rights reserved."
-            />
+            {data.presetLandingPagePortfolio ? (
+              <ImagesFrame
+                folder="landingPage"
+                database={landingPage}
+                link="https://dizeto-images.vercel.app/assets/uploads/dashboard/f1/"
+                copyright="© 2022 DIZETO. All rights reserved - TRUE / PRESET 2."
+              />
+            ) : (
+              <ImagesFrame
+                folder="landingPage"
+                database={landingPage}
+                link="https://dizeto-images.vercel.app/assets/uploads/dashboard/f1/"
+                copyright="© 2022 DIZETO. All rights reserved."
+              />
+            )}
           </div>
         </section>
 
@@ -87,14 +98,14 @@ export default function Main() {
 
             <div className="mt-5 flex items-center justify-center">
               <div className="grid w-full gap-5 sm:grid-cols-2 xl:grid-cols-4">
-                <PriceCard />
+                <PriceCard pricing={data.pricing} code={code} />
               </div>
             </div>
           </div>
         </section>
 
         {/* TESTIMONY */}
-        <Testimony />
+        <Testimony testimony={data.testimony} code={code} testimonyStatistics={data.testimonyStatistics} />
 
         {/* CONTACT */}
         <section id="Contact" className="scroll-mt-[84px]">
