@@ -1,3 +1,5 @@
+"use client";
+
 // IMPORT LIBRARIES
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";

@@ -1,71 +1,19 @@
 // IMPORT LIBRARIES
-import dynamic from "next/dynamic";
-import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { FaQuoteLeft, FaRegThumbsUp, FaToolbox, FaUserAlt } from "react-icons/fa";
-import { GoDotFill } from "react-icons/go";
-import { MdLocationOn, MdEmail, MdPhone } from "react-icons/md";
+import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
 import { TbWorldWww } from "react-icons/tb";
 
 // IMPORT DATABASE
-import { landingPage, testimony } from "@/database/database";
+import { landingPage } from "@/database/database";
 
 // IMPORT COMPONENTS
+import logoDIZETO from "@/assets/images/logo/dizeto.svg";
 import ImagesFrame from "./imagesFrame/ImagesFrame";
 import PriceCard from "./priceCard/PriceCard";
-const DynamicGoogleMaps = dynamic(() => import("./googleMaps/GoogleMaps"), {
-  ssr: false,
-  loading: () => <div className="my-5 h-[500px] w-full rounded-md border border-black dark:border-white" />,
-});
+import Testimony from "./testimony/Testimony";
 
 export default function Main() {
-  const [mounted, setMounted] = useState<boolean>(false);
-  const theme = useTheme();
-  const [testimonyIndex, setTestimonyIndex] = useState<number>(0);
-  const [dateTime, setDateTime] = useState<string>("00/00/0000 - 00:00:00");
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    const testimonyInterval = setInterval(() => {
-      setTestimonyIndex((prevIndex) => (prevIndex + 1) % testimony.length);
-    }, 5000);
-    return () => {
-      clearInterval(testimonyInterval);
-    };
-  }, []);
-
-  useEffect(() => {
-    const dateTimeInterval = setInterval(() => {
-      const currentDate = new Date();
-      const formattedDate = currentDate
-        .toLocaleString("id-ID", {
-          year: "numeric",
-          month: "2-digit",
-          day: "2-digit",
-          hour: "2-digit",
-          minute: "2-digit",
-          second: "2-digit",
-          hour12: false,
-        })
-        .replace(" ", "")
-        .replace(",", " - ")
-        .replace(".", ":")
-        .replace(".", ":");
-
-      setDateTime(formattedDate);
-    }, 1000);
-
-    window.innerWidth < 1024 && clearInterval(dateTimeInterval);
-
-    return () => {
-      clearInterval(dateTimeInterval);
-    };
-  }, []);
   return (
     <main>
       {/* JUMBOTRON */}
@@ -100,7 +48,7 @@ export default function Main() {
                 </p>
               </div>
               <div className="flex h-full w-full items-center justify-center">
-                <Image src={require("@/assets/images/logo/dizeto.svg")} alt="DIZETO" height={250} width={250} quality={50} priority={true} />
+                <Image src={logoDIZETO} alt="DIZETO" height={250} width={250} quality={50} priority={true} />
               </div>
             </div>
           </div>
@@ -146,196 +94,7 @@ export default function Main() {
         </section>
 
         {/* TESTIMONY */}
-        <section id="Testimony" className="scroll-mt-[84px]">
-          <div className="paper">
-            <div className="flex h-[450px] w-full flex-col items-center justify-center gap-5 dark:text-white">
-              <FaQuoteLeft size={30} />
-
-              <Image
-                src={require(`@/assets/images/testimony/${testimony[testimonyIndex].image}`)}
-                alt="Image"
-                height={128}
-                width={128}
-                quality={50}
-                className="rounded-full"
-              />
-
-              <div className="text-center">
-                <h3 className="text-lg font-semibold">{testimony[testimonyIndex].name}</h3>
-                <p className="text-sm font-semibold text-red-600">{testimony[testimonyIndex].status}</p>
-              </div>
-
-              <p className="h-12 w-[500px] text-center font-semibold">{`"${testimony[testimonyIndex].comment}"`}</p>
-
-              <div className="mt-1 flex items-center justify-center gap-1">
-                {testimony.map((_, index) => (
-                  <div key={index} className={testimonyIndex === index ? "text-red-600" : "text-red-300"}>
-                    <GoDotFill size={25} />
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="flex h-32 w-full items-center justify-evenly bg-white/50 dark:bg-dark/50">
-              <div className="flex flex-col items-center justify-center">
-                <div className="flex items-center justify-center gap-2">
-                  <FaRegThumbsUp size={25} />
-                  <p className="text-2xl font-bold text-red-600">48</p>
-                </div>
-                <h4 className="text-xl font-semibold">Happy Client</h4>
-              </div>
-
-              <div className="h-16 w-0.5 rounded-full bg-black dark:bg-white" />
-
-              <div className="flex flex-col items-center justify-center">
-                <div className="flex items-center justify-center gap-2">
-                  <FaToolbox size={25} />
-                  <p className="text-2xl font-bold text-red-600">50</p>
-                </div>
-                <h4 className="text-xl font-semibold">Completed Projects</h4>
-              </div>
-
-              <div className="h-16 w-0.5 rounded-full bg-black dark:bg-white" />
-
-              <div className="flex flex-col items-center justify-center">
-                <div className="flex items-center justify-center gap-2">
-                  <FaUserAlt size={25} />
-                  <p className="text-2xl font-bold text-red-600">8</p>
-                </div>
-                <h4 className="text-xl font-semibold">Subscriber</h4>
-              </div>
-
-              <div className="hidden h-16 w-0.5 rounded-full bg-black dark:bg-white lg:block" />
-
-              <div className="hidden flex-col items-center justify-center lg:flex">
-                <p className="w-[250px] text-center text-xl font-bold text-red-600">{dateTime}</p>
-                <h4 className="text-xl font-semibold">Date - Time</h4>
-              </div>
-            </div>
-
-            {/* CLIENTS */}
-            <div id="Clients" className="scroll-mt-[84px] bg-white py-14 dark:bg-dark">
-              <h2 className="text-center text-3xl font-semibold">
-                CLIEN<span className="text-red-600">TS</span>
-                <div className="mx-auto h-0.5 w-20 rounded-full bg-red-600" />
-              </h2>
-
-              {mounted ? (
-                <div className="mt-5 space-y-5">
-                  <div className="flex items-center justify-evenly">
-                    {theme.resolvedTheme === "light" && (
-                      <a href="http://www.angklungmuhibah.id" target="_blank" rel="noopener noreferrer">
-                        <Image
-                          src={require("@/assets/images/clients/ma-gray.svg")}
-                          alt="Muhibah Angklung"
-                          quality={50}
-                          loading="lazy"
-                          className="clients-img"
-                        />
-                      </a>
-                    )}
-                    {theme.resolvedTheme === "light" && (
-                      <a href="https://www.instagram.com/rumahbatikwijaya/?hl=id" target="_blank" rel="noopener noreferrer">
-                        <Image
-                          src={require("@/assets/images/clients/rbw-gray.svg")}
-                          alt="Rumah Batik Wijaya"
-                          quality={50}
-                          loading="lazy"
-                          className="clients-img"
-                        />
-                      </a>
-                    )}
-                    {theme.resolvedTheme === "dark" && (
-                      <a href="http://www.angklungmuhibah.id" target="_blank" rel="noopener noreferrer">
-                        <Image
-                          src={require("@/assets/images/clients/ma-white.svg")}
-                          alt="Muhibah Angklung"
-                          quality={50}
-                          loading="lazy"
-                          className="clients-img"
-                        />
-                      </a>
-                    )}
-                    {theme.resolvedTheme === "dark" && (
-                      <a href="https://www.instagram.com/rumahbatikwijaya/?hl=id" target="_blank" rel="noopener noreferrer">
-                        <Image
-                          src={require("@/assets/images/clients/rbw-white.svg")}
-                          alt="Rumah Batik Wijaya"
-                          quality={50}
-                          loading="lazy"
-                          className="clients-img"
-                        />
-                      </a>
-                    )}
-                    <a href="https://irmajabar.com/" target="_blank" rel="noopener noreferrer">
-                      <Image src={require("@/assets/images/clients/irma.png")} alt="IRMA" quality={50} loading="lazy" className="clients-img" />
-                    </a>
-                  </div>
-                  <div className="flex items-center justify-evenly">
-                    <a
-                      href="https://shopee.co.id/topnapurnama?categoryId=100629&entryPoint=ShopByPDP&itemId=15208206609"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Image src={require("@/assets/images/clients/kp.png")} alt="Kopi Purnama" quality={50} loading="lazy" className="clients-img" />
-                    </a>
-                    <a href="https://gofood.link/a/DVoCLZN" target="_blank" rel="noopener noreferrer">
-                      {theme.resolvedTheme === "light" && (
-                        <Image
-                          src={require("@/assets/images/clients/lc-gray.svg")}
-                          alt="Lentera Coffee"
-                          quality={50}
-                          loading="lazy"
-                          className="clients-img"
-                        />
-                      )}
-                      {theme.resolvedTheme === "dark" && (
-                        <Image
-                          src={require("@/assets/images/clients/lc-white.svg")}
-                          alt="Lentera Coffee"
-                          quality={50}
-                          loading="lazy"
-                          className="clients-img"
-                        />
-                      )}
-                    </a>
-                    <a href="https://www.youtube.com/@vittosafiy748" target="_blank" rel="noopener noreferrer">
-                      <Image
-                        src={require("@/assets/images/clients/sk.png")}
-                        alt="Safiy Kitchen"
-                        quality={50}
-                        loading="lazy"
-                        className="clients-img"
-                      />
-                    </a>
-                    <a href="https://pesantrentahfidzashrmadani.wordpress.com/" target="_blank" rel="noopener noreferrer">
-                      {theme.resolvedTheme === "light" && (
-                        <Image
-                          src={require("@/assets/images/clients/ma-gray.svg")}
-                          alt="Al-'Ashr Al-Madani"
-                          quality={50}
-                          loading="lazy"
-                          className="clients-img"
-                        />
-                      )}
-                      {theme.resolvedTheme === "dark" && (
-                        <Image
-                          src={require("@/assets/images/clients/ma-white.svg")}
-                          alt="Al-'Ashr Al-Madani"
-                          quality={50}
-                          loading="lazy"
-                          className="clients-img"
-                        />
-                      )}
-                    </a>
-                  </div>
-                </div>
-              ) : (
-                <Image src={require("@/assets/loading/loading.svg")} alt="Loading" width={100} quality={50} className="mx-auto my-20" />
-              )}
-            </div>
-          </div>
-        </section>
+        <Testimony />
 
         {/* CONTACT */}
         <section id="Contact" className="scroll-mt-[84px]">
@@ -344,9 +103,12 @@ export default function Main() {
               CONTA<span className="text-red-600">CT</span>
               <div className="mx-auto h-0.5 w-20 rounded-full bg-red-600" />
             </h2>
-
-            <DynamicGoogleMaps />
-
+            <iframe
+              title="Google Maps"
+              loading="lazy"
+              className="my-5 h-[500px] w-full rounded-md border border-black dark:border-white"
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15844.143343315141!2d107.6504268!3d-6.8863111!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e76a1e6f56f3%3A0x8649ff7558d15108!2sDIZETO!5e0!3m2!1sid!2sid!4v1697306682702!5m2!1sid!2sid"
+            />
             <ul className="space-y-2 dark:text-white">
               <li className="flex gap-2">
                 <div className="min-h-fit min-w-fit">
