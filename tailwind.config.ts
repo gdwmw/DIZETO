@@ -11,6 +11,22 @@ const config: Config = {
       transitionProperty: {
         priceCard: "transform, box-shadow",
       },
+      keyframes: {
+        gradient: {
+          "0%": {
+            backgroundPosition: "0% 0%",
+          },
+          "50%": {
+            backgroundPosition: "100% 0%",
+          },
+          "100%": {
+            backgroundPosition: "0% 0%",
+          },
+        },
+      },
+      animation: {
+        backgroundGradient: "gradient 15s ease infinite",
+      },
     },
   },
   plugins: [],
