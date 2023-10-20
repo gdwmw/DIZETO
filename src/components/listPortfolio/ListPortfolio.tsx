@@ -17,7 +17,7 @@ export default function ListPortfolio() {
     setCurrentPage(page);
   };
   return (
-    <div className="container mx-auto my-10 px-5">
+    <div className="container mx-auto px-5 py-10">
       <div className="paper-portfolio">
         <header>
           <section className="flex items-center justify-center gap-5">
