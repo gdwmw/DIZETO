@@ -14,7 +14,7 @@ import PriceCard from "./priceCard/PriceCard";
 import Testimony from "./testimony/Testimony";
 
 export default async function Main() {
-  const response = await fetch("http://localhost:3000/api/landingpage");
+  const response = await fetch("https://6536584abb226bb85dd1f31f.mockapi.io/landingpage", { next: { revalidate: 0 } });
   const result = await response.json();
   const preset = 0;
   const code = 0;
