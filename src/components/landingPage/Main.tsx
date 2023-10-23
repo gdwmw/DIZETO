@@ -13,11 +13,18 @@ import ImagesFrame from "./imagesFrame/ImagesFrame";
 import PriceCard from "./priceCard/PriceCard";
 import Testimony from "./testimony/Testimony";
 
+// IMPORT TYPES
+import LandingPage from "./landingPage";
+
+async function Fetch() {
+  const response = await fetch("https://6536584abb226bb85dd1f31f.mockapi.io/landingpage");
+  return response.json();
+}
+
 export default async function Main() {
-  const response = await fetch("https://6536584abb226bb85dd1f31f.mockapi.io/landingpage", { next: { revalidate: 0 } });
-  const result = await response.json();
-  const preset = 0;
-  const code = 0;
+  const result: LandingPage.LandingPageData[] = await Fetch();
+  const preset: number = 0;
+  const code: number = 0;
   const data = result[preset];
   return (
     <main>
