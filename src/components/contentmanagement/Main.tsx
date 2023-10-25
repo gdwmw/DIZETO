@@ -169,143 +169,157 @@ export default function Main() {
 
   return (
     <main className="container mx-auto p-5">
-      <form className="space-y-10">
-        <section className="space-y-5">
-          <div>
-            {value[preset].about.lang.map((lang, index) => (
-              <React.Fragment key={index}>
-                <InputText
-                  width={"100%"}
-                  id={`Title Red Text ${index}`}
-                  label={`${index === 0 ? "EN :" : "ID :"} Red Title`}
-                  value={lang.titleRedTxt}
-                  onChange={(e) => handleInputAbout(e, "titleRedTxt", index)}
-                />
-                <InputText
-                  width={"100%"}
-                  id={`Title ${index}`}
-                  label={`${index === 0 ? "EN :" : "ID :"} Title`}
-                  value={lang.title}
-                  onChange={(e) => handleInputAbout(e, "title", index)}
-                />
-              </React.Fragment>
-            ))}
-          </div>
-
-          <div>
-            {value[preset].about.lang.map((lang, index) => (
-              <React.Fragment key={index}>
-                <InputText
-                  width={"100%"}
-                  id={`Desc Red Text ${index}`}
-                  label={`${index === 0 ? "EN :" : "ID :"} Red Description`}
-                  value={lang.descRedTxt}
-                  onChange={(e) => handleInputAbout(e, "descRedTxt", index)}
-                />
-                <TextArea
-                  width={"100%"}
-                  id={`Description ${index}`}
-                  label={`${index === 0 ? "EN :" : "ID :"} Description`}
-                  value={lang.desc}
-                  onChange={(e) => handleInputAbout(e, "desc", index)}
-                />
-              </React.Fragment>
-            ))}
-          </div>
-
-          <div>
-            {value[preset].about.lang.map((lang, index) => (
-              <React.Fragment key={index}>
-                <div className="flex gap-2">
-                  <InputText
-                    width={"100%"}
-                    id={`Note ${index}`}
-                    label={`${index === 0 ? "EN :" : "ID :"} Note`}
-                    value={lang.note}
-                    onChange={(e) => handleInputAbout(e, "note", index)}
-                  />
-                </div>
-              </React.Fragment>
-            ))}
-          </div>
-        </section>
-
-        <section>
-          <Select
-            width={"100%"}
-            id={`Preset Landing Page Portfolio`}
-            label="Preset Landing Page Portfolio"
-            value={value[preset].presetLandingPagePortfolio}
-            onChange={handleInputPresetLandingPagePortfolio}
-          >
-            <option value="0" className="dark:bg-dark">
-              1
-            </option>
-            <option value="1" className="dark:bg-dark">
-              2
-            </option>
-          </Select>
-        </section>
-
-        <section className="grid grid-cols-2 gap-5 xl:grid-cols-4">
-          {value[preset].pricing.map((data, index) => (
-            <div key={index}>
-              <InputText
-                width={"100%"}
-                id={`Price ${index}`}
-                label="Price"
-                value={data.price}
-                onChange={(e) => handleInputPricing(e, "price", index)}
-              />
-
-              <InputText
-                width={"100%"}
-                id={`Package ${index}`}
-                label="Package"
-                value={data.package}
-                onChange={(e) => handleInputPricing(e, "package", index)}
-              />
-              <div className="flex gap-2">
-                {data.title.map((title, titleIndex) => (
-                  <InputText
-                    key={titleIndex}
-                    width={"100%"}
-                    id={`Title ${titleIndex} ${index}`}
-                    label="Title"
-                    value={title}
-                    onChange={(e) => handleInputPricingTitle(e, "title", index, titleIndex)}
-                  />
+      <section id="About" className="scroll-mt-[84px]">
+        <form className="paper space-y-10 bg-white p-5 dark:bg-dark">
+          <fieldset className="rounded-md border-2 border-red-600 px-3 pb-2">
+            <legend className="px-2 font-semibold text-red-600">ABOUT</legend>
+            <section className="space-y-5">
+              <div>
+                {value[preset].about.lang.map((lang, index) => (
+                  <React.Fragment key={index}>
+                    <InputText
+                      width={"100%"}
+                      id={`Title Red Text ${index}`}
+                      label={`${index === 0 ? "EN :" : "ID :"} Red Title`}
+                      value={lang.titleRedTxt}
+                      onChange={(e) => handleInputAbout(e, "titleRedTxt", index)}
+                    />
+                    <InputText
+                      width={"100%"}
+                      id={`Title ${index}`}
+                      label={`${index === 0 ? "EN :" : "ID :"} Title`}
+                      value={lang.title}
+                      onChange={(e) => handleInputAbout(e, "title", index)}
+                    />
+                  </React.Fragment>
                 ))}
               </div>
 
-              {data.list.map((listData, listIndex) => (
-                <React.Fragment key={listIndex}>
-                  <InputNumber
-                    width={"100%"}
-                    id={`List Quantity ${listIndex} ${index}`}
-                    label="Quantity"
-                    value={listData.qty}
-                    onChange={(e) => handleInputPricingList(e, "qty", index, listIndex)}
-                  />
-                  <div className="flex gap-2">
-                    {listData.label.lang.map((lang, langIndex) => (
-                      <React.Fragment key={langIndex}>
+              <div>
+                {value[preset].about.lang.map((lang, index) => (
+                  <React.Fragment key={index}>
+                    <InputText
+                      width={"100%"}
+                      id={`Desc Red Text ${index}`}
+                      label={`${index === 0 ? "EN :" : "ID :"} Red Description`}
+                      value={lang.descRedTxt}
+                      onChange={(e) => handleInputAbout(e, "descRedTxt", index)}
+                    />
+                    <TextArea
+                      width={"100%"}
+                      id={`Description ${index}`}
+                      label={`${index === 0 ? "EN :" : "ID :"} Description`}
+                      value={lang.desc}
+                      onChange={(e) => handleInputAbout(e, "desc", index)}
+                    />
+                  </React.Fragment>
+                ))}
+              </div>
+
+              <div>
+                {value[preset].about.lang.map((lang, index) => (
+                  <React.Fragment key={index}>
+                    <div className="flex gap-2">
+                      <InputText
+                        width={"100%"}
+                        id={`Note ${index}`}
+                        label={`${index === 0 ? "EN :" : "ID :"} Note`}
+                        value={lang.note}
+                        onChange={(e) => handleInputAbout(e, "note", index)}
+                      />
+                    </div>
+                  </React.Fragment>
+                ))}
+              </div>
+            </section>
+          </fieldset>
+
+          <fieldset className="rounded-md border-2 border-red-600 px-3 pb-2">
+            <legend className="px-2 font-semibold text-red-600">PORTFOLIO</legend>
+            <section>
+              <Select
+                width={"100%"}
+                id={`Preset`}
+                label="Preset"
+                value={value[preset].presetLandingPagePortfolio}
+                onChange={handleInputPresetLandingPagePortfolio}
+              >
+                <option value="0" className="dark:bg-dark">
+                  Mita&apos;s Birthday
+                </option>
+                <option value="1" className="dark:bg-dark">
+                  Ica&apos;s Birthday
+                </option>
+              </Select>
+            </section>
+          </fieldset>
+
+          <fieldset className="rounded-md border-2 border-red-600 px-3 pb-2">
+            <legend className="px-2 font-semibold text-red-600">PACKAGE</legend>
+            <section className="grid grid-cols-2 gap-5 xl:grid-cols-4">
+              {value[preset].pricing.map((data, index) => (
+                <fieldset key={index} className="rounded-md border-2 border-red-600 px-3 pb-2">
+                  <legend className="px-2 font-semibold text-red-600">{`PRICE CARD ${index + 1}`}</legend>
+                  <div>
+                    <InputText
+                      width={"100%"}
+                      id={`Price ${index}`}
+                      label="Price"
+                      value={data.price}
+                      onChange={(e) => handleInputPricing(e, "price", index)}
+                    />
+
+                    <InputText
+                      width={"100%"}
+                      id={`Package ${index}`}
+                      label="Package"
+                      value={data.package}
+                      onChange={(e) => handleInputPricing(e, "package", index)}
+                    />
+                    <div className="flex gap-2">
+                      {data.title.map((title, titleIndex) => (
                         <InputText
+                          key={titleIndex}
                           width={"100%"}
-                          id={`List Label ${langIndex} ${listIndex} ${index}`}
-                          label={`${langIndex === 0 ? "EN :" : "ID :"} Label`}
-                          value={lang}
-                          onChange={(e) => handleInputPricingListLabel(e, index, listIndex, langIndex)}
+                          id={`Title ${titleIndex} ${index}`}
+                          label="Title"
+                          value={title}
+                          onChange={(e) => handleInputPricingTitle(e, "title", index, titleIndex)}
                         />
+                      ))}
+                    </div>
+
+                    {data.list.map((listData, listIndex) => (
+                      <React.Fragment key={listIndex}>
+                        <InputNumber
+                          width={"100%"}
+                          id={`List Quantity ${listIndex} ${index}`}
+                          label="Quantity"
+                          value={listData.qty}
+                          onChange={(e) => handleInputPricingList(e, "qty", index, listIndex)}
+                        />
+                        <div className="flex gap-2">
+                          {listData.label.lang.map((lang, langIndex) => (
+                            <React.Fragment key={langIndex}>
+                              <InputText
+                                width={"100%"}
+                                id={`List Label ${langIndex} ${listIndex} ${index}`}
+                                label={`${langIndex === 0 ? "EN :" : "ID :"} Label`}
+                                value={lang}
+                                onChange={(e) => handleInputPricingListLabel(e, index, listIndex, langIndex)}
+                              />
+                            </React.Fragment>
+                          ))}
+                        </div>
                       </React.Fragment>
                     ))}
                   </div>
-                </React.Fragment>
+                </fieldset>
               ))}
-            </div>
-          ))}
-        </section>
-      </form>
+            </section>
+          </fieldset>
+        </form>
+      </section>
     </main>
   );
 }
