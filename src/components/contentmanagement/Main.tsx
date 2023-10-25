@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import InputText from "./inputs/InputText";
+import InputNumber from "./inputs/InputNumber";
 import LandingPage from "../landingPage/landingPage";
 
 export default function Main() {
@@ -34,9 +35,7 @@ export default function Main() {
           id: 0,
           price: "",
           package: "",
-          title: {
-            lang: [],
-          },
+          title: ["", ""],
           list: [
             {
               qty: 0,
@@ -81,7 +80,7 @@ export default function Main() {
   }, []);
 
   useEffect(() => {
-    if (response[preset]) {
+    if (response[preset] !== undefined) {
       const updatedValue: LandingPage.LandingPageData = {
         id: 0,
         about: {
@@ -98,7 +97,7 @@ export default function Main() {
           id: data.id,
           price: data.price,
           package: data.package,
-          title: { lang: data.title.lang.map((data) => [...data]) },
+          title: data.title.map((data) => data),
           list: data.list.map((data) => ({ qty: data.qty, label: { lang: [...data.label.lang] } })),
         })),
         testimony: response[preset].testimony.map((data) => ({
@@ -118,7 +117,7 @@ export default function Main() {
     }
   }, [preset, response]);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, key: string, index: number) => {
+  const handleInputAbout = (e: React.ChangeEvent<HTMLInputElement>, key: string, index: number) => {
     setValue((prevValue) => {
       const newValue: any = [...prevValue];
       newValue[preset].about.lang[index][key] = e.target.value;
@@ -126,7 +125,15 @@ export default function Main() {
     });
   };
 
-  const handlePricingInputChange = (e: React.ChangeEvent<HTMLInputElement>, key: string, index: number) => {
+  const handleInputPresetLandingPagePortfolio = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue((prevValue) => {
+      const newValue: any = [...prevValue];
+      newValue[preset].presetLandingPagePortfolio = e.target.value;
+      return newValue;
+    });
+  };
+
+  const handleInputPricing = (e: React.ChangeEvent<HTMLInputElement>, key: string, index: number) => {
     setValue((prevValue) => {
       const newValue: any = [...prevValue];
       newValue[preset].pricing[index][key] = e.target.value;
@@ -134,7 +141,15 @@ export default function Main() {
     });
   };
 
-  const handlePricingListInputChange = (e: React.ChangeEvent<HTMLInputElement>, key: string, index: number, listIndex: number) => {
+  const handleInputPricingTitle = (e: React.ChangeEvent<HTMLInputElement>, key: string, index: number, indexValue: number) => {
+    setValue((prevValue) => {
+      const newValue: any = [...prevValue];
+      newValue[preset].pricing[index][key][indexValue] = e.target.value;
+      return newValue;
+    });
+  };
+
+  const handleInputPricingList = (e: React.ChangeEvent<HTMLInputElement>, key: string, index: number, listIndex: number) => {
     setValue((prevValue) => {
       const newValue: any = [...prevValue];
       newValue[preset].pricing[index].list[listIndex][key] = e.target.value;
@@ -142,165 +157,183 @@ export default function Main() {
     });
   };
 
+  const handleInputPricingListLabel = (e: React.ChangeEvent<HTMLInputElement>, index: number, listIndex: number, langIndex: number) => {
+    setValue((prevValue) => {
+      const newValue: any = [...prevValue];
+      newValue[preset].pricing[index].list[listIndex].label.lang[langIndex] = e.target.value;
+      return newValue;
+    });
+  };
+
   return (
     <main className="container mx-auto px-5 pt-10">
-      <form>
+      <form className="paper space-y-5 bg-white p-5 dark:bg-dark">
         {/* ABOUT */}
-        <section id="About">
-          <div className="paper space-y-5 bg-white p-5 dark:bg-dark">
-            <section>
-              <fieldset className="rounded-md border-2 border-red-600 px-3 pb-2">
-                <legend className="px-2 text-xl font-semibold text-red-600">TITLE</legend>
-                <div className="space-y-2">
-                  {value[preset].about.lang.map((data, index: number) => (
-                    <div key={index}>
-                      <h1>{index === 0 ? "- EN :" : "- ID :"}</h1>
-                      <div className="flex gap-2">
-                        <InputText
-                          width={200}
-                          id={`Title Red Text ${index}`}
-                          label="Title Red Text"
-                          value={data.titleRedTxt}
-                          onChange={(e) => handleInputChange(e, "titleRedTxt", index)}
-                        />
-                        <InputText
-                          width={0}
-                          id={`Title ${index}`}
-                          label="Title"
-                          value={data.title}
-                          onChange={(e) => handleInputChange(e, "title", index)}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </fieldset>
-            </section>
-
-            <section>
-              <fieldset className="rounded-md border-2 border-red-600 px-3 pb-2">
-                <legend className="px-2 text-xl font-semibold text-red-600">DESCRIPTION</legend>
-                <div className="space-y-2">
-                  {value[preset].about.lang.map((data, index: number) => (
-                    <div key={index}>
-                      <h1>{index === 0 ? "- EN :" : "- ID :"}</h1>
-                      <div className="flex gap-2">
-                        <InputText
-                          width={200}
-                          id={`Desc Red Text ${index}`}
-                          label="Desc Red Text"
-                          value={data.descRedTxt}
-                          onChange={(e) => handleInputChange(e, "descRedTxt", index)}
-                        />
-                        <InputText
-                          width={0}
-                          id={`Description ${index}`}
-                          label="Description"
-                          value={data.desc}
-                          onChange={(e) => handleInputChange(e, "desc", index)}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </fieldset>
-            </section>
-
-            <section>
-              <fieldset className="rounded-md border-2 border-red-600 px-3 pb-2">
-                <legend className="px-2 text-xl font-semibold text-red-600">NOTE</legend>
-                <div className="space-y-2">
-                  {value[preset].about.lang.map((data, index: number) => (
-                    <div key={index}>
-                      <h1>{index === 0 ? "- EN :" : "- ID :"}</h1>
-                      <div className="flex gap-2">
-                        <InputText
-                          width={0}
-                          id={`Note ${index}`}
-                          label="Note"
-                          value={data.note}
-                          onChange={(e) => handleInputChange(e, "note", index)}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </fieldset>
-            </section>
-
-            <section>
-              <InputText
-                width={0}
-                id={`Preset Landing Page Portfolio`}
-                label="Preset Landing Page Portfolio"
-                value={value[preset].presetLandingPagePortfolio.toString()}
-                onChange={(e) => handleInputChange(e, "presetLandingPagePortfolio", 0)}
-              />
-            </section>
-
-            <section className="space-y-5">
-              {value[preset].pricing.map((pricingItem, index) => (
+        <fieldset className="rounded-md border-2 border-red-600 px-3 pb-2">
+          <legend className="px-2 text-xl font-semibold text-red-600">ABOUT</legend>
+          <section>
+            <fieldset className="rounded-md border-2 border-red-600 px-3 pb-2">
+              <legend className="px-2 text-xl font-semibold text-red-600">TITLE</legend>
+              {/* -------------------------------------------------------- */}
+              {value[preset].about.lang.map((lang, index) => (
                 <div key={index}>
-                  <fieldset className="rounded-md border-2 border-red-600 px-3 pb-2">
-                    <legend className="px-2 text-xl font-semibold text-red-600">{`Pricing Item ${index + 1}`}</legend>
-                    <div className="space-y-2">
-                      <div>
-                        <h1>{`- Price:`}</h1>
-                        <InputText
+                  <h1>{index === 0 ? "- EN :" : "- ID :"}</h1>
+                  <div className="flex gap-2">
+                    <InputText
+                      width={200}
+                      id={`Title Red Text ${index}`}
+                      label="Title Red Text"
+                      value={lang.titleRedTxt}
+                      onChange={(e) => handleInputAbout(e, "titleRedTxt", index)}
+                    />
+                    <InputText
+                      width={0}
+                      id={`Title ${index}`}
+                      label="Title"
+                      value={lang.title}
+                      onChange={(e) => handleInputAbout(e, "title", index)}
+                    />
+                  </div>
+                </div>
+              ))}
+              {/* -------------------------------------------------------- */}
+            </fieldset>
+          </section>
+
+          <section>
+            <fieldset className="rounded-md border-2 border-red-600 px-3 pb-2">
+              <legend className="px-2 text-xl font-semibold text-red-600">DESCRIPTION</legend>
+              <div className="space-y-2">
+                {/* -------------------------------------------------------- */}
+                {value[preset].about.lang.map((lang, index: number) => (
+                  <div key={index}>
+                    <h1>{index === 0 ? "- EN :" : "- ID :"}</h1>
+                    <div className="flex gap-2">
+                      <InputText
+                        width={200}
+                        id={`Desc Red Text ${index}`}
+                        label="Desc Red Text"
+                        value={lang.descRedTxt}
+                        onChange={(e) => handleInputAbout(e, "descRedTxt", index)}
+                      />
+                      <InputText
+                        width={0}
+                        id={`Description ${index}`}
+                        label="Description"
+                        value={lang.desc}
+                        onChange={(e) => handleInputAbout(e, "desc", index)}
+                      />
+                    </div>
+                  </div>
+                ))}
+                {/* -------------------------------------------------------- */}
+              </div>
+            </fieldset>
+          </section>
+
+          <section>
+            <fieldset className="rounded-md border-2 border-red-600 px-3 pb-2">
+              <legend className="px-2 text-xl font-semibold text-red-600">NOTE</legend>
+              <div className="space-y-2">
+                {/* -------------------------------------------------------- */}
+                {value[preset].about.lang.map((lang, index: number) => (
+                  <div key={index}>
+                    <h1>{index === 0 ? "- EN :" : "- ID :"}</h1>
+                    <div className="flex gap-2">
+                      <InputText width={0} id={`Note ${index}`} label="Note" value={lang.note} onChange={(e) => handleInputAbout(e, "note", index)} />
+                    </div>
+                  </div>
+                ))}
+                {/* -------------------------------------------------------- */}
+              </div>
+            </fieldset>
+          </section>
+        </fieldset>
+        {/* END ABOUT */}
+
+        {/* PRESET LANDING PAGE PORTFOLIO */}
+        <section>
+          <InputNumber
+            width={0}
+            id={`Preset Landing Page Portfolio`}
+            label="Preset Landing Page Portfolio"
+            value={value[preset].presetLandingPagePortfolio}
+            onChange={handleInputPresetLandingPagePortfolio}
+          />
+        </section>
+        {/* END PRESET LANDING PAGE PORTFOLIO */}
+
+        <section className="space-y-5">
+          {/* -------------------------------------------------------- */}
+          {value[preset].pricing.map((data, index) => (
+            <div key={index}>
+              <fieldset className="rounded-md border-2 border-red-600 px-3 pb-2">
+                <legend className="px-2 text-xl font-semibold text-red-600">{`Pricing Item ${index + 1}`}</legend>
+                <div className="space-y-2">
+                  <div>
+                    <InputText
+                      width={0}
+                      id={`Price ${index}`}
+                      label="Price"
+                      value={data.price}
+                      onChange={(e) => handleInputPricing(e, "price", index)}
+                    />
+                  </div>
+                  <div>
+                    <InputText
+                      width={0}
+                      id={`Package ${index}`}
+                      label="Package"
+                      value={data.package}
+                      onChange={(e) => handleInputPricing(e, "package", index)}
+                    />
+                  </div>
+                  <div className="flex gap-2">
+                    {/* -------------------------------------------------------- */}
+                    {data.title.map((title, titleIndex) => (
+                      <InputText
+                        key={titleIndex}
+                        width={0}
+                        id={`Title${titleIndex} ${index}`}
+                        label="Title"
+                        value={title}
+                        onChange={(e) => handleInputPricingTitle(e, "title", index, titleIndex)}
+                      />
+                    ))}
+                    {/* -------------------------------------------------------- */}
+                  </div>
+                  <div>
+                    {/* -------------------------------------------------------- */}
+                    {data.list.map((listData, listIndex) => (
+                      <div key={listIndex}>
+                        <InputNumber
                           width={0}
-                          id={`Price ${index}`}
-                          label="Price"
-                          value={pricingItem.price}
-                          onChange={(e) => handlePricingInputChange(e, "price", index)}
+                          id={`List Quantity ${listIndex}-${index}`}
+                          label="Quantity"
+                          value={listData.qty}
+                          onChange={(e) => handleInputPricingList(e, "qty", index, listIndex)}
                         />
-                      </div>
-                      <div>
-                        <h1>{`- Package:`}</h1>
-                        <InputText
-                          width={0}
-                          id={`Package ${index}`}
-                          label="Package"
-                          value={pricingItem.package}
-                          onChange={(e) => handlePricingInputChange(e, "package", index)}
-                        />
-                      </div>
-                      <div>
-                        <h1>{`- Title:`}</h1>
-                        <InputText
-                          width={0}
-                          id={`Title ${index}`}
-                          label="Title"
-                          value={pricingItem.title.lang.join(" | ")}
-                          onChange={(e) => handlePricingInputChange(e, "title", index)}
-                        />
-                      </div>
-                      <div>
-                        <h1>{`- List:`}</h1>
-                        {pricingItem.list.map((listItem, listIndex) => (
-                          <div key={listIndex} className="flex gap-2">
+                        {listData.label.lang.map((lang, langIndex) => (
+                          <div key={langIndex}>
+                            <h1>{langIndex === 0 ? "- EN :" : "- ID :"}</h1>
                             <InputText
                               width={0}
-                              id={`List Quantity ${index}-${listIndex}`}
-                              label="Quantity"
-                              value={listItem.qty.toString()}
-                              onChange={(e) => handlePricingListInputChange(e, "qty", index, listIndex)}
-                            />
-                            <InputText
-                              width={0}
-                              id={`List Label ${index}-${listIndex}`}
+                              id={`List Label ${langIndex}-${listIndex}-${index}`}
                               label="Label"
-                              value={listItem.label.lang.join(" | ")}
-                              onChange={(e) => handlePricingListInputChange(e, "label", index, listIndex)}
+                              value={lang}
+                              onChange={(e) => handleInputPricingListLabel(e, index, listIndex, langIndex)}
                             />
                           </div>
                         ))}
+                        {/* -------------------------------------------------------- */}
                       </div>
-                    </div>
-                  </fieldset>
+                    ))}
+                  </div>
                 </div>
-              ))}
-            </section>
-          </div>
+              </fieldset>
+            </div>
+          ))}
+          {/* -------------------------------------------------------- */}
         </section>
       </form>
     </main>
