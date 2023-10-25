@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import InputText from "./inputs/InputText";
-import InputNumber from "./inputs/InputNumber";
+import React, { useEffect, useState } from "react";
 import LandingPage from "../landingPage/landingPage";
-import TextArea from "./inputs/TextArea";
+import InputNumber from "./inputs/InputNumber";
+import InputText from "./inputs/InputText";
 import Select from "./inputs/Select";
+import TextArea from "./inputs/TextArea";
 
 export default function Main() {
   const [response, setResponse] = useState<LandingPage.LandingPageData[]>([]);
@@ -68,11 +68,11 @@ export default function Main() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch("https://6536584abb226bb85dd1f31f.mockapi.io/landingpage");
+        const response: Response = await fetch("https://6536584abb226bb85dd1f31f.mockapi.io/landingpage");
         if (!response.ok) {
           throw new Error("Failed to fetch data");
         }
-        const data = await response.json();
+        const data: LandingPage.LandingPageData[] = await response.json();
         setResponse(data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -84,7 +84,7 @@ export default function Main() {
   useEffect(() => {
     if (response[preset] !== undefined) {
       const updatedValue: LandingPage.LandingPageData = {
-        id: 0,
+        id: response[preset].id,
         about: {
           lang: response[preset].about.lang.map((data) => ({
             titleRedTxt: data.titleRedTxt,
@@ -119,10 +119,10 @@ export default function Main() {
     }
   }, [preset, response]);
 
-  const handleInputAbout = (e: React.ChangeEvent<HTMLInputElement>, key: string, index: number) => {
+  const handleInputAbout = (e: React.ChangeEvent<HTMLInputElement>, key: string, listIndex: number) => {
     setValue((prevValue) => {
       const updatedValue: any = [...prevValue];
-      updatedValue[preset].about.lang[index][key] = e.target.value;
+      updatedValue[preset].about.lang[listIndex][key] = e.target.value;
       return updatedValue;
     });
   };
@@ -175,14 +175,14 @@ export default function Main() {
             {value[preset].about.lang.map((lang, index) => (
               <React.Fragment key={index}>
                 <InputText
-                  width={0}
+                  width={"100%"}
                   id={`Title Red Text ${index}`}
                   label={`${index === 0 ? "EN :" : "ID :"} Red Title`}
                   value={lang.titleRedTxt}
                   onChange={(e) => handleInputAbout(e, "titleRedTxt", index)}
                 />
                 <InputText
-                  width={0}
+                  width={"100%"}
                   id={`Title ${index}`}
                   label={`${index === 0 ? "EN :" : "ID :"} Title`}
                   value={lang.title}
@@ -196,14 +196,14 @@ export default function Main() {
             {value[preset].about.lang.map((lang, index) => (
               <React.Fragment key={index}>
                 <InputText
-                  width={0}
+                  width={"100%"}
                   id={`Desc Red Text ${index}`}
                   label={`${index === 0 ? "EN :" : "ID :"} Red Description`}
                   value={lang.descRedTxt}
                   onChange={(e) => handleInputAbout(e, "descRedTxt", index)}
                 />
                 <TextArea
-                  width={0}
+                  width={"100%"}
                   id={`Description ${index}`}
                   label={`${index === 0 ? "EN :" : "ID :"} Description`}
                   value={lang.desc}
@@ -218,7 +218,7 @@ export default function Main() {
               <React.Fragment key={index}>
                 <div className="flex gap-2">
                   <InputText
-                    width={0}
+                    width={"100%"}
                     id={`Note ${index}`}
                     label={`${index === 0 ? "EN :" : "ID :"} Note`}
                     value={lang.note}
@@ -232,25 +232,34 @@ export default function Main() {
 
         <section>
           <Select
-            width={0}
+            width={"100%"}
             id={`Preset Landing Page Portfolio`}
             label="Preset Landing Page Portfolio"
             value={value[preset].presetLandingPagePortfolio}
             onChange={handleInputPresetLandingPagePortfolio}
           >
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
+            <option value="0" className="dark:bg-dark">
+              1
+            </option>
+            <option value="1" className="dark:bg-dark">
+              2
+            </option>
           </Select>
         </section>
 
-        <section className="grid grid-cols-4 gap-5">
+        <section className="grid grid-cols-2 gap-5 xl:grid-cols-4">
           {value[preset].pricing.map((data, index) => (
             <div key={index}>
-              <InputText width={0} id={`Price ${index}`} label="Price" value={data.price} onChange={(e) => handleInputPricing(e, "price", index)} />
+              <InputText
+                width={"100%"}
+                id={`Price ${index}`}
+                label="Price"
+                value={data.price}
+                onChange={(e) => handleInputPricing(e, "price", index)}
+              />
 
               <InputText
-                width={0}
+                width={"100%"}
                 id={`Package ${index}`}
                 label="Package"
                 value={data.package}
@@ -260,7 +269,7 @@ export default function Main() {
                 {data.title.map((title, titleIndex) => (
                   <InputText
                     key={titleIndex}
-                    width={0}
+                    width={"100%"}
                     id={`Title ${titleIndex} ${index}`}
                     label="Title"
                     value={title}
@@ -272,7 +281,7 @@ export default function Main() {
               {data.list.map((listData, listIndex) => (
                 <React.Fragment key={listIndex}>
                   <InputNumber
-                    width={0}
+                    width={"100%"}
                     id={`List Quantity ${listIndex} ${index}`}
                     label="Quantity"
                     value={listData.qty}
@@ -282,7 +291,7 @@ export default function Main() {
                     {listData.label.lang.map((lang, langIndex) => (
                       <React.Fragment key={langIndex}>
                         <InputText
-                          width={0}
+                          width={"100%"}
                           id={`List Label ${langIndex} ${listIndex} ${index}`}
                           label={`${langIndex === 0 ? "EN :" : "ID :"} Label`}
                           value={lang}

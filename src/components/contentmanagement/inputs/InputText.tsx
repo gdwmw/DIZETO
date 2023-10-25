@@ -1,5 +1,5 @@
 type InputTextProps = {
-  width: number;
+  width: string;
   id: string;
   label: string;
   value: string;
@@ -9,7 +9,7 @@ type InputTextProps = {
 export default function InputText({ width, id, label, value, onChange }: InputTextProps) {
   return (
     <fieldset
-      style={{ width: width === 0 ? "100%" : width }}
+    style={{ width: width }}
       className="group rounded-md border-2 border-black px-3 pb-2 focus-within:border-red-600 dark:border-white dark:focus-within:border-red-600"
     >
       <legend className="px-2 font-semibold group-focus-within:text-red-600 dark:text-white">{label}</legend>
