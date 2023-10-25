@@ -23,7 +23,7 @@ export default function Testimony({ testimony, code, testimonyStatistics }: { te
     return () => {
       clearInterval(testimonyInterval);
     };
-  }, []);
+  }, [testimony.length]);
 
   useEffect(() => {
     const dateTimeInterval = setInterval(() => {
