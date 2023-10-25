@@ -5,10 +5,11 @@ import InputText from "./inputs/InputText";
 import LandingPage from "../landingPage/landingPage";
 
 export default function Main() {
-  const [response, setResponse] = useState<any>([]);
+  const [response, setResponse] = useState<LandingPage.LandingPageData[]>([]);
   const [preset, setPreset] = useState<number>(0);
-  const [value, setValue] = useState([
+  const [value, setValue] = useState<LandingPage.LandingPageData[]>([
     {
+      id: 0,
       about: {
         lang: [
           {
@@ -27,16 +28,39 @@ export default function Main() {
           },
         ],
       },
+      presetLandingPagePortfolio: 0,
       pricing: [
         {
           id: 0,
           price: "",
           package: "",
-          title: { lang: [] },
-          list: [],
+          title: {
+            lang: [],
+          },
+          list: [
+            {
+              qty: 0,
+              label: {
+                lang: ["", ""],
+              },
+            },
+          ],
         },
       ],
-      presetLandingPagePortfolio: 0,
+      testimony: [
+        {
+          id: 0,
+          name: "",
+          status: "-",
+          comment: { lang: ["", ""] },
+          image: "",
+        },
+      ],
+      testimonyStatistics: {
+        happyClient: 0,
+        completedProjects: 0,
+        subscriber: 0,
+      },
     },
   ]);
 
@@ -57,35 +81,41 @@ export default function Main() {
   }, []);
 
   useEffect(() => {
-    function updateValue() {
-      if (response[preset]) {
-        setValue((prevValue) => [
-          {
-            about: {
-              lang: prevValue[preset].about.lang.map((data, index) => ({
-                titleRedTxt: response[preset]?.about.lang[index].titleRedTxt,
-                title: response[preset]?.about.lang[index].title,
-                descRedTxt: response[preset]?.about.lang[index].descRedTxt,
-                desc: response[preset]?.about.lang[index].desc,
-                note: response[preset]?.about.lang[index].note,
-              })),
-            },
-            pricing: response[preset].pricing.map((pricingItem, index) => ({
-              id: pricingItem.id,
-              price: pricingItem.price,
-              package: pricingItem.package,
-              title: { lang: pricingItem.title.lang.map((title) => [...title]) },
-              list: pricingItem.list.map((listItem) => ({
-                qty: listItem.qty,
-                label: { lang: listItem.label.lang.map((label) => [...label]) },
-              })),
-            })),
-            presetLandingPagePortfolio: response[preset].presetLandingPagePortfolio,
-          },
-        ]);
-      }
+    if (response[preset]) {
+      const updatedValue: LandingPage.LandingPageData = {
+        id: 0,
+        about: {
+          lang: response[preset].about.lang.map((data) => ({
+            titleRedTxt: data.titleRedTxt,
+            title: data.title,
+            descRedTxt: data.descRedTxt,
+            desc: data.desc,
+            note: data.note,
+          })),
+        },
+        presetLandingPagePortfolio: response[preset].presetLandingPagePortfolio,
+        pricing: response[preset].pricing.map((data) => ({
+          id: data.id,
+          price: data.price,
+          package: data.package,
+          title: { lang: data.title.lang.map((data) => [...data]) },
+          list: data.list.map((data) => ({ qty: data.qty, label: { lang: [...data.label.lang] } })),
+        })),
+        testimony: response[preset].testimony.map((data) => ({
+          id: data.id,
+          name: data.name,
+          status: data.status,
+          comment: { lang: [...data.comment.lang] },
+          image: data.image,
+        })),
+        testimonyStatistics: {
+          happyClient: response[preset].testimonyStatistics.happyClient,
+          completedProjects: response[preset].testimonyStatistics.completedProjects,
+          subscriber: response[preset].testimonyStatistics.subscriber,
+        },
+      };
+      setValue([updatedValue]);
     }
-    updateValue();
   }, [preset, response]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, key: string, index: number) => {
