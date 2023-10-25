@@ -14,9 +14,9 @@ export default function PriceCard({ pricing, code }: { pricing: any; code: numbe
               <p className="text-lg font-semibold">PACKAGE {data.package}</p>
             </div>
             <h3 className="mb-5 text-center text-2xl font-semibold">
-              {data.title.lang[code][0]}
+              {data.title[0]}
               <br />
-              {data.title.lang[code][1]}
+              {data.title[1]}
             </h3>
           </div>
           <div className="flex items-start justify-center p-5">
