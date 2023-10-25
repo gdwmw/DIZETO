@@ -25,12 +25,7 @@
         "id": 1,
         "price": "1.5",
         "package": "A",
-        "title": {
-          "lang": [
-            ["PHOTO", "PRE-WEDDING"],
-            ["PHOTO", "PRE-WEDDING"]
-          ]
-        },
+        "title": ["PHOTO", "PRE-WEDDING"],
         "list": [
           { "qty": 1, "label": { "lang": ["CONCEPT PHOTO", "CONCEPT PHOTO"] } },
           { "qty": 1, "label": { "lang": ["LOCATION", "LOCATION"] } },
@@ -44,12 +39,7 @@
         "id": 2,
         "price": "1.0",
         "package": "D",
-        "title": {
-          "lang": [
-            ["PHOTO", "PRE-WEDDING"],
-            ["PHOTO", "PRE-WEDDING"]
-          ]
-        },
+        "title": ["PHOTO", "PRE-WEDDING"],
         "list": [
           { "qty": 3, "label": { "lang": ["CONCEPT PHOTO", "CONCEPT PHOTO"] } },
           { "qty": 3, "label": { "lang": ["LOCATION", "LOCATION"] } },
@@ -63,12 +53,7 @@
         "id": 3,
         "price": "1.5",
         "package": "B",
-        "title": {
-          "lang": [
-            ["PHOTO", "DOCUMENTATION"],
-            ["PHOTO", "DOCUMENTATION"]
-          ]
-        },
+        "title": ["PHOTO", "DOCUMENTATION"],
         "list": [
           { "qty": 6, "label": { "lang": ["HOURS", "HOURS"] } },
           { "qty": 1, "label": { "lang": ["LOCATION", "LOCATION"] } },
@@ -83,12 +68,7 @@
         "id": 4,
         "price": "0.6",
         "package": "A",
-        "title": {
-          "lang": [
-            ["PHOTO", "CATALOG PRODUCT"],
-            ["PHOTO", "CATALOG PRODUCT"]
-          ]
-        },
+        "title": ["PHOTO", "CATALOG PRODUCT"],
         "list": [
           { "qty": 5, "label": { "lang": ["PRODUCT", "PRODUCT"] } },
           { "qty": 4, "label": { "lang": ["ANGLE PHOTO", "ANGLE PHOTO"] } },
