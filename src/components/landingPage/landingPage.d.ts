@@ -11,9 +11,7 @@ declare namespace LandingPage {
     id: number;
     price: string;
     package: string;
-    title: {
-      lang: string[][];
-    };
+    title: string[];
     list: {
       qty: number;
       label: {
