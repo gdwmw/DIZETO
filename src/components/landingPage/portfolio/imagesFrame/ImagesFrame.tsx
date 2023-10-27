@@ -125,7 +125,7 @@ export default function ImagesFrame({ folder, database, link, copyright }: Image
                 alt={database[dataIndex]}
                 height={1000}
                 width={1000}
-                priority
+                loading="lazy"
                 onLoadCapture={handleImageLoaded}
                 className="h-fit w-fit transition-all duration-1000"
                 style={{ maxHeight: imageLoaded ? "1000px" : "0px", maxWidth: imageLoaded ? "1000px" : "0px" }}
