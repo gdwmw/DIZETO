@@ -6,6 +6,7 @@ import InputNumber from "./inputs/InputNumber";
 import InputText from "./inputs/InputText";
 import Select from "./inputs/Select";
 import TextArea from "./inputs/TextArea";
+import landingPageDB from "@/database/landingpage.json";
 
 export default function Main() {
   const [response, setResponse] = useState<LandingPage.LandingPageData[]>([]);
@@ -65,19 +66,14 @@ export default function Main() {
     },
   ]);
 
+  async function fetchData() {
+    fetch("https://6536584abb226bb85dd1f31f.mockapi.io/landingpage")
+      .then((response) => response.json())
+      .then((data) => setResponse(data))
+      .catch((error) => console.error("Error fetching data: " + error));
+  }
+
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const response: Response = await fetch("https://6536584abb226bb85dd1f31f.mockapi.io/landingpage");
-        if (!response.ok) {
-          throw new Error("Failed to fetch data");
-        }
-        const data: LandingPage.LandingPageData[] = await response.json();
-        setResponse(data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    }
     fetchData();
   }, []);
 
@@ -118,6 +114,42 @@ export default function Main() {
       setValue([updatedValue]);
     }
   }, [preset, response]);
+
+  // TODO Jangan lupa pertimbangkan untuk metode fecth nya lebih baik menggunakan try and catch atau metode ini
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const updatedValue = value[preset];
+    fetch(`https://6536584abb226bb85dd1f31f.mockapi.io/landingpage/${updatedValue.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedValue),
+    })
+      .then(() => {
+        fetchData();
+        alert("Submitted successfully!");
+      })
+      .catch((error) => console.error("Error editing data: " + error));
+  };
+
+  const handleReset = (e: React.FormEvent) => {
+    e.preventDefault();
+    const defaultValue = landingPageDB[preset];
+    fetch(`https://6536584abb226bb85dd1f31f.mockapi.io/landingpage/${defaultValue.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(defaultValue),
+    })
+      .then(() => {
+        fetchData();
+        alert("Reset successful!");
+      })
+      .catch((error) => console.error("Error editing data: " + error));
+  };
 
   const handleInputAbout = (e: React.ChangeEvent<HTMLInputElement>, key: string, listIndex: number) => {
     setValue((prevValue) => {
@@ -170,7 +202,16 @@ export default function Main() {
   return (
     <main className="container mx-auto p-5">
       <section id="About" className="scroll-mt-[84px]">
-        <form className="paper space-y-10 bg-white p-5 dark:bg-dark">
+        <form onSubmit={handleSubmit} className="paper space-y-10 bg-white p-5 dark:bg-dark">
+          <div className=" space-x-5">
+            <button type="submit" className="red-line-button">
+              Submit
+            </button>
+            <button type="button" className="red-line-button" onClick={handleReset}>
+              Reset
+            </button>
+          </div>
+
           <fieldset className="rounded-md border-2 border-red-600 px-3 pb-2">
             <legend className="px-2 font-semibold text-red-600">ABOUT</legend>
             <section className="space-y-5">
