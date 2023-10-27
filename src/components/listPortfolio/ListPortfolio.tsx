@@ -18,6 +18,9 @@ export default function ListPortfolio() {
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
+
+  // TODO Buat komponent untuk list portfolio
+
   return (
     <div className="container mx-auto px-5 py-10">
       <div className="paper-portfolio">
