@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import LandingPage from "../landingPage/landingPage";
+import LandingPage from "@/types/landingPage";
 import InputNumber from "../inputs/InputNumber";
 import InputText from "../inputs/InputText";
 import Select from "../inputs/Select";
