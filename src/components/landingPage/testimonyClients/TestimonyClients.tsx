@@ -79,10 +79,11 @@ export default function TestimonyClients({ data, code, testimonyStatistics }: Te
 
           <Image
             src={require(`@/assets/images/testimony/${data[testimonyIndex].image}`)}
-            alt="Image"
+            alt="Testimony"
             height={128}
             width={128}
-            quality={50}
+            quality={30}
+            priority
             className="rounded-full"
           />
 
@@ -151,26 +152,26 @@ export default function TestimonyClients({ data, code, testimonyStatistics }: Te
               <div className="flex items-center justify-evenly">
                 {theme.resolvedTheme === "light" && (
                   <a href="http://www.angklungmuhibah.id" target="_blank" rel="noopener noreferrer">
-                    <Image src={maGray} alt="Muhibah Angklung" quality={50} loading="lazy" className="clients-img" />
+                    <Image src={maGray} alt="Muhibah Angklung" quality={30} priority className="clients-img" />
                   </a>
                 )}
                 {theme.resolvedTheme === "light" && (
                   <a href="https://www.instagram.com/rumahbatikwijaya/?hl=id" target="_blank" rel="noopener noreferrer">
-                    <Image src={rbwGray} alt="Rumah Batik Wijaya" quality={50} loading="lazy" className="clients-img" />
+                    <Image src={rbwGray} alt="Rumah Batik Wijaya" quality={30} priority className="clients-img" />
                   </a>
                 )}
                 {theme.resolvedTheme === "dark" && (
                   <a href="http://www.angklungmuhibah.id" target="_blank" rel="noopener noreferrer">
-                    <Image src={maWhite} alt="Muhibah Angklung" quality={50} loading="lazy" className="clients-img" />
+                    <Image src={maWhite} alt="Muhibah Angklung" quality={30} priority className="clients-img" />
                   </a>
                 )}
                 {theme.resolvedTheme === "dark" && (
                   <a href="https://www.instagram.com/rumahbatikwijaya/?hl=id" target="_blank" rel="noopener noreferrer">
-                    <Image src={rbwWhite} alt="Rumah Batik Wijaya" quality={50} loading="lazy" className="clients-img" />
+                    <Image src={rbwWhite} alt="Rumah Batik Wijaya" quality={30} priority className="clients-img" />
                   </a>
                 )}
                 <a href="https://irmajabar.com/" target="_blank" rel="noopener noreferrer">
-                  <Image src={irma} alt="IRMA" quality={50} loading="lazy" className="clients-img" />
+                  <Image src={irma} alt="IRMA" quality={30} priority className="clients-img" />
                 </a>
               </div>
               <div className="flex items-center justify-evenly">
@@ -179,27 +180,23 @@ export default function TestimonyClients({ data, code, testimonyStatistics }: Te
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Image src={kp} alt="Kopi Purnama" quality={50} loading="lazy" className="clients-img" />
+                  <Image src={kp} alt="Kopi Purnama" quality={30} priority className="clients-img" />
                 </a>
                 <a href="https://gofood.link/a/DVoCLZN" target="_blank" rel="noopener noreferrer">
-                  {theme.resolvedTheme === "light" && <Image src={lcGray} alt="Lentera Coffee" quality={50} loading="lazy" className="clients-img" />}
-                  {theme.resolvedTheme === "dark" && <Image src={lcWhite} alt="Lentera Coffee" quality={50} loading="lazy" className="clients-img" />}
+                  {theme.resolvedTheme === "light" && <Image src={lcGray} alt="Lentera Coffee" quality={30} priority className="clients-img" />}
+                  {theme.resolvedTheme === "dark" && <Image src={lcWhite} alt="Lentera Coffee" quality={30} priority className="clients-img" />}
                 </a>
                 <a href="https://www.youtube.com/@vittosafiy748" target="_blank" rel="noopener noreferrer">
-                  <Image src={sk} alt="Safiy Kitchen" quality={50} loading="lazy" className="clients-img" />
+                  <Image src={sk} alt="Safiy Kitchen" quality={30} priority className="clients-img" />
                 </a>
                 <a href="https://pesantrentahfidzashrmadani.wordpress.com/" target="_blank" rel="noopener noreferrer">
-                  {theme.resolvedTheme === "light" && (
-                    <Image src={maGray} alt="Al-'Ashr Al-Madani" quality={50} loading="lazy" className="clients-img" />
-                  )}
-                  {theme.resolvedTheme === "dark" && (
-                    <Image src={maWhite} alt="Al-'Ashr Al-Madani" quality={50} loading="lazy" className="clients-img" />
-                  )}
+                  {theme.resolvedTheme === "light" && <Image src={maGray} alt="Al-'Ashr Al-Madani" quality={30} priority className="clients-img" />}
+                  {theme.resolvedTheme === "dark" && <Image src={maWhite} alt="Al-'Ashr Al-Madani" quality={30} priority className="clients-img" />}
                 </a>
               </div>
             </div>
           ) : (
-            <Image src={loadingAnimation} alt="Loading" width={100} quality={50} className="mx-auto my-20" />
+            <Image src={loadingAnimation} alt="Loading" width={100} quality={30} className="mx-auto my-20" />
           )}
         </div>
       </div>

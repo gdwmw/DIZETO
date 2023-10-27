@@ -83,9 +83,9 @@ export default function ImagesFrame({ folder, database, link, copyright }: Image
               <Image
                 src={require(`@/assets/images/thumbnail/${folder}/${image}`)}
                 alt={image}
-                quality={50}
-                loading="lazy"
+                quality={30}
                 placeholder="blur"
+                priority
                 className="rounded-sm"
               />
             </div>
@@ -114,18 +114,18 @@ export default function ImagesFrame({ folder, database, link, copyright }: Image
               </button>
               {isLoading && (
                 <div className="detail-photo-loading">
-                  <Image src={loadingAnimation} alt="Loading" height={100} width={100} quality={50} />
+                  <Image src={loadingAnimation} alt="Loading..." height={100} width={100} quality={30} />
                 </div>
               )}
               <div className={`detail-photo-loading-interactive ${isLoadingInteractive ? "opacity-100" : "opacity-0"}`}>
-                <Image src={loadingAnimation} alt="Loading" height={100} width={100} quality={50} />
+                <Image src={loadingAnimation} alt="Loading..." height={100} width={100} quality={30} />
               </div>
               <Image
                 src={`${link}${database[dataIndex]}`}
                 alt={database[dataIndex]}
                 height={1000}
                 width={1000}
-                priority={true}
+                priority
                 onLoadCapture={handleImageLoaded}
                 className="h-fit w-fit transition-all duration-1000"
                 style={{ maxHeight: imageLoaded ? "1000px" : "0px", maxWidth: imageLoaded ? "1000px" : "0px" }}

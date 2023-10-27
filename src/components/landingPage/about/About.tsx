@@ -29,7 +29,7 @@ export default function About({ data, code }: AboutProps) {
               <p className="pt-5 font-semibold text-red-600">{data.about.lang[code].note}</p>
             </div>
             <div className="flex h-full w-full items-center justify-center">
-              <Image src={logoDIZETO} alt="DIZETO" height={250} width={250} quality={50} priority={true} />
+              <Image src={logoDIZETO} alt="DIZETO" height={250} width={250} quality={30} priority />
             </div>
           </div>
         </div>

@@ -1,7 +1,8 @@
 import { dbLandingPage } from "@/database/database";
 import LandingPage from "@/types/landingPage";
+import dynamic from "next/dynamic";
 import Link from "next/link";
-import ImagesFrame from "./imagesFrame/ImagesFrame";
+const ImagesFrame = dynamic(() => import("./imagesFrame/ImagesFrame"));
 
 type PortfolioProps = {
   data: LandingPage.LandingPageData;
