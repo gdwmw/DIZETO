@@ -1,6 +1,6 @@
 "use client";
 
-import { sortedListPortfolio } from "@/database/database";
+import { dbSortedListPortfolio } from "@/database/database";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -9,11 +9,11 @@ import { FaArrowLeft } from "react-icons/fa";
 export default function ListPortfolio() {
   const itemsPerPage = 20;
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.ceil(sortedListPortfolio.length / itemsPerPage);
+  const totalPages = Math.ceil(dbSortedListPortfolio.length / itemsPerPage);
   const getDataForPage = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
-    return sortedListPortfolio.slice(startIndex, endIndex);
+    return dbSortedListPortfolio.slice(startIndex, endIndex);
   };
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
