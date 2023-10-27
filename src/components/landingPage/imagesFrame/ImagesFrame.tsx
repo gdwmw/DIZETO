@@ -123,11 +123,12 @@ export default function ImagesFrame({ folder, database, link, copyright }: Image
               <Image
                 src={`${link}${database[dataIndex]}`}
                 alt={database[dataIndex]}
-                height={imageLoaded ? 1000 : 200}
-                width={imageLoaded ? 1000 : 200}
+                height={1000}
+                width={1000}
                 priority={true}
                 onLoadCapture={handleImageLoaded}
-                className="transition-all duration-1000"
+                className="h-fit w-fit transition-all duration-1000"
+                style={{ maxHeight: imageLoaded ? "1000px" : "0px", maxWidth: imageLoaded ? "1000px" : "0px" }}
               />
             </div>
             <div className="ml-1 text-sm font-semibold text-white dark:text-dark">
