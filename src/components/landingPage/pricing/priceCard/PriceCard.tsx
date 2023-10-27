@@ -1,7 +1,4 @@
-// IMPORT LIBRARIES
 import Link from "next/link";
-
-// IMPORT DATABASE
 
 export default function PriceCard({ pricing, code }: { pricing: any; code: number }) {
   return (

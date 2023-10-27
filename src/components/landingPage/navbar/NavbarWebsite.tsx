@@ -1,9 +1,9 @@
-// IMPORT LIBRARIES
+"use client";
+
+import logoDIZETO from "@/assets/images/logo/dizeto.svg";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-
-// IMPORT COMPONENTS
-import ThemeSwitcherWebsite from "../themeSwitcher/ThemeSwitcherWebsite";
+import ThemeSwitcherWebsite from "./themeSwitcher/ThemeSwitcherWebsite";
 
 export default function NavbarWebsite() {
   const [scrollPosition, setScrollPosition] = useState<number>(0);
@@ -54,7 +54,7 @@ export default function NavbarWebsite() {
         }`}
       >
         <a href="#Top" className="cursor-pointer" onClick={handleTopSmoothScroll}>
-          <Image src={require("@/assets/images/logo/dizeto.svg")} alt="DIZETO" width={40} height={40} quality={50} priority={true} />
+          <Image src={logoDIZETO} alt="DIZETO" width={40} height={40} quality={50} priority={true} />
         </a>
         <ul className="flex gap-10 text-lg font-bold dark:text-white">
           <li>

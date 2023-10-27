@@ -1,6 +1,6 @@
 "use client";
 
-// IMPORT LIBRARIES
+import loadingAnimation from "@/assets/loading/loading.svg";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
@@ -114,11 +114,11 @@ export default function ImagesFrame({ folder, database, link, copyright }: Image
               </button>
               {isLoading && (
                 <div className="detail-photo-loading">
-                  <Image src={require("@/assets/loading/loading.svg")} alt="Loading" height={100} width={100} quality={50} />
+                  <Image src={loadingAnimation} alt="Loading" height={100} width={100} quality={50} />
                 </div>
               )}
               <div className={`detail-photo-loading-interactive ${isLoadingInteractive ? "opacity-100" : "opacity-0"}`}>
-                <Image src={require("@/assets/loading/loading.svg")} alt="Loading" height={100} width={100} quality={50} />
+                <Image src={loadingAnimation} alt="Loading" height={100} width={100} quality={50} />
               </div>
               <Image
                 src={`${link}${database[dataIndex]}`}

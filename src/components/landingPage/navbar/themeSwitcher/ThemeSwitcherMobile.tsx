@@ -1,4 +1,5 @@
-// IMPORT LIBRARIES
+"use client";
+
 import { useTheme } from "next-themes";
 import { BsFillMoonStarsFill, BsSunFill } from "react-icons/bs";
 import { SiMoonrepo } from "react-icons/si";

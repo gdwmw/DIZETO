@@ -1,12 +1,31 @@
 "use client";
 
+import irma from "@/assets/images/clients/irma.png";
+import kp from "@/assets/images/clients/kp.png";
+import lcGray from "@/assets/images/clients/lc-gray.svg";
+import lcWhite from "@/assets/images/clients/lc-white.svg";
+import maGray from "@/assets/images/clients/ma-gray.svg";
+import maWhite from "@/assets/images/clients/ma-white.svg";
+import rbwGray from "@/assets/images/clients/rbw-gray.svg";
+import rbwWhite from "@/assets/images/clients/rbw-white.svg";
+import sk from "@/assets/images/clients/sk.png";
+import loadingAnimation from "@/assets/loading/loading.svg";
+import LandingPage from "@/types/landingPage";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { FaQuoteLeft, FaRegThumbsUp, FaToolbox, FaUserAlt } from "react-icons/fa";
 import { GoDotFill } from "react-icons/go";
 
-export default function Testimony({ testimony, code, testimonyStatistics }: { testimony: any; code: number; testimonyStatistics: any }) {
+type TestimonyClientsProps = {
+  data: LandingPage.TestimonyItem[];
+  code: number;
+  testimonyStatistics: LandingPage.TestimonyStatistics;
+};
+
+// TODO Optimasi dan perbaiki kode ini
+
+export default function TestimonyClients({ data, code, testimonyStatistics }: TestimonyClientsProps) {
   const [mounted, setMounted] = useState<boolean>(false);
   const theme = useTheme();
   const [testimonyIndex, setTestimonyIndex] = useState<number>(0);
@@ -18,12 +37,12 @@ export default function Testimony({ testimony, code, testimonyStatistics }: { te
 
   useEffect(() => {
     const testimonyInterval = setInterval(() => {
-      setTestimonyIndex((prevIndex) => (prevIndex + 1) % testimony.length);
+      setTestimonyIndex((prevIndex) => (prevIndex + 1) % data.length);
     }, 5000);
     return () => {
       clearInterval(testimonyInterval);
     };
-  }, [testimony.length]);
+  }, [data.length]);
 
   useEffect(() => {
     const dateTimeInterval = setInterval(() => {
@@ -59,7 +78,7 @@ export default function Testimony({ testimony, code, testimonyStatistics }: { te
           <FaQuoteLeft size={30} />
 
           <Image
-            src={require(`@/assets/images/testimony/${testimony[testimonyIndex].image}`)}
+            src={require(`@/assets/images/testimony/${data[testimonyIndex].image}`)}
             alt="Image"
             height={128}
             width={128}
@@ -68,14 +87,14 @@ export default function Testimony({ testimony, code, testimonyStatistics }: { te
           />
 
           <div className="text-center">
-            <h3 className="text-lg font-semibold">{testimony[testimonyIndex].name}</h3>
-            <p className="text-sm font-semibold text-red-600">{testimony[testimonyIndex].status}</p>
+            <h3 className="text-lg font-semibold">{data[testimonyIndex].name}</h3>
+            <p className="text-sm font-semibold text-red-600">{data[testimonyIndex].status}</p>
           </div>
 
-          <p className="h-12 w-[500px] text-center font-semibold">{`"${testimony[testimonyIndex].comment.lang[code]}"`}</p>
+          <p className="h-12 w-[500px] text-center font-semibold">{`"${data[testimonyIndex].comment.lang[code]}"`}</p>
 
           <div className="mt-1 flex items-center justify-center gap-1">
-            {testimony.map((_: any, index: any) => (
+            {data.map((_: any, index: any) => (
               <div key={index} className={testimonyIndex === index ? "text-red-600" : "text-red-300"}>
                 <GoDotFill size={25} />
               </div>
@@ -132,50 +151,26 @@ export default function Testimony({ testimony, code, testimonyStatistics }: { te
               <div className="flex items-center justify-evenly">
                 {theme.resolvedTheme === "light" && (
                   <a href="http://www.angklungmuhibah.id" target="_blank" rel="noopener noreferrer">
-                    <Image
-                      src={require("@/assets/images/clients/ma-gray.svg")}
-                      alt="Muhibah Angklung"
-                      quality={50}
-                      loading="lazy"
-                      className="clients-img"
-                    />
+                    <Image src={maGray} alt="Muhibah Angklung" quality={50} loading="lazy" className="clients-img" />
                   </a>
                 )}
                 {theme.resolvedTheme === "light" && (
                   <a href="https://www.instagram.com/rumahbatikwijaya/?hl=id" target="_blank" rel="noopener noreferrer">
-                    <Image
-                      src={require("@/assets/images/clients/rbw-gray.svg")}
-                      alt="Rumah Batik Wijaya"
-                      quality={50}
-                      loading="lazy"
-                      className="clients-img"
-                    />
+                    <Image src={rbwGray} alt="Rumah Batik Wijaya" quality={50} loading="lazy" className="clients-img" />
                   </a>
                 )}
                 {theme.resolvedTheme === "dark" && (
                   <a href="http://www.angklungmuhibah.id" target="_blank" rel="noopener noreferrer">
-                    <Image
-                      src={require("@/assets/images/clients/ma-white.svg")}
-                      alt="Muhibah Angklung"
-                      quality={50}
-                      loading="lazy"
-                      className="clients-img"
-                    />
+                    <Image src={maWhite} alt="Muhibah Angklung" quality={50} loading="lazy" className="clients-img" />
                   </a>
                 )}
                 {theme.resolvedTheme === "dark" && (
                   <a href="https://www.instagram.com/rumahbatikwijaya/?hl=id" target="_blank" rel="noopener noreferrer">
-                    <Image
-                      src={require("@/assets/images/clients/rbw-white.svg")}
-                      alt="Rumah Batik Wijaya"
-                      quality={50}
-                      loading="lazy"
-                      className="clients-img"
-                    />
+                    <Image src={rbwWhite} alt="Rumah Batik Wijaya" quality={50} loading="lazy" className="clients-img" />
                   </a>
                 )}
                 <a href="https://irmajabar.com/" target="_blank" rel="noopener noreferrer">
-                  <Image src={require("@/assets/images/clients/irma.png")} alt="IRMA" quality={50} loading="lazy" className="clients-img" />
+                  <Image src={irma} alt="IRMA" quality={50} loading="lazy" className="clients-img" />
                 </a>
               </div>
               <div className="flex items-center justify-evenly">
@@ -184,55 +179,27 @@ export default function Testimony({ testimony, code, testimonyStatistics }: { te
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Image src={require("@/assets/images/clients/kp.png")} alt="Kopi Purnama" quality={50} loading="lazy" className="clients-img" />
+                  <Image src={kp} alt="Kopi Purnama" quality={50} loading="lazy" className="clients-img" />
                 </a>
                 <a href="https://gofood.link/a/DVoCLZN" target="_blank" rel="noopener noreferrer">
-                  {theme.resolvedTheme === "light" && (
-                    <Image
-                      src={require("@/assets/images/clients/lc-gray.svg")}
-                      alt="Lentera Coffee"
-                      quality={50}
-                      loading="lazy"
-                      className="clients-img"
-                    />
-                  )}
-                  {theme.resolvedTheme === "dark" && (
-                    <Image
-                      src={require("@/assets/images/clients/lc-white.svg")}
-                      alt="Lentera Coffee"
-                      quality={50}
-                      loading="lazy"
-                      className="clients-img"
-                    />
-                  )}
+                  {theme.resolvedTheme === "light" && <Image src={lcGray} alt="Lentera Coffee" quality={50} loading="lazy" className="clients-img" />}
+                  {theme.resolvedTheme === "dark" && <Image src={lcWhite} alt="Lentera Coffee" quality={50} loading="lazy" className="clients-img" />}
                 </a>
                 <a href="https://www.youtube.com/@vittosafiy748" target="_blank" rel="noopener noreferrer">
-                  <Image src={require("@/assets/images/clients/sk.png")} alt="Safiy Kitchen" quality={50} loading="lazy" className="clients-img" />
+                  <Image src={sk} alt="Safiy Kitchen" quality={50} loading="lazy" className="clients-img" />
                 </a>
                 <a href="https://pesantrentahfidzashrmadani.wordpress.com/" target="_blank" rel="noopener noreferrer">
                   {theme.resolvedTheme === "light" && (
-                    <Image
-                      src={require("@/assets/images/clients/ma-gray.svg")}
-                      alt="Al-'Ashr Al-Madani"
-                      quality={50}
-                      loading="lazy"
-                      className="clients-img"
-                    />
+                    <Image src={maGray} alt="Al-'Ashr Al-Madani" quality={50} loading="lazy" className="clients-img" />
                   )}
                   {theme.resolvedTheme === "dark" && (
-                    <Image
-                      src={require("@/assets/images/clients/ma-white.svg")}
-                      alt="Al-'Ashr Al-Madani"
-                      quality={50}
-                      loading="lazy"
-                      className="clients-img"
-                    />
+                    <Image src={maWhite} alt="Al-'Ashr Al-Madani" quality={50} loading="lazy" className="clients-img" />
                   )}
                 </a>
               </div>
             </div>
           ) : (
-            <Image src={require("@/assets/loading/loading.svg")} alt="Loading" width={100} quality={50} className="mx-auto my-20" />
+            <Image src={loadingAnimation} alt="Loading" width={100} quality={50} className="mx-auto my-20" />
           )}
         </div>
       </div>
