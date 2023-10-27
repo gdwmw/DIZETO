@@ -21,6 +21,8 @@ import TestimonyClients from "./testimonyClients/TestimonyClients";
 
 // TODO Cek height width image
 
+// TODO Perbaiki type data
+
 export default function Main({ result }: { result: LandingPage.LandingPageData[] }) {
   const preset: number = 0;
   const code: number = 0;
