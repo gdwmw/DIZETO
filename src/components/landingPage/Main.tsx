@@ -17,7 +17,7 @@ import Testimony from "./testimony/Testimony";
 import LandingPage from "./landingPage";
 
 async function Fetch() {
-  const response = await fetch("https://6536584abb226bb85dd1f31f.mockapi.io/landingpage");
+  const response = await fetch("https://6536584abb226bb85dd1f31f.mockapi.io/landingpage", { next: { revalidate: 0 } });
   return response.json();
 }
 
