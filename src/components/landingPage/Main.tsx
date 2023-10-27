@@ -15,6 +15,12 @@ import TestimonyClients from "./testimonyClients/TestimonyClients";
 
 // TODO Cek apakah masih ada yang pake require pada image yang tidak dynamic import
 
+// TODO Cek quality image
+
+// TODO Cek strategy image
+
+// TODO Cek height width image
+
 export default function Main({ result }: { result: LandingPage.LandingPageData[] }) {
   const preset: number = 0;
   const code: number = 0;
