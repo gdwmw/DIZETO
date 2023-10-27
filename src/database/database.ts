@@ -1,4 +1,4 @@
-const landingPage = [
+const dbLandingPage = [
   "DZT_CC1.webp",
   "DZT_CC2.webp",
   "DZT_CC3.webp",
@@ -13,7 +13,7 @@ const landingPage = [
   "DZT_CC12.webp",
 ];
 
-const listPortfolio = [
+const dbListPortfolio = [
   {
     id: 1,
     image: "ginzas-birthday/thumbnail.webp",
@@ -149,13 +149,13 @@ const listPortfolio = [
   },
 ];
 
-const sortedListPortfolio = listPortfolio.sort((a, b) => {
+const dbSortedListPortfolio = dbListPortfolio.sort((a, b) => {
   if (a.category < b.category) return -1;
   if (a.category > b.category) return 1;
   return 0;
 });
 
-const portfolioPathIndex: any = {
+const dbPortfolioPathIndex: any = {
   loading: 0,
   ginzasbirthday: 1,
   halimprewedding: 2,
@@ -178,7 +178,7 @@ const portfolioPathIndex: any = {
   eidphoto: 19,
 };
 
-const portfolio = [
+const dbPortfolio = [
   {
     id: 0,
     tdat: 1,
@@ -401,4 +401,4 @@ const portfolio = [
   },
 ];
 
-export { landingPage, sortedListPortfolio, portfolioPathIndex, portfolio };
+export { dbLandingPage, dbSortedListPortfolio, dbPortfolioPathIndex, dbPortfolio };
