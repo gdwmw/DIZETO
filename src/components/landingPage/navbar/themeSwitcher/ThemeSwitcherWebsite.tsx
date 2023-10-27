@@ -32,7 +32,7 @@ export default function ThemeSwitcherWebsite() {
   if (!mounted) {
     return (
       <div className="fixed right-10 top-3 z-[21] h-10 w-10">
-        <Image src={loadingAnimation} alt="Loading" height={40} width={40} quality={50} />
+        <Image src={loadingAnimation} alt="Loading..." height={40} width={40} quality={30} priority />
       </div>
     );
   }

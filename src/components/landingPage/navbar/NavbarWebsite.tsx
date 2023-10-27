@@ -54,7 +54,7 @@ export default function NavbarWebsite() {
         }`}
       >
         <a href="#Top" className="cursor-pointer" onClick={handleTopSmoothScroll}>
-          <Image src={logoDIZETO} alt="DIZETO" width={40} height={40} quality={50} priority={true} />
+          <Image src={logoDIZETO} alt="DIZETO" width={40} height={40} quality={30} priority />
         </a>
         <ul className="flex gap-10 text-lg font-bold dark:text-white">
           <li>
