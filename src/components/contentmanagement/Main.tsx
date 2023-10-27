@@ -2,11 +2,12 @@
 
 import React, { useEffect, useState } from "react";
 import LandingPage from "../landingPage/landingPage";
-import InputNumber from "./inputs/InputNumber";
-import InputText from "./inputs/InputText";
-import Select from "./inputs/Select";
-import TextArea from "./inputs/TextArea";
+import InputNumber from "../inputs/InputNumber";
+import InputText from "../inputs/InputText";
+import Select from "../inputs/Select";
+import TextArea from "../inputs/TextArea";
 import landingPageDB from "@/database/landingpage.json";
+import { signOut } from "next-auth/react";
 
 export default function Main() {
   const [response, setResponse] = useState<LandingPage.LandingPageData[]>([]);
@@ -209,6 +210,9 @@ export default function Main() {
             </button>
             <button type="button" className="red-line-button" onClick={handleReset}>
               Reset
+            </button>
+            <button type="button" className="red-line-button" onClick={() => signOut()}>
+              Logout
             </button>
           </div>
 
