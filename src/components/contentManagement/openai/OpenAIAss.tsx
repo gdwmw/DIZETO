@@ -8,7 +8,7 @@ import Image from "next/image";
 
 export default function OpenAIAss() {
   const [prompt, setPrompt] = useState("");
-  const [result, setResult] = useState("");
+  const [result, setResult] = useState<any>("");
   const [loading, setLoading] = useState(false);
 
   const handleGenerate = async () => {
