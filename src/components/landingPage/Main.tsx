@@ -3,6 +3,9 @@
 // IMPORT TYPES
 import LandingPage from "@/types/landingPage";
 
+// IMPORT REDUX
+import { useSelector } from "react-redux";
+
 // IMPORT COMPONENTS
 import About from "./about/About";
 import Contact from "./contact/Contact";
@@ -25,7 +28,7 @@ import TestimonyClients from "./testimonyClients/TestimonyClients";
 
 export default function Main({ result }: { result: LandingPage.LandingPageData[] }) {
   const preset: number = 0;
-  const code: number = 0;
+  const code: number = useSelector((state: any) => state.lang.code);
   const data = result[preset];
   return (
     <main>

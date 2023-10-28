@@ -1,6 +1,8 @@
 import Footer from "@/components/Footer";
 import AuthProvider from "@/nextAuth/provider";
 import { NextThemeProvider } from "@/nextTheme/provider";
+import ReduxPersistProvider from "@/redux/persisted/provider";
+import ReduxProvider from "@/redux/provider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -49,8 +51,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={inter.className}>
         <AuthProvider>
           <NextThemeProvider>
-            {children}
-            <Footer />
+            <ReduxProvider>
+              <ReduxPersistProvider>
+                {children}
+                <Footer />
+              </ReduxPersistProvider>
+            </ReduxProvider>
           </NextThemeProvider>
         </AuthProvider>
       </body>
