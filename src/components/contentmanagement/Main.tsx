@@ -8,6 +8,7 @@ import Select from "../inputs/Select";
 import TextArea from "../inputs/TextArea";
 import landingPageDB from "@/database/landingpage.json";
 import { signOut } from "next-auth/react";
+import OpenAIAss from "./openai/OpenAIAss";
 
 export default function Main() {
   const [response, setResponse] = useState<LandingPage.LandingPageData[]>([]);
@@ -215,7 +216,10 @@ export default function Main() {
               Logout
             </button>
           </div>
-
+          <fieldset className="rounded-md border-2 border-red-600 px-3 pb-5 pt-1">
+            <legend className="px-2 font-semibold text-red-600">OpenAI Assistant</legend>
+            <OpenAIAss />
+          </fieldset>
           <fieldset className="rounded-md border-2 border-red-600 px-3 pb-2">
             <legend className="px-2 font-semibold text-red-600">ABOUT</legend>
             <section className="space-y-5">
@@ -278,7 +282,6 @@ export default function Main() {
               </div>
             </section>
           </fieldset>
-
           <fieldset className="rounded-md border-2 border-red-600 px-3 pb-2">
             <legend className="px-2 font-semibold text-red-600">PORTFOLIO</legend>
             <section>
@@ -298,7 +301,6 @@ export default function Main() {
               </Select>
             </section>
           </fieldset>
-
           <fieldset className="rounded-md border-2 border-red-600 px-3 pb-2">
             <legend className="px-2 font-semibold text-red-600">PACKAGE</legend>
             <section className="grid grid-cols-2 gap-5 xl:grid-cols-4">
