@@ -1,10 +1,7 @@
 "use client";
 
-// IMPORT LIBRARIES
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
-
-// IMPORT COMPONENTS
 import NavbarLoading from "./navbar/NavbarLoading";
 const DynamicNavbarWebsite = dynamic(() => import("./navbar/NavbarWebsite"), { loading: () => <NavbarLoading /> });
 const DynamicNavbarMobile = dynamic(() => import("./navbar/NavbarMobile"), { loading: () => <NavbarLoading /> });

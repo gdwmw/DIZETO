@@ -6,8 +6,6 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { FiMenu } from "react-icons/fi";
 import ThemeSwitcherMobile from "./themeSwitcher/ThemeSwitcherMobile";
-import { useDispatch, useSelector } from "react-redux";
-import { setLangCode } from "@/redux/features/langCodeSlice";
 
 export default function NavbarMobile() {
   const [mounted, setMounted] = useState<boolean>(false);
@@ -15,8 +13,6 @@ export default function NavbarMobile() {
   const [isActive, setIsActive] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
-  const code: number = useSelector((state: any) => state.lang.code);
-  const dispatch: any = useDispatch();
 
   useEffect(() => {
     setMounted(true);
@@ -130,17 +126,6 @@ export default function NavbarMobile() {
               <a href="#Contact" className="navbar-website-options" onClick={handleSmoothScroll}>
                 Contact
               </a>
-            </li>
-            <li>
-              <div className="flex items-center gap-1">
-                <button type="button" onClick={() => dispatch(setLangCode(0))} className={code === 0 ? "text-red-600" : ""}>
-                  EN
-                </button>
-                <p>/</p>
-                <button type="button" onClick={() => dispatch(setLangCode(1))} className={code === 1 ? "text-red-600" : ""}>
-                  ID
-                </button>
-              </div>
             </li>
           </ul>
           <ThemeSwitcherMobile />

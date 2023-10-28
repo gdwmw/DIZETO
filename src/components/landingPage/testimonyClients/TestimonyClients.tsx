@@ -10,22 +10,16 @@ import rbwGray from "@/assets/images/clients/rbw-gray.svg";
 import rbwWhite from "@/assets/images/clients/rbw-white.svg";
 import sk from "@/assets/images/clients/sk.png";
 import loadingAnimation from "@/assets/loading/loading.svg";
-import LandingPage from "@/types/landingPage";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { FaQuoteLeft, FaRegThumbsUp, FaToolbox, FaUserAlt } from "react-icons/fa";
 import { GoDotFill } from "react-icons/go";
-
-type TestimonyClientsProps = {
-  data: LandingPage.TestimonyItem[];
-  code: number;
-  testimonyStatistics: LandingPage.TestimonyStatistics;
-};
+import { dbTestimonyClients } from "@/database/database";
 
 // TODO Optimasi dan perbaiki kode ini
 
-export default function TestimonyClients({ data, code, testimonyStatistics }: TestimonyClientsProps) {
+export default function TestimonyClients() {
   const [mounted, setMounted] = useState<boolean>(false);
   const theme = useTheme();
   const [testimonyIndex, setTestimonyIndex] = useState<number>(0);
@@ -37,12 +31,12 @@ export default function TestimonyClients({ data, code, testimonyStatistics }: Te
 
   useEffect(() => {
     const testimonyInterval = setInterval(() => {
-      setTestimonyIndex((prevIndex) => (prevIndex + 1) % data.length);
+      setTestimonyIndex((prevIndex) => (prevIndex + 1) % dbTestimonyClients.length);
     }, 5000);
     return () => {
       clearInterval(testimonyInterval);
     };
-  }, [data.length]);
+  }, []);
 
   useEffect(() => {
     const dateTimeInterval = setInterval(() => {
@@ -78,7 +72,7 @@ export default function TestimonyClients({ data, code, testimonyStatistics }: Te
           <FaQuoteLeft size={30} />
 
           <Image
-            src={require(`@/assets/images/testimony/${data[testimonyIndex].image}`)}
+            src={require(`@/assets/images/testimony/${dbTestimonyClients[testimonyIndex].image}`)}
             alt="Testimony"
             height={128}
             width={128}
@@ -88,14 +82,14 @@ export default function TestimonyClients({ data, code, testimonyStatistics }: Te
           />
 
           <div className="text-center">
-            <h3 className="text-lg font-semibold">{data[testimonyIndex].name}</h3>
-            <p className="text-sm font-semibold text-red-600">{data[testimonyIndex].status}</p>
+            <h3 className="text-lg font-semibold">{dbTestimonyClients[testimonyIndex].name}</h3>
+            <p className="text-sm font-semibold text-red-600">{dbTestimonyClients[testimonyIndex].status}</p>
           </div>
 
-          <p className="h-12 w-[500px] text-center font-semibold">{`"${data[testimonyIndex].comment.lang[code]}"`}</p>
+          <p className="h-12 w-[500px] text-center font-semibold">{`"${dbTestimonyClients[testimonyIndex].comment}"`}</p>
 
           <div className="mt-1 flex items-center justify-center gap-1">
-            {data.map((_: any, index: any) => (
+            {dbTestimonyClients.map((_, index) => (
               <div key={index} className={testimonyIndex === index ? "text-red-600" : "text-red-300"}>
                 <GoDotFill size={25} />
               </div>
@@ -107,7 +101,7 @@ export default function TestimonyClients({ data, code, testimonyStatistics }: Te
           <div className="flex flex-col items-center justify-center">
             <div className="flex items-center justify-center gap-2">
               <FaRegThumbsUp size={25} />
-              <p className="text-2xl font-bold text-red-600">{testimonyStatistics.happyClient}</p>
+              <p className="text-2xl font-bold text-red-600">48</p>
             </div>
             <h4 className="text-xl font-semibold">Happy Client</h4>
           </div>
@@ -117,7 +111,7 @@ export default function TestimonyClients({ data, code, testimonyStatistics }: Te
           <div className="flex flex-col items-center justify-center">
             <div className="flex items-center justify-center gap-2">
               <FaToolbox size={25} />
-              <p className="text-2xl font-bold text-red-600">{testimonyStatistics.completedProjects}</p>
+              <p className="text-2xl font-bold text-red-600">50</p>
             </div>
             <h4 className="text-xl font-semibold">Completed Projects</h4>
           </div>
@@ -127,7 +121,7 @@ export default function TestimonyClients({ data, code, testimonyStatistics }: Te
           <div className="flex flex-col items-center justify-center">
             <div className="flex items-center justify-center gap-2">
               <FaUserAlt size={25} />
-              <p className="text-2xl font-bold text-red-600">{testimonyStatistics.subscriber}</p>
+              <p className="text-2xl font-bold text-red-600">8</p>
             </div>
             <h4 className="text-xl font-semibold">Subscriber</h4>
           </div>

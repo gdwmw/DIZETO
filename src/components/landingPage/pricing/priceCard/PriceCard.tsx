@@ -1,9 +1,10 @@
 import Link from "next/link";
+import { dbPricing } from "@/database/database";
 
-export default function PriceCard({ pricing, code }: { pricing: any; code: number }) {
+export default function PriceCard() {
   return (
     <>
-      {pricing.map((data: any) => (
+      {dbPricing.map((data) => (
         <div key={data.id} className="price-card">
           <div className="relative flex h-40 w-full flex-col items-center justify-end bg-gray-200 dark:bg-gray-700 dark:text-white">
             <div className="price-card-circle">
@@ -18,10 +19,10 @@ export default function PriceCard({ pricing, code }: { pricing: any; code: numbe
           </div>
           <div className="flex items-start justify-center p-5">
             <ul className="space-y-5 text-center text-lg font-semibold dark:text-white">
-              {data.list.map((data: any, index: any) => (
+              {data.list.map((data, index) => (
                 <li key={index}>
                   <p>
-                    <span className="text-red-600">{data.qty}</span> {data.label.lang[code]}
+                    <span className="text-red-600">{data.qty}</span> {data.label}
                   </p>
                 </li>
               ))}

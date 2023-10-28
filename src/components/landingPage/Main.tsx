@@ -1,12 +1,3 @@
-"use client";
-
-// IMPORT TYPES
-import LandingPage from "@/types/landingPage";
-
-// IMPORT REDUX
-import { useSelector } from "react-redux";
-
-// IMPORT COMPONENTS
 import About from "./about/About";
 import Contact from "./contact/Contact";
 import Jumbotron from "./jumbotron/Jumbotron";
@@ -26,18 +17,15 @@ import TestimonyClients from "./testimonyClients/TestimonyClients";
 
 // TODO Perbaiki type data
 
-export default function Main({ result }: { result: LandingPage.LandingPageData[] }) {
-  const preset: number = 0;
-  const code: number = useSelector((state: any) => state.lang.code);
-  const data = result[preset];
+export default function Main() {
   return (
     <main>
       <Jumbotron />
       <section className="container mx-auto space-y-10 px-5">
-        <About data={data} code={code} />
-        <Portfolio data={data} />
-        <Pricing data={data} code={code} />
-        <TestimonyClients data={data.testimony} code={code} testimonyStatistics={data.testimonyStatistics} />
+        <About />
+        <Portfolio />
+        <Pricing />
+        <TestimonyClients />
         <Contact />
       </section>
     </main>
