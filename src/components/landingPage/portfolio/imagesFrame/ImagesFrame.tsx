@@ -114,11 +114,11 @@ export default function ImagesFrame({ folder, database, link, copyright }: Image
               </button>
               {isLoading && (
                 <div className="detail-photo-loading">
-                  <Image src={loadingAnimation} alt="Loading..." height={100} width={100} quality={30} />
+                  <Image src={loadingAnimation} alt="Loading..." height={100} width={100} quality={30} loading="lazy" />
                 </div>
               )}
               <div className={`detail-photo-loading-interactive ${isLoadingInteractive ? "opacity-100" : "opacity-0"}`}>
-                <Image src={loadingAnimation} alt="Loading..." height={100} width={100} quality={30} />
+                <Image src={loadingAnimation} alt="Loading..." height={100} width={100} quality={30} loading="lazy" />
               </div>
               <Image
                 src={`${link}${database[dataIndex]}`}

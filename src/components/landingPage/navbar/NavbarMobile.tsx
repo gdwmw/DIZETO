@@ -98,7 +98,7 @@ export default function NavbarMobile() {
       {isOpen && (
         <div ref={menuRef} className="navbar-menu-mobile">
           <a href="#Top" className="cursor-pointer" onClick={handleTopSmoothScroll}>
-            <Image src={logoDIZETO} alt="DIZETO" width={80} height={80} quality={30} priority />
+            <Image src={logoDIZETO} alt="DIZETO" width={80} height={80} quality={30} loading="lazy" />
           </a>
           <ul className="flex flex-col items-center justify-center gap-5 text-lg font-bold dark:text-white">
             <li className="space-x-10">
