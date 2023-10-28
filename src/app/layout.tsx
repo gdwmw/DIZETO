@@ -1,13 +1,16 @@
 import Footer from "@/components/Footer";
 import { NextThemeProvider } from "@/nextTheme/provider";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 0.5,
+};
 
 export const metadata: Metadata = {
-  viewport: { width: "device-width", initialScale: 0.5 },
   creator: "Gede Dewo Wahyu M.W",
   authors: { name: "Gede Dewo Wahyu M.W", url: "https://github.com/gdwmw" },
   applicationName: "DIZETO",

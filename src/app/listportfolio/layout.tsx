@@ -1,7 +1,11 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 0.5,
+};
 
 export const metadata: Metadata = {
-  viewport: { width: "device-width", initialScale: 0.5 },
   creator: "Gede Dewo Wahyu M.W",
   authors: { name: "Gede Dewo Wahyu M.W", url: "https://github.com/gdwmw" },
   applicationName: "DIZETO",
