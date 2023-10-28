@@ -8,7 +8,7 @@ import Image from "next/image";
 
 export default function OpenAIAss() {
   const [prompt, setPrompt] = useState("");
-  const [result, setResult] = useState<string | null>("");
+  const [result, setResult] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleGenerate = async () => {
@@ -21,7 +21,7 @@ export default function OpenAIAss() {
 
     try {
       const openai = new OpenAI({
-        apiKey: "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",
+        apiKey: "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",
         dangerouslyAllowBrowser: true,
       });
 
@@ -42,12 +42,12 @@ export default function OpenAIAss() {
   };
 
   return (
-    <section className="space-y-5">
+    <section>
       <TextArea label="Write your prompt" id="prompt" width="100%" value={prompt} onChange={(e) => setPrompt(e.target.value)} />
       <button
         type="button"
         onClick={handleGenerate}
-        className={`red-line-button-submit flex w-full items-center justify-center gap-1 ${
+        className={`red-line-button-submit mb-2 mt-5 flex w-full items-center justify-center gap-1 ${
           loading ? "cursor-wait" : "hover:bg-red-600 hover:text-white"
         }`}
         disabled={loading}
@@ -55,7 +55,7 @@ export default function OpenAIAss() {
         <span>{loading ? "Generating..." : "Generate"}</span>
         {loading && <Image src={loadingAnimation} alt="Loading..." height={20} width={20} quality={50} priority />}
       </button>
-      <pre className="mt-4 overflow-scroll">{result}</pre>
+      <TextArea label="Result" id="result" width="100%" value={result} onChange={() => {}} />
     </section>
   );
 }
