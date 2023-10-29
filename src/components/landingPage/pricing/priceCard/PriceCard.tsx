@@ -3,7 +3,7 @@ import { dbPricing } from "@/database/database";
 
 export default function PriceCard() {
   return (
-    <>
+    <div className="grid w-full gap-5 sm:grid-cols-2 xl:grid-cols-4">
       {dbPricing.map((data) => (
         <div key={data.id} className="price-card">
           <div className="relative flex h-40 w-full flex-col items-center justify-end bg-gray-200 dark:bg-gray-700 dark:text-white">
@@ -46,6 +46,6 @@ export default function PriceCard() {
           </div>
         </div>
       ))}
-    </>
+    </div>
   );
 }

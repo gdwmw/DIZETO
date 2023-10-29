@@ -9,9 +9,7 @@ export default function Pricing() {
           <div className="mx-auto h-0.5 w-20 rounded-full bg-red-600" />
         </h2>
         <div className="mt-5 flex items-center justify-center">
-          <div className="grid w-full gap-5 sm:grid-cols-2 xl:grid-cols-4">
-            <PriceCard />
-          </div>
+          <PriceCard />
         </div>
       </div>
     </section>
