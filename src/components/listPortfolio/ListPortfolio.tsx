@@ -77,6 +77,7 @@ export default function ListPortfolio() {
                     height={300}
                     width={300}
                     quality={30}
+                    priority
                     placeholder="blur"
                     className="rounded-md"
                   />
