@@ -1,4 +1,4 @@
-import logoDIZETO from "@/assets/images/logo/dizeto.svg";
+import logoDIZETO from "@/assets/images/logo/dizeto.webp";
 import Image from "next/image";
 
 export default function About() {
