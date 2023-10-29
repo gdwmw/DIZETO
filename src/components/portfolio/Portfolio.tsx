@@ -15,11 +15,13 @@ export default function Portfolio({ path }: { path: any }) {
   const itemsPerPage = 50;
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Math.ceil(totalData.length / itemsPerPage);
+
   const getDataForPage = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     return totalData.slice(startIndex, endIndex);
   };
+
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
