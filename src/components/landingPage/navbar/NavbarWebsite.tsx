@@ -1,6 +1,10 @@
+"use client"
+
 import logoDIZETO from "@/assets/images/logo/dizeto.webp";
 import Image from "next/image";
 import ThemeSwitcherWebsite from "./themeSwitcher/ThemeSwitcherWebsite";
+import { useDispatch, useSelector } from "react-redux";
+import { setLangCode } from "@/redux/features/langCodeSlice";
 
 type NavbarWebsiteProps = {
   isActive: boolean;
@@ -9,6 +13,8 @@ type NavbarWebsiteProps = {
 };
 
 export default function NavbarWebsite({ isActive, handleTopSmoothScroll, handleSmoothScroll }: NavbarWebsiteProps) {
+  const code: number = useSelector((state: any) => state.lang.code);
+  const dispatch: any = useDispatch();
   return (
     <section className="hidden min-[840px]:block">
       <div
@@ -49,6 +55,17 @@ export default function NavbarWebsite({ isActive, handleTopSmoothScroll, handleS
             <a href="#Contact" className="navbar-website-options" onClick={handleSmoothScroll}>
               Contact
             </a>
+          </li>
+          <li>
+            <div className="flex items-center gap-1">
+              <button type="button" onClick={() => dispatch(setLangCode(0))} className={code === 0 ? "text-red-600" : ""}>
+                EN
+              </button>
+              <p>/</p>
+              <button type="button" onClick={() => dispatch(setLangCode(1))} className={code === 1 ? "text-red-600" : ""}>
+                ID
+              </button>
+            </div>
           </li>
         </ul>
         {/* MARK */}
