@@ -10,16 +10,16 @@ export default function ListPortfolio() {
   const itemsPerPage = 20;
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Math.ceil(dbSortedListPortfolio.length / itemsPerPage);
+
   const getDataForPage = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     return dbSortedListPortfolio.slice(startIndex, endIndex);
   };
+
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
-
-  // TODO Buat komponent untuk list portfolio
 
   return (
     <div className="container mx-auto px-5 pt-10">
@@ -73,7 +73,7 @@ export default function ListPortfolio() {
                 <div className="portfolio-card">
                   <Image
                     src={require(`@/assets/images/thumbnail/portfolio/${data.image}`)}
-                    alt="Test"
+                    alt="Portfolio"
                     height={300}
                     width={300}
                     quality={30}
