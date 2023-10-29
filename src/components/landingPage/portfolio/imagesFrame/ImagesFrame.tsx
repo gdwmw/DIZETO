@@ -53,14 +53,14 @@ export default function ImagesFrame({ folder, database, link, copyright }: Image
     ATimeout();
   };
 
-  const PreviousImage = () => {
+  const handlePreviousImage = () => {
     if (dataIndex > 0) {
       setDataIndex(dataIndex - 1);
       setIsLoadingInteractive(true);
     }
   };
 
-  const NextImage = () => {
+  const handleNextImage = () => {
     if (dataIndex < database.length - 1) {
       setDataIndex(dataIndex + 1);
       setIsLoadingInteractive(true);
@@ -98,7 +98,7 @@ export default function ImagesFrame({ folder, database, link, copyright }: Image
             <div ref={menuRef} className="photo-frame">
               <button
                 type="button"
-                onClick={PreviousImage}
+                onClick={handlePreviousImage}
                 className={dataIndex !== 0 ? "photo-frame-previous-button" : "hidden"}
                 disabled={!!isLoadingInteractive}
               >
@@ -106,7 +106,7 @@ export default function ImagesFrame({ folder, database, link, copyright }: Image
               </button>
               <button
                 type="button"
-                onClick={NextImage}
+                onClick={handleNextImage}
                 className={dataIndex + 1 !== database.length ? "photo-frame-next-button" : "hidden"}
                 disabled={!!isLoadingInteractive}
               >
@@ -114,11 +114,11 @@ export default function ImagesFrame({ folder, database, link, copyright }: Image
               </button>
               {isLoading && (
                 <div className="detail-photo-loading">
-                  <Image src={loadingAnimation} alt="Loading..." height={100} width={100} quality={30} />
+                  <Image src={loadingAnimation} alt="Loading..." height={100} width={100} quality={30} loading="lazy" />
                 </div>
               )}
               <div className={`detail-photo-loading-interactive ${isLoadingInteractive ? "opacity-100" : "opacity-0"}`}>
-                <Image src={loadingAnimation} alt="Loading..." height={100} width={100} quality={30} />
+                <Image src={loadingAnimation} alt="Loading..." height={100} width={100} quality={30} loading="lazy" />
               </div>
               <Image
                 src={`${link}${database[dataIndex]}`}

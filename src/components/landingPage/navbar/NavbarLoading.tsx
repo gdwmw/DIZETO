@@ -1,4 +1,4 @@
-import logoDIZETO from "@/assets/images/logo/dizeto.svg";
+import logoDIZETO from "@/assets/images/logo/dizeto.webp";
 import loadingAnimation from "@/assets/loading/loading.svg";
 import Image from "next/image";
 
