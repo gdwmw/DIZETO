@@ -53,14 +53,14 @@ export default function ImagesFrame({ folder, database, link, copyright }: Image
     ATimeout();
   };
 
-  const PreviousImage = () => {
+  const handlePreviousImage = () => {
     if (dataIndex > 0) {
       setDataIndex(dataIndex - 1);
       setIsLoadingInteractive(true);
     }
   };
 
-  const NextImage = () => {
+  const handleNextImage = () => {
     if (dataIndex < database.length - 1) {
       setDataIndex(dataIndex + 1);
       setIsLoadingInteractive(true);
@@ -98,7 +98,7 @@ export default function ImagesFrame({ folder, database, link, copyright }: Image
             <div ref={menuRef} className="photo-frame">
               <button
                 type="button"
-                onClick={PreviousImage}
+                onClick={handlePreviousImage}
                 className={dataIndex !== 0 ? "photo-frame-previous-button" : "hidden"}
                 disabled={!!isLoadingInteractive}
               >
@@ -106,7 +106,7 @@ export default function ImagesFrame({ folder, database, link, copyright }: Image
               </button>
               <button
                 type="button"
-                onClick={NextImage}
+                onClick={handleNextImage}
                 className={dataIndex + 1 !== database.length ? "photo-frame-next-button" : "hidden"}
                 disabled={!!isLoadingInteractive}
               >
