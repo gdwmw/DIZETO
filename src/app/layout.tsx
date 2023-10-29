@@ -1,8 +1,5 @@
 import Footer from "@/components/Footer";
-import AuthProvider from "@/nextAuth/provider";
 import { NextThemeProvider } from "@/nextTheme/provider";
-import ReduxPersistProvider from "@/redux/persisted/provider";
-import ReduxProvider from "@/redux/provider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -20,7 +17,7 @@ export const metadata: Metadata = {
   description: "Dizeto is a vendor that offers photography, videography, talent, and music services.",
   keywords:
     "dizeto, bandung, indonesia, vendor, jasa foto, jasa video, jasa fotografer, jasa videografer, pre-wedding, wedding, dokumentasi, foto produk, fotografi, videografi",
-  metadataBase: new URL("https://dizeto-dev.vercel.app"),
+  metadataBase: new URL("https://dizeto-dev.vercel.app/"),
   openGraph: {
     type: "website",
     url: "https://dizeto-dev.vercel.app/",
@@ -46,19 +43,15 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  console.log("© 2021 DIZETO. All rights reserved.");
+  console.log("Created by Gede Dewo Wahyu M.W with 🖤");
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <AuthProvider>
-          <NextThemeProvider>
-            <ReduxProvider>
-              <ReduxPersistProvider>
-                {children}
-                <Footer />
-              </ReduxPersistProvider>
-            </ReduxProvider>
-          </NextThemeProvider>
-        </AuthProvider>
+        <NextThemeProvider>
+          {children}
+          <Footer />
+        </NextThemeProvider>
       </body>
     </html>
   );

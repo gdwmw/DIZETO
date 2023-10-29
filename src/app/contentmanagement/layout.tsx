@@ -7,9 +7,9 @@ export const metadata: Metadata = {
   applicationName: "DIZETO",
   publisher: "Vercel",
   robots: { index: true, follow: true },
-  title: "DIZETO | PORTFOLIO",
+  title: "DIZETO | CONTENT MANAGEMENT",
 };
 
-export default function Portfoliolayout({ children }: { children: React.ReactNode }) {
+export default function ContentManagementLayout({ children }: { children: React.ReactNode }) {
   return children;
 }
