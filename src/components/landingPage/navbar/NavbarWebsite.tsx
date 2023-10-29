@@ -1,53 +1,16 @@
-"use client";
-
 import logoDIZETO from "@/assets/images/logo/dizeto.webp";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 import ThemeSwitcherWebsite from "./themeSwitcher/ThemeSwitcherWebsite";
 
-export default function NavbarWebsite() {
-  const [scrollPosition, setScrollPosition] = useState<number>(0);
-  const [isActive, setIsActive] = useState<boolean>(false);
+type NavbarWebsiteProps = {
+  isActive: boolean;
+  handleTopSmoothScroll: (e: any) => void;
+  handleSmoothScroll: (e: any) => void;
+};
 
-  useEffect(() => {
-    function handleScroll() {
-      setScrollPosition(window.pageYOffset);
-    }
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  useEffect(() => {
-    const aboutElement = document.getElementById("About");
-    if (aboutElement && scrollPosition > 200) {
-      if (scrollPosition > aboutElement.offsetTop - 86) {
-        setIsActive(true);
-      } else {
-        setIsActive(false);
-      }
-    }
-  }, [scrollPosition]);
-
-  const handleTopSmoothScroll = (e: any) => {
-    e.preventDefault();
-    const targetElement = document.getElementById("Top");
-    if (targetElement) {
-      targetElement.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
-  const handleSmoothScroll = (e: any) => {
-    e.preventDefault();
-    const targetId = e.target.getAttribute("href").substring(1);
-    const targetElement = document.getElementById(targetId);
-    if (targetElement) {
-      targetElement.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+export default function NavbarWebsite({ isActive, handleTopSmoothScroll, handleSmoothScroll }: NavbarWebsiteProps) {
   return (
-    <div className="hidden min-[840px]:block">
+    <section className="hidden min-[840px]:block">
       <div
         className={`fixed left-0 top-0 z-20 flex h-16 w-full items-center justify-between px-10 ${
           isActive && "shadow-md shadow-black/50 backdrop-blur-md dark:shadow-white/50"
@@ -93,6 +56,6 @@ export default function NavbarWebsite() {
         {/* END MARK */}
       </div>
       <ThemeSwitcherWebsite />
-    </div>
+    </section>
   );
 }
