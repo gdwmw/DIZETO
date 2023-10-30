@@ -1,5 +1,11 @@
 import ListPortfolio from "@/components/listPortfolio/ListPortfolio";
+import Footer from "@/components/Footer";
 
 export default function page() {
-  return <ListPortfolio />;
+  return (
+    <>
+      <ListPortfolio />
+      <Footer />
+    </>
+  );
 }
