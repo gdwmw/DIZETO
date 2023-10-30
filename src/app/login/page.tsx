@@ -1,27 +1,27 @@
 "use client";
 
-import InputText from "@/components/inputs/InputText";
-import InputPassword from "@/components/inputs/InputPassword";
-import Image from "next/image";
-import imgDIZETO from "@/assets/images/logo/dizeto.svg";
+import imgDIZETO from "@/assets/images/logo/dizeto-sec.webp";
 import loadingAnimation from "@/assets/loading/loading.svg";
+import InputPassword from "@/components/inputs/InputPassword";
+import InputText from "@/components/inputs/InputText";
 import { signIn, useSession } from "next-auth/react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function Login() {
   const session = useSession();
   const router = useRouter();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [invalid, setInvalid] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [invalid, setInvalid] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await signIn(`credentials`, {
+      const res = await signIn("credentials", {
         username,
         password,
         redirect: false,
@@ -45,16 +45,14 @@ export default function Login() {
       }, 1000);
     }
   }, [session, router]);
+
   return (
     <main className="container mx-auto flex h-screen w-screen items-center justify-center px-5">
-      <form
-        onSubmit={handleSubmit}
-        className="paper-login flex h-[500px] w-[400px] flex-col items-center justify-center gap-5 bg-white p-5 dark:bg-dark"
-      >
-        <Image src={imgDIZETO} alt="DIZETO" height={150} width={150} quality={50} priority />
+      <form onSubmit={handleSubmit} className="paper-login flex w-[400px] flex-col items-center justify-center gap-5 bg-white p-5 dark:bg-dark">
+        <Image src={imgDIZETO} alt="DIZETO" height={180} width={180} quality={30} priority />
         <InputText label="Username" id="Username" width="100%" value={username} onChange={(e) => setUsername(e.target.value)} />
         <InputPassword label="Password" id="Password" width="100%" value={password} onChange={(e) => setPassword(e.target.value)} />
-        <p className="text-center text-lg text-red-500">{invalid && "Invalid Username Or Password"}</p>
+        <p className="text-center text-lg text-red-600">{invalid && "Invalid Username Or Password"}</p>
         <button
           type="submit"
           className={`red-line-button-submit flex w-full items-center justify-center gap-1 ${
