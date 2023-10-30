@@ -1,5 +1,5 @@
-import Main from "@/components/contentManagement/Main";
+import ContentManagement from "@/components/contentManagement/ContentManagement";
 
 export default function page() {
-  return <Main />;
+  return <ContentManagement />;
 }
