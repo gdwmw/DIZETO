@@ -1,4 +1,3 @@
-import Footer from "@/components/Footer";
 import AuthProvider from "@/nextAuth/provider";
 import { NextThemeProvider } from "@/nextTheme/provider";
 import ReduxPersistProvider from "@/redux/persisted/provider";
@@ -52,10 +51,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <AuthProvider>
           <NextThemeProvider>
             <ReduxProvider>
-              <ReduxPersistProvider>
-                {children}
-                <Footer />
-              </ReduxPersistProvider>
+              <ReduxPersistProvider>{children}</ReduxPersistProvider>
             </ReduxProvider>
           </NextThemeProvider>
         </AuthProvider>
