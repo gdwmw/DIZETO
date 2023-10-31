@@ -21,7 +21,7 @@ export default function OpenAIAss() {
 
     try {
       const openai = new OpenAI({
-        apiKey: "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",
+        apiKey: "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",
         dangerouslyAllowBrowser: true,
       });
 
