@@ -9,8 +9,7 @@ import Portfolio from "./portfolio/Portfolio";
 import Pricing from "./pricing/Pricing";
 import TestimonyClients from "./testimonyClients/TestimonyClients";
 
-export default function Main({ result }: { result: LandingPage.LandingPageData[] }) {
-  const preset: number = 0;
+export default function Main({ result, preset }: { result: LandingPage.LandingPageData[]; preset: number }) {
   const code: number = useSelector((state: any) => state.lang.code);
   const data = result[preset];
   return (

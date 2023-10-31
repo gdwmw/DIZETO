@@ -7,11 +7,17 @@ async function Fetch() {
   return response.json();
 }
 
+async function Preset() {
+  const response = await fetch("https://653fc4dd45bedb25bfc12e2f.mockapi.io/preset", { next: { revalidate: 0 } });
+  return response.json();
+}
+
 export default async function page() {
+  const preset = await Preset();
   return (
     <>
       <Header />
-      <Main result={await Fetch()} />
+      <Main result={await Fetch()} preset={preset[0].preset} />
       <Footer />
     </>
   );
