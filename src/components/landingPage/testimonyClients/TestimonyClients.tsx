@@ -18,8 +18,8 @@ import { FaQuoteLeft, FaRegThumbsUp, FaToolbox, FaUserAlt } from "react-icons/fa
 import { GoDotFill } from "react-icons/go";
 
 export default function TestimonyClients() {
-  const [mounted, setMounted] = useState<boolean>(false);
   const theme = useTheme();
+  const [mounted, setMounted] = useState<boolean>(false);
   const [testimonyIndex, setTestimonyIndex] = useState<number>(0);
   const [dateTime, setDateTime] = useState<string>("00/00/0000 - 00:00:00");
 
@@ -181,7 +181,7 @@ export default function TestimonyClients() {
               </div>
             </div>
           ) : (
-            <Image src={loadingAnimation} alt="Loading" width={100} quality={30} className="mx-auto my-20" />
+            <Image src={loadingAnimation} alt="Loading..." width={100} quality={30} priority className="mx-auto my-20 h-auto" />
           )}
         </section>
       </div>
