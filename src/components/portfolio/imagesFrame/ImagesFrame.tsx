@@ -13,11 +13,11 @@ type ImagesFrameProps = {
 };
 
 export default function ImagesFrame({ folder, database, link, copyright }: ImagesFrameProps) {
-  let [dataIndex, setDataIndex] = useState<number>(0);
+  const [dataIndex, setDataIndex] = useState<number>(0);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [isLoadingInteractive, setIsLoadingInteractive] = useState<boolean>(false);
+  const [isImageLoading, setIsImageLoading] = useState<boolean>(true);
+  const [isImageLoadingInteractive, setIsImageLoadingInteractive] = useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -26,7 +26,7 @@ export default function ImagesFrame({ folder, database, link, copyright }: Image
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
         setIsOpen(false);
         setImageLoaded(false);
-        setIsLoading(true);
+        setIsImageLoading(true);
         if (timeoutRef.current) {
           clearTimeout(timeoutRef.current);
         }
@@ -38,32 +38,36 @@ export default function ImagesFrame({ folder, database, link, copyright }: Image
     };
   }, []);
 
-  const ATimeout = () => {
+  const clearTimeoutRef = () => {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
     }
+  };
+
+  const startTimeout = () => {
+    clearTimeoutRef();
     timeoutRef.current = setTimeout(() => {
-      setIsLoading(false);
+      setIsImageLoading(false);
     }, 1500);
   };
 
   const handleImageLoaded = () => {
     setImageLoaded(true);
-    setIsLoadingInteractive(false);
-    ATimeout();
+    setIsImageLoadingInteractive(false);
+    startTimeout();
   };
 
   const handlePreviousImage = () => {
     if (dataIndex > 0) {
       setDataIndex(dataIndex - 1);
-      setIsLoadingInteractive(true);
+      setIsImageLoadingInteractive(true);
     }
   };
 
   const handleNextImage = () => {
     if (dataIndex < database.length - 1) {
       setDataIndex(dataIndex + 1);
-      setIsLoadingInteractive(true);
+      setIsImageLoadingInteractive(true);
     }
   };
 
@@ -100,7 +104,7 @@ export default function ImagesFrame({ folder, database, link, copyright }: Image
                 type="button"
                 onClick={handlePreviousImage}
                 className={dataIndex !== 0 ? "photo-frame-previous-button" : "hidden"}
-                disabled={!!isLoadingInteractive}
+                disabled={isImageLoadingInteractive}
               >
                 <FaChevronLeft size={50} />
               </button>
@@ -108,16 +112,16 @@ export default function ImagesFrame({ folder, database, link, copyright }: Image
                 type="button"
                 onClick={handleNextImage}
                 className={dataIndex + 1 !== database.length ? "photo-frame-next-button" : "hidden"}
-                disabled={!!isLoadingInteractive}
+                disabled={isImageLoadingInteractive}
               >
                 <FaChevronRight size={50} />
               </button>
-              {isLoading && (
+              {isImageLoading && (
                 <div className="detail-photo-loading">
                   <Image src={loadingAnimation} alt="Loading..." height={100} width={100} quality={30} loading="lazy" />
                 </div>
               )}
-              <div className={`detail-photo-loading-interactive ${isLoadingInteractive ? "opacity-100" : "opacity-0"}`}>
+              <div className={`detail-photo-loading-interactive ${isImageLoadingInteractive ? "opacity-100" : "opacity-0"}`}>
                 <Image src={loadingAnimation} alt="Loading..." height={100} width={100} quality={30} loading="lazy" />
               </div>
               <Image
