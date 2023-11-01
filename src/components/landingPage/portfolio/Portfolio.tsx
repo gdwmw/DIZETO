@@ -18,7 +18,7 @@ export default function Portfolio() {
         <ImagesFrame
           folder="landingPage"
           database={dbLandingPagePortfolio}
-          link="https://dizeto-images.vercel.app/assets/uploads/dashboard/f1/"
+          link="https://dizeto-images.vercel.app/assets/images/landingPage/"
           copyright="© 2022 DIZETO. All rights reserved."
         />
       </div>

@@ -60,7 +60,7 @@ export default function Portfolio({ path }: { path: any }) {
           <ImagesFrame
             folder={`portfolio/${dbPortfolio[dbPortfolioPathIndex[path.link]].fldr}`}
             database={getDataForPage().map((data) => data)}
-            link={`https://dizeto-images.vercel.app/assets/uploads/${dbPortfolio[dbPortfolioPathIndex[path.link]].fldr}/`}
+            link={`https://dizeto-images.vercel.app/assets/images/portfolio/${dbPortfolio[dbPortfolioPathIndex[path.link]].fldr}/`}
             copyright={dbPortfolio[dbPortfolioPathIndex[path.link]].cc}
           />
         </main>
