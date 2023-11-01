@@ -8,17 +8,17 @@ import { FaArrowLeft } from "react-icons/fa";
 
 export default function Portfolio({ path }: { path: any }) {
   const totalData: string[] = [];
-  for (let i = 1; i <= dbPortfolio[dbPortfolioPathIndex[path.link]].tdat; i++) {
+  for (let i: number = 1; i <= dbPortfolio[dbPortfolioPathIndex[path.link]].tdat; i++) {
     totalData.push(`DZT_CC${i}.webp`);
   }
 
-  const itemsPerPage = 50;
-  const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.ceil(totalData.length / itemsPerPage);
+  const itemsPerPage: number = 50;
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const totalPages: number = Math.ceil(totalData.length / itemsPerPage);
 
   const getDataForPage = () => {
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
+    const startIndex: number = (currentPage - 1) * itemsPerPage;
+    const endIndex: number = startIndex + itemsPerPage;
     return totalData.slice(startIndex, endIndex);
   };
 
