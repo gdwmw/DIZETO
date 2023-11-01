@@ -1,4 +1,4 @@
-const dbLandingPagePortfolio = [
+const dbLandingPagePortfolio: string[] = [
   "DZT_CC1.webp",
   "DZT_CC2.webp",
   "DZT_CC3.webp",
@@ -13,7 +13,18 @@ const dbLandingPagePortfolio = [
   "DZT_CC12.webp",
 ];
 
-const dbPricing = [
+type pricing = {
+  id: string;
+  price: string;
+  package: string;
+  title: string[];
+  list: {
+    qty: number;
+    label: string;
+  }[];
+}[];
+
+const dbPricing: pricing = [
   {
     id: "1",
     price: "1.5",
@@ -156,7 +167,15 @@ const dbPricing = [
   },
 ];
 
-const dbTestimonyClients = [
+type testimonyClients = {
+  id: string;
+  name: string;
+  status: string;
+  comment: string;
+  image: string;
+}[];
+
+const dbTestimonyClients: testimonyClients = [
   {
     id: "1",
     name: "Rangga Dewamoela",
@@ -208,7 +227,15 @@ const dbTestimonyClients = [
   },
 ];
 
-const dbListPortfolio = [
+type listPortfolio = {
+  id: number;
+  image: string;
+  title: string;
+  category: string;
+  link: string;
+}[];
+
+const dbListPortfolio: listPortfolio = [
   {
     id: 1,
     image: "ginzas-birthday/thumbnail.webp",
@@ -350,7 +377,30 @@ const dbSortedListPortfolio = dbListPortfolio.sort((a, b) => {
   return 0;
 });
 
-const dbPortfolioPathIndex: any = {
+type landingPagePortfolio = {
+  loading: number;
+  ginzasbirthday: number;
+  halimprewedding: number;
+  ichasbirthday: number;
+  lenteracoffee: number;
+  macaire: number;
+  mitasbirthday: number;
+  nazlaclothes: number;
+  faizalgraduation: number;
+  reniprewedding: number;
+  rositaprewedding: number;
+  selyhunting: number;
+  tenangcoffee: number;
+  irmajabar: number;
+  muhibahangklung: number;
+  ayamusiccover: number;
+  hkbpbandung: number;
+  safiykitchen: number;
+  rumahbatikwijaya: number;
+  eidphoto: number;
+};
+
+const dbPortfolioPathIndex: landingPagePortfolio = {
   loading: 0,
   ginzasbirthday: 1,
   halimprewedding: 2,
@@ -373,7 +423,19 @@ const dbPortfolioPathIndex: any = {
   eidphoto: 19,
 };
 
-const dbPortfolio = [
+type portfolio = {
+  id: number;
+  tdat: number;
+  tit1: string;
+  tit2: string;
+  tit3: string;
+  dt: string;
+  fldr: string;
+  alt: string;
+  cc: string;
+}[];
+
+const dbPortfolio: portfolio = [
   {
     id: 0,
     tdat: 1,
