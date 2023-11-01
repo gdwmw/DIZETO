@@ -7,13 +7,13 @@ import { useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 
 export default function ListPortfolio() {
-  const itemsPerPage = 20;
-  const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.ceil(dbSortedListPortfolio.length / itemsPerPage);
+  const itemsPerPage: number = 20;
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const totalPages: number = Math.ceil(dbSortedListPortfolio.length / itemsPerPage);
 
   const getDataForPage = () => {
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
+    const startIndex: number = (currentPage - 1) * itemsPerPage;
+    const endIndex: number = startIndex + itemsPerPage;
     return dbSortedListPortfolio.slice(startIndex, endIndex);
   };
 
