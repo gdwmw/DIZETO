@@ -371,13 +371,13 @@ const dbListPortfolio: listPortfolio = [
   },
 ];
 
-const dbSortedListPortfolio = dbListPortfolio.sort((a, b) => {
+const dbSortedListPortfolio: listPortfolio = dbListPortfolio.sort((a, b) => {
   if (a.category < b.category) return -1;
   if (a.category > b.category) return 1;
   return 0;
 });
 
-type landingPagePortfolio = {
+type portfolioPathIndex = {
   loading: number;
   ginzasbirthday: number;
   halimprewedding: number;
@@ -400,7 +400,7 @@ type landingPagePortfolio = {
   eidphoto: number;
 };
 
-const dbPortfolioPathIndex: landingPagePortfolio = {
+const dbPortfolioPathIndex: portfolioPathIndex = {
   loading: 0,
   ginzasbirthday: 1,
   halimprewedding: 2,
