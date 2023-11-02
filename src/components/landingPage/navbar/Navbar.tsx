@@ -12,7 +12,7 @@ export default function Navbar() {
   const [navbar, setNavbar] = useState<boolean>();
 
   const handleResize = () => {
-    const newWidth = window.innerWidth;
+    const newWidth: number = window.innerWidth;
     if (newWidth >= 840) {
       setNavbar(true);
     } else {
@@ -39,7 +39,7 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    const aboutElement = document.getElementById("About");
+    const aboutElement: HTMLElement | null = document.getElementById("About");
     if (aboutElement && scrollPosition > 200) {
       if (scrollPosition > aboutElement.offsetTop - 86) {
         setIsActive(true);
@@ -49,18 +49,18 @@ export default function Navbar() {
     }
   }, [scrollPosition]);
 
-  const handleTopSmoothScroll = useCallback((e: any) => {
+  const handleTopSmoothScroll = useCallback((e: React.FormEvent) => {
     e.preventDefault();
-    const targetElement = document.getElementById("Top");
+    const targetElement: HTMLElement | null = document.getElementById("Top");
     if (targetElement) {
       targetElement.scrollIntoView({ behavior: "smooth" });
     }
   }, []);
 
-  const handleSmoothScroll = useCallback((e: any) => {
+  const handleSmoothScroll = useCallback((e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
-    const targetId = e.target.getAttribute("href").substring(1);
-    const targetElement = document.getElementById(targetId);
+    const targetId: string | undefined = (e.target as HTMLAnchorElement)?.getAttribute("href")?.substring(1);
+    const targetElement: HTMLElement | null = document.getElementById(targetId || "");
     if (targetElement) {
       targetElement.scrollIntoView({ behavior: "smooth" });
     }

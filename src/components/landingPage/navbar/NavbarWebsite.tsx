@@ -4,8 +4,8 @@ import ThemeSwitcherWebsite from "./themeSwitcher/ThemeSwitcherWebsite";
 
 type NavbarWebsiteProps = {
   isActive: boolean;
-  handleTopSmoothScroll: (e: any) => void;
-  handleSmoothScroll: (e: any) => void;
+  handleTopSmoothScroll: (e: React.FormEvent) => void;
+  handleSmoothScroll: (e: React.FormEvent<EventTarget>) => void;
 };
 
 export default function NavbarWebsite({ isActive, handleTopSmoothScroll, handleSmoothScroll }: NavbarWebsiteProps) {
