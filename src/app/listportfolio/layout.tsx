@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title: "DIZETO | LIST PORTFOLIO",
   description: "See our portfolio for examples of our work. We believe that our portfolio demonstrates our abilities and creativity.",
   keywords:
-    "dizeto, bandung, indonesia, vendor, jasa foto, jasa video, jasa fotografer, jasa videografer, pre-wedding, wedding, dokumentasi, foto produk, fotografi, videografi",
+    "dizeto list portfolio, bandung, indonesia, vendor, jasa foto, jasa video, jasa fotografer, jasa videografer, pre-wedding, wedding, dokumentasi, foto produk, fotografi, videografi",
   metadataBase: new URL("https://dizeto-dev.vercel.app/listportfolio"),
   openGraph: {
     type: "website",
