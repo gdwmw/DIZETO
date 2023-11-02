@@ -16,15 +16,18 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { FaQuoteLeft, FaRegThumbsUp, FaToolbox, FaUserAlt } from "react-icons/fa";
 import { GoDotFill } from "react-icons/go";
+import dynamic from "next/dynamic";
+const DateTime = dynamic(() => import("./dateTime/DateTime"));
 
 export default function TestimonyClients() {
   const theme = useTheme();
   const [mounted, setMounted] = useState<boolean>(false);
   const [testimonyIndex, setTestimonyIndex] = useState<number>(0);
-  const [dateTime, setDateTime] = useState<string>("00/00/0000 - 00:00:00");
+  const [dateTime, setDateTime] = useState<boolean>(true);
 
   useEffect(() => {
     setMounted(true);
+    window.innerWidth < 1024 && setDateTime(false);
   }, []);
 
   useEffect(() => {
@@ -33,34 +36,6 @@ export default function TestimonyClients() {
     }, 5000);
     return () => {
       clearInterval(testimonyInterval);
-    };
-  }, []);
-
-  useEffect(() => {
-    const dateTimeInterval = setInterval(() => {
-      const currentDate = new Date();
-      const formattedDate = currentDate
-        .toLocaleString("id-ID", {
-          year: "numeric",
-          month: "2-digit",
-          day: "2-digit",
-          hour: "2-digit",
-          minute: "2-digit",
-          second: "2-digit",
-          hour12: false,
-        })
-        .replace(" ", "")
-        .replace(",", " - ")
-        .replace(".", ":")
-        .replace(".", ":");
-
-      setDateTime(formattedDate);
-    }, 1000);
-
-    window.innerWidth < 1024 && clearInterval(dateTimeInterval);
-
-    return () => {
-      clearInterval(dateTimeInterval);
     };
   }, []);
 
@@ -116,11 +91,7 @@ export default function TestimonyClients() {
               </div>
               <h4 className="text-xl font-semibold">Subscribers</h4>
             </div>
-            <div className="hidden h-16 w-0.5 rounded-full bg-black dark:bg-white lg:block" />
-            <div className="hidden flex-col items-center justify-center lg:flex">
-              <p className="w-[250px] text-center text-xl font-bold text-red-600">{dateTime}</p>
-              <h4 className="text-xl font-semibold">Date - Time</h4>
-            </div>
+            {dateTime && <DateTime />}
           </div>
         </section>
         <section id="Clients" className="scroll-mt-[84px] bg-white py-14 dark:bg-dark">
