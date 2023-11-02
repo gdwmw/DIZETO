@@ -6,9 +6,10 @@ import Link from "next/link";
 import { useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 
-export default function Portfolio({ path }: { path: any }) {
+export default function Portfolio({ path }: { path: string }) {
+  const index: number = dbPortfolioPathIndex(path);
   const totalData: string[] = [];
-  for (let i: number = 1; i <= dbPortfolio[dbPortfolioPathIndex[path.link]].tdat; i++) {
+  for (let i: number = 1; i <= dbPortfolio[index].tdat; i++) {
     totalData.push(`DZT_CC${i}.webp`);
   }
 
@@ -33,10 +34,10 @@ export default function Portfolio({ path }: { path: any }) {
           <section className="flex items-center justify-center gap-5">
             <div className="h-fit w-fit">
               <h2 className="whitespace-nowrap text-4xl font-semibold">
-                {dbPortfolio[dbPortfolioPathIndex[path.link]].tit2}
-                <span className="text-red-600">{dbPortfolio[dbPortfolioPathIndex[path.link]].tit3}</span>
+                {dbPortfolio[index].tit2}
+                <span className="text-red-600">{dbPortfolio[index].tit3}</span>
               </h2>
-              <p className="text-end text-lg font-semibold">{dbPortfolio[dbPortfolioPathIndex[path.link]].dt}</p>
+              <p className="text-end text-lg font-semibold">{dbPortfolio[index].dt}</p>
             </div>
             <div className="h-0.5 w-full rounded-full bg-red-600" />
           </section>
@@ -58,10 +59,10 @@ export default function Portfolio({ path }: { path: any }) {
         </header>
         <main>
           <ImagesFrame
-            folder={`portfolio/${dbPortfolio[dbPortfolioPathIndex[path.link]].fldr}`}
+            folder={`portfolio/${dbPortfolio[index].fldr}`}
             database={getDataForPage().map((data) => data)}
-            link={`https://dizeto-images.vercel.app/assets/images/portfolio/${dbPortfolio[dbPortfolioPathIndex[path.link]].fldr}/`}
-            copyright={dbPortfolio[dbPortfolioPathIndex[path.link]].cc}
+            link={`https://dizeto-images.vercel.app/assets/images/portfolio/${dbPortfolio[index].fldr}/`}
+            copyright={dbPortfolio[index].cc}
           />
         </main>
       </div>
