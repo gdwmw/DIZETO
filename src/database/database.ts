@@ -377,51 +377,52 @@ const dbSortedListPortfolio: listPortfolio = dbListPortfolio.sort((a, b) => {
   return 0;
 });
 
-type portfolioPathIndex = {
-  loading: number;
-  ginzasbirthday: number;
-  halimprewedding: number;
-  ichasbirthday: number;
-  lenteracoffee: number;
-  macaire: number;
-  mitasbirthday: number;
-  nazlaclothes: number;
-  faizalgraduation: number;
-  reniprewedding: number;
-  rositaprewedding: number;
-  selyhunting: number;
-  tenangcoffee: number;
-  irmajabar: number;
-  muhibahangklung: number;
-  ayamusiccover: number;
-  hkbpbandung: number;
-  safiykitchen: number;
-  rumahbatikwijaya: number;
-  eidphoto: number;
-};
-
-const dbPortfolioPathIndex: portfolioPathIndex = {
-  loading: 0,
-  ginzasbirthday: 1,
-  halimprewedding: 2,
-  ichasbirthday: 3,
-  lenteracoffee: 4,
-  macaire: 5,
-  mitasbirthday: 6,
-  nazlaclothes: 7,
-  faizalgraduation: 8,
-  reniprewedding: 9,
-  rositaprewedding: 10,
-  selyhunting: 11,
-  tenangcoffee: 12,
-  irmajabar: 13,
-  muhibahangklung: 14,
-  ayamusiccover: 15,
-  hkbpbandung: 16,
-  safiykitchen: 17,
-  rumahbatikwijaya: 18,
-  eidphoto: 19,
-};
+function dbPortfolioPathIndex(path: string) {
+  switch (path) {
+    case "loading":
+      return 0;
+    case "ginzasbirthday":
+      return 1;
+    case "halimprewedding":
+      return 2;
+    case "ichasbirthday":
+      return 3;
+    case "lenteracoffee":
+      return 4;
+    case "macaire":
+      return 5;
+    case "mitasbirthday":
+      return 6;
+    case "nazlaclothes":
+      return 7;
+    case "faizalgraduation":
+      return 8;
+    case "reniprewedding":
+      return 9;
+    case "rositaprewedding":
+      return 10;
+    case "selyhunting":
+      return 11;
+    case "tenangcoffee":
+      return 12;
+    case "irmajabar":
+      return 13;
+    case "muhibahangklung":
+      return 14;
+    case "ayamusiccover":
+      return 15;
+    case "hkbpbandung":
+      return 16;
+    case "safiykitchen":
+      return 17;
+    case "rumahbatikwijaya":
+      return 18;
+    case "eidphoto":
+      return 19;
+    default:
+      return -1;
+  }
+}
 
 type portfolio = {
   id: number;
