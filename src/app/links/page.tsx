@@ -12,7 +12,7 @@ export default function Page() {
       <div className="container mx-auto w-full max-w-[500px] space-y-10 p-5">
         <div className="paper space-y-5 bg-white p-5 dark:bg-dark">
           <header id="jumbotron" className="flex flex-col items-center justify-center gap-3 text-center md:flex-row md:text-left">
-            <Image src={logoDIZETO} alt="DIZETO" quality={30} priority className="h-auto w-[120px] md:my-5" />
+            <Image src={logoDIZETO} alt="DIZETO" quality={30} width={120} priority className="h-auto md:my-5" />
             <div>
               <h1 className="text-4xl font-semibold md:text-7xl">
                 <span className="font-semibold text-red-600">DI</span>ZETO
