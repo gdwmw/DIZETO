@@ -1,4 +1,4 @@
-export default function Jumbotron() {
+export default function Jumbotron(): JSX.Element {
   return (
     <section id="Jumbotron" className="jumbotron">
       <h1 className="text-8xl font-semibold">

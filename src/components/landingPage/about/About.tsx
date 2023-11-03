@@ -1,7 +1,7 @@
 import logoDIZETO from "@/assets/images/logo/dizeto.webp";
 import Image from "next/image";
 
-export default function About() {
+export default function About(): JSX.Element {
   return (
     <section id="About" className="scroll-mt-[84px]">
       <div className="paper bg-white p-5 dark:bg-dark">

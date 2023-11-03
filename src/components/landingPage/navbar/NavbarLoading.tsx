@@ -2,7 +2,7 @@ import logoDIZETO from "@/assets/images/logo/dizeto.webp";
 import loadingAnimation from "@/assets/loading/loading.svg";
 import Image from "next/image";
 
-export default function NavbarLoading() {
+export default function NavbarLoading(): JSX.Element {
   return (
     <div className="fixed left-0 top-0 z-20 flex h-16 w-full items-center justify-between px-10">
       <Image className="cursor-wait" src={logoDIZETO} alt="DIZETO" width={40} height={40} quality={30} priority />
@@ -27,7 +27,7 @@ export default function NavbarLoading() {
         </li>
       </ul>
       <div className="h-10 w-10">
-        <Image src={loadingAnimation} alt="Loading..." height={40} width={40} quality={30} priority/>
+        <Image src={loadingAnimation} alt="Loading..." height={40} width={40} quality={30} priority />
       </div>
     </div>
   );

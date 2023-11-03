@@ -1,7 +1,7 @@
 import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
 import { TbWorldWww } from "react-icons/tb";
 
-export default function Contact() {
+export default function Contact(): JSX.Element {
   return (
     <section id="Contact" className="scroll-mt-[84px]">
       <div className="paper bg-white p-5 dark:bg-dark">

@@ -19,7 +19,7 @@ import { GoDotFill } from "react-icons/go";
 import dynamic from "next/dynamic";
 const DateTime = dynamic(() => import("./dateTime/DateTime"));
 
-export default function TestimonyClients() {
+export default function TestimonyClients(): JSX.Element {
   const theme = useTheme();
   const [mounted, setMounted] = useState<boolean>(false);
   const [testimonyIndex, setTestimonyIndex] = useState<number>(0);

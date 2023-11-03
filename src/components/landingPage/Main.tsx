@@ -5,7 +5,7 @@ import Portfolio from "./portfolio/Portfolio";
 import Pricing from "./pricing/Pricing";
 import TestimonyClients from "./testimonyClients/TestimonyClients";
 
-export default function Main() {
+export default function Main(): JSX.Element {
   return (
     <main>
       <Jumbotron />

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { dbPricing } from "@/database/database";
 
-export default function PriceCard() {
+export default function PriceCard(): JSX.Element {
   return (
     <div className="grid w-full gap-5 sm:grid-cols-2 xl:grid-cols-4">
       {dbPricing.map((data) => (

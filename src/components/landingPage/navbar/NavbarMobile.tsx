@@ -13,7 +13,7 @@ type NavbarMobileProps = {
   handleSmoothScroll: (e: React.FormEvent<EventTarget>) => void;
 };
 
-export default function NavbarMobile({ isActive, handleTopSmoothScroll, handleSmoothScroll }: NavbarMobileProps) {
+export default function NavbarMobile({ isActive, handleTopSmoothScroll, handleSmoothScroll }: NavbarMobileProps): JSX.Element {
   const [mounted, setMounted] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement | null>(null);

@@ -2,7 +2,7 @@ import { dbLandingPagePortfolio } from "@/database/database";
 import Link from "next/link";
 import ImagesFrame from "./imagesFrame/ImagesFrame";
 
-export default function Portfolio() {
+export default function Portfolio(): JSX.Element {
   return (
     <section id="Portfolio" className="scroll-mt-[84px]">
       <div className="paper bg-white p-5 dark:bg-dark">

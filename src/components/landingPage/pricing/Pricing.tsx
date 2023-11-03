@@ -1,6 +1,6 @@
 import PriceCard from "./priceCard/PriceCard";
 
-export default function Pricing() {
+export default function Pricing(): JSX.Element {
   return (
     <section id="Pricing" className="scroll-mt-[84px]">
       <div className="paper bg-white p-5 dark:bg-dark">

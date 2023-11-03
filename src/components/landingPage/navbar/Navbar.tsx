@@ -6,7 +6,7 @@ import NavbarLoading from "./NavbarLoading";
 const DynamicNavbarWebsite = dynamic(() => import("./NavbarWebsite"), { loading: () => <NavbarLoading /> });
 const DynamicNavbarMobile = dynamic(() => import("./NavbarMobile"), { loading: () => <NavbarLoading /> });
 
-export default function Navbar() {
+export default function Navbar(): JSX.Element {
   const [scrollPosition, setScrollPosition] = useState<number>(0);
   const [isActive, setIsActive] = useState<boolean>(false);
   const [navbar, setNavbar] = useState<boolean>();

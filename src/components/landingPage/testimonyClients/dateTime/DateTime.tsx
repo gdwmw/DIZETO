@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-export default function DateTime() {
+export default function DateTime(): JSX.Element {
   const [dateTime, setDateTime] = useState<string>("00/00/0000 - 00:00:00");
 
   useEffect(() => {

@@ -8,7 +8,7 @@ type NavbarWebsiteProps = {
   handleSmoothScroll: (e: React.FormEvent<EventTarget>) => void;
 };
 
-export default function NavbarWebsite({ isActive, handleTopSmoothScroll, handleSmoothScroll }: NavbarWebsiteProps) {
+export default function NavbarWebsite({ isActive, handleTopSmoothScroll, handleSmoothScroll }: NavbarWebsiteProps): JSX.Element {
   return (
     <section className="hidden min-[840px]:block">
       <div

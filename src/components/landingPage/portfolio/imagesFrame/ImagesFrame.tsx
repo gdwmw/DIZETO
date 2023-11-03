@@ -12,7 +12,7 @@ type ImagesFrameProps = {
   copyright: string;
 };
 
-export default function ImagesFrame({ folder, database, link, copyright }: ImagesFrameProps) {
+export default function ImagesFrame({ folder, database, link, copyright }: ImagesFrameProps): JSX.Element {
   const [dataIndex, setDataIndex] = useState<number>(0);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
