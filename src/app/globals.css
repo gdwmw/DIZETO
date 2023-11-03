@@ -57,7 +57,7 @@ body {
 }
 
 .thumbnail {
-  @apply h-fit w-fit rounded-sm border-2 border-gray-300 bg-white p-1 hover:border-red-600 dark:border-gray-700 dark:bg-dark dark:hover:border-red-600;
+  @apply h-fit w-fit cursor-pointer rounded-sm border-2 border-gray-300 bg-white p-1 hover:border-red-600 dark:border-gray-700 dark:bg-dark dark:hover:border-red-600;
 }
 
 .detail-photo-background {
