@@ -13,7 +13,7 @@ const dbLandingPagePortfolio: string[] = [
   "DZT_CC12.webp",
 ];
 
-type pricing = {
+type TPricing = {
   id: string;
   price: string;
   package: string;
@@ -24,7 +24,7 @@ type pricing = {
   }[];
 }[];
 
-const dbPricing: pricing = [
+const dbPricing: TPricing = [
   {
     id: "1",
     price: "1.5",
@@ -167,7 +167,7 @@ const dbPricing: pricing = [
   },
 ];
 
-type testimonyClients = {
+type TTestimonyClients = {
   id: string;
   name: string;
   status: string;
@@ -175,7 +175,7 @@ type testimonyClients = {
   image: string;
 }[];
 
-const dbTestimonyClients: testimonyClients = [
+const dbTestimonyClients: TTestimonyClients = [
   {
     id: "1",
     name: "Rangga Dewamoela",
@@ -227,7 +227,7 @@ const dbTestimonyClients: testimonyClients = [
   },
 ];
 
-type listPortfolio = {
+type TListPortfolio = {
   id: number;
   image: string;
   title: string;
@@ -235,7 +235,7 @@ type listPortfolio = {
   link: string;
 }[];
 
-const dbListPortfolio: listPortfolio = [
+const dbListPortfolio: TListPortfolio = [
   {
     id: 1,
     image: "ginzas-birthday/thumbnail.webp",
@@ -371,7 +371,7 @@ const dbListPortfolio: listPortfolio = [
   },
 ];
 
-const dbSortedListPortfolio: listPortfolio = dbListPortfolio.sort((a, b) => {
+const dbSortedListPortfolio: TListPortfolio = dbListPortfolio.sort((a, b) => {
   if (a.category < b.category) return -1;
   if (a.category > b.category) return 1;
   return 0;
@@ -424,7 +424,7 @@ function dbPortfolioPathIndex(path: string) {
   }
 }
 
-type portfolio = {
+type TPortfolio = {
   id: number;
   tdat: number;
   tit1: string;
@@ -436,7 +436,7 @@ type portfolio = {
   cc: string;
 }[];
 
-const dbPortfolio: portfolio = [
+const dbPortfolio: TPortfolio = [
   {
     id: 0,
     tdat: 1,
