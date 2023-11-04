@@ -1,8 +1,8 @@
 import Footer from "@/components/Footer";
-import { NextThemeProvider } from "@/nextTheme/provider";
+import { NextThemesProvider } from "@/libs/next-themes";
+import "@/styles/globals.css";
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -46,16 +46,16 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: { children: React.ReactNode }): JSX.Element {
   console.log("© 2021 DIZETO. All rights reserved.");
   console.log("Created by Gede Dewo Wahyu M.W with 🖤");
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <NextThemeProvider>
+        <NextThemesProvider>
           {children}
           <Footer />
-        </NextThemeProvider>
+        </NextThemesProvider>
       </body>
     </html>
   );
