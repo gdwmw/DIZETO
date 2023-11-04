@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     siteName: "DIZETO",
     images: [
       {
-        url: "https://dizeto-dev.vercel.app/dizeto.svg",
+        url: "https://dizeto-dev.vercel.app/dizeto.webp",
       },
     ],
   },
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     title: "DIZETO | LINKS",
     description: "Come visit social media connected to Dizeto.",
     images: {
-      url: "https://dizeto-dev.vercel.app/dizeto.svg",
+      url: "https://dizeto-dev.vercel.app/dizeto.webp",
     },
   },
 };

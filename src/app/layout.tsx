@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     siteName: "DIZETO",
     images: [
       {
-        url: "https://dizeto-dev.vercel.app/dizeto.svg",
+        url: "https://dizeto-dev.vercel.app/dizeto.webp",
       },
     ],
   },
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     title: "DIZETO | PROFESSIONAL SERVICES",
     description: "Dizeto is a vendor that offers photography, videography, talent, and music services.",
     images: {
-      url: "https://dizeto-dev.vercel.app/dizeto.svg",
+      url: "https://dizeto-dev.vercel.app/dizeto.webp",
     },
   },
 };
