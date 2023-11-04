@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 
-export default function ListPortfolio() {
+export function ListPortfolio(): JSX.Element {
   const itemsPerPage: number = 20;
   const [currentPage, setCurrentPage] = useState<number>(1);
   const totalPages: number = Math.ceil(dbSortedListPortfolio.length / itemsPerPage);

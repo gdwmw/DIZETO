@@ -1,5 +1,5 @@
-import ListPortfolio from "@/components/listPortfolio/ListPortfolio";
+import { ListPortfolio } from "@/modules/list-portfolio";
 
-export default function page() {
+export default function page(): JSX.Element {
   return <ListPortfolio />;
 }

@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { ReactNode } from "react";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -40,6 +41,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ListPortfolioLayout({ children }: { children: React.ReactNode }) {
+export default function ListPortfolioLayout({ children }: { children: React.ReactNode }): ReactNode {
   return children;
 }
