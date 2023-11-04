@@ -7,13 +7,13 @@ import { FormEvent, useEffect, useRef, useState } from "react";
 import { FiMenu } from "react-icons/fi";
 import { ThemeSwitcherMobile } from "../theme-switcher";
 
-type NavbarMobileProps = {
+type TNavbarMobileProps = {
   isActive: boolean;
   handleTopSmoothScroll: (e: FormEvent) => void;
   handleSmoothScroll: (e: FormEvent<EventTarget>) => void;
 };
 
-export default function NavbarMobile({ isActive, handleTopSmoothScroll, handleSmoothScroll }: NavbarMobileProps): JSX.Element {
+export default function NavbarMobile({ isActive, handleTopSmoothScroll, handleSmoothScroll }: TNavbarMobileProps): JSX.Element {
   const [mounted, setMounted] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement | null>(null);

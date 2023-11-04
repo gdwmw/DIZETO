@@ -3,13 +3,13 @@ import Image from "next/image";
 import { ThemeSwitcherWebsite } from "../theme-switcher";
 import { FormEvent } from "react";
 
-type NavbarWebsiteProps = {
+type TNavbarWebsiteProps = {
   isActive: boolean;
   handleTopSmoothScroll: (e: FormEvent) => void;
   handleSmoothScroll: (e: FormEvent<EventTarget>) => void;
 };
 
-export default function NavbarWebsite({ isActive, handleTopSmoothScroll, handleSmoothScroll }: NavbarWebsiteProps): JSX.Element {
+export default function NavbarWebsite({ isActive, handleTopSmoothScroll, handleSmoothScroll }: TNavbarWebsiteProps): JSX.Element {
   return (
     <section className="hidden min-[840px]:block">
       <div

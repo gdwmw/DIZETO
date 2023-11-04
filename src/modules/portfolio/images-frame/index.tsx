@@ -5,14 +5,14 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-type ImagesFrameProps = {
+type TImagesFrameProps = {
   folder: string;
   database: string[];
   link: string;
   copyright: string;
 };
 
-export function ImagesFrame({ folder, database, link, copyright }: ImagesFrameProps): JSX.Element {
+export function ImagesFrame({ folder, database, link, copyright }: TImagesFrameProps): JSX.Element {
   const [dataIndex, setDataIndex] = useState<number>(0);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
