@@ -1,7 +1,9 @@
+import { ReactElement } from "react";
+
 type AncorButtonProps = {
   hrf: string;
   label: string;
-  icon: React.ReactElement;
+  icon: ReactElement;
 };
 
 export function AncorButton({ hrf, label, icon }: AncorButtonProps): JSX.Element {
