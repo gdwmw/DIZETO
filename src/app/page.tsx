@@ -1,7 +1,6 @@
-import Header from "@/components/landingPage/Header";
-import Main from "@/components/landingPage/Main";
+import { Header, Main } from "@/modules/landing-page";
 
-export default function page() {
+export default function LandingPage(): JSX.Element {
   return (
     <>
       <Header />
