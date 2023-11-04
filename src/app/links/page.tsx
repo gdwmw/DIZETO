@@ -1,12 +1,12 @@
 import logoDIZETO from "@/assets/images/logo/dizeto.webp";
-import AncorButton from "@/components/links/buttons/AncorButton";
+import { AncorButton } from "@/components/links";
 import Image from "next/image";
 import { AiFillInstagram } from "react-icons/ai";
 import { BsFacebook, BsTwitter, BsYoutube } from "react-icons/bs";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { TbWorldWww } from "react-icons/tb";
 
-export default function Page() {
+export default function Page(): JSX.Element {
   return (
     <div className="flex min-h-screen w-screen flex-col items-center justify-center">
       <div className="container mx-auto w-full max-w-[500px] space-y-10 p-5">
