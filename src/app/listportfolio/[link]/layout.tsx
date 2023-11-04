@@ -15,6 +15,6 @@ export const metadata: Metadata = {
   title: "DIZETO | PORTFOLIO",
 };
 
-export default function Portfoliolayout({ children }: { children: React.ReactNode }): ReactNode {
+export default function Portfoliolayout({ children }: { children: ReactNode }): ReactNode {
   return children;
 }

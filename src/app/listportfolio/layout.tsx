@@ -41,6 +41,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ListPortfolioLayout({ children }: { children: React.ReactNode }): ReactNode {
+export default function ListPortfolioLayout({ children }: { children: ReactNode }): ReactNode {
   return children;
 }

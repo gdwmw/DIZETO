@@ -39,6 +39,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Linkslayout({ children }: { children: React.ReactNode }): ReactNode {
+export default function Linkslayout({ children }: { children: ReactNode }): ReactNode {
   return children;
 }
