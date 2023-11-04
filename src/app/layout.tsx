@@ -1,5 +1,5 @@
-import Footer from "@/components/Footer";
 import { NextThemesProvider } from "@/libs/next-themes";
+import { Footer } from "@/modules/footer";
 import "@/styles/globals.css";
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
