@@ -1,5 +1,5 @@
-import Portfolio from "@/components/portfolio/Portfolio";
+import { Portfolio } from "@/modules/portfolio";
 
-export default function Link({ params }: { params: { link: string } }) {
+export default function Link({ params }: { params: { link: string } }): JSX.Element {
   return <Portfolio path={params.link} />;
 }

@@ -1,12 +1,12 @@
 "use client";
 
-import ImagesFrame from "./imagesFrame/ImagesFrame";
-import { dbPortfolioPathIndex, dbPortfolio } from "@/database/database";
+import { dbPortfolio, dbPortfolioPathIndex } from "@/database/database";
 import Link from "next/link";
 import { useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
+import { ImagesFrame } from "./images-frame";
 
-export default function Portfolio({ path }: { path: string }) {
+export function Portfolio({ path }: { path: string }): JSX.Element {
   const index: number = dbPortfolioPathIndex(path);
   const totalData: string[] = [];
   for (let i: number = 1; i <= dbPortfolio[index].tdat; i++) {
