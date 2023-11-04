@@ -1,4 +1,4 @@
-export default function Footer() {
+export function Footer(): JSX.Element {
   return (
     <footer className="container mx-auto mt-10 px-5 pb-10">
       <div className="footer-paper">
