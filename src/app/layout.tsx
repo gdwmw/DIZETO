@@ -3,7 +3,7 @@ import { Footer } from "@/modules/footer";
 import "@/styles/globals.css";
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
-import { ReactNode } from "react";
+import { FC, ReactElement, ReactNode } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: ReactNode }): JSX.Element {
+const RootLayout: FC<{ children: ReactNode }> = ({ children }): ReactElement => {
   console.log("© 2021 DIZETO. All rights reserved.");
   console.log("Created by Gede Dewo Wahyu M.W with 🖤");
   return (
@@ -60,4 +60,6 @@ export default function RootLayout({ children }: { children: ReactNode }): JSX.E
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;

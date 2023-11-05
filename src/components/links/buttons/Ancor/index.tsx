@@ -1,17 +1,17 @@
 import Link from "next/link";
-import { ReactElement } from "react";
+import { FC, ReactElement } from "react";
 
-type AncorButtonProps = {
+type TAncorButtonProps = {
   hrf: string;
   label: string;
   icon: ReactElement;
 };
 
-export function AncorButton({ hrf, label, icon }: AncorButtonProps): JSX.Element {
+export const AncorButton: FC<TAncorButtonProps> = ({ hrf, label, icon }): ReactElement => {
   return (
     <Link href={hrf} target="_blank" rel="noopener noreferrer" className="red-line-button flex items-center justify-center gap-1">
       {icon}
       <span>{label}</span>
     </Link>
   );
-}
+};

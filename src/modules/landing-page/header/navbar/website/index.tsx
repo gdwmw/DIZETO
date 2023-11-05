@@ -1,7 +1,7 @@
 import logoDIZETO from "@/assets/images/logo/dizeto.webp";
 import Image from "next/image";
 import { ThemeSwitcherWebsite } from "../theme-switcher";
-import { FormEvent } from "react";
+import { FC, FormEvent, ReactElement } from "react";
 
 type TNavbarWebsiteProps = {
   isActive: boolean;
@@ -9,7 +9,7 @@ type TNavbarWebsiteProps = {
   handleSmoothScroll: (e: FormEvent<EventTarget>) => void;
 };
 
-export default function NavbarWebsite({ isActive, handleTopSmoothScroll, handleSmoothScroll }: TNavbarWebsiteProps): JSX.Element {
+const NavbarWebsite: FC<TNavbarWebsiteProps> = ({ isActive, handleTopSmoothScroll, handleSmoothScroll }): ReactElement => {
   return (
     <section className="hidden min-[840px]:block">
       <div
@@ -59,4 +59,6 @@ export default function NavbarWebsite({ isActive, handleTopSmoothScroll, handleS
       <ThemeSwitcherWebsite />
     </section>
   );
-}
+};
+
+export default NavbarWebsite;

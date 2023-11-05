@@ -1,7 +1,8 @@
+import { FC, ReactElement } from "react";
 import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
 import { TbWorldWww } from "react-icons/tb";
 
-export function Contact(): JSX.Element {
+export const Contact: FC = (): ReactElement => {
   return (
     <section id="Contact" className="scroll-mt-[84px]">
       <div className="paper bg-white p-5 dark:bg-dark">
@@ -66,4 +67,4 @@ export function Contact(): JSX.Element {
       </div>
     </section>
   );
-}
+};

@@ -1,3 +1,4 @@
+import { FC, ReactElement } from "react";
 import { About } from "./about";
 import { Contact } from "./contact";
 import { Jumbotron } from "./jumbotron";
@@ -5,7 +6,7 @@ import { Portfolio } from "./portfolio";
 import { Pricing } from "./pricing";
 import { TestimonyClients } from "./testimony-clients";
 
-export function Main(): JSX.Element {
+export const Main: FC = (): ReactElement => {
   return (
     <main>
       <Jumbotron />

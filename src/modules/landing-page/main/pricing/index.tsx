@@ -1,6 +1,7 @@
+import { FC, ReactElement } from "react";
 import { PriceCard } from "./price-card";
 
-export function Pricing(): JSX.Element {
+export const Pricing: FC = (): ReactElement => {
   return (
     <section id="Pricing" className="scroll-mt-[84px]">
       <div className="paper bg-white p-5 dark:bg-dark">
@@ -14,4 +15,4 @@ export function Pricing(): JSX.Element {
       </div>
     </section>
   );
-}
+};

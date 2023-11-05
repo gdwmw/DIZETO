@@ -2,7 +2,7 @@
 
 import loadingAnimation from "@/assets/loading/loading.svg";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { FC, ReactElement, useEffect, useRef, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 type TImagesFrameProps = {
@@ -12,7 +12,7 @@ type TImagesFrameProps = {
   copyright: string;
 };
 
-export function ImagesFrame({ folder, database, link, copyright }: TImagesFrameProps): JSX.Element {
+export const ImagesFrame: FC<TImagesFrameProps> = ({ folder, database, link, copyright }): ReactElement => {
   const [dataIndex, setDataIndex] = useState<number>(0);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
@@ -144,4 +144,4 @@ export function ImagesFrame({ folder, database, link, copyright }: TImagesFrameP
       )}
     </>
   );
-}
+};

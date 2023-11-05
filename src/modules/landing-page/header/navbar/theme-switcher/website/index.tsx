@@ -3,11 +3,11 @@
 import loadingAnimation from "@/assets/loading/loading.svg";
 import { useTheme } from "next-themes";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { FC, ReactElement, useEffect, useRef, useState } from "react";
 import { BsFillMoonStarsFill, BsSunFill } from "react-icons/bs";
 import { SiMoonrepo } from "react-icons/si";
 
-export function ThemeSwitcherWebsite(): JSX.Element {
+export const ThemeSwitcherWebsite: FC = (): ReactElement => {
   const [mounted, setMounted] = useState<boolean>(false);
   const { theme, setTheme } = useTheme();
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -80,4 +80,4 @@ export function ThemeSwitcherWebsite(): JSX.Element {
       )}
     </div>
   );
-}
+};

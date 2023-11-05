@@ -1,10 +1,13 @@
 import { Header, Main } from "@/modules/landing-page";
+import { FC, ReactElement } from "react";
 
-export default function LandingPage(): JSX.Element {
+const LandingPage: FC = (): ReactElement => {
   return (
     <>
       <Header />
       <Main />
     </>
   );
-}
+};
+
+export default LandingPage;

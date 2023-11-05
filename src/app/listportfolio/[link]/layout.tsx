@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { ReactNode } from "react";
+import { FC, ReactNode } from "react";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -15,6 +15,8 @@ export const metadata: Metadata = {
   title: "DIZETO | PORTFOLIO",
 };
 
-export default function Portfoliolayout({ children }: { children: ReactNode }): ReactNode {
+const Portfoliolayout: FC<{ children: ReactNode }> = ({ children }): ReactNode => {
   return children;
-}
+};
+
+export default Portfoliolayout;

@@ -3,7 +3,7 @@
 import logoDIZETO from "@/assets/images/logo/dizeto.webp";
 import loadingAnimation from "@/assets/loading/loading.svg";
 import Image from "next/image";
-import { FormEvent, useEffect, useRef, useState } from "react";
+import { FC, FormEvent, ReactElement, useEffect, useRef, useState } from "react";
 import { FiMenu } from "react-icons/fi";
 import { ThemeSwitcherMobile } from "../theme-switcher";
 
@@ -13,7 +13,7 @@ type TNavbarMobileProps = {
   handleSmoothScroll: (e: FormEvent<EventTarget>) => void;
 };
 
-export default function NavbarMobile({ isActive, handleTopSmoothScroll, handleSmoothScroll }: TNavbarMobileProps): JSX.Element {
+const NavbarMobile: FC<TNavbarMobileProps> = ({ isActive, handleTopSmoothScroll, handleSmoothScroll }): ReactElement => {
   const [mounted, setMounted] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
@@ -99,4 +99,6 @@ export default function NavbarMobile({ isActive, handleTopSmoothScroll, handleSm
       )}
     </section>
   );
-}
+};
+
+export default NavbarMobile;

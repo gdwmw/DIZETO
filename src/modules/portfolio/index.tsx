@@ -2,11 +2,15 @@
 
 import { dbPortfolio, dbPortfolioPathIndex } from "@/database/database";
 import Link from "next/link";
-import { useState } from "react";
+import { FC, ReactElement, useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import { ImagesFrame } from "./images-frame";
 
-export function Portfolio({ path }: { path: string }): JSX.Element {
+type TPortfolio = {
+  path: string;
+};
+
+export const Portfolio: FC<TPortfolio> = ({ path }): ReactElement => {
   const index: number = dbPortfolioPathIndex(path);
   const totalData: string[] = [];
   for (let i: number = 1; i <= dbPortfolio[index].tdat; i++) {
@@ -68,4 +72,4 @@ export function Portfolio({ path }: { path: string }): JSX.Element {
       </div>
     </div>
   );
-}
+};

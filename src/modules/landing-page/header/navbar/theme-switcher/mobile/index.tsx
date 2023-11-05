@@ -1,10 +1,11 @@
 "use client";
 
 import { useTheme } from "next-themes";
+import { FC, ReactElement } from "react";
 import { BsFillMoonStarsFill, BsSunFill } from "react-icons/bs";
 import { SiMoonrepo } from "react-icons/si";
 
-export function ThemeSwitcherMobile(): JSX.Element {
+export const ThemeSwitcherMobile: FC = (): ReactElement => {
   const { theme, setTheme } = useTheme();
 
   return (
@@ -31,4 +32,4 @@ export function ThemeSwitcherMobile(): JSX.Element {
       </ul>
     </div>
   );
-}
+};

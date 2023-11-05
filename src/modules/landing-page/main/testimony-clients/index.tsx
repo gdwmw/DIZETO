@@ -13,13 +13,13 @@ import loadingAnimation from "@/assets/loading/loading.svg";
 import { dbTestimonyClients } from "@/database/database";
 import { useTheme } from "next-themes";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { FC, ReactElement, useEffect, useState } from "react";
 import { FaQuoteLeft, FaRegThumbsUp, FaToolbox, FaUserAlt } from "react-icons/fa";
 import { GoDotFill } from "react-icons/go";
 import dynamic from "next/dynamic";
 const DateTime = dynamic(() => import("./date-time"));
 
-export function TestimonyClients(): JSX.Element {
+export const TestimonyClients: FC = (): ReactElement => {
   const theme = useTheme();
   const [mounted, setMounted] = useState<boolean>(false);
   const [testimonyIndex, setTestimonyIndex] = useState<number>(0);
@@ -158,4 +158,4 @@ export function TestimonyClients(): JSX.Element {
       </div>
     </section>
   );
-}
+};

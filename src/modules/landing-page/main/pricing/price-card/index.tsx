@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { dbPricing } from "@/database/database";
+import { FC, ReactElement } from "react";
 
-export function PriceCard(): JSX.Element {
+export const PriceCard: FC = (): ReactElement => {
   return (
     <div className="grid w-full gap-5 sm:grid-cols-2 xl:grid-cols-4">
       {dbPricing.map((data) => (
@@ -48,4 +49,4 @@ export function PriceCard(): JSX.Element {
       ))}
     </div>
   );
-}
+};

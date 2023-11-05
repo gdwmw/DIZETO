@@ -1,8 +1,9 @@
 import { dbLandingPagePortfolio } from "@/database/database";
 import Link from "next/link";
 import { ImagesFrame } from "./images-frame";
+import { FC, ReactElement } from "react";
 
-export function Portfolio(): JSX.Element {
+export const Portfolio: FC = (): ReactElement => {
   return (
     <section id="Portfolio" className="scroll-mt-[84px]">
       <div className="paper bg-white p-5 dark:bg-dark">
@@ -24,4 +25,4 @@ export function Portfolio(): JSX.Element {
       </div>
     </section>
   );
-}
+};

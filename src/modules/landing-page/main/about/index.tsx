@@ -1,7 +1,8 @@
 import logoDIZETO from "@/assets/images/logo/dizeto.webp";
 import Image from "next/image";
+import { FC, ReactElement } from "react";
 
-export function About(): JSX.Element {
+export const About: FC = (): ReactElement => {
   return (
     <section id="About" className="scroll-mt-[84px]">
       <div className="paper bg-white p-5 dark:bg-dark">
@@ -28,4 +29,4 @@ export function About(): JSX.Element {
       </div>
     </section>
   );
-}
+};

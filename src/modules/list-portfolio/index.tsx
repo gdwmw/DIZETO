@@ -3,10 +3,10 @@
 import { dbSortedListPortfolio } from "@/database/database";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { FC, ReactElement, useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 
-export function ListPortfolio(): JSX.Element {
+export const ListPortfolio: FC = (): ReactElement => {
   const itemsPerPage: number = 20;
   const [currentPage, setCurrentPage] = useState<number>(1);
   const totalPages: number = Math.ceil(dbSortedListPortfolio.length / itemsPerPage);
@@ -94,4 +94,4 @@ export function ListPortfolio(): JSX.Element {
       </div>
     </div>
   );
-}
+};

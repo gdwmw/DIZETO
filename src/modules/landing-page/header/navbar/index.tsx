@@ -1,12 +1,12 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useEffect, useState, useCallback, FormEvent } from "react";
+import { useEffect, useState, useCallback, FormEvent, FC, ReactElement } from "react";
 import { NavbarLoading } from "./loading";
 const DynamicNavbarMobile = dynamic(() => import("./mobile"), { loading: () => <NavbarLoading /> });
 const DynamicNavbarWebsite = dynamic(() => import("./website"), { loading: () => <NavbarLoading /> });
 
-export function Navbar(): JSX.Element {
+export const Navbar: FC = (): ReactElement => {
   const [scrollPosition, setScrollPosition] = useState<number>(0);
   const [isActive, setIsActive] = useState<boolean>(false);
   const [navbar, setNavbar] = useState<boolean>();
@@ -75,4 +75,4 @@ export function Navbar(): JSX.Element {
       )}
     </nav>
   );
-}
+};

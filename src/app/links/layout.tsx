@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { ReactNode } from "react";
+import { FC, ReactNode } from "react";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -39,6 +39,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Linkslayout({ children }: { children: ReactNode }): ReactNode {
+const Linkslayout: FC<{ children: ReactNode }> = ({ children }): ReactNode => {
   return children;
-}
+};
+
+export default Linkslayout;

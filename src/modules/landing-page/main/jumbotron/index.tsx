@@ -1,4 +1,6 @@
-export function Jumbotron(): JSX.Element {
+import { FC, ReactElement } from "react";
+
+export const Jumbotron: FC = (): ReactElement => {
   return (
     <section id="Jumbotron" className="jumbotron">
       <h1 className="text-8xl font-semibold">
@@ -7,4 +9,4 @@ export function Jumbotron(): JSX.Element {
       <p className="text-xl font-semibold">PRODUCTION • ENTERTAINMENT • TALENT • MUSIC RECORD</p>
     </section>
   );
-}
+};

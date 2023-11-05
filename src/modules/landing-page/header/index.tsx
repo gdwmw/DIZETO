@@ -1,9 +1,10 @@
+import { FC, ReactElement } from "react";
 import { Navbar } from "./navbar";
 
-export function Header(): JSX.Element {
+export const Header: FC = (): ReactElement => {
   return (
     <header id="Top">
       <Navbar />
     </header>
   );
-}
+};

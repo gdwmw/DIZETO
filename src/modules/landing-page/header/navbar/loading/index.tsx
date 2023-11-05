@@ -1,8 +1,9 @@
 import logoDIZETO from "@/assets/images/logo/dizeto.webp";
 import loadingAnimation from "@/assets/loading/loading.svg";
 import Image from "next/image";
+import { FC, ReactElement } from "react";
 
-export function NavbarLoading(): JSX.Element {
+export const NavbarLoading: FC = (): ReactElement => {
   return (
     <div className="fixed left-0 top-0 z-20 flex h-16 w-full items-center justify-between px-10">
       <Image className="cursor-wait" src={logoDIZETO} alt="DIZETO" width={40} height={40} quality={30} priority />
@@ -31,4 +32,4 @@ export function NavbarLoading(): JSX.Element {
       </div>
     </div>
   );
-}
+};

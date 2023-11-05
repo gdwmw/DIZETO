@@ -1,4 +1,6 @@
-export function Footer(): JSX.Element {
+import { FC, ReactElement } from "react";
+
+export const Footer: FC = (): ReactElement => {
   return (
     <footer className="container mx-auto mt-10 px-5 pb-10">
       <div className="footer-paper">
@@ -6,4 +8,4 @@ export function Footer(): JSX.Element {
       </div>
     </footer>
   );
-}
+};

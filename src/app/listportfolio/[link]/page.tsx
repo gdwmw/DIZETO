@@ -1,5 +1,8 @@
-import { Portfolio } from "@/modules/portfolio";
+import { Portfolio as Port } from "@/modules/portfolio";
+import { FC, ReactElement } from "react";
 
-export default function Link({ params }: { params: { link: string } }): JSX.Element {
-  return <Portfolio path={params.link} />;
-}
+const Portfolio: FC<{ params: { link: string } }> = ({ params }): ReactElement => {
+  return <Port path={params.link} />;
+};
+
+export default Portfolio;
