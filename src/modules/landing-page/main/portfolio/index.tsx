@@ -17,7 +17,7 @@ export const Portfolio: FC = (): ReactElement => {
           </Link>
         </div>
         <ImagesFrame
-          folder="landingPage"
+          folder="landing-page"
           database={dbLandingPagePortfolio}
           link="https://dizeto-images.vercel.app/assets/images/landingPage/"
           copyright="© 2022 DIZETO. All rights reserved."

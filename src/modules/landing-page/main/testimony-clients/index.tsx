@@ -9,7 +9,7 @@ import maWhite from "@/public/assets/images/clients/ma-white.svg";
 import rbwGray from "@/public/assets/images/clients/rbw-gray.svg";
 import rbwWhite from "@/public/assets/images/clients/rbw-white.svg";
 import sk from "@/public/assets/images/clients/sk.png";
-import loadingAnimation from "@/public/assets/loading/loading.svg";
+import loadingAnimation from "@/public/assets/animations/loadings/loading.svg";
 import { dbTestimonyClients } from "@/database/database";
 import { useTheme } from "next-themes";
 import Image from "next/image";
@@ -46,7 +46,7 @@ export const TestimonyClients: FC = (): ReactElement => {
           <div className="flex h-[450px] w-full flex-col items-center justify-center gap-5 dark:text-white">
             <FaQuoteLeft size={30} />
             <Image
-              src={require(`@/public/assets/images/testimony/${dbTestimonyClients[testimonyIndex].image}`)}
+              src={require(`@/public/assets/images/testimonials/${dbTestimonyClients[testimonyIndex].image}`)}
               alt="Testimony"
               height={128}
               width={128}

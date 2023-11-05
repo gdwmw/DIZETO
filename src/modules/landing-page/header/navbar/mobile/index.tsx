@@ -1,7 +1,7 @@
 "use client";
 
-import logoDIZETO from "@/public/assets/images/logo/dizeto.webp";
-import loadingAnimation from "@/public/assets/loading/loading.svg";
+import logoDIZETO from "@/public/assets/images/logos/dizeto.webp";
+import loadingAnimation from "@/public/assets/animations/loadings/loading.svg";
 import Image from "next/image";
 import { FC, FormEvent, ReactElement, useEffect, useRef, useState } from "react";
 import { FiMenu } from "react-icons/fi";
