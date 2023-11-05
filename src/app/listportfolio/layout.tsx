@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     siteName: "DIZETO",
     images: [
       {
-        url: "https://dizeto-dev.vercel.app/dizeto.webp",
+        url: "https://dizeto-dev.vercel.app/assets/images/logo/dizeto.webp",
       },
     ],
   },
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     title: "DIZETO | LIST PORTFOLIO",
     description: "See our portfolio for examples of our work. We believe that our portfolio demonstrates our abilities and creativity.",
     images: {
-      url: "https://dizeto-dev.vercel.app/dizeto.webp",
+      url: "https://dizeto-dev.vercel.app/assets/images/logo/dizeto.webp",
     },
   },
 };
