@@ -10,7 +10,7 @@ import rbwGray from "@/public/assets/images/clients/rbw-gray.svg";
 import rbwWhite from "@/public/assets/images/clients/rbw-white.svg";
 import sk from "@/public/assets/images/clients/sk.png";
 import loadingAnimation from "@/public/assets/animations/loadings/loading.svg";
-import { dbTestimonyClients } from "@/database/database";
+import { dbTestimonialsClients } from "@/database/database";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import { FC, ReactElement, useEffect, useState } from "react";
@@ -19,10 +19,10 @@ import { GoDotFill } from "react-icons/go";
 import dynamic from "next/dynamic";
 const DateTime = dynamic(() => import("./date-time"));
 
-export const TestimonyClients: FC = (): ReactElement => {
+export const TestimonialsClients: FC = (): ReactElement => {
   const theme = useTheme();
   const [mounted, setMounted] = useState<boolean>(false);
-  const [testimonyIndex, setTestimonyIndex] = useState<number>(0);
+  const [testimonialsIndex, setTestimonialsIndex] = useState<number>(0);
   const [dateTime, setDateTime] = useState<boolean>(true);
 
   useEffect(() => {
@@ -31,11 +31,11 @@ export const TestimonyClients: FC = (): ReactElement => {
   }, []);
 
   useEffect(() => {
-    const testimonyInterval = setInterval(() => {
-      setTestimonyIndex((prevIndex) => (prevIndex + 1) % dbTestimonyClients.length);
+    const testimonialsInterval = setInterval(() => {
+      setTestimonialsIndex((prevIndex) => (prevIndex + 1) % dbTestimonialsClients.length);
     }, 5000);
     return () => {
-      clearInterval(testimonyInterval);
+      clearInterval(testimonialsInterval);
     };
   }, []);
 
@@ -46,7 +46,7 @@ export const TestimonyClients: FC = (): ReactElement => {
           <div className="flex h-[450px] w-full flex-col items-center justify-center gap-5 dark:text-white">
             <FaQuoteLeft size={30} />
             <Image
-              src={require(`@/public/assets/images/testimonials/${dbTestimonyClients[testimonyIndex].image}`)}
+              src={require(`@/public/assets/images/testimonials/${dbTestimonialsClients[testimonialsIndex].image}`)}
               alt="Testimony"
               height={128}
               width={128}
@@ -55,13 +55,13 @@ export const TestimonyClients: FC = (): ReactElement => {
               className="rounded-full"
             />
             <div className="text-center">
-              <h3 className="text-lg font-semibold">{dbTestimonyClients[testimonyIndex].name}</h3>
-              <p className="text-sm font-semibold text-red-600">{dbTestimonyClients[testimonyIndex].status}</p>
+              <h3 className="text-lg font-semibold">{dbTestimonialsClients[testimonialsIndex].name}</h3>
+              <p className="text-sm font-semibold text-red-600">{dbTestimonialsClients[testimonialsIndex].status}</p>
             </div>
-            <p className="h-12 w-[500px] text-center font-semibold">{`"${dbTestimonyClients[testimonyIndex].comment}"`}</p>
+            <p className="h-12 w-[500px] text-center font-semibold">{`"${dbTestimonialsClients[testimonialsIndex].comment}"`}</p>
             <div className="mt-1 flex items-center justify-center gap-1">
-              {dbTestimonyClients.map((_, index) => (
-                <div key={index} className={testimonyIndex === index ? "text-red-600" : "text-red-300"}>
+              {dbTestimonialsClients.map((_, index) => (
+                <div key={index} className={testimonialsIndex === index ? "text-red-600" : "text-red-300"}>
                   <GoDotFill size={25} />
                 </div>
               ))}

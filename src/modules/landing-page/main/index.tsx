@@ -4,7 +4,7 @@ import { Contact } from "./contact";
 import { Jumbotron } from "./jumbotron";
 import { Portfolio } from "./portfolio";
 import { Pricing } from "./pricing";
-import { TestimonyClients } from "./testimony-clients";
+import { TestimonialsClients } from "./testimonials-clients";
 
 export const Main: FC = (): ReactElement => {
   return (
@@ -14,9 +14,9 @@ export const Main: FC = (): ReactElement => {
         <About />
         <Portfolio />
         <Pricing />
-        <TestimonyClients />
+        <TestimonialsClients />
         <Contact />
       </section>
     </main>
   );
-}
+};
