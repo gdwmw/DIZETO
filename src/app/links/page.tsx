@@ -1,4 +1,4 @@
-import logoDIZETO from "@/assets/images/logo/dizeto.webp";
+import logoDIZETO from "@/public/assets/images/logo/dizeto.webp";
 import { AncorButton } from "@/components/links";
 import Image from "next/image";
 import { FC, ReactElement } from "react";

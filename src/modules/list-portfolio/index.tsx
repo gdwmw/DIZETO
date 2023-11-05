@@ -72,7 +72,7 @@ export const ListPortfolio: FC = (): ReactElement => {
               <Link key={data.id} href={`/listportfolio/${data.link}`}>
                 <div className="portfolio-card">
                   <Image
-                    src={require(`@/assets/images/thumbnail/portfolio/${data.image}`)}
+                    src={require(`@/public/assets/images/thumbnail/portfolio/${data.image}`)}
                     alt="Portfolio"
                     height={300}
                     width={300}

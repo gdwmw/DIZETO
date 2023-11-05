@@ -1,6 +1,6 @@
 "use client";
 
-import loadingAnimation from "@/assets/loading/loading.svg";
+import loadingAnimation from "@/public/assets/loading/loading.svg";
 import Image from "next/image";
 import { FC, ReactElement, useEffect, useRef, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
@@ -85,7 +85,7 @@ export const ImagesFrame: FC<TImagesFrameProps> = ({ folder, database, link, cop
               className={`thumbnail ${index === 0 ? "" : "mt-5"}`}
             >
               <Image
-                src={require(`@/assets/images/thumbnail/${folder}/${image}`)}
+                src={require(`@/public/assets/images/thumbnail/${folder}/${image}`)}
                 alt={image}
                 quality={30}
                 placeholder="blur"

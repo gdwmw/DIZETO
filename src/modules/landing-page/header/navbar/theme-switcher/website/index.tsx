@@ -1,6 +1,6 @@
 "use client";
 
-import loadingAnimation from "@/assets/loading/loading.svg";
+import loadingAnimation from "@/public/assets/loading/loading.svg";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import { FC, ReactElement, useEffect, useRef, useState } from "react";

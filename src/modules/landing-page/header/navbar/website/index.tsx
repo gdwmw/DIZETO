@@ -1,4 +1,4 @@
-import logoDIZETO from "@/assets/images/logo/dizeto.webp";
+import logoDIZETO from "@/public/assets/images/logo/dizeto.webp";
 import Image from "next/image";
 import { ThemeSwitcherWebsite } from "../theme-switcher";
 import { FC, FormEvent, ReactElement } from "react";
