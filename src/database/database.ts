@@ -167,7 +167,7 @@ const dbPricing: TPricing = [
   },
 ];
 
-type TTestimonyClients = {
+type TTestimonialsClients = {
   id: string;
   name: string;
   status: string;
@@ -175,7 +175,7 @@ type TTestimonyClients = {
   image: string;
 }[];
 
-const dbTestimonyClients: TTestimonyClients = [
+const dbTestimonialsClients: TTestimonialsClients = [
   {
     id: "1",
     name: "Rangga Dewamoela",
@@ -659,4 +659,4 @@ const dbPortfolio: TPortfolio = [
   },
 ];
 
-export { dbLandingPagePortfolio, dbPricing, dbTestimonyClients, dbSortedListPortfolio, dbPortfolioPathIndex, dbPortfolio };
+export { dbLandingPagePortfolio, dbPricing, dbTestimonialsClients, dbSortedListPortfolio, dbPortfolioPathIndex, dbPortfolio };
