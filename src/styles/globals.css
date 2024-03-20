@@ -61,7 +61,7 @@ body {
 }
 
 .detail-photo-background {
-  @apply fixed left-0 top-0 z-30 flex h-full w-screen items-center justify-center bg-dark/50 p-5 backdrop-blur-md dark:bg-white/20;
+  @apply fixed left-0 top-0 z-30 flex h-screen w-screen items-center justify-center bg-dark/50 p-5 backdrop-blur-md dark:bg-white/20;
 }
 
 .photo-frame {

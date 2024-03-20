@@ -124,16 +124,18 @@ export const ImagesFrame: FC<TImagesFrameProps> = ({ folder, database, link, cop
               <div className={`detail-photo-loading-interactive ${isImageLoadingInteractive ? "opacity-100" : "opacity-0"}`}>
                 <Image src={loadingAnimation} alt="Loading..." height={100} width={100} quality={30} loading="lazy" />
               </div>
-              <Image
-                src={`${link}${database[dataIndex]}`}
-                alt={database[dataIndex]}
-                height={1000}
-                width={1000}
-                loading="lazy"
-                onLoadCapture={handleImageLoaded}
-                className="h-fit w-fit transition-all duration-1000"
-                style={{ maxHeight: imageLoaded ? "1000px" : "0px", maxWidth: imageLoaded ? "1000px" : "0px" }}
-              />
+              <div className="h-fit w-fit">
+                <Image
+                  src={`${link}${database[dataIndex]}`}
+                  alt={database[dataIndex]}
+                  height={10000}
+                  width={10000}
+                  loading="lazy"
+                  onLoadCapture={handleImageLoaded}
+                  className="h-fit w-fit transition-all duration-1000"
+                  style={{ maxHeight: imageLoaded ? "90dvh" : "0dvh", maxWidth: imageLoaded ? "90dvw" : "0dvw" }}
+                />
+              </div>
             </div>
             <div className="ml-1 text-sm font-semibold text-white dark:text-dark">
               <p>{copyright}</p>
