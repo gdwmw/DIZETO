@@ -1,6 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: { domains: ["dizeto-images.vercel.app"] },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "dizeto-images.vercel.app",
+        port: "",
+        pathname: "/assets/images/**",
+      },
+    ],
+  },
 };
 
 module.exports = nextConfig;
