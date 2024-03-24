@@ -2,6 +2,7 @@
 
 import { ButtonCVA } from "@/components";
 import { dbSortedListPortfolio } from "@/database/database";
+import { cn } from "@/libs";
 import Image from "next/image";
 import Link from "next/link";
 import { FC, ReactElement, useState } from "react";
@@ -37,7 +38,7 @@ export const ListPortfolio: FC = (): ReactElement => {
               <Link
                 href={"/"}
                 aria-label="Landing Page"
-                className={ButtonCVA({ className: "flex h-10 w-10 items-center justify-center px-0 py-0 text-lg" })}
+                className={cn(ButtonCVA({ className: "flex h-10 w-10 items-center justify-center px-0 py-0 text-lg" }))}
               >
                 <FaArrowLeft size={18} />
               </Link>
@@ -46,9 +47,11 @@ export const ListPortfolio: FC = (): ReactElement => {
                   key={i}
                   type="button"
                   onClick={() => handlePageChange(i + 1)}
-                  className={ButtonCVA({
-                    className: `h-10 w-10 px-0 py-0 text-lg ${currentPage === i + 1 ? "bg-red-600 text-white" : "text-red-600"}`,
-                  })}
+                  className={cn(
+                    ButtonCVA({
+                      className: `h-10 w-10 px-0 py-0 text-lg ${currentPage === i + 1 ? "bg-red-600 text-white" : "text-red-600"}`,
+                    }),
+                  )}
                 >
                   {i + 1}
                 </button>
@@ -60,7 +63,7 @@ export const ListPortfolio: FC = (): ReactElement => {
             <Link
               href={"/"}
               aria-label="Landing Page"
-              className={ButtonCVA({ className: "flex h-10 w-10 items-center justify-center px-0 py-0 text-lg" })}
+              className={cn(ButtonCVA({ className: "flex h-10 w-10 items-center justify-center px-0 py-0 text-lg" }))}
             >
               <FaArrowLeft size={18} />
             </Link>
@@ -69,9 +72,11 @@ export const ListPortfolio: FC = (): ReactElement => {
                 key={i}
                 type="button"
                 onClick={() => handlePageChange(i + 1)}
-                className={ButtonCVA({
-                  className: `h-10 w-10 px-0 py-0 text-lg ${currentPage === i + 1 ? "bg-red-600 text-white" : "text-red-600"}`,
-                })}
+                className={cn(
+                  ButtonCVA({
+                    className: `h-10 w-10 px-0 py-0 text-lg ${currentPage === i + 1 ? "bg-red-600 text-white" : "text-red-600"}`,
+                  }),
+                )}
               >
                 {i + 1}
               </button>
