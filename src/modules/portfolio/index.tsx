@@ -1,5 +1,6 @@
 "use client";
 
+import { ButtonCVA } from "@/components";
 import { dbPortfolio, dbPortfolioPathIndex } from "@/database/database";
 import Link from "next/link";
 import { FC, ReactElement, useState } from "react";
@@ -46,7 +47,7 @@ export const Portfolio: FC<TPortfolio> = ({ path }): ReactElement => {
             <div className="h-0.5 w-full rounded-full bg-red-600" />
           </section>
           <section className="mb-6 mt-5 flex items-center justify-center gap-5">
-            <Link href={"/listportfolio"} className="back-red-line-button">
+            <Link href={"/listportfolio"} className={ButtonCVA({ className: "flex h-10 w-10 items-center justify-center px-0 py-0 text-lg" })}>
               <FaArrowLeft size={18} />
             </Link>
             {Array.from({ length: totalPages }, (_, i) => (
@@ -54,7 +55,9 @@ export const Portfolio: FC<TPortfolio> = ({ path }): ReactElement => {
                 key={i}
                 type="button"
                 onClick={() => handlePageChange(i + 1)}
-                className={`pagination-red-line-button ${currentPage === i + 1 ? "bg-red-600 text-white" : "text-red-600"}`}
+                className={ButtonCVA({
+                  className: `h-10 w-10 px-0 py-0 text-lg ${currentPage === i + 1 ? "bg-red-600 text-white" : "text-red-600"}`,
+                })}
               >
                 {i + 1}
               </button>
