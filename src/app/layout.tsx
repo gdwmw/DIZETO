@@ -1,4 +1,4 @@
-import { NextThemesProvider } from "@/libs/next-themes";
+import { NextThemesProvider } from "@/libs";
 import { Footer } from "@/modules/footer";
 import "@/styles/globals.css";
 import type { Metadata, Viewport } from "next";
