@@ -1,5 +1,6 @@
-import Link from "next/link";
+import { ButtonCVA } from "@/components";
 import { dbPricing } from "@/database/database";
+import Link from "next/link";
 import { FC, ReactElement } from "react";
 
 export const PriceCard: FC = (): ReactElement => {
@@ -38,7 +39,7 @@ export const PriceCard: FC = (): ReactElement => {
               </li>
               <li>
                 <div className="flex items-center justify-center">
-                  <Link href={"/"} className="red-line-button">
+                  <Link href={"/"} className={ButtonCVA()}>
                     BOOKING
                   </Link>
                 </div>

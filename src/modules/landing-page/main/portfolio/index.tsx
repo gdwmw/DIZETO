@@ -1,7 +1,8 @@
+import { ButtonCVA } from "@/components";
 import { dbLandingPagePortfolio } from "@/database/database";
 import Link from "next/link";
-import { ImagesFrame } from "./images-frame";
 import { FC, ReactElement } from "react";
+import { ImagesFrame } from "./images-frame";
 
 export const Portfolio: FC = (): ReactElement => {
   return (
@@ -12,7 +13,7 @@ export const Portfolio: FC = (): ReactElement => {
           <div className="mx-auto h-0.5 w-20 rounded-full bg-red-600" />
         </h2>
         <div className="my-5 flex items-center justify-center">
-          <Link href={"/listportfolio"} className="red-line-button">
+          <Link href={"/listportfolio"} className={ButtonCVA()}>
             CHECK ALL PORTFOLIO
           </Link>
         </div>
