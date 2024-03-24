@@ -1,5 +1,4 @@
 import { NextThemesProvider } from "@/libs";
-import { Footer } from "@/modules/footer";
 import "@/styles/globals.css";
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
@@ -53,10 +52,7 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }): ReactElement => 
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <NextThemesProvider>
-          {children}
-          <Footer />
-        </NextThemesProvider>
+        <NextThemesProvider>{children}</NextThemesProvider>
       </body>
     </html>
   );
