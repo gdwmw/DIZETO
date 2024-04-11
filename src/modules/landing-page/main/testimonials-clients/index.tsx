@@ -96,7 +96,7 @@ export const TestimonialsClients: FC = (): ReactElement => {
         </section>
         <section id="Clients" className="scroll-mt-[84px] bg-white py-14 dark:bg-dark">
           <h2 className="text-center text-3xl font-semibold">
-            CLIENT<span className="text-red-600">S</span>
+            CLIEN<span className="text-red-600">TS</span>
             <div className="mx-auto h-0.5 w-20 rounded-full bg-red-600" />
           </h2>
           {mounted ? (
