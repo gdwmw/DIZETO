@@ -659,4 +659,4 @@ const dbPortfolio: TPortfolio = [
   },
 ];
 
-export { dbLandingPagePortfolio, dbPricing, dbTestimonialsClients, dbSortedListPortfolio, dbPortfolioPathIndex, dbPortfolio };
+export { dbLandingPagePortfolio, dbPortfolio, dbPortfolioPathIndex, dbPricing, dbSortedListPortfolio, dbTestimonialsClients };

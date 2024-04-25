@@ -1,8 +1,8 @@
 import { FC, ReactElement } from "react";
 import { About } from "./about";
 import { Contact } from "./contact";
-import { Jumbotron } from "./jumbotron";
 import { HightlightPortfolio } from "./highlight-portfolio";
+import { Jumbotron } from "./jumbotron";
 import { Pricing } from "./pricing";
 import { TestimonialsClients } from "./testimonials-clients";
 

@@ -1,7 +1,7 @@
 import logoDIZETO from "@/public/assets/images/logos/dizeto.webp";
 import Image from "next/image";
-import { ThemeSwitcherWebsite } from "../theme-switcher";
 import { FC, FormEvent, ReactElement } from "react";
+import { ThemeSwitcherWebsite } from "../theme-switcher";
 
 type TNavbarWebsiteProps = {
   isActive: boolean;

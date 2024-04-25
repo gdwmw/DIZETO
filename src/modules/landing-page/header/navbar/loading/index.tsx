@@ -1,5 +1,5 @@
-import logoDIZETO from "@/public/assets/images/logos/dizeto.webp";
 import loadingAnimation from "@/public/assets/animations/loadings/loading.svg";
+import logoDIZETO from "@/public/assets/images/logos/dizeto.webp";
 import Image from "next/image";
 import { FC, ReactElement } from "react";
 

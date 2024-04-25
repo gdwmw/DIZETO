@@ -1,5 +1,7 @@
 "use client";
 
+import { dbTestimonialsClients } from "@/database/database";
+import loadingAnimation from "@/public/assets/animations/loadings/loading.svg";
 import irma from "@/public/assets/images/clients/irma.png";
 import kp from "@/public/assets/images/clients/kp.png";
 import lcGray from "@/public/assets/images/clients/lc-gray.svg";
@@ -9,14 +11,12 @@ import maWhite from "@/public/assets/images/clients/ma-white.svg";
 import rbwGray from "@/public/assets/images/clients/rbw-gray.svg";
 import rbwWhite from "@/public/assets/images/clients/rbw-white.svg";
 import sk from "@/public/assets/images/clients/sk.png";
-import loadingAnimation from "@/public/assets/animations/loadings/loading.svg";
-import { dbTestimonialsClients } from "@/database/database";
 import { useTheme } from "next-themes";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import { FC, ReactElement, useEffect, useState } from "react";
 import { FaQuoteLeft, FaRegThumbsUp, FaToolbox, FaUserAlt } from "react-icons/fa";
 import { GoDotFill } from "react-icons/go";
-import dynamic from "next/dynamic";
 const DateTime = dynamic(() => import("./date-time"));
 
 export const TestimonialsClients: FC = (): ReactElement => {

@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useEffect, useState, useCallback, FormEvent, FC, ReactElement } from "react";
+import { FC, FormEvent, ReactElement, useCallback, useEffect, useState } from "react";
 import { NavbarLoading } from "./loading";
 const DynamicNavbarMobile = dynamic(() => import("./mobile"), { loading: () => <NavbarLoading /> });
 const DynamicNavbarWebsite = dynamic(() => import("./website"), { loading: () => <NavbarLoading /> });
