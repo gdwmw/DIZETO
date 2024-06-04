@@ -1,3 +1,0 @@
-# DIZETO
-
-Company Portfolio Website
