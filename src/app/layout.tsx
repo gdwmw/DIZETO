@@ -47,8 +47,6 @@ export const metadata: Metadata = {
 };
 
 const RootLayout: FC<{ children: ReactNode }> = ({ children }): ReactElement => {
-  console.log("© 2021 DIZETO. All rights reserved.");
-  console.log("Created by Gede Dewo Wahyu M.W with 🖤");
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>

@@ -1,3 +1,4 @@
+import { Copyright } from "@/components";
 import { FC, ReactElement } from "react";
 import { About } from "./about";
 import { Contact } from "./contact";
@@ -16,6 +17,7 @@ export const Main: FC = (): ReactElement => {
         <Pricing />
         <TestimonialsClients />
         <Contact />
+        <Copyright />
       </section>
     </main>
   );
