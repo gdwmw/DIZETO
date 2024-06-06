@@ -1,12 +1,14 @@
 "use client";
 
+import { FC, ReactElement, useState } from "react";
+
+import Image from "next/image";
+import Link from "next/link";
+import { FaArrowLeft } from "react-icons/fa";
+
 import { ButtonCVA, Footer } from "@/components";
 import { dbSortedListPortfolio } from "@/database/database";
 import { cn } from "@/libs";
-import Image from "next/image";
-import Link from "next/link";
-import { FC, ReactElement, useState } from "react";
-import { FaArrowLeft } from "react-icons/fa";
 
 export const ListPortfolio: FC = (): ReactElement => {
   const itemsPerPage: number = 20;
@@ -29,7 +31,7 @@ export const ListPortfolio: FC = (): ReactElement => {
         <div className="paper-portfolio">
           <header>
             <section className="flex items-center justify-center gap-5">
-              <div className="h-fit w-fit">
+              <div className="size-fit">
                 <h2 className="text-4xl font-semibold">
                   PORTFOL<span className="text-red-600">IO</span>
                 </h2>
@@ -37,22 +39,22 @@ export const ListPortfolio: FC = (): ReactElement => {
               </div>
               <div className="hidden items-center justify-center gap-5 md:flex">
                 <Link
-                  href={"/"}
                   aria-label="Landing Page"
                   className={cn(ButtonCVA({ className: "flex h-10 w-10 items-center justify-center px-0 py-0 text-lg" }))}
+                  href={"/"}
                 >
                   <FaArrowLeft size={18} />
                 </Link>
                 {Array.from({ length: totalPages }, (_, i) => (
                   <button
-                    key={i}
-                    type="button"
-                    onClick={() => handlePageChange(i + 1)}
                     className={cn(
                       ButtonCVA({
                         className: `h-10 w-10 px-0 py-0 text-lg ${currentPage === i + 1 ? "bg-red-600 text-white" : "text-red-600"}`,
                       }),
                     )}
+                    key={i}
+                    onClick={() => handlePageChange(i + 1)}
+                    type="button"
                   >
                     {i + 1}
                   </button>
@@ -62,22 +64,22 @@ export const ListPortfolio: FC = (): ReactElement => {
             </section>
             <section className="mb-6 mt-5 flex items-center justify-center gap-5 md:hidden">
               <Link
-                href={"/"}
                 aria-label="Landing Page"
                 className={cn(ButtonCVA({ className: "flex h-10 w-10 items-center justify-center px-0 py-0 text-lg" }))}
+                href={"/"}
               >
                 <FaArrowLeft size={18} />
               </Link>
               {Array.from({ length: totalPages }, (_, i) => (
                 <button
-                  key={i}
-                  type="button"
-                  onClick={() => handlePageChange(i + 1)}
                   className={cn(
                     ButtonCVA({
                       className: `h-10 w-10 px-0 py-0 text-lg ${currentPage === i + 1 ? "bg-red-600 text-white" : "text-red-600"}`,
                     }),
                   )}
+                  key={i}
+                  onClick={() => handlePageChange(i + 1)}
+                  type="button"
                 >
                   {i + 1}
                 </button>
@@ -88,17 +90,17 @@ export const ListPortfolio: FC = (): ReactElement => {
           <main className="flex items-start justify-center">
             <div className="grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
               {getDataForPage().map((data) => (
-                <Link key={data.id} href={`/listportfolio/${data.link}`}>
+                <Link href={`/listportfolio/${data.link}`} key={data.id}>
                   <div className="portfolio-card">
                     <Image
-                      src={require(`@/public/assets/images/thumbnails/portfolio/${data.image}`)}
                       alt="Portfolio"
-                      height={300}
-                      width={300}
-                      quality={30}
-                      priority
-                      placeholder="blur"
                       className="rounded-md"
+                      height={300}
+                      placeholder="blur"
+                      priority
+                      quality={30}
+                      src={require(`@/public/assets/images/thumbnails/portfolio/${data.image}`)}
+                      width={300}
                     />
                     <div className="mx-auto my-3 h-0.5 w-24 rounded-full bg-red-600" />
                     <div>

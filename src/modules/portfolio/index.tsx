@@ -1,11 +1,14 @@
 "use client";
 
+import { FC, ReactElement, useState } from "react";
+
+import Link from "next/link";
+import { FaArrowLeft } from "react-icons/fa";
+
 import { ButtonCVA, Footer } from "@/components";
 import { dbPortfolio, dbPortfolioPathIndex } from "@/database/database";
 import { cn } from "@/libs";
-import Link from "next/link";
-import { FC, ReactElement, useState } from "react";
-import { FaArrowLeft } from "react-icons/fa";
+
 import { ImagesFrame } from "./images-frame";
 
 type TPortfolio = {
@@ -39,7 +42,7 @@ export const Portfolio: FC<TPortfolio> = ({ path }): ReactElement => {
         <div className="paper-portfolio">
           <header>
             <section className="flex items-center justify-center gap-5">
-              <div className="h-fit w-fit">
+              <div className="size-fit">
                 <h2 className="whitespace-nowrap text-4xl font-semibold">
                   {dbPortfolio[index].tit2}
                   <span className="text-red-600">{dbPortfolio[index].tit3}</span>
@@ -49,19 +52,19 @@ export const Portfolio: FC<TPortfolio> = ({ path }): ReactElement => {
               <div className="h-0.5 w-full rounded-full bg-red-600" />
             </section>
             <section className="mb-6 mt-5 flex items-center justify-center gap-5">
-              <Link href={"/listportfolio"} className={cn(ButtonCVA({ className: "flex h-10 w-10 items-center justify-center px-0 py-0 text-lg" }))}>
+              <Link className={cn(ButtonCVA({ className: "flex h-10 w-10 items-center justify-center px-0 py-0 text-lg" }))} href={"/listportfolio"}>
                 <FaArrowLeft size={18} />
               </Link>
               {Array.from({ length: totalPages }, (_, i) => (
                 <button
-                  key={i}
-                  type="button"
-                  onClick={() => handlePageChange(i + 1)}
                   className={cn(
                     ButtonCVA({
                       className: `h-10 w-10 px-0 py-0 text-lg ${currentPage === i + 1 ? "bg-red-600 text-white" : "text-red-600"}`,
                     }),
                   )}
+                  key={i}
+                  onClick={() => handlePageChange(i + 1)}
+                  type="button"
                 >
                   {i + 1}
                 </button>
@@ -70,10 +73,10 @@ export const Portfolio: FC<TPortfolio> = ({ path }): ReactElement => {
           </header>
           <main>
             <ImagesFrame
-              folder={`portfolio/${dbPortfolio[index].fldr}`}
-              database={getDataForPage().map((data) => data)}
-              link={`https://dizeto-images.vercel.app/assets/images/portfolio/${dbPortfolio[index].fldr}/`}
               copyright={dbPortfolio[index].cc}
+              database={getDataForPage().map((data) => data)}
+              folder={`portfolio/${dbPortfolio[index].fldr}`}
+              link={`https://dizeto-images.vercel.app/assets/images/portfolio/${dbPortfolio[index].fldr}/`}
             />
           </main>
         </div>

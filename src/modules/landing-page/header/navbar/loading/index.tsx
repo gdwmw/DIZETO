@@ -1,12 +1,14 @@
+import { FC, ReactElement } from "react";
+
+import Image from "next/image";
+
 import loadingAnimation from "@/public/assets/animations/loadings/loading.svg";
 import logoDIZETO from "@/public/assets/images/logos/dizeto.webp";
-import Image from "next/image";
-import { FC, ReactElement } from "react";
 
 export const NavbarLoading: FC = (): ReactElement => {
   return (
     <div className="fixed left-0 top-0 z-20 flex h-16 w-full items-center justify-between px-10">
-      <Image className="cursor-wait" src={logoDIZETO} alt="DIZETO" width={40} height={40} quality={30} priority />
+      <Image alt="DIZETO" className="cursor-wait" height={40} priority quality={30} src={logoDIZETO} width={40} />
       <ul className="hidden gap-10 text-lg font-bold dark:text-white min-[840px]:flex">
         <li className="cursor-wait">
           <p>About</p>
@@ -27,8 +29,8 @@ export const NavbarLoading: FC = (): ReactElement => {
           <p>Contact</p>
         </li>
       </ul>
-      <div className="h-10 w-10">
-        <Image src={loadingAnimation} alt="Loading..." height={40} width={40} quality={30} priority />
+      <div className="size-10">
+        <Image alt="Loading..." height={40} priority quality={30} src={loadingAnimation} width={40} />
       </div>
     </div>
   );

@@ -1,7 +1,9 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import { FC, FormEvent, ReactElement, useCallback, useEffect, useState } from "react";
+
+import dynamic from "next/dynamic";
+
 import { NavbarLoading } from "./loading";
 const DynamicNavbarMobile = dynamic(() => import("./mobile"), { loading: () => <NavbarLoading /> });
 const DynamicNavbarWebsite = dynamic(() => import("./website"), { loading: () => <NavbarLoading /> });
@@ -69,9 +71,9 @@ export const Navbar: FC = (): ReactElement => {
   return (
     <nav>
       {navbar ? (
-        <DynamicNavbarWebsite isActive={isActive} handleTopSmoothScroll={handleTopSmoothScroll} handleSmoothScroll={handleSmoothScroll} />
+        <DynamicNavbarWebsite handleSmoothScroll={handleSmoothScroll} handleTopSmoothScroll={handleTopSmoothScroll} isActive={isActive} />
       ) : (
-        <DynamicNavbarMobile isActive={isActive} handleTopSmoothScroll={handleTopSmoothScroll} handleSmoothScroll={handleSmoothScroll} />
+        <DynamicNavbarMobile handleSmoothScroll={handleSmoothScroll} handleTopSmoothScroll={handleTopSmoothScroll} isActive={isActive} />
       )}
     </nav>
   );

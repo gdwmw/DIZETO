@@ -1,5 +1,13 @@
 "use client";
 
+import { FC, ReactElement, useEffect, useState } from "react";
+
+import { useTheme } from "next-themes";
+import dynamic from "next/dynamic";
+import Image from "next/image";
+import { FaQuoteLeft, FaRegThumbsUp, FaToolbox, FaUserAlt } from "react-icons/fa";
+import { GoDotFill } from "react-icons/go";
+
 import { dbTestimonialsClients } from "@/database/database";
 import loadingAnimation from "@/public/assets/animations/loadings/loading.svg";
 import irma from "@/public/assets/images/clients/irma.png";
@@ -11,12 +19,6 @@ import maWhite from "@/public/assets/images/clients/ma-white.svg";
 import rbwGray from "@/public/assets/images/clients/rbw-gray.svg";
 import rbwWhite from "@/public/assets/images/clients/rbw-white.svg";
 import sk from "@/public/assets/images/clients/sk.png";
-import { useTheme } from "next-themes";
-import dynamic from "next/dynamic";
-import Image from "next/image";
-import { FC, ReactElement, useEffect, useState } from "react";
-import { FaQuoteLeft, FaRegThumbsUp, FaToolbox, FaUserAlt } from "react-icons/fa";
-import { GoDotFill } from "react-icons/go";
 const DateTime = dynamic(() => import("./date-time"));
 
 export const TestimonialsClients: FC = (): ReactElement => {
@@ -40,19 +42,19 @@ export const TestimonialsClients: FC = (): ReactElement => {
   }, []);
 
   return (
-    <section id="Testimony" className="scroll-mt-[84px]">
+    <section className="scroll-mt-[84px]" id="Testimony">
       <div className="paper">
         <section>
           <div className="flex h-[450px] w-full flex-col items-center justify-center gap-5 dark:text-white">
             <FaQuoteLeft size={30} />
             <Image
-              src={require(`@/public/assets/images/testimonials/${dbTestimonialsClients[testimonialsIndex].image}`)}
               alt="Testimony"
-              height={128}
-              width={128}
-              quality={30}
-              loading="lazy"
               className="rounded-full"
+              height={128}
+              loading="lazy"
+              quality={30}
+              src={require(`@/public/assets/images/testimonials/${dbTestimonialsClients[testimonialsIndex].image}`)}
+              width={128}
             />
             <div className="text-center">
               <h3 className="text-lg font-semibold">{dbTestimonialsClients[testimonialsIndex].name}</h3>
@@ -61,7 +63,7 @@ export const TestimonialsClients: FC = (): ReactElement => {
             <p className="h-12 w-[500px] text-center font-semibold">{`"${dbTestimonialsClients[testimonialsIndex].comment}"`}</p>
             <div className="mt-1 flex items-center justify-center gap-1">
               {dbTestimonialsClients.map((_, index) => (
-                <div key={index} className={testimonialsIndex === index ? "text-red-600" : "text-red-300"}>
+                <div className={testimonialsIndex === index ? "text-red-600" : "text-red-300"} key={index}>
                   <GoDotFill size={25} />
                 </div>
               ))}
@@ -94,7 +96,7 @@ export const TestimonialsClients: FC = (): ReactElement => {
             {dateTime && <DateTime />}
           </div>
         </section>
-        <section id="Clients" className="scroll-mt-[84px] bg-white py-14 dark:bg-dark">
+        <section className="scroll-mt-[84px] bg-white py-14 dark:bg-dark" id="Clients">
           <h2 className="text-center text-3xl font-semibold">
             CLIEN<span className="text-red-600">TS</span>
             <div className="mx-auto h-0.5 w-20 rounded-full bg-red-600" />
@@ -103,56 +105,56 @@ export const TestimonialsClients: FC = (): ReactElement => {
             <div className="mt-5 space-y-5">
               <div className="flex items-center justify-evenly">
                 {theme.resolvedTheme === "light" && (
-                  <a href="http://www.angklungmuhibah.id" target="_blank" rel="noopener noreferrer">
-                    <Image src={maGray} alt="Muhibah Angklung" quality={30} loading="lazy" className="clients-img" />
+                  <a href="http://www.angklungmuhibah.id" rel="noopener noreferrer" target="_blank">
+                    <Image alt="Muhibah Angklung" className="clients-img" loading="lazy" quality={30} src={maGray} />
                   </a>
                 )}
                 {theme.resolvedTheme === "light" && (
-                  <a href="https://www.instagram.com/rumahbatikwijaya/?hl=id" target="_blank" rel="noopener noreferrer">
-                    <Image src={rbwGray} alt="Rumah Batik Wijaya" quality={30} loading="lazy" className="clients-img" />
+                  <a href="https://www.instagram.com/rumahbatikwijaya/?hl=id" rel="noopener noreferrer" target="_blank">
+                    <Image alt="Rumah Batik Wijaya" className="clients-img" loading="lazy" quality={30} src={rbwGray} />
                   </a>
                 )}
                 {theme.resolvedTheme === "dark" && (
-                  <a href="http://www.angklungmuhibah.id" target="_blank" rel="noopener noreferrer">
-                    <Image src={maWhite} alt="Muhibah Angklung" quality={30} loading="lazy" className="clients-img" />
+                  <a href="http://www.angklungmuhibah.id" rel="noopener noreferrer" target="_blank">
+                    <Image alt="Muhibah Angklung" className="clients-img" loading="lazy" quality={30} src={maWhite} />
                   </a>
                 )}
                 {theme.resolvedTheme === "dark" && (
-                  <a href="https://www.instagram.com/rumahbatikwijaya/?hl=id" target="_blank" rel="noopener noreferrer">
-                    <Image src={rbwWhite} alt="Rumah Batik Wijaya" quality={30} loading="lazy" className="clients-img" />
+                  <a href="https://www.instagram.com/rumahbatikwijaya/?hl=id" rel="noopener noreferrer" target="_blank">
+                    <Image alt="Rumah Batik Wijaya" className="clients-img" loading="lazy" quality={30} src={rbwWhite} />
                   </a>
                 )}
-                <a href="https://irmajabar.com/" target="_blank" rel="noopener noreferrer">
-                  <Image src={irma} alt="IRMA" quality={30} loading="lazy" className="clients-img" />
+                <a href="https://irmajabar.com/" rel="noopener noreferrer" target="_blank">
+                  <Image alt="IRMA" className="clients-img" loading="lazy" quality={30} src={irma} />
                 </a>
               </div>
               <div className="flex items-center justify-evenly">
                 <a
                   href="https://shopee.co.id/topnapurnama?categoryId=100629&entryPoint=ShopByPDP&itemId=15208206609"
-                  target="_blank"
                   rel="noopener noreferrer"
+                  target="_blank"
                 >
-                  <Image src={kp} alt="Kopi Purnama" quality={30} loading="lazy" className="clients-img" />
+                  <Image alt="Kopi Purnama" className="clients-img" loading="lazy" quality={30} src={kp} />
                 </a>
-                <a href="https://gofood.link/a/DVoCLZN" target="_blank" rel="noopener noreferrer">
-                  {theme.resolvedTheme === "light" && <Image src={lcGray} alt="Lentera Coffee" quality={30} loading="lazy" className="clients-img" />}
-                  {theme.resolvedTheme === "dark" && <Image src={lcWhite} alt="Lentera Coffee" quality={30} loading="lazy" className="clients-img" />}
+                <a href="https://gofood.link/a/DVoCLZN" rel="noopener noreferrer" target="_blank">
+                  {theme.resolvedTheme === "light" && <Image alt="Lentera Coffee" className="clients-img" loading="lazy" quality={30} src={lcGray} />}
+                  {theme.resolvedTheme === "dark" && <Image alt="Lentera Coffee" className="clients-img" loading="lazy" quality={30} src={lcWhite} />}
                 </a>
-                <a href="https://www.youtube.com/@vittosafiy748" target="_blank" rel="noopener noreferrer">
-                  <Image src={sk} alt="Safiy Kitchen" quality={30} loading="lazy" className="clients-img" />
+                <a href="https://www.youtube.com/@vittosafiy748" rel="noopener noreferrer" target="_blank">
+                  <Image alt="Safiy Kitchen" className="clients-img" loading="lazy" quality={30} src={sk} />
                 </a>
-                <a href="https://pesantrentahfidzashrmadani.wordpress.com/" target="_blank" rel="noopener noreferrer">
+                <a href="https://pesantrentahfidzashrmadani.wordpress.com/" rel="noopener noreferrer" target="_blank">
                   {theme.resolvedTheme === "light" && (
-                    <Image src={maGray} alt="Al-'Ashr Al-Madani" quality={30} loading="lazy" className="clients-img" />
+                    <Image alt="Al-'Ashr Al-Madani" className="clients-img" loading="lazy" quality={30} src={maGray} />
                   )}
                   {theme.resolvedTheme === "dark" && (
-                    <Image src={maWhite} alt="Al-'Ashr Al-Madani" quality={30} loading="lazy" className="clients-img" />
+                    <Image alt="Al-'Ashr Al-Madani" className="clients-img" loading="lazy" quality={30} src={maWhite} />
                   )}
                 </a>
               </div>
             </div>
           ) : (
-            <Image src={loadingAnimation} alt="Loading..." width={100} quality={30} priority className="mx-auto my-20 h-auto" />
+            <Image alt="Loading..." className="mx-auto my-20 h-auto" priority quality={30} src={loadingAnimation} width={100} />
           )}
         </section>
       </div>

@@ -1,9 +1,10 @@
 import { FC, ReactElement } from "react";
+
 import { PriceCard } from "./price-card";
 
 export const Pricing: FC = (): ReactElement => {
   return (
-    <section id="Pricing" className="scroll-mt-[84px]">
+    <section className="scroll-mt-[84px]" id="Pricing">
       <div className="paper bg-white p-5 dark:bg-dark">
         <h2 className="text-center text-3xl font-semibold">
           PRICI<span className="text-red-600">NG</span>

@@ -1,18 +1,20 @@
 "use client";
 
-import loadingAnimation from "@/public/assets/animations/loadings/loading.svg";
-import Image from "next/image";
 import { FC, ReactElement, useEffect, useRef, useState } from "react";
+
+import Image from "next/image";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
+import loadingAnimation from "@/public/assets/animations/loadings/loading.svg";
+
 type TImagesFrameProps = {
-  folder: string;
-  database: string[];
-  link: string;
   copyright: string;
+  database: string[];
+  folder: string;
+  link: string;
 };
 
-export const ImagesFrame: FC<TImagesFrameProps> = ({ folder, database, link, copyright }): ReactElement => {
+export const ImagesFrame: FC<TImagesFrameProps> = ({ copyright, database, folder, link }): ReactElement => {
   const [dataIndex, setDataIndex] = useState<number>(0);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
@@ -77,20 +79,20 @@ export const ImagesFrame: FC<TImagesFrameProps> = ({ folder, database, link, cop
         <div className="gap-5 sm:columns-2 md:columns-3 lg:columns-4">
           {database.map((image, index) => (
             <div
+              className={`thumbnail ${index === 0 ? "" : "mt-5"}`}
               key={index}
               onClick={() => {
                 setDataIndex(index);
                 setIsOpen(true);
               }}
-              className={`thumbnail ${index === 0 ? "" : "mt-5"}`}
             >
               <Image
-                src={require(`@/public/assets/images/thumbnails/${folder}/${image}`)}
                 alt={image}
-                quality={30}
+                className="rounded-sm"
                 placeholder="blur"
                 priority
-                className="rounded-sm"
+                quality={30}
+                src={require(`@/public/assets/images/thumbnails/${folder}/${image}`)}
               />
             </div>
           ))}
@@ -99,41 +101,41 @@ export const ImagesFrame: FC<TImagesFrameProps> = ({ folder, database, link, cop
       {isOpen && (
         <div className="detail-photo-background">
           <div>
-            <div ref={menuRef} className="photo-frame">
+            <div className="photo-frame" ref={menuRef}>
               <button
-                type="button"
-                onClick={handlePreviousImage}
                 className={dataIndex !== 0 ? "photo-frame-previous-button" : "hidden"}
                 disabled={isImageLoadingInteractive}
+                onClick={handlePreviousImage}
+                type="button"
               >
                 <FaChevronLeft size={50} />
               </button>
               <button
-                type="button"
-                onClick={handleNextImage}
                 className={dataIndex + 1 !== database.length ? "photo-frame-next-button" : "hidden"}
                 disabled={isImageLoadingInteractive}
+                onClick={handleNextImage}
+                type="button"
               >
                 <FaChevronRight size={50} />
               </button>
               {isImageLoading && (
                 <div className="detail-photo-loading">
-                  <Image src={loadingAnimation} alt="Loading..." height={100} width={100} quality={30} loading="lazy" />
+                  <Image alt="Loading..." height={100} loading="lazy" quality={30} src={loadingAnimation} width={100} />
                 </div>
               )}
               <div className={`detail-photo-loading-interactive ${isImageLoadingInteractive ? "opacity-100" : "opacity-0"}`}>
-                <Image src={loadingAnimation} alt="Loading..." height={100} width={100} quality={30} loading="lazy" />
+                <Image alt="Loading..." height={100} loading="lazy" quality={30} src={loadingAnimation} width={100} />
               </div>
-              <div className="h-fit w-fit">
+              <div className="size-fit">
                 <Image
-                  src={`${link}${database[dataIndex]}`}
                   alt={database[dataIndex]}
+                  className="size-fit transition-all duration-1000"
                   height={10000}
-                  width={10000}
                   loading="lazy"
                   onLoadCapture={handleImageLoaded}
-                  className="h-fit w-fit transition-all duration-1000"
+                  src={`${link}${database[dataIndex]}`}
                   style={{ maxHeight: imageLoaded ? "90dvh" : "0dvh", maxWidth: imageLoaded ? "90dvw" : "0dvw" }}
+                  width={10000}
                 />
               </div>
             </div>

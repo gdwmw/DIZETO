@@ -1,7 +1,11 @@
 import type { Metadata, Viewport } from "next";
+
 import { FC, ReactElement, ReactNode } from "react";
+
 import { Inter } from "next/font/google";
+
 import { NextThemesProvider } from "@/libs";
+
 import "@/styles/globals.css";
 
 const inter = Inter({ subsets: ["latin"] });

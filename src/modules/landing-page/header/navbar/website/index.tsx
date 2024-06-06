@@ -1,15 +1,18 @@
-import logoDIZETO from "@/public/assets/images/logos/dizeto.webp";
-import Image from "next/image";
 import { FC, FormEvent, ReactElement } from "react";
+
+import Image from "next/image";
+
+import logoDIZETO from "@/public/assets/images/logos/dizeto.webp";
+
 import { ThemeSwitcherWebsite } from "../theme-switcher";
 
 type TNavbarWebsiteProps = {
-  isActive: boolean;
-  handleTopSmoothScroll: (e: FormEvent) => void;
   handleSmoothScroll: (e: FormEvent<EventTarget>) => void;
+  handleTopSmoothScroll: (e: FormEvent) => void;
+  isActive: boolean;
 };
 
-const NavbarWebsite: FC<TNavbarWebsiteProps> = ({ isActive, handleTopSmoothScroll, handleSmoothScroll }): ReactElement => {
+const NavbarWebsite: FC<TNavbarWebsiteProps> = ({ handleSmoothScroll, handleTopSmoothScroll, isActive }): ReactElement => {
   return (
     <section className="hidden min-[840px]:block">
       <div
@@ -17,43 +20,43 @@ const NavbarWebsite: FC<TNavbarWebsiteProps> = ({ isActive, handleTopSmoothScrol
           isActive && "shadow-md shadow-black/50 backdrop-blur-md dark:shadow-white/50"
         }`}
       >
-        <a href="#Top" className="cursor-pointer" onClick={handleTopSmoothScroll}>
-          <Image src={logoDIZETO} alt="DIZETO" width={40} height={40} quality={30} priority />
+        <a className="cursor-pointer" href="#Top" onClick={handleTopSmoothScroll}>
+          <Image alt="DIZETO" height={40} priority quality={30} src={logoDIZETO} width={40} />
         </a>
         <ul className="flex gap-10 text-lg font-bold dark:text-white">
           <li>
-            <a href="#About" className="navbar-website-options" onClick={handleSmoothScroll}>
+            <a className="navbar-website-options" href="#About" onClick={handleSmoothScroll}>
               About
             </a>
           </li>
           <li>
-            <a href="#Portfolio" className="navbar-website-options" onClick={handleSmoothScroll}>
+            <a className="navbar-website-options" href="#Portfolio" onClick={handleSmoothScroll}>
               Portfolio
             </a>
           </li>
           <li>
-            <a href="#Pricing" className="navbar-website-options" onClick={handleSmoothScroll}>
+            <a className="navbar-website-options" href="#Pricing" onClick={handleSmoothScroll}>
               Pricing
             </a>
           </li>
           <li>
-            <a href="#Testimony" className="navbar-website-options" onClick={handleSmoothScroll}>
+            <a className="navbar-website-options" href="#Testimony" onClick={handleSmoothScroll}>
               Testimony
             </a>
           </li>
           <li>
-            <a href="#Clients" className="navbar-website-options" onClick={handleSmoothScroll}>
+            <a className="navbar-website-options" href="#Clients" onClick={handleSmoothScroll}>
               Clients
             </a>
           </li>
           <li>
-            <a href="#Contact" className="navbar-website-options" onClick={handleSmoothScroll}>
+            <a className="navbar-website-options" href="#Contact" onClick={handleSmoothScroll}>
               Contact
             </a>
           </li>
         </ul>
         {/* MARK */}
-        <div className="h-10 w-10" />
+        <div className="size-10" />
         {/* END MARK */}
       </div>
       <ThemeSwitcherWebsite />

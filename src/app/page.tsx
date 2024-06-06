@@ -1,5 +1,7 @@
 import { FC, ReactElement } from "react";
+
 import { Metadata } from "next";
+
 import { Footer } from "@/components";
 import { Header, Main } from "@/modules/landing-page";
 

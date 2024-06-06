@@ -1,41 +1,42 @@
 import type { Metadata, Viewport } from "next";
+
 import { FC, ReactNode } from "react";
 
 export const viewport: Viewport = {
-  width: "device-width",
   initialScale: 0.8,
+  width: "device-width",
 };
 
 export const metadata: Metadata = {
-  creator: "Gede Dewo Wahyu M.W",
-  authors: { name: "Gede Dewo Wahyu M.W", url: "https://github.com/gdwmw" },
   applicationName: "DIZETO",
-  publisher: "Vercel",
-  robots: { index: true, follow: true },
-  title: "DIZETO | LINKS",
+  authors: { name: "Gede Dewo Wahyu M.W", url: "https://github.com/gdwmw" },
+  creator: "Gede Dewo Wahyu M.W",
   description: "Come visit social media connected to Dizeto.",
   metadataBase: new URL("https://dizeto.vercel.app/"),
   openGraph: {
-    type: "website",
-    url: "https://dizeto.vercel.app/",
-    title: "DIZETO | LINKS",
     description: "Come visit social media connected to Dizeto.",
-    siteName: "DIZETO",
     images: [
       {
         url: "https://dizeto.vercel.app/assets/images/logo/dizeto.webp",
       },
     ],
+    siteName: "DIZETO",
+    title: "DIZETO | LINKS",
+    type: "website",
+    url: "https://dizeto.vercel.app/",
   },
+  publisher: "Vercel",
+  robots: { follow: true, index: true },
+  title: "DIZETO | LINKS",
   twitter: {
     card: "summary_large_image",
-    site: "@dizeto_id",
     creator: "@dizeto_id",
-    title: "DIZETO | LINKS",
     description: "Come visit social media connected to Dizeto.",
     images: {
       url: "https://dizeto.vercel.app/assets/images/logo/dizeto.webp",
     },
+    site: "@dizeto_id",
+    title: "DIZETO | LINKS",
   },
 };
 

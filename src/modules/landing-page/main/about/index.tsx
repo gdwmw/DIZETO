@@ -1,10 +1,12 @@
-import logoDIZETO from "@/public/assets/images/logos/dizeto.webp";
-import Image from "next/image";
 import { FC, ReactElement } from "react";
+
+import Image from "next/image";
+
+import logoDIZETO from "@/public/assets/images/logos/dizeto.webp";
 
 export const About: FC = (): ReactElement => {
   return (
-    <section id="About" className="scroll-mt-[84px]">
+    <section className="scroll-mt-[84px]" id="About">
       <div className="paper bg-white p-5 dark:bg-dark">
         <h2 className="text-center text-3xl font-semibold">
           ABO<span className="text-red-600">UT</span>
@@ -22,8 +24,8 @@ export const About: FC = (): ReactElement => {
             </p>
             <p className="pt-5 font-semibold text-red-600">*Please take note that we currently only offer photography and videography services.</p>
           </div>
-          <div className="flex h-full w-full items-center justify-center">
-            <Image src={logoDIZETO} alt="DIZETO" height={250} width={250} quality={30} priority />
+          <div className="flex size-full items-center justify-center">
+            <Image alt="DIZETO" height={250} priority quality={30} src={logoDIZETO} width={250} />
           </div>
         </div>
       </div>

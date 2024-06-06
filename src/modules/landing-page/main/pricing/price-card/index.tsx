@@ -1,13 +1,15 @@
+import { FC, ReactElement } from "react";
+
+import Link from "next/link";
+
 import { ButtonCVA } from "@/components";
 import { dbPricing } from "@/database/database";
-import Link from "next/link";
-import { FC, ReactElement } from "react";
 
 export const PriceCard: FC = (): ReactElement => {
   return (
     <div className="grid w-full gap-5 sm:grid-cols-2 xl:grid-cols-4">
       {dbPricing.map((data) => (
-        <div key={data.id} className="price-card">
+        <div className="price-card" key={data.id}>
           <div className="relative flex h-40 w-full flex-col items-center justify-end bg-gray-200 dark:bg-gray-700 dark:text-white">
             <div className="price-card-circle">
               <h2 className="text-3xl font-bold">IDR {data.price}</h2>
@@ -39,7 +41,7 @@ export const PriceCard: FC = (): ReactElement => {
               </li>
               <li>
                 <div className="flex items-center justify-center">
-                  <Link href={"/"} className={ButtonCVA()}>
+                  <Link className={ButtonCVA()} href={"/"}>
                     BOOKING
                   </Link>
                 </div>

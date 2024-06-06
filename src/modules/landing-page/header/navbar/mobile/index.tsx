@@ -1,19 +1,22 @@
 "use client";
 
+import { FC, FormEvent, ReactElement, useEffect, useRef, useState } from "react";
+
+import Image from "next/image";
+import { FiMenu } from "react-icons/fi";
+
 import loadingAnimation from "@/public/assets/animations/loadings/loading.svg";
 import logoDIZETO from "@/public/assets/images/logos/dizeto.webp";
-import Image from "next/image";
-import { FC, FormEvent, ReactElement, useEffect, useRef, useState } from "react";
-import { FiMenu } from "react-icons/fi";
+
 import { ThemeSwitcherMobile } from "../theme-switcher";
 
 type TNavbarMobileProps = {
-  isActive: boolean;
-  handleTopSmoothScroll: (e: FormEvent) => void;
   handleSmoothScroll: (e: FormEvent<EventTarget>) => void;
+  handleTopSmoothScroll: (e: FormEvent) => void;
+  isActive: boolean;
 };
 
-const NavbarMobile: FC<TNavbarMobileProps> = ({ isActive, handleTopSmoothScroll, handleSmoothScroll }): ReactElement => {
+const NavbarMobile: FC<TNavbarMobileProps> = ({ handleSmoothScroll, handleTopSmoothScroll, isActive }): ReactElement => {
   const [mounted, setMounted] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
@@ -42,54 +45,54 @@ const NavbarMobile: FC<TNavbarMobileProps> = ({ isActive, handleTopSmoothScroll,
             isActive && "shadow-md shadow-black/50 backdrop-blur-md dark:shadow-white/50"
           }`}
         >
-          <a href="#Top" className="cursor-pointer" onClick={handleTopSmoothScroll}>
-            <Image src={logoDIZETO} alt="DIZETO" width={40} height={40} quality={30} priority />
+          <a className="cursor-pointer" href="#Top" onClick={handleTopSmoothScroll}>
+            <Image alt="DIZETO" height={40} priority quality={30} src={logoDIZETO} width={40} />
           </a>
 
           {mounted ? (
             <div
+              className="flex size-10 items-center justify-center hover:text-red-600 dark:text-white dark:hover:text-red-600"
               onClick={() => setIsOpen(true)}
-              className="flex h-10 w-10 items-center justify-center hover:text-red-600 dark:text-white dark:hover:text-red-600"
             >
               <FiMenu size={35} />
             </div>
           ) : (
-            <div className="fixed right-10 top-3 z-[21] h-10 w-10">
-              <Image src={loadingAnimation} alt="Loading..." height={40} width={40} quality={30} priority />
+            <div className="fixed right-10 top-3 z-[21] size-10">
+              <Image alt="Loading..." height={40} priority quality={30} src={loadingAnimation} width={40} />
             </div>
           )}
         </div>
       )}
 
       {isOpen && (
-        <div ref={menuRef} className="navbar-menu-mobile">
-          <a href="#Top" className="cursor-pointer" onClick={handleTopSmoothScroll}>
-            <Image src={logoDIZETO} alt="DIZETO" width={80} height={80} quality={30} loading="lazy" />
+        <div className="navbar-menu-mobile" ref={menuRef}>
+          <a className="cursor-pointer" href="#Top" onClick={handleTopSmoothScroll}>
+            <Image alt="DIZETO" height={80} loading="lazy" quality={30} src={logoDIZETO} width={80} />
           </a>
           <ul className="flex flex-col items-center justify-center gap-5 text-lg font-bold dark:text-white">
             <li className="space-x-10">
-              <a href="#About" className="navbar-website-options" onClick={handleSmoothScroll}>
+              <a className="navbar-website-options" href="#About" onClick={handleSmoothScroll}>
                 About
               </a>
 
-              <a href="#Portfolio" className="navbar-website-options" onClick={handleSmoothScroll}>
+              <a className="navbar-website-options" href="#Portfolio" onClick={handleSmoothScroll}>
                 Portfolio
               </a>
 
-              <a href="#Pricing" className="navbar-website-options" onClick={handleSmoothScroll}>
+              <a className="navbar-website-options" href="#Pricing" onClick={handleSmoothScroll}>
                 Pricing
               </a>
             </li>
             <li className="space-x-10">
-              <a href="#Testimony" className="navbar-website-options" onClick={handleSmoothScroll}>
+              <a className="navbar-website-options" href="#Testimony" onClick={handleSmoothScroll}>
                 Testimony
               </a>
 
-              <a href="#Clients" className="navbar-website-options" onClick={handleSmoothScroll}>
+              <a className="navbar-website-options" href="#Clients" onClick={handleSmoothScroll}>
                 Clients
               </a>
 
-              <a href="#Contact" className="navbar-website-options" onClick={handleSmoothScroll}>
+              <a className="navbar-website-options" href="#Contact" onClick={handleSmoothScroll}>
                 Contact
               </a>
             </li>

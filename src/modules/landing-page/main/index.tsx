@@ -1,5 +1,7 @@
-import { Copyright } from "@/components";
 import { FC, ReactElement } from "react";
+
+import { Copyright } from "@/components";
+
 import { About } from "./about";
 import { Contact } from "./contact";
 import { HightlightPortfolio } from "./highlight-portfolio";
