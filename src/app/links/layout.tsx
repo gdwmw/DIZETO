@@ -14,16 +14,16 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   title: "DIZETO | LINKS",
   description: "Come visit social media connected to Dizeto.",
-  metadataBase: new URL("https://dizeto-dev.vercel.app/"),
+  metadataBase: new URL("https://dizeto.vercel.app/"),
   openGraph: {
     type: "website",
-    url: "https://dizeto-dev.vercel.app/",
+    url: "https://dizeto.vercel.app/",
     title: "DIZETO | LINKS",
     description: "Come visit social media connected to Dizeto.",
     siteName: "DIZETO",
     images: [
       {
-        url: "https://dizeto-dev.vercel.app/assets/images/logo/dizeto.webp",
+        url: "https://dizeto.vercel.app/assets/images/logo/dizeto.webp",
       },
     ],
   },
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     title: "DIZETO | LINKS",
     description: "Come visit social media connected to Dizeto.",
     images: {
-      url: "https://dizeto-dev.vercel.app/assets/images/logo/dizeto.webp",
+      url: "https://dizeto.vercel.app/assets/images/logo/dizeto.webp",
     },
   },
 };

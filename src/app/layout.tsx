@@ -21,16 +21,16 @@ export const metadata: Metadata = {
   description: "Dizeto is a vendor that offers photography, videography, talent, and music services.",
   keywords:
     "dizeto, bandung, indonesia, vendor, jasa foto, jasa video, jasa fotografer, jasa videografer, pre-wedding, wedding, dokumentasi, foto produk, fotografi, videografi",
-  metadataBase: new URL("https://dizeto-dev.vercel.app/"),
+  metadataBase: new URL("https://dizeto.vercel.app/"),
   openGraph: {
     type: "website",
-    url: "https://dizeto-dev.vercel.app/",
+    url: "https://dizeto.vercel.app/",
     title: "DIZETO | PROFESSIONAL SERVICES",
     description: "Dizeto is a vendor that offers photography, videography, talent, and music services.",
     siteName: "DIZETO",
     images: [
       {
-        url: "https://dizeto-dev.vercel.app/assets/images/logo/dizeto.webp",
+        url: "https://dizeto.vercel.app/assets/images/logo/dizeto.webp",
       },
     ],
   },
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     title: "DIZETO | PROFESSIONAL SERVICES",
     description: "Dizeto is a vendor that offers photography, videography, talent, and music services.",
     images: {
-      url: "https://dizeto-dev.vercel.app/assets/images/logo/dizeto.webp",
+      url: "https://dizeto.vercel.app/assets/images/logo/dizeto.webp",
     },
   },
 };

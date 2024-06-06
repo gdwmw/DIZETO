@@ -16,16 +16,16 @@ export const metadata: Metadata = {
   description: "See our portfolio for examples of our work. We believe that our portfolio demonstrates our abilities and creativity.",
   keywords:
     "dizeto list portfolio, bandung, indonesia, vendor, jasa foto, jasa video, jasa fotografer, jasa videografer, pre-wedding, wedding, dokumentasi, foto produk, fotografi, videografi",
-  metadataBase: new URL("https://dizeto-dev.vercel.app/listportfolio"),
+  metadataBase: new URL("https://dizeto.vercel.app/listportfolio"),
   openGraph: {
     type: "website",
-    url: "https://dizeto-dev.vercel.app/listportfolio",
+    url: "https://dizeto.vercel.app/listportfolio",
     title: "DIZETO | LIST PORTFOLIO",
     description: "See our portfolio for examples of our work. We believe that our portfolio demonstrates our abilities and creativity.",
     siteName: "DIZETO",
     images: [
       {
-        url: "https://dizeto-dev.vercel.app/assets/images/logo/dizeto.webp",
+        url: "https://dizeto.vercel.app/assets/images/logo/dizeto.webp",
       },
     ],
   },
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     title: "DIZETO | LIST PORTFOLIO",
     description: "See our portfolio for examples of our work. We believe that our portfolio demonstrates our abilities and creativity.",
     images: {
-      url: "https://dizeto-dev.vercel.app/assets/images/logo/dizeto.webp",
+      url: "https://dizeto.vercel.app/assets/images/logo/dizeto.webp",
     },
   },
 };
