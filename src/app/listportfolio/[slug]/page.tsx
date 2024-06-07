@@ -10,10 +10,10 @@ export const generateStaticParams = () => {
 };
 
 export const generateMetadata = ({ params }: { params: { slug: string } }): Metadata => ({
-  description: "Please see the photo results from DIZETO, I hope you like it.",
+  description: "Let's see the photo results from DIZETO, hope you like it.",
   keywords: ["dizeto", "portfolio", "dizeto portfolio"],
   openGraph: {
-    description: "Please see the photo results from DIZETO, I hope you like it.",
+    description: "Let's see the photo results from DIZETO, hope you like it.",
     images: [
       {
         alt: "DIZETO",
@@ -45,7 +45,7 @@ export const generateMetadata = ({ params }: { params: { slug: string } }): Meta
   twitter: {
     card: "summary_large_image",
     creator: "@gdwmw",
-    description: "Please see the photo results from DIZETO, I hope you like it.",
+    description: "Let's see the photo results from DIZETO, hope you like it.",
     images: ["https://dizeto.vercel.app/assets/images/logos/dizeto.png"],
     title: `DIZETO | ${dbPortfolioPathTitle(params.slug)}`,
   },
