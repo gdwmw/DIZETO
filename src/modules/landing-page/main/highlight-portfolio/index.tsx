@@ -16,7 +16,7 @@ export const HightlightPortfolio: FC = (): ReactElement => {
           <div className="mx-auto h-0.5 w-20 rounded-full bg-red-600" />
         </h2>
         <div className="my-5 flex items-center justify-center">
-          <Link className={ButtonCVA()} href={"/listportfolio"}>
+          <Link className={ButtonCVA()} href={"/portfoliolist"}>
             CHECK ALL PORTFOLIO
           </Link>
         </div>

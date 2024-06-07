@@ -7,18 +7,18 @@ import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa";
 
 import { ButtonCVA, Footer } from "@/components";
-import { dbSortedListPortfolio } from "@/database/database";
+import { dbSortedPortfolioList } from "@/database/database";
 import { cn } from "@/libs";
 
-export const ListPortfolio: FC = (): ReactElement => {
+export const PortfolioList: FC = (): ReactElement => {
   const itemsPerPage: number = 20;
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const totalPages: number = Math.ceil(dbSortedListPortfolio.length / itemsPerPage);
+  const totalPages: number = Math.ceil(dbSortedPortfolioList.length / itemsPerPage);
 
   const getDataForPage = () => {
     const startIndex: number = (currentPage - 1) * itemsPerPage;
     const endIndex: number = startIndex + itemsPerPage;
-    return dbSortedListPortfolio.slice(startIndex, endIndex);
+    return dbSortedPortfolioList.slice(startIndex, endIndex);
   };
 
   const handlePageChange = (page: number) => {
@@ -90,7 +90,7 @@ export const ListPortfolio: FC = (): ReactElement => {
           <main className="flex items-start justify-center">
             <div className="grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
               {getDataForPage().map((data) => (
-                <Link href={`/listportfolio/${data.link}`} key={data.id}>
+                <Link href={`/portfoliolist/${data.link}`} key={data.id}>
                   <div className="portfolio-card">
                     <Image
                       alt="Portfolio"

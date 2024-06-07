@@ -2,11 +2,11 @@ import { FC, ReactElement } from "react";
 
 import { Metadata } from "next";
 
-import { dbListPortfolio, dbPortfolioPathTitle } from "@/database/database";
+import { dbPortfolioList, dbPortfolioPathTitle } from "@/database/database";
 import { Portfolio as Port } from "@/modules/portfolio";
 
 export const generateStaticParams = () => {
-  return dbListPortfolio.map((data) => ({ slug: data.link }));
+  return dbPortfolioList.map((data) => ({ slug: data.link }));
 };
 
 export const generateMetadata = ({ params }: { params: { slug: string } }): Metadata => ({
@@ -26,7 +26,7 @@ export const generateMetadata = ({ params }: { params: { slug: string } }): Meta
     siteName: "DIZETO",
     title: `DIZETO | ${dbPortfolioPathTitle(params.slug)}`,
     type: "website",
-    url: `https://dizeto.vercel.app/listportfolio/${params.slug}`,
+    url: `https://dizeto.vercel.app/portfoliolist/${params.slug}`,
   },
   robots: {
     follow: true,

@@ -52,7 +52,7 @@ export const Portfolio: FC<TPortfolio> = ({ path }): ReactElement => {
               <div className="h-0.5 w-full rounded-full bg-red-600" />
             </section>
             <section className="mb-6 mt-5 flex items-center justify-center gap-5">
-              <Link className={cn(ButtonCVA({ className: "flex h-10 w-10 items-center justify-center px-0 py-0 text-lg" }))} href={"/listportfolio"}>
+              <Link className={cn(ButtonCVA({ className: "flex h-10 w-10 items-center justify-center px-0 py-0 text-lg" }))} href={"/portfoliolist"}>
                 <FaArrowLeft size={18} />
               </Link>
               {Array.from({ length: totalPages }, (_, i) => (

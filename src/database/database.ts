@@ -227,7 +227,7 @@ const dbTestimonialsClients: TTestimonialsClients = [
   },
 ];
 
-type TListPortfolio = {
+type TPortfolioList = {
   category: string;
   id: number;
   image: string;
@@ -235,7 +235,7 @@ type TListPortfolio = {
   title: string;
 }[];
 
-const dbListPortfolio: TListPortfolio = [
+const dbPortfolioList: TPortfolioList = [
   {
     category: "(DOCUMENTATION)",
     id: 1,
@@ -371,7 +371,7 @@ const dbListPortfolio: TListPortfolio = [
   },
 ];
 
-const dbSortedListPortfolio: TListPortfolio = dbListPortfolio.sort((a, b) => {
+const dbSortedPortfolioList: TPortfolioList = dbPortfolioList.sort((a, b) => {
   if (a.category < b.category) return -1;
   if (a.category > b.category) return 1;
   return 0;
@@ -704,11 +704,11 @@ const dbPortfolio: TPortfolio = [
 
 export {
   dbLandingPagePortfolio,
-  dbListPortfolio,
   dbPortfolio,
+  dbPortfolioList,
   dbPortfolioPathIndex,
   dbPortfolioPathTitle,
   dbPricing,
-  dbSortedListPortfolio,
+  dbSortedPortfolioList,
   dbTestimonialsClients,
 };

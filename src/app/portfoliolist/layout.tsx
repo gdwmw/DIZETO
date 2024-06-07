@@ -7,8 +7,8 @@ export const viewport: Viewport = {
   width: "device-width",
 };
 
-const ListPortfolioLayout: FC<{ children: ReactNode }> = ({ children }): ReactNode => {
+const PortfolioListLayout: FC<{ children: ReactNode }> = ({ children }): ReactNode => {
   return children;
 };
 
-export default ListPortfolioLayout;
+export default PortfolioListLayout;
