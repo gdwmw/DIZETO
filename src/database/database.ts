@@ -377,10 +377,53 @@ const dbSortedListPortfolio: TListPortfolio = dbListPortfolio.sort((a, b) => {
   return 0;
 });
 
+function dbPortfolioPathTitle(path: string) {
+  switch (path) {
+    case "ginzasbirthday":
+      return "GINZA'S BIRTHDAY";
+    case "halimprewedding":
+      return "HALIM PRE-WEDDING";
+    case "ichasbirthday":
+      return "ICHA'S BIRTHDAY";
+    case "lenteracoffee":
+      return "LENTERA COFFEE";
+    case "macaire":
+      return "MACAIRE";
+    case "mitasbirthday":
+      return "MITA'S BIRTHDAY";
+    case "nazlaclothes":
+      return "NAZLA CLOTHES";
+    case "faizalgraduation":
+      return "FAIZAL GRADUATION";
+    case "reniprewedding":
+      return "RENI PRE-WEDDING";
+    case "rositaprewedding":
+      return "ROSITA PRE-WEDDING";
+    case "selyhunting":
+      return "SELY";
+    case "tenangcoffee":
+      return "TENANG COFFEE";
+    case "irmajabar":
+      return "IRMA JABAR";
+    case "muhibahangklung":
+      return "MUHIBAH ANGKLUNG";
+    case "ayamusiccover":
+      return "AYA";
+    case "hkbpbandung":
+      return "HKBP BANDUNG";
+    case "safiykitchen":
+      return "SAFIY KITCHEN";
+    case "rumahbatikwijaya":
+      return "RUMAH BATIK WIJAYA";
+    case "eidphoto":
+      return "EID PHOTO";
+    default:
+      return "Undefined";
+  }
+}
+
 function dbPortfolioPathIndex(path: string) {
   switch (path) {
-    case "loading":
-      return 0;
     case "ginzasbirthday":
       return 1;
     case "halimprewedding":
@@ -420,7 +463,7 @@ function dbPortfolioPathIndex(path: string) {
     case "eidphoto":
       return 19;
     default:
-      return -1;
+      return 0;
   }
 }
 
@@ -438,15 +481,15 @@ type TPortfolio = {
 
 const dbPortfolio: TPortfolio = [
   {
-    alt: "Dizeto Portfolio",
-    cc: "© Copyright XXXX - DIZETO",
-    dt: "XXX XXX, XXX",
-    fldr: "loading",
+    alt: "XXXXX",
+    cc: "© XXXX DIZETO. All rights reserved.",
+    dt: "XX XX, XXXX",
+    fldr: "XXXXX",
     id: 0,
-    tdat: 1,
-    tit1: "DIZETO | PORTFOLIO",
-    tit2: "DIZETO PORTFOL",
-    tit3: "IO",
+    tdat: 0,
+    tit1: "XXXXX",
+    tit2: "XXX",
+    tit3: "XX",
   },
   {
     alt: "Ginza's Birthday",
@@ -659,4 +702,13 @@ const dbPortfolio: TPortfolio = [
   },
 ];
 
-export { dbLandingPagePortfolio, dbPortfolio, dbPortfolioPathIndex, dbPricing, dbSortedListPortfolio, dbTestimonialsClients };
+export {
+  dbLandingPagePortfolio,
+  dbListPortfolio,
+  dbPortfolio,
+  dbPortfolioPathIndex,
+  dbPortfolioPathTitle,
+  dbPricing,
+  dbSortedListPortfolio,
+  dbTestimonialsClients,
+};
