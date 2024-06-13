@@ -2,7 +2,7 @@ import { FC, ReactElement } from "react";
 
 import { Metadata } from "next";
 
-import { PortfolioList as ListPort } from "@/modules/list-portfolio";
+import { PortfolioListLayout } from "@/layouts/portfolio-list";
 
 export const metadata: Metadata = {
   description: "See our portfolio for examples of our work. We believe that our portfolio demonstrates our abilities and creativity.",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
 };
 
 const PortfolioList: FC = (): ReactElement => {
-  return <ListPort />;
+  return <PortfolioListLayout />;
 };
 
 export default PortfolioList;

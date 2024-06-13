@@ -2,8 +2,7 @@ import { FC, ReactElement } from "react";
 
 import { Metadata } from "next";
 
-import { Footer } from "@/components";
-import { Header, Main } from "@/modules/landing-page";
+import { HomeLayout } from "@/layouts/home";
 
 export const metadata: Metadata = {
   description: "DIZETO is a vendor that offers photography, videography, talent, and music services.",
@@ -61,14 +60,8 @@ export const metadata: Metadata = {
   },
 };
 
-const LandingPage: FC = (): ReactElement => {
-  return (
-    <>
-      <Header />
-      <Main />
-      <Footer />
-    </>
-  );
+const Home: FC = (): ReactElement => {
+  return <HomeLayout />;
 };
 
-export default LandingPage;
+export default Home;
