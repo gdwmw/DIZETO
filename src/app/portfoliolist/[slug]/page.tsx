@@ -3,7 +3,7 @@ import { FC, ReactElement } from "react";
 import { Metadata } from "next";
 
 import { dbPortfolioList, dbPortfolioPathTitle } from "@/database/database";
-import { Portfolio as Port } from "@/modules/portfolio";
+import { PortfolioLayout } from "@/layouts/portfolio";
 
 export const generateStaticParams = () => {
   return dbPortfolioList.map((data) => ({ slug: data.link }));
@@ -52,7 +52,7 @@ export const generateMetadata = ({ params }: { params: { slug: string } }): Meta
 });
 
 const Portfolio: FC<{ params: { slug: string } }> = ({ params }): ReactElement => {
-  return <Port path={params.slug} />;
+  return <PortfolioLayout path={params.slug} />;
 };
 
 export default Portfolio;
