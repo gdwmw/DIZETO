@@ -2,7 +2,7 @@ import { FC, FormEvent, ReactElement } from "react";
 
 import Image from "next/image";
 
-import logoDIZETO from "@/public/assets/images/logos/dizeto.webp";
+import logoDIZETO from "@/public/assets/images/logos/dizeto.svg";
 
 import { ThemeSwitcherWebsite } from "../theme-switcher";
 
@@ -21,7 +21,7 @@ const NavbarWebsite: FC<TNavbarWebsiteProps> = ({ handleSmoothScroll, handleTopS
         }`}
       >
         <a className="cursor-pointer" href="#Top" onClick={handleTopSmoothScroll}>
-          <Image alt="DIZETO" height={40} priority quality={30} src={logoDIZETO} width={40} />
+          <Image alt="DIZETO" height={40} priority src={logoDIZETO} width={40} />
         </a>
         <ul className="flex gap-10 text-lg font-bold dark:text-white">
           <li>

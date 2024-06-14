@@ -6,10 +6,11 @@ import Image from "next/image";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 import loadingAnimation from "@/public/assets/animations/loadings/loading.svg";
+import { IImageFile } from "@/utils/api";
 
 type TImagesFrameProps = {
   copyright: string;
-  database: string[];
+  database: IImageFile[];
   folder: string;
   link: string;
 };
@@ -77,9 +78,9 @@ export const ImagesFrame: FC<TImagesFrameProps> = ({ copyright, database, folder
     <>
       <div className="flex items-center justify-center">
         <div className="grid gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {database.map((image, index) => (
+          {database?.map((image, index) => (
             <div
-              className="thumbnail"
+              className="thumbnail relative"
               key={index}
               onClick={() => {
                 setDataIndex(index);
@@ -87,12 +88,13 @@ export const ImagesFrame: FC<TImagesFrameProps> = ({ copyright, database, folder
               }}
             >
               <Image
-                alt={image}
-                className="rounded-sm"
-                placeholder="blur"
+                alt={image.file}
+                className="h-auto rounded-sm"
+                height={0}
                 priority
                 quality={30}
-                src={require(`@/public/assets/images/thumbnails/${folder}/${image}`)}
+                src={`/assets/images/thumbnails/${folder}/${image.file}`}
+                width={350}
               />
             </div>
           ))}
@@ -128,12 +130,12 @@ export const ImagesFrame: FC<TImagesFrameProps> = ({ copyright, database, folder
               </div>
               <div className="size-fit">
                 <Image
-                  alt={database[dataIndex]}
+                  alt={database[dataIndex].file}
                   className="size-fit transition-all duration-1000"
                   height={10000}
                   loading="lazy"
                   onLoadCapture={handleImageLoaded}
-                  src={`${link}${database[dataIndex]}`}
+                  src={`${link}${database[dataIndex].file}`}
                   style={{ maxHeight: imageLoaded ? "90dvh" : "0dvh", maxWidth: imageLoaded ? "90dvw" : "0dvw" }}
                   width={10000}
                 />

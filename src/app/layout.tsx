@@ -4,7 +4,7 @@ import { FC, ReactElement, ReactNode } from "react";
 
 import { Inter } from "next/font/google";
 
-import { NextThemesProvider } from "@/libs";
+import { NextThemesProvider, ReactQueryProvider } from "@/libs";
 
 import "./globals.css";
 
@@ -31,7 +31,9 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }): ReactElement => 
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <NextThemesProvider>{children}</NextThemesProvider>
+        <NextThemesProvider>
+          <ReactQueryProvider>{children}</ReactQueryProvider>
+        </NextThemesProvider>
       </body>
     </html>
   );

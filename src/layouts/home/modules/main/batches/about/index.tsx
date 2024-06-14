@@ -1,34 +1,48 @@
+"use client";
+
 import { FC, ReactElement } from "react";
 
+import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 
-import logoDIZETO from "@/public/assets/images/logos/dizeto.webp";
+import { ContainerPaper, ContentPaper } from "@/components/interfaces/paper";
+import { GETAbout, GETTitle } from "@/utils/api";
 
 export const About: FC = (): ReactElement => {
+  const { data: title } = useQuery({
+    queryFn: GETTitle,
+    queryKey: ["GETTitle"],
+  });
+  const { data: about } = useQuery({
+    queryFn: GETAbout,
+    queryKey: ["GETAbout"],
+  });
+
   return (
-    <section className="scroll-mt-[84px]" id="About">
-      <div className="paper bg-white p-5 dark:bg-dark">
+    <ContainerPaper id="About">
+      <ContentPaper>
         <h2 className="text-center text-3xl font-semibold">
-          ABO<span className="text-red-600">UT</span>
+          {title?.[0].title}
+          <span className="text-red-600">{title?.[0].redTitle}</span>
           <div className="mx-auto h-0.5 w-20 rounded-full bg-red-600" />
         </h2>
         <div className="my-10 space-y-14 md:grid md:grid-cols-2 md:space-y-0">
           <div className="space-y-5">
             <h3 className="text-2xl font-semibold">
-              <span className="text-red-600">W</span>hat is Dizeto?
+              <span className="text-red-600">{about?.[0].subTitle.slice(0, 1)}</span>
+              {about?.[0].subTitle.slice(1)}
             </h3>
             <p className="text-justify font-semibold">
-              <span className="text-red-600">Dizeto</span> is a vendor that offers photography, videography, talent, and music services. We have a
-              professional team that can help you meet business needs, events, and your special moments to make them more beautiful, real, and
-              lasting. You can learn more about us by viewing our portfolio, YouTube channel, and customer testimonials.
+              <span className="text-red-600">{about?.[0].description.slice(0, 6)}</span>
+              {about?.[0].description.slice(6)}
             </p>
-            <p className="pt-5 font-semibold text-red-600">*Please take note that we currently only offer photography and videography services.</p>
+            <p className="pt-5 font-semibold text-red-600">{about?.[0].note}</p>
           </div>
           <div className="flex size-full items-center justify-center">
-            <Image alt="DIZETO" height={250} priority quality={30} src={logoDIZETO} width={250} />
+            <Image alt="DIZETO" height={250} priority src={about?.[0].urlLogo ?? ""} width={250} />
           </div>
         </div>
-      </div>
-    </section>
+      </ContentPaper>
+    </ContainerPaper>
   );
 };

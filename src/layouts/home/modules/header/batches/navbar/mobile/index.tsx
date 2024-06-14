@@ -6,7 +6,7 @@ import Image from "next/image";
 import { FiMenu } from "react-icons/fi";
 
 import loadingAnimation from "@/public/assets/animations/loadings/loading.svg";
-import logoDIZETO from "@/public/assets/images/logos/dizeto.webp";
+import logoDIZETO from "@/public/assets/images/logos/dizeto.svg";
 
 import { ThemeSwitcherMobile } from "../theme-switcher";
 
@@ -46,7 +46,7 @@ const NavbarMobile: FC<TNavbarMobileProps> = ({ handleSmoothScroll, handleTopSmo
           }`}
         >
           <a className="cursor-pointer" href="#Top" onClick={handleTopSmoothScroll}>
-            <Image alt="DIZETO" height={40} priority quality={30} src={logoDIZETO} width={40} />
+            <Image alt="DIZETO" height={40} priority src={logoDIZETO} width={40} />
           </a>
 
           {mounted ? (
@@ -67,7 +67,7 @@ const NavbarMobile: FC<TNavbarMobileProps> = ({ handleSmoothScroll, handleTopSmo
       {isOpen && (
         <div className="navbar-menu-mobile" ref={menuRef}>
           <a className="cursor-pointer" href="#Top" onClick={handleTopSmoothScroll}>
-            <Image alt="DIZETO" height={80} loading="lazy" quality={30} src={logoDIZETO} width={80} />
+            <Image alt="DIZETO" height={80} loading="lazy" src={logoDIZETO} width={80} />
           </a>
           <ul className="flex flex-col items-center justify-center gap-5 text-lg font-bold dark:text-white">
             <li className="space-x-10">

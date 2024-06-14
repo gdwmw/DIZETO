@@ -2,6 +2,7 @@
 
 import { FC, ReactElement, useEffect, useState } from "react";
 
+import { useQuery } from "@tanstack/react-query";
 import { useTheme } from "next-themes";
 import dynamic from "next/dynamic";
 import Image from "next/image";
@@ -10,6 +11,7 @@ import { GoDotFill } from "react-icons/go";
 
 import { dbTestimonialsClients } from "@/database/database";
 import loadingAnimation from "@/public/assets/animations/loadings/loading.svg";
+import aa from "@/public/assets/images/clients/aa.png";
 import irma from "@/public/assets/images/clients/irma.png";
 import kp from "@/public/assets/images/clients/kp.png";
 import lcGray from "@/public/assets/images/clients/lc-gray.svg";
@@ -19,9 +21,23 @@ import maWhite from "@/public/assets/images/clients/ma-white.svg";
 import rbwGray from "@/public/assets/images/clients/rbw-gray.svg";
 import rbwWhite from "@/public/assets/images/clients/rbw-white.svg";
 import sk from "@/public/assets/images/clients/sk.png";
+import { GETCounting, GETTestimony, GETTitle } from "@/utils/api";
 const DateTime = dynamic(() => import("./date-time"));
 
 export const TestimonialsClients: FC = (): ReactElement => {
+  const { data: title } = useQuery({
+    queryFn: GETTitle,
+    queryKey: ["GETTitle"],
+  });
+  const { data: testimony } = useQuery({
+    queryFn: GETTestimony,
+    queryKey: ["GETTestimony"],
+  });
+  const { data: counting } = useQuery({
+    queryFn: GETCounting,
+    queryKey: ["GETCounting"],
+  });
+
   const theme = useTheme();
   const [mounted, setMounted] = useState<boolean>(false);
   const [testimonialsIndex, setTestimonialsIndex] = useState<number>(0);
@@ -53,17 +69,17 @@ export const TestimonialsClients: FC = (): ReactElement => {
               height={128}
               loading="lazy"
               quality={30}
-              src={require(`@/public/assets/images/testimonials/${dbTestimonialsClients[testimonialsIndex].image}`)}
+              src={testimony?.[testimonialsIndex].urlImage ?? ""}
               width={128}
             />
             <div className="text-center">
-              <h3 className="text-lg font-semibold">{dbTestimonialsClients[testimonialsIndex].name}</h3>
-              <p className="text-sm font-semibold text-red-600">{dbTestimonialsClients[testimonialsIndex].status}</p>
+              <h3 className="text-lg font-semibold">{testimony?.[testimonialsIndex].name ?? ""}</h3>
+              <p className="text-sm font-semibold text-red-600">{testimony?.[testimonialsIndex].event ?? ""}</p>
             </div>
-            <p className="h-12 w-[500px] text-center font-semibold">{`"${dbTestimonialsClients[testimonialsIndex].comment}"`}</p>
+            <p className="h-12 w-[500px] text-center font-semibold">{`"${testimony?.[testimonialsIndex].comment ?? ""}"`}</p>
             <div className="mt-1 flex items-center justify-center gap-1">
-              {dbTestimonialsClients.map((_, index) => (
-                <div className={testimonialsIndex === index ? "text-red-600" : "text-red-300"} key={index}>
+              {testimony?.map((_, index) => (
+                <div className={testimonialsIndex === index ? "text-red-600" : "text-red-300"} key={index + "dot"}>
                   <GoDotFill size={25} />
                 </div>
               ))}
@@ -73,32 +89,33 @@ export const TestimonialsClients: FC = (): ReactElement => {
             <div className="flex flex-col items-center justify-center">
               <div className="flex items-center justify-center gap-2">
                 <FaRegThumbsUp size={25} />
-                <p className="text-2xl font-bold text-red-600">48</p>
+                <p className="text-2xl font-bold text-red-600">{counting?.[0].count}</p>
               </div>
-              <h4 className="text-xl font-semibold">Happy Client</h4>
+              <h4 className="text-xl font-semibold">{counting?.[0].title}</h4>
             </div>
             <div className="h-16 w-0.5 rounded-full bg-black dark:bg-white" />
             <div className="flex flex-col items-center justify-center">
               <div className="flex items-center justify-center gap-2">
                 <FaToolbox size={25} />
-                <p className="text-2xl font-bold text-red-600">50</p>
+                <p className="text-2xl font-bold text-red-600">{counting?.[1].count}</p>
               </div>
-              <h4 className="text-xl font-semibold">Completed Projects</h4>
+              <h4 className="text-xl font-semibold">{counting?.[1].title}</h4>
             </div>
             <div className="h-16 w-0.5 rounded-full bg-black dark:bg-white" />
             <div className="flex flex-col items-center justify-center">
               <div className="flex items-center justify-center gap-2">
                 <FaUserAlt size={25} />
-                <p className="text-2xl font-bold text-red-600">8</p>
+                <p className="text-2xl font-bold text-red-600">{counting?.[2].count}</p>
               </div>
-              <h4 className="text-xl font-semibold">Subscribers</h4>
+              <h4 className="text-xl font-semibold">{counting?.[2].title}</h4>
             </div>
             {dateTime && <DateTime />}
           </div>
         </section>
         <section className="scroll-mt-[84px] bg-white py-14 dark:bg-dark" id="Clients">
           <h2 className="text-center text-3xl font-semibold">
-            CLIEN<span className="text-red-600">TS</span>
+            {title?.[3].title}
+            <span className="text-red-600">{title?.[3].redTitle}</span>
             <div className="mx-auto h-0.5 w-20 rounded-full bg-red-600" />
           </h2>
           {mounted ? (
@@ -144,12 +161,7 @@ export const TestimonialsClients: FC = (): ReactElement => {
                   <Image alt="Safiy Kitchen" className="clients-img" loading="lazy" quality={30} src={sk} />
                 </a>
                 <a href="https://pesantrentahfidzashrmadani.wordpress.com/" rel="noopener noreferrer" target="_blank">
-                  {theme.resolvedTheme === "light" && (
-                    <Image alt="Al-'Ashr Al-Madani" className="clients-img" loading="lazy" quality={30} src={maGray} />
-                  )}
-                  {theme.resolvedTheme === "dark" && (
-                    <Image alt="Al-'Ashr Al-Madani" className="clients-img" loading="lazy" quality={30} src={maWhite} />
-                  )}
+                  <Image alt="Al-'Ashr Al-Madani" className="clients-img" loading="lazy" quality={30} src={aa} />
                 </a>
               </div>
             </div>

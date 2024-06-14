@@ -1,14 +1,29 @@
+"use client";
+
 import { FC, ReactElement } from "react";
 
+import { useQuery } from "@tanstack/react-query";
 import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
 import { TbWorldWww } from "react-icons/tb";
 
+import { GETContact, GETTitle } from "@/utils/api";
+
 export const Contact: FC = (): ReactElement => {
+  const { data: title } = useQuery({
+    queryFn: GETTitle,
+    queryKey: ["GETTitle"],
+  });
+  const { data: contact } = useQuery({
+    queryFn: GETContact,
+    queryKey: ["GETContact"],
+  });
+
   return (
     <section className="scroll-mt-[84px]" id="Contact">
       <div className="paper bg-white p-5 dark:bg-dark">
         <h2 className="text-center text-3xl font-semibold">
-          CONTA<span className="text-red-600">CT</span>
+          {title?.[4].title}
+          <span className="text-red-600">{title?.[4].redTitle}</span>
           <div className="mx-auto h-0.5 w-20 rounded-full bg-red-600" />
         </h2>
         <iframe
@@ -23,13 +38,8 @@ export const Contact: FC = (): ReactElement => {
               <MdLocationOn size={20} />
             </div>
             <p className="font-bold">Address:</p>
-            <a
-              className="hover:text-red-600"
-              href="https://www.google.com/search?q=dizeto&oq=dizeto&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgcIARAAGKIEMgcIAhAAGKIEMgcIAxAAGKIEMgYIBBBFGDwyBggFEEUYPDIGCAYQRRhAMgYIBxBFGDwyBggIEEUYPNIBCDQwMzlqMGo5qAIAsAIA&sourceid=chrome&ie=UTF-8"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              Blk. A-B No.a8, Cibeunying, Kec. Cimenyan, Kabupaten Bandung, Jawa Barat 40191, Indonesia
+            <a className="hover:text-red-600" href={contact?.[0].urlAddress} rel="noopener noreferrer" target="_blank">
+              {contact?.[0].address}
             </a>
           </li>
           <li className="flex gap-2">
@@ -37,13 +47,8 @@ export const Contact: FC = (): ReactElement => {
               <MdEmail size={20} />
             </div>
             <p className="font-bold">Email:</p>
-            <a
-              className="hover:text-red-600"
-              href="https://mail.google.com/mail/u/?authuser=dizetobs@gmail.com"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              dizetobs@gmail.com
+            <a className="hover:text-red-600" href={contact?.[0].urlEmail} rel="noopener noreferrer" target="_blank">
+              {contact?.[0].email}
             </a>
           </li>
           <li className="flex gap-2">
@@ -51,8 +56,8 @@ export const Contact: FC = (): ReactElement => {
               <MdPhone size={20} />
             </div>
             <p className="font-bold">Phone:</p>
-            <a className="hover:text-red-600" href="/">
-              +62 000-0000-0000
+            <a className="hover:text-red-600" href={contact?.[0].urlPhone}>
+              {contact?.[0].phone}
             </a>
           </li>
           <li className="flex gap-2">
@@ -60,8 +65,8 @@ export const Contact: FC = (): ReactElement => {
               <TbWorldWww size={20} />
             </div>
             <p className="font-bold">Website:</p>
-            <a className="hover:text-red-600" href="https://dizeto.vercel.app/" rel="noopener noreferrer" target="_blank">
-              https://dizeto.vercel.app/
+            <a className="hover:text-red-600" href={contact?.[0].urlWebsite} rel="noopener noreferrer" target="_blank">
+              {contact?.[0].website}
             </a>
           </li>
         </ul>
