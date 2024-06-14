@@ -10,13 +10,13 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   authors: [{ name: "Gede Dewo Wahyu M.W", url: "https://github.com/gdwmw" }],
-  category: "Boilerplate",
+  category: "Photography, Videography, Talent, Music Services",
   creator: "Gede Dewo Wahyu M.W",
   publisher: "Gede Dewo Wahyu M.W",
   referrer: "strict-origin-when-cross-origin",
   title: {
-    default: "Next.js | Home",
-    template: "Next.js | %s",
+    default: "DIZETO | PROFESSIONAL SERVICES",
+    template: "DIZETO | %s",
   },
 };
 
