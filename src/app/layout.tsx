@@ -1,38 +1,33 @@
-import type { Metadata, Viewport } from "next";
+import type { Metadata } from "next";
 
 import { FC, ReactElement, ReactNode } from "react";
 
 import { Inter } from "next/font/google";
 
-import { NextThemesProvider } from "@/libs";
-
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const viewport: Viewport = {
-  initialScale: 0.5,
-  width: "device-width",
-};
-
 export const metadata: Metadata = {
   authors: [{ name: "Gede Dewo Wahyu M.W", url: "https://github.com/gdwmw" }],
-  category: "Photography, Videography, Talent, Music Services",
+  category: "Boilerplate",
   creator: "Gede Dewo Wahyu M.W",
   publisher: "Gede Dewo Wahyu M.W",
   referrer: "strict-origin-when-cross-origin",
   title: {
-    default: "DIZETO | PROFESSIONAL SERVICES",
-    template: "DIZETO | %s",
+    default: "Next.js | Home",
+    template: "Next.js | %s",
   },
 };
 
-const RootLayout: FC<{ children: ReactNode }> = ({ children }): ReactElement => {
+type T = {
+  children: ReactNode;
+};
+
+const RootLayout: FC<T> = ({ children }): ReactElement => {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
-        <NextThemesProvider>{children}</NextThemesProvider>
-      </body>
+    <html lang="en">
+      <body className={inter.className}>{children}</body>
     </html>
   );
 };

@@ -1,42 +1,32 @@
 import { FC, ReactElement } from "react";
 
-import { Metadata } from "next";
+import { Metadata, Viewport } from "next";
 
 import { HomeLayout } from "@/layouts/home";
 
+export const viewport: Viewport = {
+  initialScale: 1.0,
+  width: "device-width",
+};
+
 export const metadata: Metadata = {
-  description: "DIZETO is a vendor that offers photography, videography, talent, and music services.",
-  keywords: [
-    "dizeto",
-    "bandung",
-    "indonesia",
-    "vendor",
-    "jasa foto",
-    "jasa video",
-    "jasa fotografer",
-    "jasa videografer",
-    "pre-wedding",
-    "wedding",
-    "dokumentasi",
-    "foto produk",
-    "fotografi",
-    "videografi",
-  ],
+  description: "Boilerplate by Gede Dewo Wahyu M.W",
+  keywords: ["Boilerplate"],
   openGraph: {
-    description: "DIZETO is a vendor that offers photography, videography, talent, and music services.",
+    description: "Boilerplate by Gede Dewo Wahyu M.W",
     images: [
       {
-        alt: "DIZETO",
+        alt: "Next.js",
         height: 800,
-        url: "https://dizeto.vercel.app/assets/images/logos/dizeto.png",
+        url: "https://website-name.com/assets/images/logos/logo-name.png", // Must be an absolute URL and PNG format
         width: 800,
       },
     ],
     locale: "en_US",
-    siteName: "DIZETO",
-    title: "DIZETO | PROFESSIONAL SERVICES",
+    siteName: "Next.js",
+    title: "Next.js | Home",
     type: "website",
-    url: "https://dizeto.vercel.app/",
+    url: "https://website-name.com/",
   },
   robots: {
     follow: true,
@@ -54,9 +44,9 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     creator: "@gdwmw",
-    description: "DIZETO is a vendor that offers photography, videography, talent, and music services.",
-    images: ["https://dizeto.vercel.app/assets/images/logos/dizeto.png"],
-    title: "DIZETO | PROFESSIONAL SERVICES",
+    description: "Boilerplate by Gede Dewo Wahyu M.W",
+    images: ["https://website-name.com/assets/images/logos/logo-name.png"], // Must be an absolute URL and PNG format
+    title: "Next.js | Home",
   },
 };
 
