@@ -1,18 +1,18 @@
 import { create } from "zustand";
 
 type States = {
-  openA?: boolean;
+  openASide?: boolean;
   openB?: boolean;
 };
 
 type Actions = {
-  setOpenA: (param: boolean) => void;
+  setOpenASide: (param: boolean) => void;
   setOpenB: (param: boolean) => void;
 };
 
 export const useGlobalStates = create<Actions & States>((set) => ({
-  openA: false,
+  openASide: false,
   openB: false,
-  setOpenA: (openA: boolean) => set({ openA }),
+  setOpenASide: (openASide: boolean) => set({ openASide }),
   setOpenB: (openB: boolean) => set({ openB }),
 }));
