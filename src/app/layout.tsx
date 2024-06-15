@@ -8,6 +8,8 @@ import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
+import { ThemeProvider } from "next-themes";
+
 export const metadata: Metadata = {
   authors: [{ name: "Gede Dewo Wahyu M.W", url: "https://github.com/gdwmw" }],
   category: "Photography, Videography, Talent, Music Services",
@@ -26,8 +28,10 @@ type T = {
 
 const RootLayout: FC<T> = ({ children }): ReactElement => {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={inter.className}>
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
     </html>
   );
 };
