@@ -2,6 +2,7 @@
 
 import { FC, ReactElement } from "react";
 
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,6 +11,7 @@ import { BsList } from "react-icons/bs";
 import { useGlobalStates } from "@/hooks/global";
 import { ButtonTWM } from "@/interfaces/buttons/button";
 import logoDIZETO from "@/public/assets/images/logos/dizeto.svg";
+import { GETTheme, PUTTheme } from "@/utils";
 
 import { IconBasedOnTheme } from "./IconBasedOnTheme";
 
@@ -23,18 +25,32 @@ export const LINKS_DATA = [
 ];
 
 export const Navbar: FC = (): ReactElement => {
+  const { data: dataTheme } = useQuery({
+    queryFn: GETTheme,
+    queryKey: ["GETTheme"],
+  });
+
+  const queryClient = useQueryClient();
   const { setTheme, theme } = useTheme();
   const { openASide, setOpenASide } = useGlobalStates();
+
+  const handleUpdateTheme = useMutation({
+    mutationFn: PUTTheme,
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({ queryKey: ["GETTheme"] });
+    },
+  });
 
   const handleTheme = () => {
     if (theme === "dark") {
       setTheme("system");
+      handleUpdateTheme.mutate({ theme: "system" });
     } else if (theme === "system") {
       setTheme("light");
-    } else if (theme === "light") {
-      setTheme("dark");
+      handleUpdateTheme.mutate({ theme: "light" });
     } else {
-      setTheme("system");
+      setTheme("dark");
+      handleUpdateTheme.mutate({ theme: "dark" });
     }
   };
 
@@ -61,7 +77,7 @@ export const Navbar: FC = (): ReactElement => {
           <ul className="flex gap-2">
             <li className="flex size-[40px] items-center justify-end">
               <button className={ButtonTWM({ color: "black", size: "sm", variant: "ghost" })} onClick={handleTheme} type="button">
-                <IconBasedOnTheme />
+                <IconBasedOnTheme dataTheme={dataTheme} />
               </button>
             </li>
             <li className="flex size-[40px] items-center justify-end sm:hidden">

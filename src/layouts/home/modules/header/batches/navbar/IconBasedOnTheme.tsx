@@ -1,15 +1,18 @@
 import { FC, ReactElement, useEffect, useState } from "react";
 
 import { useTheme } from "next-themes";
-import Image from "next/image";
 import { BsFillMoonFill, BsFillSunFill } from "react-icons/bs";
 import { SiMoonrepo } from "react-icons/si";
 
-import loading from "@/public/assets/animations/loadings/loading.svg";
+import { ITheme } from "@/utils";
 
-export const IconBasedOnTheme: FC = (): ReactElement => {
+type T = {
+  dataTheme: ITheme[] | undefined;
+};
+
+export const IconBasedOnTheme: FC<T> = ({ dataTheme }): ReactElement => {
   const { theme } = useTheme();
-  const [icon, setIcon] = useState<ReactElement>(<Image alt="Loading..." priority src={loading} width={30} />);
+  const [icon, setIcon] = useState<null | ReactElement>(null);
 
   useEffect(() => {
     switch (theme) {
@@ -22,11 +25,18 @@ export const IconBasedOnTheme: FC = (): ReactElement => {
       case "dark":
         setIcon(<BsFillMoonFill size={22} />);
         break;
-      default:
-        setIcon(<Image alt="Loading..." priority src={loading} width={30} />);
-        break;
     }
   }, [theme]);
 
-  return icon;
+  const initialIconValue = () => {
+    if (dataTheme?.[0].theme === "system") {
+      return <SiMoonrepo size={22} />;
+    } else if (dataTheme?.[0].theme === "light") {
+      return <BsFillSunFill size={22} />;
+    } else {
+      return <BsFillMoonFill size={22} />;
+    }
+  };
+
+  return icon ?? initialIconValue();
 };

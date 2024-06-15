@@ -8,7 +8,7 @@ import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
-import { ThemeProvider } from "next-themes";
+import { NextThemesProvider, ReactQueryProvider } from "@/libs";
 
 export const metadata: Metadata = {
   authors: [{ name: "Gede Dewo Wahyu M.W", url: "https://github.com/gdwmw" }],
@@ -30,7 +30,9 @@ const RootLayout: FC<T> = ({ children }): ReactElement => {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <ThemeProvider>{children}</ThemeProvider>
+        <NextThemesProvider>
+          <ReactQueryProvider>{children}</ReactQueryProvider>
+        </NextThemesProvider>
       </body>
     </html>
   );
