@@ -8,6 +8,7 @@ import Link from "next/link";
 import { BsList } from "react-icons/bs";
 
 import { useGlobalStates } from "@/hooks/global";
+import { ButtonTWM } from "@/interfaces/buttons/button";
 import logoDIZETO from "@/public/assets/images/logos/dizeto.svg";
 
 import { IconBasedOnTheme } from "./IconBasedOnTheme";
@@ -49,7 +50,9 @@ export const Navbar: FC = (): ReactElement => {
           <ul className="hidden sm:flex sm:items-center sm:gap-5 md:gap-10 lg:gap-16">
             {LINKS_DATA.map((dt, index) => (
               <li key={index}>
-                <Link href={dt.href}>{dt.label}</Link>
+                <Link className={ButtonTWM({ color: "black", size: "sm", variant: "ghost" })} href={dt.href}>
+                  {dt.label}
+                </Link>
               </li>
             ))}
           </ul>
@@ -57,12 +60,12 @@ export const Navbar: FC = (): ReactElement => {
         <li>
           <ul className="flex gap-2">
             <li className="flex size-[40px] items-center justify-end">
-              <button onClick={handleTheme} type="button">
+              <button className={ButtonTWM({ color: "black", size: "sm", variant: "ghost" })} onClick={handleTheme} type="button">
                 <IconBasedOnTheme />
               </button>
             </li>
             <li className="flex size-[40px] items-center justify-end sm:hidden">
-              <button onClick={() => setOpenASide(!openASide)} type="button">
+              <button className={ButtonTWM({ color: "black", size: "sm", variant: "ghost" })} onClick={() => setOpenASide(!openASide)} type="button">
                 <BsList className="mr-[-4px]" size={30} />
               </button>
             </li>
