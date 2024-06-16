@@ -2,8 +2,9 @@
 
 import { FC, ReactElement } from "react";
 
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { useTheme } from "next-themes";
+import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
 import Image from "next/image";
 import Link from "next/link";
 import { BsList } from "react-icons/bs";
@@ -11,7 +12,7 @@ import { BsList } from "react-icons/bs";
 import { useGlobalStates } from "@/hooks/global";
 import { ButtonTWM } from "@/interfaces/buttons/button";
 import logoDIZETO from "@/public/assets/images/logos/dizeto.svg";
-import { GETTheme, PUTTheme } from "@/utils";
+import { PUTTheme } from "@/utils";
 
 import { IconBasedOnTheme } from "./IconBasedOnTheme";
 
@@ -24,33 +25,28 @@ export const LINKS_DATA = [
   { href: "#contact", label: "Contact" },
 ];
 
-export const Navbar: FC = (): ReactElement => {
-  const { data: dataTheme } = useQuery({
-    queryFn: GETTheme,
-    queryKey: ["GETTheme"],
-  });
+type T = {
+  themeCookie: RequestCookie | undefined;
+};
 
-  const queryClient = useQueryClient();
+export const Navbar: FC<T> = ({ themeCookie }): ReactElement => {
   const { setTheme, theme } = useTheme();
   const { openASide, setOpenASide } = useGlobalStates();
 
-  const handleUpdateTheme = useMutation({
+  const mutateUpdateTheme = useMutation({
     mutationFn: PUTTheme,
-    onSuccess: async () => {
-      await queryClient.invalidateQueries({ queryKey: ["GETTheme"] });
-    },
   });
 
-  const handleTheme = () => {
+  const handleUpdateTheme = () => {
     if (theme === "dark") {
       setTheme("system");
-      handleUpdateTheme.mutate({ theme: "system" });
+      mutateUpdateTheme.mutate("system");
     } else if (theme === "system") {
       setTheme("light");
-      handleUpdateTheme.mutate({ theme: "light" });
+      mutateUpdateTheme.mutate("light");
     } else {
       setTheme("dark");
-      handleUpdateTheme.mutate({ theme: "dark" });
+      mutateUpdateTheme.mutate("dark");
     }
   };
 
@@ -76,8 +72,8 @@ export const Navbar: FC = (): ReactElement => {
         <li>
           <ul className="flex gap-2">
             <li className="flex size-[40px] items-center justify-end">
-              <button className={ButtonTWM({ color: "black", size: "sm", variant: "ghost" })} onClick={handleTheme} type="button">
-                <IconBasedOnTheme dataTheme={dataTheme} />
+              <button className={ButtonTWM({ color: "black", size: "sm", variant: "ghost" })} onClick={handleUpdateTheme} type="button">
+                <IconBasedOnTheme themeCookie={themeCookie} />
               </button>
             </li>
             <li className="flex size-[40px] items-center justify-end sm:hidden">

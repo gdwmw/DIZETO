@@ -1,6 +1,7 @@
 import { FC, ReactElement } from "react";
 
 import { Metadata, Viewport } from "next";
+import { cookies } from "next/headers";
 
 import { HomeLayout } from "@/layouts/home";
 
@@ -66,7 +67,10 @@ export const metadata: Metadata = {
 };
 
 const Home: FC = (): ReactElement => {
-  return <HomeLayout />;
+  const cookieStore = cookies();
+  const themeCookie = cookieStore.get("theme");
+
+  return <HomeLayout themeCookie={themeCookie ?? { name: "theme", value: "system" }} />;
 };
 
 export default Home;

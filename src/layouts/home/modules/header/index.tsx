@@ -1,23 +1,17 @@
 import { FC, ReactElement } from "react";
 
-import { dehydrate, HydrationBoundary, QueryClient } from "@tanstack/react-query";
-
-import { GETTheme } from "@/utils";
+import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
 
 import { Navbar } from "./batches";
 
-export const Header: FC = async (): Promise<ReactElement> => {
-  const queryClient = new QueryClient();
-  await queryClient.prefetchQuery({
-    queryFn: GETTheme,
-    queryKey: ["GETTheme"],
-  });
+type T = {
+  themeCookie: RequestCookie | undefined;
+};
 
+export const Header: FC<T> = async ({ themeCookie }): Promise<ReactElement> => {
   return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
-      <header>
-        <Navbar />
-      </header>
-    </HydrationBoundary>
+    <header>
+      <Navbar themeCookie={themeCookie} />
+    </header>
   );
 };

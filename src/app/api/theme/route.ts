@@ -1,21 +1,15 @@
-import { promises as fs } from "fs";
+"use server";
 
-export const GET = async () => {
-  try {
-    const data = await fs.readFile("./public/database/theme.json", "utf-8");
-    return new Response(data);
-  } catch (error) {
-    return new Response(JSON.stringify({ message: "Failed to get theme" }), { status: 500 });
-  }
-};
+import { cookies } from "next/headers";
 
 export const PUT = async (request: Request) => {
-  try {
-    const theme = await request.json();
-    const themeStringify = JSON.stringify([theme]);
-    await fs.writeFile("./public/database/theme.json", themeStringify, "utf-8");
-    return new Response(JSON.stringify({ message: "Theme changed successfully" }), { status: 200 });
-  } catch (error) {
-    return new Response(JSON.stringify({ message: "Failed to change theme" }), { status: 500 });
-  }
+  const theme = await request.text();
+
+  cookies().set("theme", theme, {
+    httpOnly: true,
+    path: "/",
+    sameSite: "strict",
+  });
+
+  return Response.json({ message: "Cookie theme updated" }, { status: 200 });
 };

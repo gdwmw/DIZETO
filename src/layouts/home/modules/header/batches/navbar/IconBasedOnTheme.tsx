@@ -1,16 +1,15 @@
 import { FC, ReactElement, useEffect, useState } from "react";
 
 import { useTheme } from "next-themes";
+import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
 import { BsFillMoonFill, BsFillSunFill } from "react-icons/bs";
 import { SiMoonrepo } from "react-icons/si";
 
-import { ITheme } from "@/utils";
-
 type T = {
-  dataTheme: ITheme[] | undefined;
+  themeCookie: RequestCookie | undefined;
 };
 
-export const IconBasedOnTheme: FC<T> = ({ dataTheme }): ReactElement => {
+export const IconBasedOnTheme: FC<T> = ({ themeCookie }): ReactElement => {
   const { theme } = useTheme();
   const [icon, setIcon] = useState<null | ReactElement>(null);
 
@@ -29,9 +28,9 @@ export const IconBasedOnTheme: FC<T> = ({ dataTheme }): ReactElement => {
   }, [theme]);
 
   const initialIconValue = () => {
-    if (dataTheme?.[0].theme === "system") {
+    if (themeCookie?.value === "system") {
       return <SiMoonrepo size={22} />;
-    } else if (dataTheme?.[0].theme === "light") {
+    } else if (themeCookie?.value === "light") {
       return <BsFillSunFill size={22} />;
     } else {
       return <BsFillMoonFill size={22} />;
