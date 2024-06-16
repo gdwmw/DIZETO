@@ -28,7 +28,7 @@ type T = {
 
 const RootLayout: FC<T> = ({ children }): ReactElement => {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html className="scroll-smooth" lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <NextThemesProvider>
           <ReactQueryProvider>{children}</ReactQueryProvider>
