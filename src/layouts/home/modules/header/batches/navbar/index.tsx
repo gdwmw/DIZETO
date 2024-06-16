@@ -52,7 +52,7 @@ export const Navbar: FC<T> = ({ themeCookie }): ReactElement => {
 
   return (
     <nav className="fixed left-0 top-0 w-full">
-      <ul className="flex items-center justify-between px-10 py-3 font-semibold">
+      <ul className="flex items-center justify-between px-5 py-3 font-semibold sm:px-10">
         <li className="flex size-[40px] items-center">
           <Link href="#hero">
             <Image alt="DIZETO" priority src={logoDIZETO} width={35} />
