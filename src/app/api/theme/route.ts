@@ -5,11 +5,12 @@ import { cookies } from "next/headers";
 export const PUT = async (request: Request) => {
   const theme = await request.text();
 
-  cookies().set("theme", theme, {
+  cookies().set({
     httpOnly: true,
+    name: "theme",
     path: "/",
-    sameSite: "strict",
+    value: theme,
   });
 
-  return Response.json({ message: "Cookie theme updated" }, { status: 200 });
+  return new Response("Cookie theme updated", { status: 200 });
 };
