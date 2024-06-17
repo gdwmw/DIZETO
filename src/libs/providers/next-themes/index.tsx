@@ -10,7 +10,7 @@ type T = {
 
 export const NextThemesProvider: FC<T> = ({ children }): ReactElement => {
   return (
-    <ThemeProvider enableColorScheme={true} enableSystem>
+    <ThemeProvider enableColorScheme={false} enableSystem>
       {children}
     </ThemeProvider>
   );
