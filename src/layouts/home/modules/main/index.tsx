@@ -1,11 +1,12 @@
 import { FC, ReactElement } from "react";
 
-import { Hero } from "./batches";
+import { About, Hero } from "./batches";
 
 export const Main: FC = (): ReactElement => {
   return (
-    <main>
+    <main className="container mx-auto px-5">
       <Hero />
+      <About />
     </main>
   );
 };
