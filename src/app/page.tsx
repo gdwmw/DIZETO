@@ -67,8 +67,7 @@ export const metadata: Metadata = {
 };
 
 const Home: FC = (): ReactElement => {
-  const cookieStore = cookies();
-  const themeCookie = cookieStore.get("theme");
+  const themeCookie = cookies().get("theme");
 
   return <HomeLayout themeCookie={themeCookie ?? { name: "theme", value: "system" }} />;
 };
