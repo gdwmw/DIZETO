@@ -11,7 +11,8 @@ type TTitle = { className?: string; title: string; titleRed: string } & Detailed
 export const Title: FC<TTitle> = ({ className, title, titleRed, ...props }): ReactElement => {
   return (
     <h2 className={twm("text-center text-3xl font-semibold", className)} {...props}>
-      {title} <span className="text-red-600">{titleRed}</span>
+      {title}
+      <span className="text-red-600">{titleRed}</span>
       <RedUnderline />
     </h2>
   );
