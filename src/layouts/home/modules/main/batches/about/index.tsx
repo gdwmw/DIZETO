@@ -3,17 +3,14 @@ import { FC, ReactElement } from "react";
 import Image from "next/image";
 
 import { ContainerPaper, ContentPaper } from "@/interfaces/paper";
-import { RedUnderline } from "@/interfaces/red-underline";
+import { Title } from "@/interfaces/title";
 import logoDIZETO from "@/public/assets/images/logos/dizeto.svg";
 
 export const About: FC = (): ReactElement => {
   return (
     <ContainerPaper id="about">
       <ContentPaper>
-        <h2 className="text-center text-3xl font-semibold">
-          ABO<span className="text-red-600">UT</span>
-          <RedUnderline />
-        </h2>
+        <Title title="ABO" titleRed="UT" />
         <div className="space-y-14 py-10 md:grid md:grid-cols-2 md:space-y-0">
           <div className="space-y-5">
             <h3 className="text-xl font-semibold sm:text-2xl">
