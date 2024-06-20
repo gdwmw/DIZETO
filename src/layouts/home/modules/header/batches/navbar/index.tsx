@@ -18,7 +18,7 @@ import { IconBasedOnTheme } from "./IconBasedOnTheme";
 
 export const LINKS_DATA = [
   { href: "#about", label: "About" },
-  { href: "#portfolio", label: "Portfolio" },
+  { href: "#highlight", label: "Highlight" },
   { href: "#pricing", label: "Pricing" },
   { href: "#testimony", label: "Testimony" },
   { href: "#client", label: "Client" },
@@ -31,7 +31,7 @@ type T = {
 
 export const Navbar: FC<T> = ({ themeCookie }): ReactElement => {
   const { setTheme, theme } = useTheme();
-  const { openASide, setOpenASide } = useGlobalStates();
+  const { setOpenASide } = useGlobalStates();
 
   const mutateUpdateTheme = useMutation({
     mutationFn: PUTTheme,
@@ -77,7 +77,11 @@ export const Navbar: FC<T> = ({ themeCookie }): ReactElement => {
               </button>
             </li>
             <li className="flex size-[40px] items-center justify-end sm:hidden">
-              <button className={ButtonTWM({ color: "black", size: "sm", variant: "ghost" })} onClick={() => setOpenASide(!openASide)} type="button">
+              <button
+                className={ButtonTWM({ color: "black", size: "sm", variant: "ghost" })}
+                onClick={() => setOpenASide((prev: boolean) => !prev)}
+                type="button"
+              >
                 <BsList className="mr-[-4px]" size={30} />
               </button>
             </li>
