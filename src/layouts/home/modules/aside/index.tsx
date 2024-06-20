@@ -15,7 +15,7 @@ export const ASide: FC = (): ReactElement => {
 
   return (
     <aside
-      className={`fixed right-0 top-0 h-dvh w-full max-w-[250px] bg-black/10 p-5 shadow-black/50 backdrop-blur-md transition-all dark:bg-white/10 dark:shadow-white/50 ${openASide ? "translate-x-0 shadow-md" : "translate-x-full shadow-none"}`}
+      className={`fixed right-0 top-0 h-dvh w-full max-w-[250px] bg-black/20 p-5 shadow-black/50 backdrop-blur-md transition-all dark:bg-white/20 dark:shadow-white/50 ${openASide ? "translate-x-0 shadow-md" : "translate-x-full shadow-none"}`}
     >
       <nav className="relative">
         <button
@@ -28,7 +28,11 @@ export const ASide: FC = (): ReactElement => {
         <ul className="space-y-8 font-semibold">
           {LINKS_DATA.map((dt, index) => (
             <li key={index}>
-              <Link className={ButtonTWM({ color: "black", size: "sm", variant: "ghost" })} href={dt.href} onClick={() => setOpenASide(false)}>
+              <Link
+                className={ButtonTWM({ color: "black", size: "sm", variant: "ghost" })}
+                href={dt.href}
+                onClick={() => setOpenASide((prev: boolean) => !prev)}
+              >
                 {dt.label}
               </Link>
             </li>
