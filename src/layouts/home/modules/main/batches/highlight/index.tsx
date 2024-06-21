@@ -27,7 +27,7 @@ export const Highlight: FC = (): ReactElement => {
       <ContentPaper>
         <Title title="HIGHLIGHT " titleRed="PORTFOLIO" />
         <div className="my-5 flex items-center justify-center">
-          <Link className={ButtonTWM({ color: "red", size: "sm", variant: "outline" })} href={"/portfoliolist"}>
+          <Link className={ButtonTWM({ className: "font-semibold", color: "red", size: "sm", variant: "outline" })} href={"/portfoliolist"}>
             CHECK ALL PORTFOLIO
           </Link>
         </div>
