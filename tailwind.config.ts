@@ -9,6 +9,9 @@ const config: Config = {
       colors: {
         dark: "#23272d",
       },
+      transitionProperty: {
+        card: "box-shadow, transform",
+      },
     },
   },
 };
