@@ -6,8 +6,8 @@ type States = {
 };
 
 type Actions = {
-  setOpenASide: (e: any) => void;
-  setOpenB: (e: any) => void;
+  setOpenASide: (param: boolean) => void;
+  setOpenB: (param: boolean) => void;
 };
 
 export const useGlobalStates = create<Actions & States>((set) => ({
