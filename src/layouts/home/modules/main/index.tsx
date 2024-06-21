@@ -9,7 +9,7 @@ import { About, Hero, Highlight, Pricing } from "./batches";
 export const Main: FC = async (): Promise<ReactElement> => {
   const queryClient = new QueryClient();
 
-  Promise.all([
+  await Promise.all([
     queryClient.prefetchQuery({
       queryFn: GETHighlight,
       queryKey: ["GETHighlight"],
