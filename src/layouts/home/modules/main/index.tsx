@@ -2,16 +2,23 @@ import { FC, ReactElement } from "react";
 
 import { dehydrate, HydrationBoundary, QueryClient } from "@tanstack/react-query";
 
-import { GETHighlight } from "@/utils";
+import { GETHighlight, GETPricing } from "@/utils";
 
-import { About, Hero, Highlight } from "./batches";
+import { About, Hero, Highlight, Pricing } from "./batches";
 
 export const Main: FC = async (): Promise<ReactElement> => {
   const queryClient = new QueryClient();
-  await queryClient.prefetchQuery({
-    queryFn: GETHighlight,
-    queryKey: ["GETHighlight"],
-  });
+
+  Promise.all([
+    queryClient.prefetchQuery({
+      queryFn: GETHighlight,
+      queryKey: ["GETHighlight"],
+    }),
+    queryClient.prefetchQuery({
+      queryFn: GETPricing,
+      queryKey: ["GETPricing"],
+    }),
+  ]);
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
@@ -20,6 +27,7 @@ export const Main: FC = async (): Promise<ReactElement> => {
         <div className="space-y-10">
           <About />
           <Highlight />
+          <Pricing />
         </div>
       </main>
     </HydrationBoundary>
