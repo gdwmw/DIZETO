@@ -11,21 +11,6 @@ export interface IImageFile {
   thumbnailUrl: string;
 }
 
-export const GETImageFile = async (): Promise<IImageFile[]> => {
-  try {
-    const res = await fetch(API_URL);
-
-    if (!res.ok) {
-      throw new Error(`Failed to fetch: ImageFile with status ${res.status}`);
-    }
-
-    return await res.json();
-  } catch (error) {
-    console.log(error);
-    throw error;
-  }
-};
-
 export const PUTImageFile = async (data: IImageFile): Promise<IImageFile> => {
   try {
     const res = await fetch(`${API_URL}/${data.id}`, {
@@ -37,7 +22,7 @@ export const PUTImageFile = async (data: IImageFile): Promise<IImageFile> => {
     });
 
     if (!res.ok) {
-      throw new Error(`Failed to put: ImageFile with status ${res.status}`);
+      throw new Error(`Failed to put: Image File with status ${res.status}`);
     }
 
     return await res.json();
