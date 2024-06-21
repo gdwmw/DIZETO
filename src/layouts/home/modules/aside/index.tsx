@@ -28,11 +28,7 @@ export const ASide: FC = (): ReactElement => {
         <ul className="space-y-8 font-semibold">
           {LINKS_DATA.map((dt, index) => (
             <li key={index}>
-              <Link
-                className={ButtonTWM({ color: "black", size: "sm", variant: "ghost" })}
-                href={dt.href}
-                onClick={() => setOpenASide((prev: boolean) => !prev)}
-              >
+              <Link className={ButtonTWM({ color: "black", size: "sm", variant: "ghost" })} href={dt.href} onClick={() => setOpenASide(false)}>
                 {dt.label}
               </Link>
             </li>

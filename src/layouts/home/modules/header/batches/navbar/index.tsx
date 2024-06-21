@@ -77,11 +77,7 @@ export const Navbar: FC<T> = ({ themeCookie }): ReactElement => {
               </button>
             </li>
             <li className="flex size-[40px] items-center justify-end sm:hidden">
-              <button
-                className={ButtonTWM({ color: "black", size: "sm", variant: "ghost" })}
-                onClick={() => setOpenASide((prev: boolean) => !prev)}
-                type="button"
-              >
+              <button className={ButtonTWM({ color: "black", size: "sm", variant: "ghost" })} onClick={() => setOpenASide(true)} type="button">
                 <BsList className="mr-[-4px]" size={30} />
               </button>
             </li>
