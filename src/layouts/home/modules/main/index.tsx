@@ -1,12 +1,27 @@
 import { FC, ReactElement } from "react";
 
-import { About, Hero } from "./batches";
+import { dehydrate, HydrationBoundary, QueryClient } from "@tanstack/react-query";
 
-export const Main: FC = (): ReactElement => {
+import { GETHighlight } from "@/utils";
+
+import { About, Hero, Highlight } from "./batches";
+
+export const Main: FC = async (): Promise<ReactElement> => {
+  const queryClient = new QueryClient();
+  await queryClient.prefetchQuery({
+    queryFn: GETHighlight,
+    queryKey: ["GETHighlight"],
+  });
+
   return (
-    <main className="container mx-auto px-5">
-      <Hero />
-      <About />
-    </main>
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <main className="container mx-auto px-5">
+        <Hero />
+        <div className="space-y-10">
+          <About />
+          <Highlight />
+        </div>
+      </main>
+    </HydrationBoundary>
   );
 };
