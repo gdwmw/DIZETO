@@ -2,6 +2,7 @@ import { render } from "@testing-library/react";
 
 import { ContainerPaper, ContentPaper } from "./";
 
+/* eslint-disable tailwindcss/no-custom-classname */
 const component = (
   <ContainerPaper className="testing-class" id="testing-id" style={{ color: "#ff0000" }}>
     <ContentPaper className="testing-class" id="testing-id" style={{ color: "#ff0000" }}>
@@ -9,6 +10,7 @@ const component = (
     </ContentPaper>
   </ContainerPaper>
 );
+/* eslint-enable tailwindcss/no-custom-classname */
 
 describe("Paper Component Testing", () => {
   it("Should have a id", () => {

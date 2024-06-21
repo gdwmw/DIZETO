@@ -54,6 +54,7 @@ const ghostSizes: ("sm" | "md" | "lg")[] = ["sm", "md", "lg"];
 const disabled: boolean[] = [false, true];
 /* eslint-enable perfectionist/sort-union-types */
 
+/* eslint-disable tailwindcss/no-custom-classname */
 const component = ({ color, disabled, onClickFn, size, variant }: any) => (
   <Button
     className="testing-class"
@@ -70,6 +71,7 @@ const component = ({ color, disabled, onClickFn, size, variant }: any) => (
     This is testing text
   </Button>
 );
+/* eslint-enable tailwindcss/no-custom-classname */
 
 describe("Button Component Testing", () => {
   it("Should have a id", () => {
