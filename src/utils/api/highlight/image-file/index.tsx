@@ -1,4 +1,4 @@
-const API_URL = process.env.NEXT_PUBLIC_IMAGEFILE;
+const API_URL = process.env.NEXT_PUBLIC_HIGHLIGHT + "/image-file";
 
 if (!API_URL) {
   throw new Error("The API URL is not defined. Please check your environment variables.");
@@ -11,7 +11,7 @@ export interface IImageFile {
   thumbnailUrl: string;
 }
 
-export const GETImageFile = async (): Promise<IImageFile> => {
+export const GETImageFile = async (): Promise<IImageFile[]> => {
   try {
     const res = await fetch(API_URL);
 
@@ -28,7 +28,7 @@ export const GETImageFile = async (): Promise<IImageFile> => {
 
 export const PUTImageFile = async (data: IImageFile): Promise<IImageFile> => {
   try {
-    const res = await fetch(API_URL, {
+    const res = await fetch(`${API_URL}/${data.id}`, {
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",
