@@ -2,10 +2,8 @@ import { DetailedHTMLProps, FC, HTMLAttributes, ReactElement } from "react";
 
 import { twm } from "@/libs";
 
-/* eslint-disable perfectionist/sort-union-types */
 type TContainerPaper = { className?: string } & DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
 type TContentPaper = { className?: string } & DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
-/* eslint-enable perfectionist/sort-union-types */
 
 export const ContainerPaper: FC<TContainerPaper> = ({ className, ...props }): ReactElement => {
   return (
