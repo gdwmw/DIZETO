@@ -51,7 +51,7 @@ export const Navbar: FC<T> = ({ themeCookie }): ReactElement => {
   };
 
   return (
-    <nav className="fixed left-0 top-0 w-full">
+    <nav className="fixed left-0 top-0 z-[6] w-full">
       <ul className="flex items-center justify-between px-5 py-3 font-semibold sm:px-10">
         <li className="flex size-[40px] items-center">
           <Link href="#hero">

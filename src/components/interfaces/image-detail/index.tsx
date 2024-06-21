@@ -41,18 +41,18 @@ const ImageDetail: FC<TImageDetail> = ({ data, imageIndex, setImageIndex, setOpe
   }, [loaded, imageIndex, data]);
 
   return (
-    <section className="fixed left-0 top-0 flex h-dvh w-dvw items-center justify-center bg-black/30 p-5 backdrop-blur-md dark:bg-white/20">
+    <section className="fixed left-0 top-0 z-10 flex h-dvh w-dvw items-center justify-center bg-black/30 p-5 backdrop-blur-md dark:bg-white/20">
       <div>
         <div className="relative size-fit overflow-hidden border-2 border-gray-300 bg-white p-2 dark:border-gray-700 dark:bg-dark">
           <div
-            className={`absolute left-0 top-0 z-20 flex size-full items-center justify-center bg-white transition-opacity duration-500 dark:bg-dark ${loaded && transitionLoaded ? "pointer-events-none opacity-0" : "opacity-100"}`}
+            className={`absolute left-0 top-0 z-[9] flex size-full items-center justify-center bg-white transition-opacity duration-500 dark:bg-dark ${loaded && transitionLoaded ? "pointer-events-none opacity-0" : "opacity-100"}`}
           >
             <Image alt="Loading..." src={loading} width={100} />
           </div>
 
           {loaded && (
             <Button
-              className="pointer-events-auto absolute right-5 top-5 z-10"
+              className="pointer-events-auto absolute right-5 top-5 z-[8]"
               color="white"
               onClick={() => {
                 setOpenImageDetail(false);
