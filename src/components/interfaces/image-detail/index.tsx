@@ -9,14 +9,14 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { Button } from "@/interfaces/buttons/button";
 import loading from "@/public/assets/animations/loadings/loading.svg";
 
-type T = {
+type TImageDetail = {
   data: any;
   imageIndex: number;
   setImageIndex: (param: SetStateAction<number>) => void;
   setOpenImageDetail: (param: boolean) => void;
 };
 
-const ImageDetail: FC<T> = ({ data, imageIndex, setImageIndex, setOpenImageDetail }): ReactElement => {
+const ImageDetail: FC<TImageDetail> = ({ data, imageIndex, setImageIndex, setOpenImageDetail }): ReactElement => {
   const [loaded, setLoaded] = useState(false);
   const [transitionLoaded, setTransitionLoaded] = useState(false);
 
