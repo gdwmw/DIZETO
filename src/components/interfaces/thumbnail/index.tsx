@@ -20,7 +20,7 @@ export const Thumbnail: FC<TThumbnail> = ({ setImageIndex, setOpenImageDetail, s
       }}
       type="button"
     >
-      <Image alt="Thumbnail" height={500} src={src} width={500} />
+      <Image alt="Thumbnail" height={224.094} src={src} width={336.5} />
     </button>
   );
 };
