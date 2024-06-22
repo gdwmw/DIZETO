@@ -44,7 +44,7 @@ export const Solid: Story = {
     children: (
       <>
         <FaCrown data-testid="testing-icon" />
-        Button
+        Example
       </>
     ),
   },
