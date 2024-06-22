@@ -19,7 +19,7 @@ type Story = StoryObj<typeof Layout>;
 /* eslint-disable perfectionist/sort-objects */
 export const Primary: Story = {
   args: {
-    children: <p>This is content text</p>,
+    children: <p>This is example text</p>,
   },
 };
 /* eslint-enable perfectionist/sort-objects */
