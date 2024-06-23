@@ -8,14 +8,20 @@ export const CardPackage: FC<IPricing> = ({ ...data }): ReactElement => {
       <div className="relative z-0 size-full rounded-lg transition-card hover:scale-105 hover:shadow-md hover:shadow-black/50 dark:hover:shadow-white/50">
         <div className="absolute top-[-70px] flex h-fit w-full items-center justify-center">
           <div className="flex size-[138px] flex-col items-center justify-center rounded-full border-4 border-gray-200 bg-red-600 text-center text-white dark:border-gray-700">
-            <span className="text-3xl font-bold">IDR {data.price}</span>
-            <span className="font-semibold tracking-wider">PACKAGE {data.pack}</span>
+            <span className="text-3xl font-bold" data-testid="price">
+              IDR {data.price}
+            </span>
+            <span className="font-semibold tracking-wider" data-testid="pack">
+              PACKAGE {data.pack}
+            </span>
           </div>
         </div>
 
         <div className="size-full overflow-hidden rounded-lg border-4 border-gray-200 bg-white dark:border-gray-700 dark:bg-dark">
           <div className="bg-gray-200 pb-5 pt-20 dark:bg-gray-700">
-            <span className="block whitespace-pre-wrap text-center text-2xl font-bold">{data.category}</span>
+            <span className="block whitespace-pre-wrap text-center text-2xl font-bold" data-testid="category">
+              {data.category}
+            </span>
           </div>
 
           <ul className="space-y-5 p-5 text-center text-lg font-semibold">
@@ -23,7 +29,10 @@ export const CardPackage: FC<IPricing> = ({ ...data }): ReactElement => {
               dt.list.map((ls, index) => (
                 <li key={index}>
                   <span>
-                    <span className="text-red-600">{ls.qty}</span> {ls.label}
+                    <span className="text-red-600" data-testid="qty">
+                      {ls.qty}
+                    </span>{" "}
+                    <span data-testid="label">{ls.label}</span>
                   </span>
                 </li>
               )),
