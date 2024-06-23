@@ -6,7 +6,7 @@ import { Title } from "./";
 const component = <Title className="testing-class" id="testing-id" style={{ color: "#ff0000" }} title="This is " titleRed="testing text" />;
 /* eslint-enable tailwindcss/no-custom-classname */
 
-describe("ExampleB Component Testing", () => {
+describe("Title Component Testing", () => {
   it("Should have a id", () => {
     const { getByTestId } = render(component);
     expect(getByTestId("title")).toHaveAttribute("id", "testing-id");

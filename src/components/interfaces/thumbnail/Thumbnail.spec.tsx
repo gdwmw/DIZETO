@@ -15,7 +15,7 @@ const component = ({ setImageIndex, setOpenImageDetail }: any) => (
 );
 /* eslint-enable tailwindcss/no-custom-classname */
 
-describe("ExampleB Component Testing", () => {
+describe("Thumbnail Component Testing", () => {
   it("Should have a id", () => {
     const { getByTestId } = render(component({}));
     expect(getByTestId("thumbnail")).toHaveAttribute("id", "testing-id");
