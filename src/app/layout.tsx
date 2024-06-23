@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { FC, ReactElement, ReactNode } from "react";
+import { FC, PropsWithChildren, ReactElement } from "react";
 
 import { Inter } from "next/font/google";
 
@@ -22,16 +22,14 @@ export const metadata: Metadata = {
   },
 };
 
-type T = {
-  children: ReactNode;
-};
+type T = PropsWithChildren;
 
-const RootLayout: FC<T> = ({ children }): ReactElement => {
+const RootLayout: FC<T> = ({ ...props }): ReactElement => {
   return (
     <html className="scroll-smooth dark:bg-dark" lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <NextThemesProvider>
-          <ReactQueryProvider>{children}</ReactQueryProvider>
+          <ReactQueryProvider>{props.children}</ReactQueryProvider>
         </NextThemesProvider>
       </body>
     </html>

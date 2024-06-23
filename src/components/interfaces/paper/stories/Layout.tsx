@@ -1,4 +1,4 @@
-import { FC, ReactElement, ReactNode } from "react";
+import { FC, PropsWithChildren, ReactElement } from "react";
 
 import Image from "next/image";
 
@@ -8,9 +8,8 @@ import { ContainerPaper, ContentPaper } from "..";
 import { Title } from "../../title";
 
 type TLayout = {
-  children: ReactNode;
   id: string;
-};
+} & PropsWithChildren;
 
 const Layout: FC<TLayout> = ({ ...props }): ReactElement => {
   return (
