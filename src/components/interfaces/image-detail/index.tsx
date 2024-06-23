@@ -6,10 +6,11 @@ import Image from "next/image";
 import { CgClose } from "react-icons/cg";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
-import { Button } from "@/interfaces/buttons/button";
 import loading from "@/public/assets/animations/loadings/loading.svg";
 
-type TImageDetail = {
+import { Button } from "../buttons/button";
+
+export type TImageDetail = {
   data: any;
   imageIndex: number;
   setImageIndex: (param: SetStateAction<number>) => void;
