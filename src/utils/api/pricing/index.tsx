@@ -4,12 +4,12 @@ if (!API_URL) {
   throw new Error("The API URL is not defined. Please check your environment variables.");
 }
 
-interface IList {
+export interface IList {
   label: string;
   qty: number;
 }
 
-interface IListItem {
+export interface IListItem {
   id: string;
   list: IList[];
   pricingId: string;
