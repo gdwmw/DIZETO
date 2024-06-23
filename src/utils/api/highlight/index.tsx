@@ -1,9 +1,14 @@
-import { IImageFile } from "./image-file";
-
 const API_URL = process.env.NEXT_PUBLIC_HIGHLIGHT;
 
 if (!API_URL) {
   throw new Error("The API URL is not defined. Please check your environment variables.");
+}
+
+export interface IImageFile {
+  highlightId: string;
+  id: string;
+  imgUrl: string;
+  thumbnailUrl: string;
 }
 
 export interface IHighlight {

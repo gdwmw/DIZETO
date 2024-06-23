@@ -1,14 +1,9 @@
+import { IImageFile } from "../index";
+
 const API_URL = process.env.NEXT_PUBLIC_HIGHLIGHT + "/image-file";
 
 if (!API_URL) {
   throw new Error("The API URL is not defined. Please check your environment variables.");
-}
-
-export interface IImageFile {
-  highlightId: string;
-  id: string;
-  imgUrl: string;
-  thumbnailUrl: string;
 }
 
 export const PUTImageFile = async (data: IImageFile): Promise<IImageFile> => {
