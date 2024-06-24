@@ -2,9 +2,9 @@ import { FC, ReactElement } from "react";
 
 import { dehydrate, HydrationBoundary, QueryClient } from "@tanstack/react-query";
 
-import { GETHighlight, GETPricing } from "@/utils";
+import { GETCounting, GETHighlight, GETPricing, GETTestimony } from "@/utils";
 
-import { About, Hero, Highlight, Pricing } from "./batches";
+import { About, Hero, Highlight, Pricing, Testimony } from "./batches";
 
 export const Main: FC = async (): Promise<ReactElement> => {
   const queryClient = new QueryClient();
@@ -18,6 +18,14 @@ export const Main: FC = async (): Promise<ReactElement> => {
       queryFn: GETPricing,
       queryKey: ["GETPricing"],
     }),
+    queryClient.prefetchQuery({
+      queryFn: GETTestimony,
+      queryKey: ["GETTestimony"],
+    }),
+    queryClient.prefetchQuery({
+      queryFn: GETCounting,
+      queryKey: ["GETCounting"],
+    }),
   ]);
 
   return (
@@ -28,6 +36,7 @@ export const Main: FC = async (): Promise<ReactElement> => {
           <About />
           <Highlight />
           <Pricing />
+          <Testimony />
         </div>
       </main>
     </HydrationBoundary>
