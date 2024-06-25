@@ -59,7 +59,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    creator: "@gdwmw",
+    creator: "@_wodewo",
     description: "DIZETO is a vendor that offers photography, videography, talent, and music services.",
     images: ["https://dizeto.vercel.app/assets/images/logos/dizeto.png"], // Must be an absolute URL and PNG format
     title: "DIZETO | PROFESSIONAL SERVICES",
