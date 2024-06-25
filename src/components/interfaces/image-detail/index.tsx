@@ -111,7 +111,7 @@ const ImageDetail: FC<TImageDetail> = ({ data, imageIndex, setImageIndex, setOpe
           />
         </div>
 
-        <div className="bottom-5 left-5 text-xs text-white sm:text-sm dark:text-black">
+        <div className="bottom-5 left-5 text-xs font-semibold text-white sm:text-sm dark:text-black">
           <span>{data?.copyright}</span>
           <br />
           <span>
