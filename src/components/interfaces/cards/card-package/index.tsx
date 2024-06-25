@@ -19,7 +19,7 @@ export const CardPackage: FC<IPricing> = ({ ...data }): ReactElement => {
 
         <div className="size-full overflow-hidden rounded-lg border-4 border-gray-200 bg-white dark:border-gray-700 dark:bg-dark">
           <div className="bg-gray-200 pb-5 pt-20 dark:bg-gray-700">
-            <span className="block whitespace-pre-wrap text-center text-2xl font-bold" data-testid="category">
+            <span className="block whitespace-pre-wrap text-center text-2xl font-semibold" data-testid="category">
               {data.category}
             </span>
           </div>
