@@ -54,7 +54,7 @@ export const Testimony: FC = (): ReactElement => {
                     <h3 className="text-xl">{dt.name}</h3>
                     <span className="text-sm text-red-600">{dt.event}</span>
                   </div>
-                  <p>&quot;{dt.comment}&quot;</p>
+                  <p className="flex h-[80px] items-center justify-center text-base sm:h-[50px] md:h-fit">&quot;{dt.comment}&quot;</p>
                 </Fragment>
               ),
           )}

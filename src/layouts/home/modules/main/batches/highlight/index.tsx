@@ -27,11 +27,14 @@ export const Highlight: FC = (): ReactElement => {
       <ContentPaper>
         <Title title="HIGHLIGHT " titleRed="PORTFOLIO" />
         <div className="my-5 flex items-center justify-center">
-          <Link className={ButtonTWM({ className: "font-semibold", color: "red", size: "sm", variant: "outline" })} href={"/portfoliolist"}>
+          <Link
+            className={ButtonTWM({ className: "text-sm font-semibold sm:text-base", color: "red", size: "sm", variant: "outline" })}
+            href={"/portfoliolist"}
+          >
             CHECK ALL PORTFOLIO
           </Link>
         </div>
-        <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-5 lg:grid-cols-4">
           {data?.imageFile.map((dt, index) => (
             <Thumbnail key={index} setImageIndex={() => setImageIndex(index)} setOpenImageDetail={setOpenImageDetail} src={dt.thumbnailUrl} />
           ))}
