@@ -41,8 +41,8 @@ export const Testimony: FC = (): ReactElement => {
   }, [dataTestimony]);
 
   return (
-    <ContainerPaper className="bg-transparent dark:bg-transparent" id="testimony">
-      <ContentPaper>
+    <ContainerPaper id="testimony">
+      <ContentPaper className="bg-transparent dark:bg-transparent">
         <div className="mx-auto flex size-fit flex-col items-center justify-center gap-5 py-10 text-center font-semibold">
           <BsQuote size={50} />
           {dataTestimony?.map(
