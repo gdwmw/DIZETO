@@ -71,42 +71,42 @@ export const Testimony: FC = (): ReactElement => {
         </div>
 
         <div className="flex flex-col items-center justify-evenly gap-5 sm:flex-row">
-          <div className="text-center font-bold">
+          <div className="text-center">
             <div className="flex items-center justify-center gap-2">
               <HiUserGroup size={25} />
-              <span className="text-xl text-red-600">{dataCounting?.[0]?.count}</span>
+              <span className="text-xl font-bold text-red-600">{dataCounting?.[0]?.count}</span>
             </div>
-            <span className="text-xl">{dataCounting?.[0]?.title}</span>
+            <span className="text-xl font-semibold">{dataCounting?.[0]?.title}</span>
           </div>
 
           <div className="hidden h-16 w-0.5 bg-black sm:block dark:bg-white" />
           <div className="h-0.5 w-16 bg-black sm:hidden dark:bg-white" />
 
-          <div className="text-center font-bold">
+          <div className="text-center">
             <div className="flex items-center justify-center gap-2">
               <FaThumbsUp size={20} />
-              <span className="text-xl text-red-600">{dataCounting?.[1]?.count}</span>
+              <span className="text-xl font-bold text-red-600">{dataCounting?.[1]?.count}</span>
             </div>
-            <span className="text-xl">{dataCounting?.[1]?.title}</span>
+            <span className="text-xl font-semibold">{dataCounting?.[1]?.title}</span>
           </div>
 
           <div className="hidden h-16 w-0.5 bg-black sm:block dark:bg-white" />
           <div className="h-0.5 w-16 bg-black sm:hidden dark:bg-white" />
 
-          <div className="text-center font-bold">
+          <div className="text-center">
             <div className="flex items-center justify-center gap-2">
               <BsBriefcaseFill size={22} />
-              <span className="text-xl text-red-600">{dataCounting?.[2]?.count}</span>
+              <span className="text-xl font-bold text-red-600">{dataCounting?.[2]?.count}</span>
             </div>
-            <span className="text-xl">{dataCounting?.[2]?.title}</span>
+            <span className="text-xl font-semibold">{dataCounting?.[2]?.title}</span>
           </div>
 
           <div className="hidden h-16 w-0.5 bg-black lg:block dark:bg-white" />
 
-          <div className="hidden w-full max-w-[250px] text-center font-bold lg:block">
-            <span className="text-xl text-red-600">{format(currentTime, "d MMMM yyyy, HH:mm:ss", { locale: enUS })}</span>
+          <div className="hidden w-full max-w-[250px] text-center lg:block">
+            <span className="text-xl font-bold text-red-600">{format(currentTime, "d MMMM yyyy, HH:mm:ss", { locale: enUS })}</span>
             <br />
-            <span className="text-xl">Date - Time</span>
+            <span className="text-xl font-semibold">Date - Time</span>
           </div>
         </div>
       </ContentPaper>
