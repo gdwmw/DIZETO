@@ -4,7 +4,7 @@ import { IPricing } from "@/utils";
 
 export const CardPackage: FC<IPricing> = ({ ...data }): ReactElement => {
   return (
-    <section className="size-full pt-20">
+    <section className="size-full pt-20 dark:text-white">
       <div className="relative z-0 size-full rounded-lg transition-card hover:scale-105 hover:shadow-md hover:shadow-black/50 dark:hover:shadow-white/50">
         <div className="absolute top-[-60px] flex h-fit w-full items-center justify-center sm:top-[-70px]">
           <div className="flex size-[118px] flex-col items-center justify-center rounded-full border-4 border-gray-200 bg-red-600 text-center text-white sm:size-[138px] dark:border-gray-700">
