@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, ReactElement } from "react";
+import { FC, FormEvent, ReactElement, useEffect, useState } from "react";
 
 import { useMutation } from "@tanstack/react-query";
 import { useTheme } from "next-themes";
@@ -25,6 +25,11 @@ export const LINKS_DATA = [
   { href: "#contact", label: "Contact" },
 ];
 
+export const handleSmoothScroll = (e: FormEvent, href: string) => {
+  e.preventDefault();
+  document.getElementById(href.slice(1))?.scrollIntoView({ behavior: "smooth" });
+};
+
 type T = {
   themeCookie: RequestCookie | undefined;
 };
@@ -32,6 +37,21 @@ type T = {
 export const Navbar: FC<T> = ({ themeCookie }): ReactElement => {
   const { setTheme, theme } = useTheme();
   const { setOpenASide } = useGlobalStates();
+  const [scrollPosition, setScrollPosition] = useState<number>(0);
+  const [isActive, setIsActive] = useState<boolean>(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollPosition(window.scrollY);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const aboutElement = document.getElementById("about");
+    if (aboutElement) {
+      setIsActive(scrollPosition > aboutElement.offsetTop - 86);
+    }
+  }, [scrollPosition]);
 
   const mutateUpdateTheme = useMutation({
     mutationFn: PUTTheme,
@@ -51,10 +71,10 @@ export const Navbar: FC<T> = ({ themeCookie }): ReactElement => {
   };
 
   return (
-    <nav className="fixed left-0 top-0 z-[6] w-full">
+    <nav className={`fixed left-0 top-0 z-[6] w-full ${isActive ? "shadow-md shadow-black/50 backdrop-blur-md dark:shadow-white/50" : ""}`}>
       <ul className="flex items-center justify-between px-5 py-3 font-semibold sm:px-10">
         <li className="flex size-[40px] items-center">
-          <Link href="#hero">
+          <Link href="#hero" onClick={(e) => handleSmoothScroll(e, "#hero")}>
             <Image alt="DIZETO" priority src={logoDIZETO} width={35} />
           </Link>
         </li>
@@ -62,7 +82,11 @@ export const Navbar: FC<T> = ({ themeCookie }): ReactElement => {
           <ul className="hidden sm:flex sm:items-center sm:gap-5 md:gap-10 lg:gap-16">
             {LINKS_DATA.map((dt, index) => (
               <li key={index}>
-                <Link className={ButtonTWM({ color: "black", size: "sm", variant: "ghost" })} href={dt.href}>
+                <Link
+                  className={ButtonTWM({ color: "black", size: "sm", variant: "ghost" })}
+                  href={dt.href}
+                  onClick={(e) => handleSmoothScroll(e, dt.href)}
+                >
                   {dt.label}
                 </Link>
               </li>
