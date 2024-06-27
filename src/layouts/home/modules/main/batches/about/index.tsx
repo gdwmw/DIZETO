@@ -1,16 +1,25 @@
+"use client";
+
 import { FC, ReactElement } from "react";
 
+import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 
 import { ContainerPaper, ContentPaper } from "@/interfaces/paper";
 import { Title } from "@/interfaces/title";
 import logoDIZETO from "@/public/assets/images/logos/dizeto.svg";
+import { GETTitle } from "@/utils";
 
 export const About: FC = (): ReactElement => {
+  const { data } = useQuery({
+    queryFn: GETTitle,
+    queryKey: ["GETTitle"],
+  });
+
   return (
     <ContainerPaper id="about">
       <ContentPaper>
-        <Title title="ABO" titleRed="UT" />
+        <Title title={data?.[0].title} titleRed={data?.[0].titleRed} />
         <div className="space-y-14 py-10 md:grid md:grid-cols-2 md:space-y-0">
           <div className="space-y-5">
             <h3 className="text-xl font-semibold sm:text-2xl">

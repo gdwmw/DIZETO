@@ -9,12 +9,17 @@ import Link from "next/link";
 
 import { ContainerPaper, ContentPaper } from "@/interfaces/paper";
 import { Title } from "@/interfaces/title";
+import { GETTitle } from "@/utils";
 import { GETClient } from "@/utils/api/client";
 
 export const Client: FC = (): ReactElement => {
   const theme = useTheme();
 
-  const { data } = useQuery({
+  const { data: dataTitle } = useQuery({
+    queryFn: GETTitle,
+    queryKey: ["GETTitle"],
+  });
+  const { data: dataClient } = useQuery({
     queryFn: GETClient,
     queryKey: ["GETClient"],
   });
@@ -28,11 +33,11 @@ export const Client: FC = (): ReactElement => {
   return (
     <ContainerPaper id="client">
       <ContentPaper>
-        <Title title="CLIE" titleRed="NT" />
+        <Title title={dataTitle?.[3].title} titleRed={dataTitle?.[3].titleRed} />
         <div className="mt-5 grid grid-cols-3 gap-5 xl:grid-cols-4">
           {/* TODO: Jangan lupa nanti bikin loading component */}
           {mounted &&
-            data?.map((dt, index) =>
+            dataClient?.map((dt, index) =>
               dt.theme === "" ? (
                 <Link className="flex size-full items-center justify-center opacity-70 hover:opacity-100" href={dt.href} key={index} target="_blank">
                   <Image alt={dt.alt} className="size-fit max-h-[120px]" height={120} loading="lazy" src={dt.logoUrl} width={300} />

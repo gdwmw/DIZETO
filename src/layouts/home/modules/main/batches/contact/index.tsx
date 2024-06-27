@@ -9,10 +9,14 @@ import { TbWorldWww } from "react-icons/tb";
 import { ContactInfo } from "@/interfaces/contact-info";
 import { ContainerPaper, ContentPaper } from "@/interfaces/paper";
 import { Title } from "@/interfaces/title";
-import { GETContact } from "@/utils";
+import { GETContact, GETTitle } from "@/utils";
 
 export const Contact: FC = (): ReactElement => {
-  const { data } = useQuery({
+  const { data: dataTitle } = useQuery({
+    queryFn: GETTitle,
+    queryKey: ["GETTitle"],
+  });
+  const { data: dataContact } = useQuery({
     queryFn: GETContact,
     queryKey: ["GETContact"],
   });
@@ -20,7 +24,7 @@ export const Contact: FC = (): ReactElement => {
   return (
     <ContainerPaper id="contact">
       <ContentPaper>
-        <Title title="CONTA" titleRed="CT" />
+        <Title title={dataTitle?.[4].title} titleRed={dataTitle?.[4].titleRed} />
         <iframe
           className="my-5 h-[500px] w-full rounded-md border border-black dark:border-white"
           loading="lazy"
@@ -28,11 +32,11 @@ export const Contact: FC = (): ReactElement => {
           title="Google Maps"
         />
         <div className="space-y-2">
-          <ContactInfo href={data?.addressUrl} icon={<MdLocationOn size={20} />} label={data?.addressLabel} title="Address" />
-          <ContactInfo href={data?.emailUrl} icon={<MdEmail size={20} />} label={data?.emailLabel} title="Email" />
-          <ContactInfo href={data?.phoneUrl} icon={<MdPhone size={20} />} label={data?.phoneLabel} title="Phone" />
+          <ContactInfo href={dataContact?.addressUrl} icon={<MdLocationOn size={20} />} label={dataContact?.addressLabel} title="Address" />
+          <ContactInfo href={dataContact?.emailUrl} icon={<MdEmail size={20} />} label={dataContact?.emailLabel} title="Email" />
+          <ContactInfo href={dataContact?.phoneUrl} icon={<MdPhone size={20} />} label={dataContact?.phoneLabel} title="Phone" />
           <div className="hidden sm:block">
-            <ContactInfo href={data?.websiteUrl} icon={<TbWorldWww size={20} />} label={data?.websiteLabel} title="Website" />
+            <ContactInfo href={dataContact?.websiteUrl} icon={<TbWorldWww size={20} />} label={dataContact?.websiteLabel} title="Website" />
           </div>
         </div>
       </ContentPaper>

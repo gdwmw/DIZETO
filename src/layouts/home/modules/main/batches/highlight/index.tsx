@@ -10,11 +10,15 @@ import { ButtonTWM } from "@/interfaces/buttons/button";
 import { ContainerPaper, ContentPaper } from "@/interfaces/paper";
 import { Thumbnail } from "@/interfaces/thumbnail";
 import { Title } from "@/interfaces/title";
-import { GETHighlight } from "@/utils";
+import { GETHighlight, GETTitle } from "@/utils";
 const ImageDetail = dynamic(() => import("@/interfaces/image-detail"));
 
 export const Highlight: FC = (): ReactElement => {
-  const { data } = useQuery({
+  const { data: dataTitle } = useQuery({
+    queryFn: GETTitle,
+    queryKey: ["GETTitle"],
+  });
+  const { data: dataHighlight } = useQuery({
     queryFn: GETHighlight,
     queryKey: ["GETHighlight"],
   });
@@ -25,7 +29,7 @@ export const Highlight: FC = (): ReactElement => {
   return (
     <ContainerPaper id="highlight">
       <ContentPaper>
-        <Title title="HIGHLIGHT " titleRed="PORTFOLIO" />
+        <Title title={dataTitle?.[1].title} titleRed={dataTitle?.[1].titleRed} />
         <div className="my-5 flex items-center justify-center">
           <Link
             className={ButtonTWM({ className: "text-sm font-semibold sm:text-base", color: "red", size: "sm", variant: "outline" })}
@@ -35,11 +39,13 @@ export const Highlight: FC = (): ReactElement => {
           </Link>
         </div>
         <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-5 lg:grid-cols-4">
-          {data?.imageFile.map((dt, index) => (
+          {dataHighlight?.imageFile.map((dt, index) => (
             <Thumbnail key={index} setImageIndex={() => setImageIndex(index)} setOpenImageDetail={setOpenImageDetail} src={dt.thumbnailUrl} />
           ))}
         </div>
-        {openImageDetail && <ImageDetail data={data} imageIndex={imageIndex} setImageIndex={setImageIndex} setOpenImageDetail={setOpenImageDetail} />}
+        {openImageDetail && (
+          <ImageDetail data={dataHighlight} imageIndex={imageIndex} setImageIndex={setImageIndex} setOpenImageDetail={setOpenImageDetail} />
+        )}
       </ContentPaper>
     </ContainerPaper>
   );
