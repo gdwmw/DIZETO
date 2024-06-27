@@ -1,0 +1,51 @@
+[
+  {
+    "comment": "You must give it a try because the photographs are good",
+    "id": "1",
+    "imageUrl": "/assets/images/testimony/rangga-dewamoela.webp",
+    "name": "Rangga Dewamoela",
+    "event": "- Ginza's Birthday -"
+  },
+  {
+    "comment": "Alhamdulillah, the pictures are great, i'm very appreciative",
+    "id": "2",
+    "imageUrl": "/assets/images/testimony/rifa-anggyana.webp",
+    "name": "Rifa Anggyana",
+    "event": "- Ikatan Remaja Masjid Jawa Barat -"
+  },
+  {
+    "comment": "The photographs are excellent, the service is inexpensive, and the workflow is quick",
+    "id": "3",
+    "imageUrl": "/assets/images/testimony/ratri-werdiningsih.webp",
+    "name": "Ratri Werdiningsih",
+    "event": "- Rumah Batik Wijaya -"
+  },
+  {
+    "comment": "The cheerful color scheme appeals to me",
+    "id": "4",
+    "imageUrl": "/assets/images/testimony/vitto-safiy.webp",
+    "name": "Vitto Safiy",
+    "event": "- Safiy Kitchen -"
+  },
+  {
+    "comment": "In any case, it's highly recommended",
+    "id": "5",
+    "imageUrl": "/assets/images/testimony/gibran-farras.jpg",
+    "name": "Gibran Farras",
+    "event": "- Lentera Coffee -"
+  },
+  {
+    "comment": "Despite the fact that the photo was taken at my house, the outcome is satisfactory",
+    "id": "6",
+    "imageUrl": "/assets/images/testimony/neneng-camidah.webp",
+    "name": "Neneng Chamidah",
+    "event": "- Eid Photo Shoot -"
+  },
+  {
+    "comment": "Thank you for the wonderful photographs",
+    "id": "7",
+    "imageUrl": "/assets/images/testimony/novi.webp",
+    "name": "Novi",
+    "event": "- Reunion Documentation -"
+  }
+]

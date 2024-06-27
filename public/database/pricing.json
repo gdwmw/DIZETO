@@ -1,0 +1,76 @@
+[
+  {
+    "price": "1.0",
+    "pack": "A",
+    "category": "PHOTO\nAPA AJA",
+    "id": "1",
+    "listItem": [
+      {
+        "list": [
+          { "qty": 1, "label": "BEBAS DAH" },
+          { "qty": 1, "label": "BEBAS DAH" },
+          { "qty": 1, "label": "BEBAS DAH" },
+          { "qty": 1, "label": "BEBAS DAH" },
+          { "qty": 1, "label": "BEBAS DAH" },
+          { "qty": 1, "label": "BEBAS DAH" }
+        ],
+        "id": "1",
+        "pricingId": "1"
+      }
+    ]
+  },
+  {
+    "price": "2.0",
+    "pack": "A",
+    "category": "PHOTO\nAPA AJA",
+    "id": "2",
+    "listItem": [
+      {
+        "list": [
+          { "qty": 1, "label": "BEBAS DAH" },
+          { "qty": 1, "label": "BEBAS DAH" },
+          { "qty": 1, "label": "BEBAS DAH" },
+          { "qty": 1, "label": "BEBAS DAH" }
+        ],
+        "id": "2",
+        "pricingId": "2"
+      }
+    ]
+  },
+  {
+    "price": "3.0",
+    "pack": "A",
+    "category": "PHOTO\nAPA AJA",
+    "id": "3",
+    "listItem": [
+      {
+        "list": [
+          { "qty": 1, "label": "BEBAS DAH" },
+          { "qty": 1, "label": "BEBAS DAH" },
+          { "qty": 1, "label": "BEBAS DAH" },
+          { "qty": 1, "label": "BEBAS DAH" }
+        ],
+        "id": "3",
+        "pricingId": "3"
+      }
+    ]
+  },
+  {
+    "price": "4.0",
+    "pack": "A",
+    "category": "PHOTO\nAPA AJA",
+    "id": "4",
+    "listItem": [
+      {
+        "list": [
+          { "qty": 1, "label": "BEBAS DAH" },
+          { "qty": 1, "label": "BEBAS DAH" },
+          { "qty": 1, "label": "BEBAS DAH" },
+          { "qty": 1, "label": "BEBAS DAH" }
+        ],
+        "id": "4",
+        "pricingId": "4"
+      }
+    ]
+  }
+]
