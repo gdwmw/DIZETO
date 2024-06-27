@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, Fragment, ReactElement, useEffect, useState } from "react";
+import { FC, ReactElement, useEffect, useState } from "react";
 
 import { useQuery } from "@tanstack/react-query";
 import { format } from "date-fns";
@@ -50,19 +50,16 @@ export const Testimony: FC = (): ReactElement => {
       <ContentPaper className="bg-transparent dark:bg-transparent">
         <div className="mx-auto flex size-fit flex-col items-center justify-center gap-5 py-10 text-center font-semibold">
           <BsQuote size={50} />
-          {dataTestimony?.map(
-            (dt, index) =>
-              testimonyIndex === index && (
-                <Fragment key={index}>
-                  <Image alt="Testimony" className="rounded-full" height={128} src={dt.imageUrl} width={128} />
-                  <div>
-                    <h3 className="text-xl">{dt.name}</h3>
-                    <span className="text-sm text-red-600">{dt.event}</span>
-                  </div>
-                  <p className="flex h-[80px] items-center justify-center text-base sm:h-[50px] md:h-fit">&quot;{dt.comment}&quot;</p>
-                </Fragment>
-              ),
-          )}
+          {dataTestimony?.map((dt, index) => (
+            <div className={`space-y-5 ${testimonyIndex === index ? "" : "hidden"}`} key={index}>
+              <Image alt="Testimony" className="mx-auto rounded-full" height={128} loading="lazy" src={dt.imageUrl} width={128} />
+              <div>
+                <h3 className="text-xl">{dt.name}</h3>
+                <span className="text-sm text-red-600">{dt.event}</span>
+              </div>
+              <p className="flex h-[80px] items-center justify-center text-base sm:h-[50px] md:h-fit">&quot;{dt.comment}&quot;</p>
+            </div>
+          ))}
           <div className="mt-5 flex items-center justify-center gap-5">
             {dataTestimony?.map((_, index) => (
               <BsFillCircleFill

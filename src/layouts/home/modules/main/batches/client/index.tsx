@@ -27,11 +27,11 @@ export const Client: FC = (): ReactElement => {
           {data?.map((dt, index) =>
             dt.theme === "" ? (
               <Link className="flex size-full items-center justify-center opacity-70 hover:opacity-100" href={dt.href} key={index} target="_blank">
-                <Image alt={dt.alt} className="size-fit max-h-[120px]" height={120} src={dt.logoUrl} width={300} />
+                <Image alt={dt.alt} className="size-fit max-h-[120px]" height={120} loading="lazy" src={dt.logoUrl} width={300} />
               </Link>
             ) : dt.theme === theme.resolvedTheme ? (
               <Link className="flex size-full items-center justify-center opacity-70 hover:opacity-100" href={dt.href} key={index} target="_blank">
-                <Image alt={dt.alt} className="size-fit max-h-[120px]" height={120} src={dt.logoUrl} width={300} />
+                <Image alt={dt.alt} className="size-fit max-h-[120px]" height={120} loading="lazy" src={dt.logoUrl} width={300} />
               </Link>
             ) : null,
           )}
