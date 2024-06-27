@@ -7,35 +7,36 @@ import Image from "next/image";
 
 import { ContainerPaper, ContentPaper } from "@/interfaces/paper";
 import { Title } from "@/interfaces/title";
-import logoDIZETO from "@/public/assets/images/logos/dizeto.svg";
-import { GETTitle } from "@/utils";
+import { GETAbout, GETTitle } from "@/utils";
 
 export const About: FC = (): ReactElement => {
-  const { data } = useQuery({
+  const { data: dataTitle } = useQuery({
     queryFn: GETTitle,
     queryKey: ["GETTitle"],
+  });
+  const { data: dataAbout } = useQuery({
+    queryFn: GETAbout,
+    queryKey: ["GETAbout"],
   });
 
   return (
     <ContainerPaper id="about">
       <ContentPaper>
-        <Title title={data?.[0].title} titleRed={data?.[0].titleRed} />
+        <Title title={dataTitle?.[0].title} titleRed={dataTitle?.[0].titleRed} />
         <div className="space-y-14 py-10 md:grid md:grid-cols-2 md:space-y-0">
           <div className="space-y-5">
             <h3 className="text-xl font-semibold sm:text-2xl">
-              <span className="text-red-600">W</span>hat is Dizeto?
+              <span className="text-red-600">{dataAbout?.subTitle.slice(0, 1)}</span>
+              {dataAbout?.subTitle.slice(1)}
             </h3>
             <p className="text-justify text-sm font-semibold sm:text-base">
-              <span className="text-red-600">Dizeto</span> is a vendor that offers photography, videography, talent, and music services. We have a
-              professional team that can help you meet business needs, events, and your special moments to make them more beautiful, real, and
-              lasting. You can learn more about us by viewing our portfolio, YouTube channel, and customer testimonials.
+              <span className="text-red-600">{dataAbout?.description.slice(0, 6)}</span>
+              {dataAbout?.description.slice(6)}
             </p>
-            <p className="pt-5 text-sm font-semibold text-red-600 sm:text-base">
-              *Please take note that we currently only offer photography and videography services.
-            </p>
+            <p className="pt-5 text-sm font-semibold text-red-600 sm:text-base">{dataAbout?.note}</p>
           </div>
           <div className="flex items-center justify-center">
-            <Image alt="DIZETO" height={250} priority src={logoDIZETO} width={250} />
+            <Image alt="DIZETO" height={250} priority src={dataAbout?.logoUrl ?? ""} width={250} />
           </div>
         </div>
       </ContentPaper>
