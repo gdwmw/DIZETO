@@ -9,8 +9,7 @@ import Link from "next/link";
 
 import { ContainerPaper, ContentPaper } from "@/interfaces/paper";
 import { Title } from "@/interfaces/title";
-import { GETTitle } from "@/utils";
-import { GETClient } from "@/utils/api/client";
+import { GETClient, GETTitle } from "@/utils";
 
 export const Client: FC = (): ReactElement => {
   const theme = useTheme();
