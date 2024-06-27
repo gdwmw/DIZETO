@@ -25,6 +25,7 @@ export const Testimony: FC = (): ReactElement => {
 
   const [testimonyIndex, setTestimonyIndex] = useState(0);
   const [currentTime, setCurrentTime] = useState(new Date());
+  const [formattedTime, setFormattedTime] = useState("");
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -32,6 +33,10 @@ export const Testimony: FC = (): ReactElement => {
     }, 1000);
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    setFormattedTime(format(currentTime, "d MMMM yyyy, HH:mm:ss", { locale: enUS }));
+  }, [currentTime]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -104,7 +109,7 @@ export const Testimony: FC = (): ReactElement => {
           <div className="hidden h-16 w-0.5 bg-black lg:block dark:bg-white" />
 
           <div className="hidden w-full max-w-[250px] text-center lg:block">
-            <span className="text-xl font-bold text-red-600">{format(currentTime, "d MMMM yyyy, HH:mm:ss", { locale: enUS })}</span>
+            <span className="text-xl font-bold text-red-600">{formattedTime || "## ## ####, ##:##:##"}</span>
             <br />
             <span className="text-xl font-semibold">Date - Time</span>
           </div>
