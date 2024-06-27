@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, ReactElement } from "react";
+import { FC, ReactElement, useEffect, useState } from "react";
 
 import { useQuery } from "@tanstack/react-query";
 import { useTheme } from "next-themes";
@@ -19,22 +19,29 @@ export const Client: FC = (): ReactElement => {
     queryKey: ["GETClient"],
   });
 
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <ContainerPaper id="client">
       <ContentPaper>
         <Title title="CLIE" titleRed="NT" />
         <div className="mt-5 grid grid-cols-3 gap-5 xl:grid-cols-4">
-          {data?.map((dt, index) =>
-            dt.theme === "" ? (
-              <Link className="flex size-full items-center justify-center opacity-70 hover:opacity-100" href={dt.href} key={index} target="_blank">
-                <Image alt={dt.alt} className="size-fit max-h-[120px]" height={120} loading="lazy" src={dt.logoUrl} width={300} />
-              </Link>
-            ) : dt.theme === theme.resolvedTheme ? (
-              <Link className="flex size-full items-center justify-center opacity-70 hover:opacity-100" href={dt.href} key={index} target="_blank">
-                <Image alt={dt.alt} className="size-fit max-h-[120px]" height={120} loading="lazy" src={dt.logoUrl} width={300} />
-              </Link>
-            ) : null,
-          )}
+          {mounted &&
+            data?.map((dt, index) =>
+              dt.theme === "" ? (
+                <Link className="flex size-full items-center justify-center opacity-70 hover:opacity-100" href={dt.href} key={index} target="_blank">
+                  <Image alt={dt.alt} className="size-fit max-h-[120px]" height={120} loading="lazy" src={dt.logoUrl} width={300} />
+                </Link>
+              ) : dt.theme === theme.resolvedTheme ? (
+                <Link className="flex size-full items-center justify-center opacity-70 hover:opacity-100" href={dt.href} key={index} target="_blank">
+                  <Image alt={dt.alt} className="size-fit max-h-[120px]" height={120} loading="lazy" src={dt.logoUrl} width={300} />
+                </Link>
+              ) : null,
+            )}
         </div>
       </ContentPaper>
     </ContainerPaper>
