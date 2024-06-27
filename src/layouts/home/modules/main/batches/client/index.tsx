@@ -30,6 +30,7 @@ export const Client: FC = (): ReactElement => {
       <ContentPaper>
         <Title title="CLIE" titleRed="NT" />
         <div className="mt-5 grid grid-cols-3 gap-5 xl:grid-cols-4">
+          {/* TODO: Jangan lupa nanti bikin loading component */}
           {mounted &&
             data?.map((dt, index) =>
               dt.theme === "" ? (
