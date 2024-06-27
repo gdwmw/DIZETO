@@ -6,9 +6,9 @@ import { useQuery } from "@tanstack/react-query";
 import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
 import { TbWorldWww } from "react-icons/tb";
 
-import { ContactInfo } from "@/components/interfaces/contact-info";
-import { ContainerPaper, ContentPaper } from "@/components/interfaces/paper";
-import { Title } from "@/components/interfaces/title";
+import { ContactInfo } from "@/interfaces/contact-info";
+import { ContainerPaper, ContentPaper } from "@/interfaces/paper";
+import { Title } from "@/interfaces/title";
 import { GETContact } from "@/utils";
 
 export const Contact: FC = (): ReactElement => {
