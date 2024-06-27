@@ -31,7 +31,9 @@ export const Contact: FC = (): ReactElement => {
           <ContactInfo href={data?.addressUrl} icon={<MdLocationOn size={20} />} label={data?.addressLabel} title="Address" />
           <ContactInfo href={data?.emailUrl} icon={<MdEmail size={20} />} label={data?.emailLabel} title="Email" />
           <ContactInfo href={data?.phoneUrl} icon={<MdPhone size={20} />} label={data?.phoneLabel} title="Phone" />
-          <ContactInfo href={data?.websiteUrl} icon={<TbWorldWww size={20} />} label={data?.websiteLabel} title="Website" />
+          <div className="hidden sm:block">
+            <ContactInfo href={data?.websiteUrl} icon={<TbWorldWww size={20} />} label={data?.websiteLabel} title="Website" />
+          </div>
         </div>
       </ContentPaper>
     </ContainerPaper>
