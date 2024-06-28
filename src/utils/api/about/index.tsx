@@ -29,7 +29,7 @@ export const GETAbout = async (): Promise<IAbout> => {
 
 export const PUTAbout = async (data: IAbout): Promise<IAbout> => {
   try {
-    const res = await fetch(`${API_URL}/${data.id}`, {
+    const res = await fetch(API_URL, {
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",
