@@ -14,7 +14,7 @@ import { ButtonTWM } from "@/interfaces/buttons/button";
 import logoDIZETO from "@/public/assets/images/logos/dizeto.svg";
 import { PUTTheme } from "@/utils";
 
-import { IconBasedOnTheme } from "./IconBasedOnTheme";
+import { IconBasedOnTheme } from "./batches/icon-based-on-theme";
 
 export const LINKS_DATA = [
   { href: "#about", label: "About" },
@@ -34,7 +34,7 @@ type T = {
   themeCookie: RequestCookie | undefined;
 };
 
-export const Navbar: FC<T> = ({ themeCookie }): ReactElement => {
+export const Nav: FC<T> = ({ themeCookie }): ReactElement => {
   const { setTheme, theme } = useTheme();
   const { setOpenASide } = useGlobalStates();
   const [scrollPosition, setScrollPosition] = useState<number>(0);
@@ -71,7 +71,7 @@ export const Navbar: FC<T> = ({ themeCookie }): ReactElement => {
   };
 
   return (
-    <nav className={`fixed left-0 top-0 z-[6] w-full ${isActive ? "shadow-md shadow-black/50 backdrop-blur-md dark:shadow-white/50" : ""}`}>
+    <nav className={`fixed inset-x-0 top-0 z-[6] ${isActive ? "shadow-md shadow-black/50 backdrop-blur-md dark:shadow-white/50" : ""}`}>
       <ul className="flex items-center justify-between px-5 py-3 font-semibold sm:px-10">
         <li className="flex size-[40px] items-center">
           <Link href="#hero" onClick={(e) => handleSmoothScroll(e, "#hero")}>
