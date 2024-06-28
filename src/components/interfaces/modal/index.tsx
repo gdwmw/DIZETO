@@ -10,10 +10,7 @@ type TContentModal = { className?: string } & DetailedHTMLProps<HTMLAttributes<H
 export const ContainerModal: FC<TContainerModal> = ({ className, ...props }): ReactElement => {
   return (
     <section
-      className={twm(
-        "fixed left-0 top-0 z-[11] !mt-0 flex h-screen w-full items-center justify-center bg-black/50 p-5 backdrop-blur-md dark:bg-white/50",
-        className,
-      )}
+      className={twm("fixed inset-0 z-[11] !mt-0 flex items-center justify-center bg-black/50 px-5 backdrop-blur-md dark:bg-white/50", className)}
       data-testid="container-modal"
       {...props}
     >
@@ -24,14 +21,7 @@ export const ContainerModal: FC<TContainerModal> = ({ className, ...props }): Re
 
 export const ContentModal: FC<TContentModal> = ({ className, ...props }): ReactElement => {
   return (
-    <div
-      className={twm(
-        "size-fit min-w-[500px] overflow-hidden rounded-xl border border-black/50 bg-white p-5 dark:border-white/50 dark:bg-dark",
-        className,
-      )}
-      data-testid="content-modal"
-      {...props}
-    >
+    <div className={twm("max-h-[95dvh] w-full overflow-auto rounded-xl bg-white p-5 dark:bg-dark", className)} data-testid="content-modal" {...props}>
       {props.children}
     </div>
   );

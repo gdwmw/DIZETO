@@ -59,7 +59,7 @@ const AboutForm: FC<T> = ({ data, setOpenForm, title }): ReactElement => {
 
   return (
     <ContainerModal>
-      <ContentModal>
+      <ContentModal className="max-w-[500px]">
         <Title title="UPDATE " titleRed="ABOUT" />
         <form className="space-y-3" onSubmit={handleSubmit(onSubmit)}>
           <Input color="black" errorMessage={errors.title?.title?.message} label="Title" {...register("title.title")} />
