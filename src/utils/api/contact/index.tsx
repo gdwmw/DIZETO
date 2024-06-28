@@ -5,18 +5,11 @@ if (!API_URL) {
 }
 
 export interface IContact {
-  addressLabel: string;
-  addressUrl: string;
-  emailLabel: string;
-  emailUrl: string;
-  id: string;
-  phoneLabel: string;
-  phoneUrl: string;
-  websiteLabel: string;
-  websiteUrl: string;
+  href: string;
+  label: string;
 }
 
-export const GETContact = async (): Promise<IContact> => {
+export const GETContact = async (): Promise<IContact[]> => {
   try {
     const res = await fetch(API_URL);
 

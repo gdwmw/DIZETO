@@ -32,11 +32,11 @@ export const Contact: FC = (): ReactElement => {
           title="Google Maps"
         />
         <div className="space-y-2">
-          <ContactInfo href={dataContact?.addressUrl} icon={<MdLocationOn size={20} />} label={dataContact?.addressLabel} title="Address" />
-          <ContactInfo href={dataContact?.emailUrl} icon={<MdEmail size={20} />} label={dataContact?.emailLabel} title="Email" />
-          <ContactInfo href={dataContact?.phoneUrl} icon={<MdPhone size={20} />} label={dataContact?.phoneLabel} title="Phone" />
+          <ContactInfo href={dataContact?.[0].href} icon={<MdLocationOn size={20} />} label={dataContact?.[0].label} title="Address" />
+          <ContactInfo href={dataContact?.[1].href} icon={<MdEmail size={20} />} label={dataContact?.[1].label} title="Email" />
+          <ContactInfo href={dataContact?.[2].href} icon={<MdPhone size={20} />} label={dataContact?.[2].label} title="Phone" />
           <div className="hidden sm:block">
-            <ContactInfo href={dataContact?.websiteUrl} icon={<TbWorldWww size={20} />} label={dataContact?.websiteLabel} title="Website" />
+            <ContactInfo href={dataContact?.[3].href} icon={<TbWorldWww size={20} />} label={dataContact?.[3].label} title="Website" />
           </div>
         </div>
       </ContentPaper>
