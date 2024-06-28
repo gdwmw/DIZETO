@@ -3,7 +3,7 @@ import { FC, ReactElement } from "react";
 export const Hero: FC = (): ReactElement => {
   return (
     <section
-      className="container mx-auto flex h-[400px] w-full items-center justify-center px-5 sm:h-[600px] sm:flex-col sm:gap-3 dark:text-white"
+      className="container mx-auto flex h-[400px] items-center justify-center px-5 sm:h-[600px] sm:flex-col sm:gap-3 dark:text-white"
       id="hero"
     >
       <h1 className="text-7xl font-semibold sm:text-8xl">

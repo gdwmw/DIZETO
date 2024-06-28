@@ -48,7 +48,7 @@ export const Testimony: FC = (): ReactElement => {
   return (
     <ContainerPaper id="testimony">
       <ContentPaper className="bg-transparent dark:bg-transparent">
-        <div className="mx-auto flex size-fit flex-col items-center justify-center gap-5 py-10 text-center font-semibold">
+        <div className="mx-auto flex w-fit flex-col items-center justify-center gap-5 py-10 text-center font-semibold">
           <BsQuote size={50} />
           {dataTestimony?.map((dt, index) => (
             <div className={`space-y-5 ${testimonyIndex === index ? "" : "hidden"}`} key={index}>

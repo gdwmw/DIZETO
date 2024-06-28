@@ -21,7 +21,7 @@ type TInput = {
 
 const FieldsetInputTWM = ({ color, disabled }: TInput) => {
   return twm(
-    "group w-full overflow-hidden rounded-md border-2 px-1 pb-2",
+    "group overflow-hidden rounded-md border-2 px-1 pb-2",
     color === "white" && !disabled && "border-white text-white focus-within:border-red-600 dark:border-black dark:text-black",
     color === "black" && !disabled && "border-black text-black focus-within:border-red-600 dark:border-white dark:text-white",
     disabled && "border-gray-400",

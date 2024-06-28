@@ -17,7 +17,7 @@ export const ContactInfo: FC<TContactInfo> = ({ href, icon, label, title }): Rea
   return (
     <div className="flex items-start gap-2">
       <div className="flex items-center gap-2">
-        <div className="min-h-fit min-w-fit">{icon}</div>
+        {icon}
         <h3 className="font-bold">{title}:</h3>
       </div>
       <Link className={ButtonTWM({ color: "black", size: "sm", variant: "ghost" })} href={href ?? ""} target="_blank">
