@@ -1,3 +1,5 @@
+"use client";
+
 import { FC, ReactElement, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
@@ -41,9 +43,6 @@ const HighlightForm: FC<T> = ({ data, setOpenForm, title }): ReactElement => {
 
   const handleUpdateHighlight = useMutation({
     mutationFn: PUTHighlight,
-    onSuccess: async () => {
-      await queryClient.invalidateQueries({ queryKey: ["GETTitle"] });
-    },
   });
 
   const handleUpdate = useMutation({
@@ -69,21 +68,23 @@ const HighlightForm: FC<T> = ({ data, setOpenForm, title }): ReactElement => {
       <ContentModal className="max-w-[1000px]">
         <Title title="UPDATE " titleRed="HIGHLIGHT" />
         <form className="space-y-3" onSubmit={handleSubmit(onSubmit)}>
-          <Input color="black" errorMessage={errors.title?.title?.message} label="Title" {...register("title.title")} />
-          <Input color="black" errorMessage={errors.title?.titleRed?.message} label="Title Red" {...register("title.titleRed")} />
-          <Input color="black" errorMessage={errors.data?.copyright?.message} label="Copyright" {...register("data.copyright")} />
+          <Input color="black" errorMessage={errors.title?.title?.message} label="Title" type="text" {...register("title.title")} />
+          <Input color="black" errorMessage={errors.title?.titleRed?.message} label="Title Red" type="text" {...register("title.titleRed")} />
+          <Input color="black" errorMessage={errors.data?.copyright?.message} label="Copyright" type="text" {...register("data.copyright")} />
           {data?.imageFile.map((_, index) => (
             <div className="grid grid-cols-2 gap-3" key={index}>
               <Input
                 color="black"
                 errorMessage={errors.data?.imageFile?.[index]?.message}
                 label={`Thumbnail URL ${index + 1}`}
+                type="text"
                 {...register(`data.imageFile.${index}.thumbnailURL`)}
               />
               <Input
                 color="black"
                 errorMessage={errors.data?.imageFile?.[index]?.message}
                 label={`Image URL ${index + 1}`}
+                type="text"
                 {...register(`data.imageFile.${index}.imgURL`)}
               />
             </div>

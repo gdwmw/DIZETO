@@ -1,25 +1,33 @@
 import { z } from "zod";
 
+import { errorMessage } from "../error-message";
+
 export const Schema = z.object({
   data: z.object({
     copyright: z
       .string()
-      .min(16, { message: "Please enter Copyright minimum 16 characters." })
-      .max(48, { message: "Copyright maximum 48 characters." }),
+      .min(16, { message: errorMessage.string.min("Copyright", 16) })
+      .max(48, { message: errorMessage.string.max("Copyright", 48) }),
     id: z.string(),
     imageFile: z.array(
       z.object({
         highlightId: z.string(),
         id: z.string(),
-        imgURL: z.string().min(1, { message: "Please enter Image URL." }),
-        thumbnailURL: z.string().min(1, { message: "Please enter Thumbnail URL." }),
+        imgURL: z.string().min(1, { message: errorMessage.string.required("Image URL") }),
+        thumbnailURL: z.string().min(1, { message: errorMessage.string.required("Thumbnail URL") }),
       }),
     ),
   }),
   title: z.object({
     id: z.string(),
-    title: z.string().min(2, { message: "Please enter Title minimum 2 character." }).max(20, { message: "Title maximum 20 character." }),
-    titleRed: z.string().min(2, { message: "Please enter Title Red minimum 2 character." }).max(20, { message: "Title Red maximum 20 character." }),
+    title: z
+      .string()
+      .min(2, { message: errorMessage.string.min("Title", 2) })
+      .max(20, { message: errorMessage.string.max("Title", 20) }),
+    titleRed: z
+      .string()
+      .min(2, { message: errorMessage.string.min("Title Red", 2) })
+      .max(20, { message: errorMessage.string.max("Title Red", 20) }),
   }),
 });
 
