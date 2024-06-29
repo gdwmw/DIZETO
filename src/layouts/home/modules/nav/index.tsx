@@ -71,7 +71,7 @@ export const Nav: FC<T> = ({ themeCookie }): ReactElement => {
   };
 
   return (
-    <nav className={`fixed inset-x-0 top-0 z-[1] ${isActive ? "shadow-md shadow-black/50 backdrop-blur-md dark:shadow-white/50" : ""}`}>
+    <nav className={`fixed inset-x-0 top-0 z-[2] ${isActive ? "shadow-md shadow-black/50 backdrop-blur-md dark:shadow-white/50" : ""}`}>
       <ul className="flex items-center justify-between px-5 py-3 font-semibold sm:px-10">
         <li className="flex size-[40px] items-center">
           <Link href="#hero" onClick={(e) => handleSmoothScroll(e, "#hero")}>

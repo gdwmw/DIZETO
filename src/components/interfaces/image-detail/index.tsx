@@ -42,7 +42,7 @@ const ImageDetail: FC<TImageDetail> = ({ data, imageIndex, setImageIndex, setOpe
   }, [loaded, imageIndex, data]);
 
   return (
-    <section className="fixed inset-0 z-[3] flex items-center justify-center bg-black/30 p-5 backdrop-blur-md dark:bg-white/20">
+    <section className="fixed inset-0 z-[4] flex items-center justify-center bg-black/30 p-5 backdrop-blur-md dark:bg-white/20">
       <div>
         <div className="relative w-fit overflow-hidden border-2 border-gray-300 bg-white p-2 dark:border-gray-700 dark:bg-dark">
           <div

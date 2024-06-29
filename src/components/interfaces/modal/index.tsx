@@ -10,7 +10,7 @@ type TContentModal = { className?: string } & DetailedHTMLProps<HTMLAttributes<H
 export const ContainerModal: FC<TContainerModal> = ({ className, ...props }): ReactElement => {
   return (
     <section
-      className={twm("fixed inset-0 z-[4] !mt-0 flex items-center justify-center px-5 backdrop-blur-md", className)}
+      className={twm("fixed inset-0 z-[5] !mt-0 flex items-center justify-center px-5 backdrop-blur-md", className)}
       data-testid="container-modal"
       {...props}
     >
