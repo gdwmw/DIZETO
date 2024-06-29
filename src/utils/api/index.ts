@@ -5,6 +5,7 @@ export * from "./counting";
 export * from "./highlight";
 export * from "./highlight/image-file";
 export * from "./pricing";
+export * from "./pricing/list-item";
 export * from "./testimony";
 export * from "./theme";
 export * from "./title";
