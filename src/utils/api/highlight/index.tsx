@@ -7,8 +7,8 @@ if (!API_URL) {
 export interface IImageFile {
   highlightId: string;
   id: string;
-  imgUrl: string;
-  thumbnailUrl: string;
+  imgURL: string;
+  thumbnailURL: string;
 }
 
 export interface IHighlight {

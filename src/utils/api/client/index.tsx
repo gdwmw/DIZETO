@@ -8,7 +8,7 @@ export interface IClient {
   alt: string;
   href: string;
   id: string;
-  logoUrl: string;
+  logoURL: string;
   theme: string;
 }
 

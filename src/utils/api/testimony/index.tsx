@@ -8,7 +8,7 @@ export interface ITestimony {
   comment: string;
   event: string;
   id: string;
-  imageUrl: string;
+  imageURL: string;
   name: string;
 }
 

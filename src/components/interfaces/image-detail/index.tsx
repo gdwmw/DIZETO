@@ -106,7 +106,7 @@ const ImageDetail: FC<TImageDetail> = ({ data, imageIndex, setImageIndex, setOpe
               setLoaded(true);
               setTransitionLoaded((prev) => !prev);
             }}
-            src={data?.imageFile?.[imageIndex]?.imgUrl ?? ""}
+            src={data?.imageFile?.[imageIndex]?.imgURL ?? ""}
             width={2000}
           />
         </div>

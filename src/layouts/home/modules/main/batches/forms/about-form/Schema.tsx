@@ -7,7 +7,7 @@ export const Schema = z.object({
       .min(100, { message: "Please enter Description minimum 100 character." })
       .max(1000, { message: "Description maximum 1000 character." }),
     id: z.string(),
-    logoUrl: z.string().min(1, { message: "Please enter Logo URL." }),
+    logoURL: z.string().min(1, { message: "Please enter Logo URL." }),
     note: z.string().min(20, { message: "Please enter Note minimum 20 character." }).max(100, { message: "Note maximum 100 character." }),
     subTitle: z.string().min(8, { message: "Please enter Sub Title minimum 8 character." }).max(32, { message: "Sub Title maximum 32 character." }),
   }),

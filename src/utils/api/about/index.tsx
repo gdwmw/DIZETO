@@ -7,7 +7,7 @@ if (!API_URL) {
 export interface IAbout {
   description: string;
   id: string;
-  logoUrl: string;
+  logoURL: string;
   note: string;
   subTitle: string;
 }

@@ -52,7 +52,7 @@ export const Testimony: FC = (): ReactElement => {
           <BsQuote size={50} />
           {dataTestimony?.map((dt, index) => (
             <div className={`space-y-5 ${testimonyIndex === index ? "" : "hidden"}`} key={index}>
-              <Image alt="Testimony" className="mx-auto rounded-full" height={128} loading="lazy" src={dt.imageUrl} width={128} />
+              <Image alt="Testimony" className="mx-auto rounded-full" height={128} loading="lazy" src={dt.imageURL} width={128} />
               <div>
                 <h3 className="text-xl">{dt.name}</h3>
                 <span className="text-sm text-red-600">{dt.event}</span>

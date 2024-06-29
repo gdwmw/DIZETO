@@ -40,7 +40,7 @@ export const Highlight: FC = (): ReactElement => {
         </div>
         <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-5 lg:grid-cols-4">
           {dataHighlight?.imageFile.map((dt, index) => (
-            <Thumbnail key={index} setImageIndex={() => setImageIndex(index)} setOpenImageDetail={setOpenImageDetail} src={dt.thumbnailUrl} />
+            <Thumbnail key={index} setImageIndex={() => setImageIndex(index)} setOpenImageDetail={setOpenImageDetail} src={dt.thumbnailURL} />
           ))}
         </div>
         {openImageDetail && (

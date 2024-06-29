@@ -67,7 +67,7 @@ const AboutForm: FC<T> = ({ data, setOpenForm, title }): ReactElement => {
           <Input color="black" errorMessage={errors.data?.subTitle?.message} label="Sub Title" {...register("data.subTitle")} />
           <TextArea color="black" errorMessage={errors.data?.description?.message} label="Description" {...register("data.description")} />
           <Input color="black" errorMessage={errors.data?.note?.message} label="Note" {...register("data.note")} />
-          <Input color="black" errorMessage={errors.data?.logoUrl?.message} label="Logo URL" {...register("data.logoUrl")} />
+          <Input color="black" errorMessage={errors.data?.logoURL?.message} label="Logo URL" {...register("data.logoURL")} />
           <div className="flex items-center gap-2 font-semibold">
             <Button className="w-full" color="red" disabled={loading} size="sm" type="submit" variant="outline">
               Update

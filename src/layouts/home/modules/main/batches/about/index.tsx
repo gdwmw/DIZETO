@@ -48,7 +48,7 @@ export const About: FC = (): ReactElement => {
               <p className="pt-5 text-sm font-semibold text-red-600 sm:text-base">{dataAbout?.note}</p>
             </div>
             <div className="flex items-center justify-center">
-              <Image alt="DIZETO" height={250} priority src={dataAbout?.logoUrl ?? ""} width={250} />
+              <Image alt="DIZETO" height={250} priority src={dataAbout?.logoURL ?? ""} width={250} />
             </div>
           </div>
         </ContentPaper>

@@ -1,65 +1,83 @@
 [
   {
-    "logoUrl": "/assets/images/logos/client/rbw-gray.png",
+    "logoURL": "/assets/images/logos/client/rbw-gray.png",
     "theme": "light",
     "href": "https://www.instagram.com/rumahbatikwijaya/?hl=id",
     "alt": "Rumah Batik Wijaya",
     "id": "1"
   },
   {
-    "logoUrl": "/assets/images/logos/client/rbw-white.png",
+    "logoURL": "/assets/images/logos/client/rbw-white.png",
     "theme": "dark",
     "href": "https://www.instagram.com/rumahbatikwijaya/?hl=id",
     "alt": "Rumah Batik Wijaya",
     "id": "2"
   },
   {
-    "logoUrl": "/assets/images/logos/client/ma-gray.png",
+    "logoURL": "/assets/images/logos/client/ma-gray.png",
     "theme": "light",
     "href": "http://www.angklungmuhibah.id",
     "alt": "Angklung Muhibah",
     "id": "3"
   },
   {
-    "logoUrl": "/assets/images/logos/client/ma-white.png",
+    "logoURL": "/assets/images/logos/client/ma-white.png",
     "theme": "dark",
     "href": "http://www.angklungmuhibah.id",
     "alt": "Angklung Muhibah",
     "id": "4"
   },
-  { "logoUrl": "/assets/images/logos/client/irma.png", "theme": "", "href": "https://irmajabar.com/", "alt": "IRMA", "id": "5" },
   {
-    "logoUrl": "/assets/images/logos/client/lc-gray.png",
+    "logoURL": "/assets/images/logos/client/irma.png",
+    "theme": "",
+    "href": "https://irmajabar.com/",
+    "alt": "IRMA",
+    "id": "5"
+  },
+  {
+    "logoURL": "/assets/images/logos/client/lc-gray.png",
     "theme": "light",
     "href": "https://gofood.link/a/DVoCLZN",
     "alt": "Lentera Coffee",
     "id": "6"
   },
   {
-    "logoUrl": "/assets/images/logos/client/lc-white.png",
+    "logoURL": "/assets/images/logos/client/lc-white.png",
     "theme": "dark",
     "href": "https://gofood.link/a/DVoCLZN",
     "alt": "Lentera Coffee",
     "id": "7"
   },
   {
-    "logoUrl": "/assets/images/logos/client/sk.png",
+    "logoURL": "/assets/images/logos/client/sk.png",
     "theme": "",
     "href": "https://www.youtube.com/@vittosafiy748",
     "alt": "Safiy Kitchen",
     "id": "8"
   },
   {
-    "logoUrl": "/assets/images/logos/client/aa.png",
+    "logoURL": "/assets/images/logos/client/aa.png",
     "theme": "",
     "href": "https://pesantrentahfidzashrmadani.wordpress.com/",
     "alt": "Al-'Ashr Al-Madani",
     "id": "9"
   },
-  { "logoUrl": "/assets/images/logos/client/gmi-gray.png", "theme": "light", "href": "https://gmiclub.com/", "alt": "GMI Club", "id": "10" },
-  { "logoUrl": "/assets/images/logos/client/gmi-white.png", "theme": "dark", "href": "https://gmiclub.com/", "alt": "GMI Club", "id": "11" },
   {
-    "logoUrl": "/assets/images/logos/client/kp.png",
+    "logoURL": "/assets/images/logos/client/gmi-gray.png",
+    "theme": "light",
+    "href": "https://gmiclub.com/",
+    "alt": "GMI Club",
+    "id": "10"
+  },
+  {
+    "logoURL": "/assets/images/logos/client/gmi-white.png",
+    "theme": "dark",
+    "href": "https://gmiclub.com/",
+    "alt": "GMI Club",
+    "id": "11"
+  },
+  {
+    "logoURL": "/assets/images/logos/client/kp.png",
     "theme": "",
     "href": "https://shopee.co.id/topnapurnama?categoryId=100629&entryPoint=ShopByPDP&itemId=15208206609",
     "alt": "Kopi Purnama",
