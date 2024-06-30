@@ -17,7 +17,7 @@ export const Schema = z.object({
       imageURL: z.string().min(1, { message: errorMessage.string.required("Image URL") }),
       name: z
         .string()
-        .min(5, { message: errorMessage.string.min("Name", 5) })
+        .min(3, { message: errorMessage.string.min("Name", 3) })
         .max(64, { message: errorMessage.string.max("Name", 64) }),
     }),
   ),
