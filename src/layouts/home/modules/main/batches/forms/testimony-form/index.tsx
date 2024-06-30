@@ -58,7 +58,7 @@ const TestimonyForm: FC<T> = ({ data, setOpenForm }): ReactElement => {
       <ContentModal className="max-w-[500px] sm:max-w-[1000px]">
         <Title title="UPDATE " titleRed="TESTIMONY" />
         <form className="space-y-3 pt-2" onSubmit={handleSubmit(onSubmit)}>
-          <div className="grid grid-cols-2 gap-2 font-semibold">
+          <div className="grid grid-cols-2 gap-3 font-semibold">
             <Button
               color="red"
               onClick={() => fields.length < 8 && append({ comment: "", event: "", id: "", imageURL: "", name: "" })}

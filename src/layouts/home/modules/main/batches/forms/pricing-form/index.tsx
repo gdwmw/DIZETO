@@ -90,7 +90,7 @@ const PricingForm: FC<T> = ({ data, isEditTitle, setIsEditTitle, setOpenForm, ti
               <Input color="black" errorMessage={errors.data?.price?.message} label="Price" type="text" {...register("data.price")} />
               <Input color="black" errorMessage={errors.data?.pack?.message} label="Package" type="text" {...register("data.pack")} />
               <Input color="black" errorMessage={errors.data?.category?.message} label="Category" type="text" {...register("data.category")} />
-              <div className="grid grid-cols-2 gap-2 font-semibold">
+              <div className="grid grid-cols-2 gap-3 font-semibold">
                 <Button color="red" onClick={() => fields.length < 10 && append({ label: "", qty: 0 })} size="sm" type="button" variant="outline">
                   Add
                 </Button>
