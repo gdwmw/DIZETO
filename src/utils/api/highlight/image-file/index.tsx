@@ -8,9 +8,9 @@ if (!API_URL) {
 
 export const PUTImageFile = async (data: IImageFile[]): Promise<IImageFile[]> => {
   try {
-    const promises = data.map(async (file) => {
-      const res = await fetch(`${API_URL}/imageFile/${file.id}`, {
-        body: JSON.stringify(file),
+    const promises = data.map(async (dt) => {
+      const res = await fetch(`${API_URL}/imageFile/${dt.id}`, {
+        body: JSON.stringify(dt),
         headers: {
           "Content-Type": "application/json",
         },
@@ -18,7 +18,7 @@ export const PUTImageFile = async (data: IImageFile[]): Promise<IImageFile[]> =>
       });
 
       if (!res.ok) {
-        throw new Error(`Failed to put: Image File id ${file.id} with status ${res.status}`);
+        throw new Error(`Failed to put: Image File id ${dt.id} with status ${res.status}`);
       }
 
       return await res.json();

@@ -29,7 +29,7 @@ export const About: FC = (): ReactElement => {
     <>
       <ContainerPaper id="about">
         <ContentPaper className="relative">
-          <Button className="absolute right-3 top-3" color="black" onClick={() => setOpenForm(true)} size="sm" variant="ghost">
+          <Button className="absolute right-3 top-3" color="black" onClick={() => setOpenForm(true)} size="sm" type="button" variant="ghost">
             <FaEdit />
           </Button>
 

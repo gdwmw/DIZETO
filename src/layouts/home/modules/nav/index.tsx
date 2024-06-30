@@ -17,12 +17,12 @@ import { PUTTheme } from "@/utils";
 import { IconBasedOnTheme } from "./batches/icon-based-on-theme";
 
 export const LINKS_DATA = [
-  { href: "#about", label: "About" },
-  { href: "#highlight", label: "Highlight" },
-  { href: "#pricing", label: "Pricing" },
-  { href: "#testimony", label: "Testimony" },
-  { href: "#client", label: "Client" },
-  { href: "#contact", label: "Contact" },
+  { href: "#about", id: 1, label: "About" },
+  { href: "#highlight", id: 2, label: "Highlight" },
+  { href: "#pricing", id: 3, label: "Pricing" },
+  { href: "#testimony", id: 4, label: "Testimony" },
+  { href: "#client", id: 5, label: "Client" },
+  { href: "#contact", id: 6, label: "Contact" },
 ];
 
 export const handleSmoothScroll = (e: FormEvent, href: string) => {
@@ -80,8 +80,8 @@ export const Nav: FC<T> = ({ themeCookie }): ReactElement => {
         </li>
         <li>
           <ul className="hidden sm:flex sm:items-center sm:gap-5 md:gap-10 lg:gap-16">
-            {LINKS_DATA.map((dt, index) => (
-              <li key={index}>
+            {LINKS_DATA.map((dt) => (
+              <li key={dt.id}>
                 <Link
                   className={ButtonTWM({ color: "black", size: "sm", variant: "ghost" })}
                   href={dt.href}

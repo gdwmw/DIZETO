@@ -26,8 +26,8 @@ export const ASide: FC = (): ReactElement => {
           <CgClose size={25} />
         </button>
         <ul className="space-y-8 font-semibold">
-          {LINKS_DATA.map((dt, index) => (
-            <li key={index}>
+          {LINKS_DATA.map((dt) => (
+            <li key={dt.id}>
               <Link
                 className={ButtonTWM({ color: "black", size: "sm", variant: "ghost" })}
                 href={dt.href}

@@ -36,13 +36,13 @@ export const Client: FC = (): ReactElement => {
         <div className="mt-5 grid grid-cols-3 gap-5 xl:grid-cols-4">
           {/* TODO: Jangan lupa nanti bikin loading component */}
           {mounted &&
-            dataClient?.map((dt, index) =>
+            dataClient?.map((dt) =>
               dt.theme === "" ? (
-                <Link className="flex size-full items-center justify-center opacity-70 hover:opacity-100" href={dt.href} key={index} target="_blank">
+                <Link className="flex size-full items-center justify-center opacity-70 hover:opacity-100" href={dt.href} key={dt.id} target="_blank">
                   <Image alt={dt.alt} className="size-fit max-h-[120px]" height={120} loading="lazy" src={dt.logoURL} width={300} />
                 </Link>
               ) : dt.theme === theme.resolvedTheme ? (
-                <Link className="flex size-full items-center justify-center opacity-70 hover:opacity-100" href={dt.href} key={index} target="_blank">
+                <Link className="flex size-full items-center justify-center opacity-70 hover:opacity-100" href={dt.href} key={dt.id} target="_blank">
                   <Image alt={dt.alt} className="size-fit max-h-[120px]" height={120} loading="lazy" src={dt.logoURL} width={300} />
                 </Link>
               ) : null,

@@ -33,7 +33,7 @@ export const Highlight: FC = (): ReactElement => {
     <>
       <ContainerPaper id="highlight">
         <ContentPaper className="relative">
-          <Button className="absolute right-3 top-3" color="black" onClick={() => setOpenForm(true)} size="sm" variant="ghost">
+          <Button className="absolute right-3 top-3" color="black" onClick={() => setOpenForm(true)} size="sm" type="button" variant="ghost">
             <FaEdit />
           </Button>
 
@@ -50,7 +50,7 @@ export const Highlight: FC = (): ReactElement => {
 
           <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-5 lg:grid-cols-4">
             {dataHighlight?.imageFile.map((dt, index) => (
-              <Thumbnail key={index} setImageIndex={() => setImageIndex(index)} setOpenImageDetail={setOpenImageDetail} src={dt.thumbnailURL} />
+              <Thumbnail key={dt.id} setImageIndex={() => setImageIndex(index)} setOpenImageDetail={setOpenImageDetail} src={dt.thumbnailURL} />
             ))}
           </div>
 

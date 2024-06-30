@@ -25,6 +25,7 @@ export const CardPackage: FC<IPricing & TCardPackage> = ({ onClick, setDataPrici
             setDataPricingSelection && setDataPricingSelection(data);
           }}
           size="sm"
+          type="button"
           variant="ghost"
         >
           <FaEdit />

@@ -40,6 +40,7 @@ export const Pricing: FC = (): ReactElement => {
               setOpenForm(true);
             }}
             size="sm"
+            type="button"
             variant="ghost"
           >
             <FaEdit />
@@ -48,8 +49,8 @@ export const Pricing: FC = (): ReactElement => {
           <Title title={dataTitle?.[2].title} titleRed={dataTitle?.[2].titleRed} />
 
           <div className="mt-5 grid gap-5 sm:mt-0 sm:grid-cols-2 xl:grid-cols-4">
-            {dataPricing?.map((dt, index) => (
-              <CardPackage key={index} onClick={() => setOpenForm(true)} setDataPricingSelection={setDataPricingSelection} {...dt} />
+            {dataPricing?.map((dt) => (
+              <CardPackage key={dt.id} onClick={() => setOpenForm(true)} setDataPricingSelection={setDataPricingSelection} {...dt} />
             ))}
           </div>
         </ContentPaper>

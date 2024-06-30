@@ -78,7 +78,7 @@ const PricingForm: FC<T> = ({ data, isEditTitle, setIsEditTitle, setOpenForm, ti
     <ContainerModal>
       <ContentModal className={`${isEditTitle ? "max-w-[500px]" : "max-w-[1000px]"}`}>
         <Title title="UPDATE " titleRed={isEditTitle ? "PRICING" : `PACKAGE ${data?.id}`} />
-        <form className="space-y-3" onSubmit={handleSubmit(onSubmit)}>
+        <form className="space-y-3 pt-2" onSubmit={handleSubmit(onSubmit)}>
           {isEditTitle && (
             <>
               <Input color="black" errorMessage={errors.title?.title?.message} label="Title" type="text" {...register("title.title")} />
@@ -98,8 +98,8 @@ const PricingForm: FC<T> = ({ data, isEditTitle, setIsEditTitle, setOpenForm, ti
                   Remove
                 </Button>
               </div>
-              {fields.map((field, index) => (
-                <div className="grid grid-cols-2 gap-3" key={field.id}>
+              {fields.map((dt, index) => (
+                <div className="grid grid-cols-2 gap-3" key={dt.id}>
                   <Input
                     color="black"
                     errorMessage={errors.data?.listItem?.[0]?.list?.[index]?.qty?.message}
@@ -120,8 +120,8 @@ const PricingForm: FC<T> = ({ data, isEditTitle, setIsEditTitle, setOpenForm, ti
               ))}
             </>
           )}
-          <div className="flex items-center gap-2 font-semibold">
-            <Button className="w-full" color="red" disabled={loading} size="sm" type="submit" variant="outline">
+          <div className="grid grid-cols-2 gap-3 font-semibold sm:flex sm:items-center">
+            <Button className="sm:w-full" color="red" disabled={loading} size="sm" type="submit" variant="outline">
               Update
             </Button>
             <Button

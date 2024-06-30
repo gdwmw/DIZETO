@@ -67,12 +67,12 @@ const HighlightForm: FC<T> = ({ data, setOpenForm, title }): ReactElement => {
     <ContainerModal>
       <ContentModal className="max-w-[1000px]">
         <Title title="UPDATE " titleRed="HIGHLIGHT" />
-        <form className="space-y-3" onSubmit={handleSubmit(onSubmit)}>
+        <form className="space-y-3 pt-2" onSubmit={handleSubmit(onSubmit)}>
           <Input color="black" errorMessage={errors.title?.title?.message} label="Title" type="text" {...register("title.title")} />
           <Input color="black" errorMessage={errors.title?.titleRed?.message} label="Title Red" type="text" {...register("title.titleRed")} />
           <Input color="black" errorMessage={errors.data?.copyright?.message} label="Copyright" type="text" {...register("data.copyright")} />
-          {data?.imageFile.map((_, index) => (
-            <div className="grid grid-cols-2 gap-3" key={index}>
+          {data?.imageFile.map((dt, index) => (
+            <div className="grid grid-cols-2 gap-3" key={dt.id}>
               <Input
                 color="black"
                 errorMessage={errors.data?.imageFile?.[index]?.message}
@@ -89,8 +89,8 @@ const HighlightForm: FC<T> = ({ data, setOpenForm, title }): ReactElement => {
               />
             </div>
           ))}
-          <div className="flex items-center gap-2 font-semibold">
-            <Button className="w-full" color="red" disabled={loading} size="sm" type="submit" variant="outline">
+          <div className="grid grid-cols-2 gap-3 font-semibold sm:flex sm:items-center">
+            <Button className="sm:w-full" color="red" disabled={loading} size="sm" type="submit" variant="outline">
               Update
             </Button>
             <Button

@@ -63,15 +63,15 @@ const AboutForm: FC<T> = ({ data, setOpenForm, title }): ReactElement => {
     <ContainerModal>
       <ContentModal className="max-w-[500px]">
         <Title title="UPDATE " titleRed="ABOUT" />
-        <form className="space-y-3" onSubmit={handleSubmit(onSubmit)}>
+        <form className="space-y-3 pt-2" onSubmit={handleSubmit(onSubmit)}>
           <Input color="black" errorMessage={errors.title?.title?.message} label="Title" type="text" {...register("title.title")} />
           <Input color="black" errorMessage={errors.title?.titleRed?.message} label="Title Red" type="text" {...register("title.titleRed")} />
           <Input color="black" errorMessage={errors.data?.subTitle?.message} label="Sub Title" type="text" {...register("data.subTitle")} />
           <TextArea color="black" errorMessage={errors.data?.description?.message} label="Description" {...register("data.description")} />
           <Input color="black" errorMessage={errors.data?.note?.message} label="Note" type="text" {...register("data.note")} />
           <Input color="black" errorMessage={errors.data?.logoURL?.message} label="Logo URL" type="text" {...register("data.logoURL")} />
-          <div className="flex items-center gap-2 font-semibold">
-            <Button className="w-full" color="red" disabled={loading} size="sm" type="submit" variant="outline">
+          <div className="grid grid-cols-2 gap-3 font-semibold sm:flex sm:items-center">
+            <Button className="sm:w-full" color="red" disabled={loading} size="sm" type="submit" variant="outline">
               Update
             </Button>
             <Button
