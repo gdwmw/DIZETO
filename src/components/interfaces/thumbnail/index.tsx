@@ -4,7 +4,7 @@ import { ButtonHTMLAttributes, DetailedHTMLProps, FC, ReactElement } from "react
 
 import Image from "next/image";
 
-import { twm } from "@/libs";
+import { twm } from "@/src/libs/tailwind-merge";
 
 type TThumbnail = {
   className?: string;

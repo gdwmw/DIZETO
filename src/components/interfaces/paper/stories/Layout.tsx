@@ -2,16 +2,16 @@ import { FC, PropsWithChildren, ReactElement } from "react";
 
 import Image from "next/image";
 
-import logoDIZETO from "@/public/assets/images/logos/dizeto.svg";
+import logoDIZETO from "@/root/public/assets/images/logos/dizeto.svg";
 
 import { ContainerPaper, ContentPaper } from "..";
 import { Title } from "../../title";
 
 type TLayout = {
   id: string;
-} & PropsWithChildren;
+} & Readonly<PropsWithChildren>;
 
-const Layout: FC<TLayout> = ({ ...props }): ReactElement => {
+const Layout: FC<TLayout> = (props): ReactElement => {
   return (
     <ContainerPaper id={props.id}>
       <ContentPaper>

@@ -8,7 +8,7 @@ import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
-import { NextThemesProvider, ReactQueryProvider } from "@/libs";
+import { NextAuthProvider, NextThemesProvider, ReactQueryProvider } from "@/src/libs/providers";
 
 export const metadata: Metadata = {
   authors: [{ name: "Gede Dewo Wahyu M.W", url: "https://github.com/gdwmw" }],
@@ -22,15 +22,17 @@ export const metadata: Metadata = {
   },
 };
 
-type T = PropsWithChildren;
+type T = Readonly<PropsWithChildren>;
 
-const RootLayout: FC<T> = ({ ...props }): ReactElement => {
+const RootLayout: FC<T> = (props): ReactElement => {
   return (
     <html className="scroll-smooth" lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <ReactQueryProvider>
-          <NextThemesProvider>{props.children}</NextThemesProvider>
-        </ReactQueryProvider>
+        <NextThemesProvider>
+          <ReactQueryProvider>
+            <NextAuthProvider>{props.children}</NextAuthProvider>
+          </ReactQueryProvider>
+        </NextThemesProvider>
       </body>
     </html>
   );

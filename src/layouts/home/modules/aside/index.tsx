@@ -5,10 +5,11 @@ import { FC, ReactElement } from "react";
 import Link from "next/link";
 import { CgClose } from "react-icons/cg";
 
-import { useGlobalStates } from "@/hooks/global";
-import { ButtonTWM } from "@/interfaces/buttons/button";
+import { ButtonTWM } from "@/src/components/interfaces/buttons/button";
+import { useGlobalStates } from "@/src/hooks/global";
+import { NAVIGATION_DATA } from "@/src/libs/constants";
 
-import { handleSmoothScroll, LINKS_DATA } from "../nav";
+import { handleSmoothScroll } from "../nav";
 
 export const ASide: FC = (): ReactElement => {
   const { openASide, setOpenASide } = useGlobalStates();
@@ -26,7 +27,7 @@ export const ASide: FC = (): ReactElement => {
           <CgClose size={25} />
         </button>
         <ul className="space-y-8 font-semibold">
-          {LINKS_DATA.map((dt) => (
+          {NAVIGATION_DATA.map((dt) => (
             <li key={dt.id}>
               <Link
                 className={ButtonTWM({ color: "black", size: "sm", variant: "ghost" })}

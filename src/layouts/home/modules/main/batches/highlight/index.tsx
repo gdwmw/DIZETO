@@ -7,12 +7,12 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { FaEdit } from "react-icons/fa";
 
-import { Button, ButtonTWM } from "@/interfaces/buttons/button";
-import { ContainerPaper, ContentPaper } from "@/interfaces/paper";
-import { Thumbnail } from "@/interfaces/thumbnail";
-import { Title } from "@/interfaces/title";
-import { GETHighlight, GETTitle } from "@/utils";
-const ImageDetail = dynamic(() => import("@/interfaces/image-detail"));
+import { Button, ButtonTWM } from "@/src/components/interfaces/buttons/button";
+import { ContainerPaper, ContentPaper } from "@/src/components/interfaces/paper";
+import { Thumbnail } from "@/src/components/interfaces/thumbnail";
+import { Title } from "@/src/components/interfaces/title";
+import { GETHighlight, GETTitle } from "@/src/utils/api";
+const ImageDetail = dynamic(() => import("@/src/components/interfaces/image-detail"));
 const HighlightForm = dynamic(() => import("../forms/highlight-form"));
 
 export const Highlight: FC = (): ReactElement => {

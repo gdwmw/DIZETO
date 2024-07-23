@@ -8,7 +8,7 @@ type T = {
   themeCookie: RequestCookie | undefined;
 };
 
-export const HomeLayout: FC<T> = ({ themeCookie }): ReactElement => {
+const HomeLayout: FC<T> = ({ themeCookie }): ReactElement => {
   return (
     <>
       <Header />
@@ -19,3 +19,5 @@ export const HomeLayout: FC<T> = ({ themeCookie }): ReactElement => {
     </>
   );
 };
+
+export default HomeLayout;

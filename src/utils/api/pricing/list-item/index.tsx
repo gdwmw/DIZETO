@@ -1,6 +1,8 @@
-import { IListItem } from "../index";
+"use server";
 
-const API_URL = process.env.NEXT_PUBLIC_PRICING;
+import { IListItem } from "../";
+
+const API_URL = process.env.PRICING_URL;
 
 if (!API_URL) {
   throw new Error("The API URL is not defined. Please check your environment variables.");

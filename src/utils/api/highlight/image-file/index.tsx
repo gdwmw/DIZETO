@@ -1,6 +1,8 @@
-import { IImageFile } from "../index";
+"use server";
 
-const API_URL = process.env.NEXT_PUBLIC_HIGHLIGHT;
+import { IImageFile } from "../";
+
+const API_URL = process.env.HIGHLIGHT_URL;
 
 if (!API_URL) {
   throw new Error("The API URL is not defined. Please check your environment variables.");

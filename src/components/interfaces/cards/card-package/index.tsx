@@ -4,7 +4,7 @@ import { FC, ReactElement } from "react";
 
 import { FaEdit } from "react-icons/fa";
 
-import { IPricing } from "@/utils";
+import { IPricing } from "@/src/utils/api";
 
 import { Button } from "../../buttons/button";
 

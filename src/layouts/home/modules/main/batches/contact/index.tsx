@@ -6,10 +6,10 @@ import { useQuery } from "@tanstack/react-query";
 import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
 import { TbWorldWww } from "react-icons/tb";
 
-import { ContactInfo } from "@/interfaces/contact-info";
-import { ContainerPaper, ContentPaper } from "@/interfaces/paper";
-import { Title } from "@/interfaces/title";
-import { GETContact, GETTitle } from "@/utils";
+import { ContactInfo } from "@/src/components/interfaces/contact-info";
+import { ContainerPaper, ContentPaper } from "@/src/components/interfaces/paper";
+import { Title } from "@/src/components/interfaces/title";
+import { GETContact, GETTitle } from "@/src/utils/api";
 
 export const Contact: FC = (): ReactElement => {
   const { data: dataTitle } = useQuery({

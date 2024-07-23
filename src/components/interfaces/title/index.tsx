@@ -1,6 +1,6 @@
 import { DetailedHTMLProps, FC, HTMLAttributes, ReactElement } from "react";
 
-import { twm } from "@/libs";
+import { twm } from "@/src/libs/tailwind-merge";
 
 import { RedUnderline } from "../red-underline";
 

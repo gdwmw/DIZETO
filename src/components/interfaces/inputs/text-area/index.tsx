@@ -2,7 +2,7 @@ import { DetailedHTMLProps, FC, forwardRef, ReactElement, TextareaHTMLAttributes
 
 import { MdError } from "react-icons/md";
 
-import { twm } from "@/libs";
+import { twm } from "@/src/libs/tailwind-merge";
 
 /* eslint-disable perfectionist/sort-union-types */
 type TTextArea = {

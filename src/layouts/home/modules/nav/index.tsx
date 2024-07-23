@@ -9,21 +9,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { BsList } from "react-icons/bs";
 
-import { useGlobalStates } from "@/hooks/global";
-import { ButtonTWM } from "@/interfaces/buttons/button";
-import logoDIZETO from "@/public/assets/images/logos/dizeto.svg";
-import { PUTTheme } from "@/utils";
+import logoDIZETO from "@/root/public/assets/images/logos/dizeto.svg";
+import { ButtonTWM } from "@/src/components/interfaces/buttons/button";
+import { useGlobalStates } from "@/src/hooks/global";
+import { NAVIGATION_DATA } from "@/src/libs/constants";
+import { PUTTheme } from "@/src/utils/api";
 
 import { IconBasedOnTheme } from "./batches/icon-based-on-theme";
-
-export const LINKS_DATA = [
-  { href: "#about", id: 1, label: "About" },
-  { href: "#highlight", id: 2, label: "Highlight" },
-  { href: "#pricing", id: 3, label: "Pricing" },
-  { href: "#testimony", id: 4, label: "Testimony" },
-  { href: "#client", id: 5, label: "Client" },
-  { href: "#contact", id: 6, label: "Contact" },
-];
 
 export const handleSmoothScroll = (e: FormEvent, href: string) => {
   e.preventDefault();
@@ -80,7 +72,7 @@ export const Nav: FC<T> = ({ themeCookie }): ReactElement => {
         </li>
         <li>
           <ul className="hidden sm:flex sm:items-center sm:gap-5 md:gap-10 lg:gap-16">
-            {LINKS_DATA.map((dt) => (
+            {NAVIGATION_DATA.map((dt) => (
               <li key={dt.id}>
                 <Link
                   className={ButtonTWM({ color: "black", size: "sm", variant: "ghost" })}

@@ -6,11 +6,11 @@ import { useQuery } from "@tanstack/react-query";
 import dynamic from "next/dynamic";
 import { FaEdit } from "react-icons/fa";
 
-import { Button } from "@/interfaces/buttons/button";
-import { CardPackage } from "@/interfaces/cards/card-package";
-import { ContainerPaper, ContentPaper } from "@/interfaces/paper";
-import { Title } from "@/interfaces/title";
-import { GETPricing, GETTitle, IPricing } from "@/utils";
+import { Button } from "@/src/components/interfaces/buttons/button";
+import { CardPackage } from "@/src/components/interfaces/cards/card-package";
+import { ContainerPaper, ContentPaper } from "@/src/components/interfaces/paper";
+import { Title } from "@/src/components/interfaces/title";
+import { GETPricing, GETTitle, IPricing } from "@/src/utils/api";
 const PricingForm = dynamic(() => import("../forms/pricing-form"));
 
 export const Pricing: FC = (): ReactElement => {

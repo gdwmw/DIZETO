@@ -7,9 +7,9 @@ import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
 
-import { ContainerPaper, ContentPaper } from "@/interfaces/paper";
-import { Title } from "@/interfaces/title";
-import { GETClient, GETTitle } from "@/utils";
+import { ContainerPaper, ContentPaper } from "@/src/components/interfaces/paper";
+import { Title } from "@/src/components/interfaces/title";
+import { GETClient, GETTitle } from "@/src/utils/api";
 
 export const Client: FC = (): ReactElement => {
   const theme = useTheme();

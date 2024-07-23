@@ -44,7 +44,7 @@ const IMAGE_DETAIL_DATA = {
   ],
 };
 
-const Layout: FC<TImageDetail> = ({ ...props }): ReactElement => {
+const Layout: FC<TImageDetail> = (props): ReactElement => {
   const [imageIndex, setImageIndex] = useState(0);
   const [openImageDetail, setOpenImageDetail] = useState(false);
 

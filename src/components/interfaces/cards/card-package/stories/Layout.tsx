@@ -1,6 +1,6 @@
 import { FC, ReactElement } from "react";
 
-import { IPricing } from "@/utils";
+import { IPricing } from "@/src/utils/api";
 
 import { CardPackage } from "..";
 
@@ -25,7 +25,7 @@ const PRICING_DATA = {
   price: "1.0",
 };
 
-const Layout: FC<IPricing> = ({ ...props }): ReactElement => {
+const Layout: FC<IPricing> = (props): ReactElement => {
   return (
     <div className="w-[400px]">
       <CardPackage {...PRICING_DATA} />

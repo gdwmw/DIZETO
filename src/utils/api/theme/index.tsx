@@ -1,4 +1,6 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL + "api/theme";
+"use server";
+
+const API_URL = process.env.LOCAL_URL;
 
 if (!API_URL) {
   throw new Error("The API URL is not defined. Please check your environment variables.");
@@ -6,7 +8,7 @@ if (!API_URL) {
 
 export const PUTTheme = async (data: string): Promise<string> => {
   try {
-    const res = await fetch(API_URL, {
+    const res = await fetch(`${API_URL}/api/theme`, {
       body: data,
       headers: {
         "Content-Type": "text/plain",

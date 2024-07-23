@@ -6,12 +6,12 @@ import { SubmitHandler, useFieldArray, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-import { Button } from "@/interfaces/buttons/button";
-import { Input } from "@/interfaces/inputs/input";
-import { TextArea } from "@/interfaces/inputs/text-area";
-import { ContainerModal, ContentModal } from "@/interfaces/modal";
-import { Title } from "@/interfaces/title";
-import { ITestimony, PUTTestimony } from "@/utils";
+import { Button } from "@/src/components/interfaces/buttons/button";
+import { Input } from "@/src/components/interfaces/inputs/input";
+import { TextArea } from "@/src/components/interfaces/inputs/text-area";
+import { ContainerModal, ContentModal } from "@/src/components/interfaces/modal";
+import { Title } from "@/src/components/interfaces/title";
+import { ITestimony, PUTTestimony } from "@/src/utils/api";
 
 import { Schema, TSchema } from "./Schema";
 

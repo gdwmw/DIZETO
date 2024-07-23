@@ -1,4 +1,6 @@
-const API_URL = process.env.NEXT_PUBLIC_TESTIMONY;
+"use server";
+
+const API_URL = process.env.TESTIMONY_URL;
 
 if (!API_URL) {
   throw new Error("The API URL is not defined. Please check your environment variables.");

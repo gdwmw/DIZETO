@@ -7,10 +7,10 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import { FaEdit } from "react-icons/fa";
 
-import { Button } from "@/interfaces/buttons/button";
-import { ContainerPaper, ContentPaper } from "@/interfaces/paper";
-import { Title } from "@/interfaces/title";
-import { GETAbout, GETTitle } from "@/utils";
+import { Button } from "@/src/components/interfaces/buttons/button";
+import { ContainerPaper, ContentPaper } from "@/src/components/interfaces/paper";
+import { Title } from "@/src/components/interfaces/title";
+import { GETAbout, GETTitle } from "@/src/utils/api";
 const AboutForm = dynamic(() => import("../forms/about-form"));
 
 export const About: FC = (): ReactElement => {

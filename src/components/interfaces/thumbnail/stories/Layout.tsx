@@ -7,7 +7,7 @@ type TLayout = {
   setOpenImageDetail: (param: boolean) => void;
 };
 
-const Layout: FC<TLayout> = ({ ...props }): ReactElement => {
+const Layout: FC<TLayout> = (props): ReactElement => {
   return (
     <Thumbnail
       setImageIndex={props.setImageIndex}

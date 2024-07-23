@@ -2,7 +2,7 @@ import { FC, ReactElement } from "react";
 
 import { dehydrate, HydrationBoundary, QueryClient } from "@tanstack/react-query";
 
-import { GETAbout, GETClient, GETContact, GETCounting, GETHighlight, GETPricing, GETTestimony, GETTitle } from "@/utils";
+import { GETAbout, GETClient, GETContact, GETCounting, GETHighlight, GETPricing, GETTestimony, GETTitle } from "@/src/utils/api";
 
 import { About, Client, Contact, Hero, Highlight, Pricing, Testimony } from "./batches";
 
