@@ -6,7 +6,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-import { Button } from "@/src/components/interfaces/buttons/button";
+import FormActionButton from "@/src/components/form-action-button";
 import { Input } from "@/src/components/interfaces/inputs/input";
 import { TextArea } from "@/src/components/interfaces/inputs/text-area";
 import { ContainerModal, ContentModal } from "@/src/components/interfaces/modal";
@@ -72,24 +72,15 @@ const AboutForm: FC<T> = ({ data, setOpenForm, title }): ReactElement => {
           <Input color="black" errorMessage={errors.data?.note?.message} label="Note" type="text" {...register("data.note")} />
           <Input color="black" errorMessage={errors.data?.logoURL?.message} label="Logo URL" type="text" {...register("data.logoURL")} />
 
-          <div className="grid grid-cols-2 gap-3 font-semibold sm:flex sm:items-center">
-            <Button className="sm:w-full" color="red" disabled={loading} size="sm" type="submit" variant="outline">
-              Update
-            </Button>
-            <Button
-              color="red"
-              disabled={loading}
-              onClick={() => {
-                reset();
-                setOpenForm(false);
-              }}
-              size="sm"
-              type="button"
-              variant="outline"
-            >
-              Cancel
-            </Button>
-          </div>
+          <FormActionButton
+            loading={loading}
+            onClick={() => {
+              reset();
+              setOpenForm(false);
+            }}
+            primaryLabel="Update"
+            secondaryLabel="Cancel"
+          />
         </form>
       </ContentModal>
     </ContainerModal>

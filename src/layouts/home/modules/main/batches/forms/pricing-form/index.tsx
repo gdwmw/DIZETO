@@ -6,6 +6,7 @@ import { SubmitHandler, useFieldArray, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
+import FormActionButton from "@/src/components/form-action-button";
 import { Button } from "@/src/components/interfaces/buttons/button";
 import { Input } from "@/src/components/interfaces/inputs/input";
 import { ContainerModal, ContentModal } from "@/src/components/interfaces/modal";
@@ -125,25 +126,16 @@ const PricingForm: FC<T> = ({ data, isEditTitle, setIsEditTitle, setOpenForm, ti
             </>
           )}
 
-          <div className="grid grid-cols-2 gap-3 font-semibold sm:flex sm:items-center">
-            <Button className="sm:w-full" color="red" disabled={loading} size="sm" type="submit" variant="outline">
-              Update
-            </Button>
-            <Button
-              color="red"
-              disabled={loading}
-              onClick={() => {
-                reset();
-                setIsEditTitle(false);
-                setOpenForm(false);
-              }}
-              size="sm"
-              type="button"
-              variant="outline"
-            >
-              Cancel
-            </Button>
-          </div>
+          <FormActionButton
+            loading={loading}
+            onClick={() => {
+              reset();
+              setIsEditTitle(false);
+              setOpenForm(false);
+            }}
+            primaryLabel="Update"
+            secondaryLabel="Cancel"
+          />
         </form>
       </ContentModal>
     </ContainerModal>
