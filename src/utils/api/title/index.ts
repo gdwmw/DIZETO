@@ -1,25 +1,19 @@
 "use server";
 
-const API_URL = process.env.ABOUT_URL;
+import { ITitle } from "@/src/types/api";
+
+const API_URL = process.env.TITLE_URL;
 
 if (!API_URL) {
   throw new Error("The API URL is not defined. Please check your environment variables.");
 }
 
-export interface IAbout {
-  description: string;
-  id: string;
-  logoURL: string;
-  note: string;
-  subTitle: string;
-}
-
-export const GETAbout = async (): Promise<IAbout> => {
+export const GETTitle = async (): Promise<ITitle[]> => {
   try {
     const res = await fetch(API_URL);
 
     if (!res.ok) {
-      throw new Error(`Failed to fetch: About with status ${res.status}`);
+      throw new Error(`Failed to fetch: Title with status ${res.status}`);
     }
 
     return await res.json();
@@ -29,9 +23,9 @@ export const GETAbout = async (): Promise<IAbout> => {
   }
 };
 
-export const PUTAbout = async (data: IAbout): Promise<IAbout> => {
+export const PUTTitle = async (data: ITitle): Promise<ITitle> => {
   try {
-    const res = await fetch(API_URL, {
+    const res = await fetch(`${API_URL}/${data.id}`, {
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",
@@ -40,7 +34,7 @@ export const PUTAbout = async (data: IAbout): Promise<IAbout> => {
     });
 
     if (!res.ok) {
-      throw new Error(`Failed to put: About with status ${res.status}`);
+      throw new Error(`Failed to put: Title with status ${res.status}`);
     }
 
     return await res.json();

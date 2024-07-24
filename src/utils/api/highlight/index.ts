@@ -1,22 +1,11 @@
 "use server";
 
+import { IHighlight } from "@/src/types/api";
+
 const API_URL = process.env.HIGHLIGHT_URL;
 
 if (!API_URL) {
   throw new Error("The API URL is not defined. Please check your environment variables.");
-}
-
-export interface IImageFile {
-  highlightId: string;
-  id: string;
-  imgURL: string;
-  thumbnailURL: string;
-}
-
-export interface IHighlight {
-  copyright: string;
-  id: string;
-  imageFile: IImageFile[];
 }
 
 export const GETHighlight = async (): Promise<IHighlight> => {

@@ -1,23 +1,19 @@
 "use server";
 
-const API_URL = process.env.COUNTING_URL;
+import { IAbout } from "@/src/types/api";
+
+const API_URL = process.env.ABOUT_URL;
 
 if (!API_URL) {
   throw new Error("The API URL is not defined. Please check your environment variables.");
 }
 
-export interface ICounting {
-  count: number;
-  id: string;
-  title: string;
-}
-
-export const GETCounting = async (): Promise<ICounting[]> => {
+export const GETAbout = async (): Promise<IAbout> => {
   try {
     const res = await fetch(API_URL);
 
     if (!res.ok) {
-      throw new Error(`Failed to fetch: Counting with status ${res.status}`);
+      throw new Error(`Failed to fetch: About with status ${res.status}`);
     }
 
     return await res.json();
@@ -27,9 +23,9 @@ export const GETCounting = async (): Promise<ICounting[]> => {
   }
 };
 
-export const PUTCounting = async (data: ICounting): Promise<ICounting> => {
+export const PUTAbout = async (data: IAbout): Promise<IAbout> => {
   try {
-    const res = await fetch(`${API_URL}/${data.id}`, {
+    const res = await fetch(API_URL, {
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",
@@ -38,7 +34,7 @@ export const PUTCounting = async (data: ICounting): Promise<ICounting> => {
     });
 
     if (!res.ok) {
-      throw new Error(`Failed to put: Counting with status ${res.status}`);
+      throw new Error(`Failed to put: About with status ${res.status}`);
     }
 
     return await res.json();

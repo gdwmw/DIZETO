@@ -11,7 +11,8 @@ import { Input } from "@/src/components/interfaces/inputs/input";
 import { TextArea } from "@/src/components/interfaces/inputs/text-area";
 import { ContainerModal, ContentModal } from "@/src/components/interfaces/modal";
 import { Title } from "@/src/components/interfaces/title";
-import { IAbout, ITitle, PUTAbout, PUTTitle } from "@/src/utils/api";
+import { IAbout, ITitle } from "@/src/types/api";
+import { PUTAbout, PUTTitle } from "@/src/utils/api";
 
 import { Schema, TSchema } from "./Schema";
 

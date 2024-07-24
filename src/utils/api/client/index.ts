@@ -1,17 +1,11 @@
 "use server";
 
+import { IClient } from "@/src/types/api";
+
 const API_URL = process.env.CLIENT_URL;
 
 if (!API_URL) {
   throw new Error("The API URL is not defined. Please check your environment variables.");
-}
-
-export interface IClient {
-  alt: string;
-  href: string;
-  id: string;
-  logoURL: string;
-  theme: string;
 }
 
 export const GETClient = async (): Promise<IClient[]> => {

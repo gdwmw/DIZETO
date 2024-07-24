@@ -1,6 +1,6 @@
 "use server";
 
-import { IListItem } from "../";
+import { IListItem } from "@/src/types/api";
 
 const API_URL = process.env.PRICING_URL;
 

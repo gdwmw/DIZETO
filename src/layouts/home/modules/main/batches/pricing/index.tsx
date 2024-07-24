@@ -10,7 +10,8 @@ import { Button } from "@/src/components/interfaces/buttons/button";
 import { CardPackage } from "@/src/components/interfaces/cards/card-package";
 import { ContainerPaper, ContentPaper } from "@/src/components/interfaces/paper";
 import { Title } from "@/src/components/interfaces/title";
-import { GETPricing, GETTitle, IPricing } from "@/src/utils/api";
+import { IPricing } from "@/src/types/api";
+import { GETPricing, GETTitle } from "@/src/utils/api";
 const PricingForm = dynamic(() => import("../forms/pricing-form"));
 
 export const Pricing: FC = (): ReactElement => {

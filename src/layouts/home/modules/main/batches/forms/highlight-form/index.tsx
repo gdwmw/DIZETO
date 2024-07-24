@@ -10,7 +10,8 @@ import { Button } from "@/src/components/interfaces/buttons/button";
 import { Input } from "@/src/components/interfaces/inputs/input";
 import { ContainerModal, ContentModal } from "@/src/components/interfaces/modal";
 import { Title } from "@/src/components/interfaces/title";
-import { IHighlight, ITitle, PUTHighlight, PUTImageFile, PUTTitle } from "@/src/utils/api";
+import { IHighlight, ITitle } from "@/src/types/api";
+import { PUTHighlight, PUTImageFile, PUTTitle } from "@/src/utils/api";
 
 import { Schema, TSchema } from "./Schema";
 

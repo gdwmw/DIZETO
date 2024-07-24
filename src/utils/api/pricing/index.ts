@@ -1,23 +1,19 @@
 "use server";
 
-const API_URL = process.env.TITLE_URL;
+import { IPricing } from "@/src/types/api";
+
+const API_URL = process.env.PRICING_URL;
 
 if (!API_URL) {
   throw new Error("The API URL is not defined. Please check your environment variables.");
 }
 
-export interface ITitle {
-  id: string;
-  title: string;
-  titleRed: string;
-}
-
-export const GETTitle = async (): Promise<ITitle[]> => {
+export const GETPricing = async (): Promise<IPricing[]> => {
   try {
     const res = await fetch(API_URL);
 
     if (!res.ok) {
-      throw new Error(`Failed to fetch: Title with status ${res.status}`);
+      throw new Error(`Failed to fetch: Pricing with status ${res.status}`);
     }
 
     return await res.json();
@@ -27,7 +23,7 @@ export const GETTitle = async (): Promise<ITitle[]> => {
   }
 };
 
-export const PUTTitle = async (data: ITitle): Promise<ITitle> => {
+export const PUTPricing = async (data: IPricing): Promise<IPricing> => {
   try {
     const res = await fetch(`${API_URL}/${data.id}`, {
       body: JSON.stringify(data),
@@ -38,7 +34,7 @@ export const PUTTitle = async (data: ITitle): Promise<ITitle> => {
     });
 
     if (!res.ok) {
-      throw new Error(`Failed to put: Title with status ${res.status}`);
+      throw new Error(`Failed to put: Pricing with status ${res.status}`);
     }
 
     return await res.json();

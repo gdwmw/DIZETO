@@ -1,14 +1,11 @@
 "use server";
 
+import { IContact } from "@/src/types/api";
+
 const API_URL = process.env.CONTACT_URL;
 
 if (!API_URL) {
   throw new Error("The API URL is not defined. Please check your environment variables.");
-}
-
-export interface IContact {
-  href: string;
-  label: string;
 }
 
 export const GETContact = async (): Promise<IContact[]> => {

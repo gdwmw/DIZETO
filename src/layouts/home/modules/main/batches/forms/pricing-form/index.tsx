@@ -10,7 +10,8 @@ import { Button } from "@/src/components/interfaces/buttons/button";
 import { Input } from "@/src/components/interfaces/inputs/input";
 import { ContainerModal, ContentModal } from "@/src/components/interfaces/modal";
 import { Title } from "@/src/components/interfaces/title";
-import { IPricing, ITitle, PUTListItem, PUTPricing, PUTTitle } from "@/src/utils/api";
+import { IPricing, ITitle } from "@/src/types/api";
+import { PUTListItem, PUTPricing, PUTTitle } from "@/src/utils/api";
 
 import { Schema, TSchema } from "./Schema";
 

@@ -1,6 +1,6 @@
 "use server";
 
-import { IImageFile } from "../";
+import { IImageFile } from "@/src/types/api";
 
 const API_URL = process.env.HIGHLIGHT_URL;
 

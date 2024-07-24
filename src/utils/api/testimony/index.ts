@@ -1,17 +1,11 @@
 "use server";
 
+import { ITestimony } from "@/src/types/api";
+
 const API_URL = process.env.TESTIMONY_URL;
 
 if (!API_URL) {
   throw new Error("The API URL is not defined. Please check your environment variables.");
-}
-
-export interface ITestimony {
-  comment: string;
-  event: string;
-  id: string;
-  imageURL: string;
-  name: string;
 }
 
 export const GETTestimony = async (): Promise<ITestimony[]> => {
