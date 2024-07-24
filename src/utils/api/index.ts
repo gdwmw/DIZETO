@@ -11,6 +11,6 @@ export { GETHighlight, PUTHighlight } from "./highlight";
 export { PUTImageFile } from "./highlight/image-file";
 export { GETPricing, PUTPricing } from "./pricing";
 export { PUTListItem } from "./pricing/list-item";
-export { GETTestimony, PUTTestimony } from "./testimony";
+export { DELETETestimony, GETTestimony, POSTTestimony, PUTTestimony } from "./testimony";
 export { PUTTheme } from "./theme";
 export { GETTitle, PUTTitle } from "./title";
