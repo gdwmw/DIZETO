@@ -10,10 +10,9 @@ import { Button } from "@/src/components/interfaces/buttons/button";
 import { Input } from "@/src/components/interfaces/inputs/input";
 import { ContainerModal, ContentModal } from "@/src/components/interfaces/modal";
 import { Title } from "@/src/components/interfaces/title";
+import { HighlightSchema, THighlightSchema } from "@/src/schemas/home";
 import { IHighlight, ITitle } from "@/src/types/api";
 import { PUTHighlight, PUTImageFile, PUTTitle } from "@/src/utils/api";
-
-import { Schema, TSchema } from "./Schema";
 
 type T = {
   data: IHighlight | undefined;
@@ -30,9 +29,9 @@ const HighlightForm: FC<T> = ({ data, setOpenForm, title }): ReactElement => {
     handleSubmit,
     register,
     reset,
-  } = useForm<TSchema>({
+  } = useForm<THighlightSchema>({
     defaultValues: { data: { ...data }, title: { ...title } },
-    resolver: zodResolver(Schema),
+    resolver: zodResolver(HighlightSchema),
   });
 
   const handleUpdateTitle = useMutation({
@@ -58,7 +57,7 @@ const HighlightForm: FC<T> = ({ data, setOpenForm, title }): ReactElement => {
     },
   });
 
-  const onSubmit: SubmitHandler<TSchema> = async (data) => {
+  const onSubmit: SubmitHandler<THighlightSchema> = async (data) => {
     handleUpdateTitle.mutate(data.title);
     handleUpdateHighlight.mutate(data.data);
     handleUpdate.mutate(data.data.imageFile);
@@ -68,10 +67,12 @@ const HighlightForm: FC<T> = ({ data, setOpenForm, title }): ReactElement => {
     <ContainerModal>
       <ContentModal className="max-w-[1000px]">
         <Title title="UPDATE " titleRed="HIGHLIGHT" />
+
         <form className="space-y-3 pt-2" onSubmit={handleSubmit(onSubmit)}>
           <Input color="black" errorMessage={errors.title?.title?.message} label="Title" type="text" {...register("title.title")} />
           <Input color="black" errorMessage={errors.title?.titleRed?.message} label="Title Red" type="text" {...register("title.titleRed")} />
           <Input color="black" errorMessage={errors.data?.copyright?.message} label="Copyright" type="text" {...register("data.copyright")} />
+
           {data?.imageFile.map((dt, index) => (
             <div className="grid grid-cols-2 gap-3" key={dt.id}>
               <Input
@@ -90,6 +91,7 @@ const HighlightForm: FC<T> = ({ data, setOpenForm, title }): ReactElement => {
               />
             </div>
           ))}
+
           <div className="grid grid-cols-2 gap-3 font-semibold sm:flex sm:items-center">
             <Button className="sm:w-full" color="red" disabled={loading} size="sm" type="submit" variant="outline">
               Update

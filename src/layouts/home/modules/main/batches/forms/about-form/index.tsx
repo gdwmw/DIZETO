@@ -11,10 +11,9 @@ import { Input } from "@/src/components/interfaces/inputs/input";
 import { TextArea } from "@/src/components/interfaces/inputs/text-area";
 import { ContainerModal, ContentModal } from "@/src/components/interfaces/modal";
 import { Title } from "@/src/components/interfaces/title";
+import { AboutSchema, TAboutSchema } from "@/src/schemas/home";
 import { IAbout, ITitle } from "@/src/types/api";
 import { PUTAbout, PUTTitle } from "@/src/utils/api";
-
-import { Schema, TSchema } from "./Schema";
 
 type T = {
   data: IAbout | undefined;
@@ -31,9 +30,9 @@ const AboutForm: FC<T> = ({ data, setOpenForm, title }): ReactElement => {
     handleSubmit,
     register,
     reset,
-  } = useForm<TSchema>({
+  } = useForm<TAboutSchema>({
     defaultValues: { data: { ...data }, title: { ...title } },
-    resolver: zodResolver(Schema),
+    resolver: zodResolver(AboutSchema),
   });
 
   const handleUpdateTitle = useMutation({
@@ -55,7 +54,7 @@ const AboutForm: FC<T> = ({ data, setOpenForm, title }): ReactElement => {
     },
   });
 
-  const onSubmit: SubmitHandler<TSchema> = async (data) => {
+  const onSubmit: SubmitHandler<TAboutSchema> = async (data) => {
     handleUpdateTitle.mutate(data.title);
     handleUpdate.mutate(data.data);
   };
@@ -64,6 +63,7 @@ const AboutForm: FC<T> = ({ data, setOpenForm, title }): ReactElement => {
     <ContainerModal>
       <ContentModal className="max-w-[500px]">
         <Title title="UPDATE " titleRed="ABOUT" />
+
         <form className="space-y-3 pt-2" onSubmit={handleSubmit(onSubmit)}>
           <Input color="black" errorMessage={errors.title?.title?.message} label="Title" type="text" {...register("title.title")} />
           <Input color="black" errorMessage={errors.title?.titleRed?.message} label="Title Red" type="text" {...register("title.titleRed")} />
@@ -71,6 +71,7 @@ const AboutForm: FC<T> = ({ data, setOpenForm, title }): ReactElement => {
           <TextArea color="black" errorMessage={errors.data?.description?.message} label="Description" {...register("data.description")} />
           <Input color="black" errorMessage={errors.data?.note?.message} label="Note" type="text" {...register("data.note")} />
           <Input color="black" errorMessage={errors.data?.logoURL?.message} label="Logo URL" type="text" {...register("data.logoURL")} />
+
           <div className="grid grid-cols-2 gap-3 font-semibold sm:flex sm:items-center">
             <Button className="sm:w-full" color="red" disabled={loading} size="sm" type="submit" variant="outline">
               Update

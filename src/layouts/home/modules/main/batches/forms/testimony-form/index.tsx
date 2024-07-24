@@ -11,10 +11,9 @@ import { Input } from "@/src/components/interfaces/inputs/input";
 import { TextArea } from "@/src/components/interfaces/inputs/text-area";
 import { ContainerModal, ContentModal } from "@/src/components/interfaces/modal";
 import { Title } from "@/src/components/interfaces/title";
+import { TestimonySchema, TTestimonySchema } from "@/src/schemas/home";
 import { ITestimony } from "@/src/types/api";
 import { PUTTestimony } from "@/src/utils/api";
-
-import { Schema, TSchema } from "./Schema";
 
 type T = {
   data: ITestimony[] | undefined;
@@ -31,9 +30,9 @@ const TestimonyForm: FC<T> = ({ data, setOpenForm }): ReactElement => {
     handleSubmit,
     register,
     reset,
-  } = useForm<TSchema>({
+  } = useForm<TTestimonySchema>({
     defaultValues: { data: data },
-    resolver: zodResolver(Schema),
+    resolver: zodResolver(TestimonySchema),
   });
 
   const { append, fields, remove } = useFieldArray({ control, name: "data" });
@@ -50,7 +49,7 @@ const TestimonyForm: FC<T> = ({ data, setOpenForm }): ReactElement => {
     },
   });
 
-  const onSubmit: SubmitHandler<TSchema> = async (data) => {
+  const onSubmit: SubmitHandler<TTestimonySchema> = async (data) => {
     handleUpdate.mutate(data.data);
   };
 
@@ -58,6 +57,7 @@ const TestimonyForm: FC<T> = ({ data, setOpenForm }): ReactElement => {
     <ContainerModal>
       <ContentModal className="max-w-[500px] sm:max-w-[1000px]">
         <Title title="UPDATE " titleRed="TESTIMONY" />
+
         <form className="space-y-3 pt-2" onSubmit={handleSubmit(onSubmit)}>
           {/* <div className="grid grid-cols-2 gap-3 font-semibold">
             <Button
@@ -106,6 +106,7 @@ const TestimonyForm: FC<T> = ({ data, setOpenForm }): ReactElement => {
               </div>
             ))}
           </div>
+
           <div className="grid grid-cols-2 gap-3 font-semibold sm:flex sm:items-center">
             <Button className="sm:w-full" color="red" disabled={loading} size="sm" type="submit" variant="outline">
               Update

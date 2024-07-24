@@ -10,10 +10,9 @@ import { Button } from "@/src/components/interfaces/buttons/button";
 import { Input } from "@/src/components/interfaces/inputs/input";
 import { ContainerModal, ContentModal } from "@/src/components/interfaces/modal";
 import { Title } from "@/src/components/interfaces/title";
+import { PricingSchema, TPricingSchema } from "@/src/schemas/home";
 import { IPricing, ITitle } from "@/src/types/api";
 import { PUTListItem, PUTPricing, PUTTitle } from "@/src/utils/api";
-
-import { Schema, TSchema } from "./Schema";
 
 type T = {
   data: IPricing | undefined;
@@ -33,9 +32,9 @@ const PricingForm: FC<T> = ({ data, isEditTitle, setIsEditTitle, setOpenForm, ti
     handleSubmit,
     register,
     reset,
-  } = useForm<TSchema>({
+  } = useForm<TPricingSchema>({
     defaultValues: { data: { ...data }, title: { ...title } },
-    resolver: zodResolver(Schema),
+    resolver: zodResolver(PricingSchema),
   });
 
   const { append, fields, remove } = useFieldArray({ control, name: "data.listItem.0.list" });
@@ -69,7 +68,7 @@ const PricingForm: FC<T> = ({ data, isEditTitle, setIsEditTitle, setOpenForm, ti
     },
   });
 
-  const onSubmit: SubmitHandler<TSchema> = async (data) => {
+  const onSubmit: SubmitHandler<TPricingSchema> = async (data) => {
     isEditTitle && handleUpdateTitle.mutate(data.title);
     !isEditTitle && handleUpdatePricing.mutate(data.data);
     !isEditTitle && handleUpdate.mutate(data.data.listItem[0]);
@@ -79,6 +78,7 @@ const PricingForm: FC<T> = ({ data, isEditTitle, setIsEditTitle, setOpenForm, ti
     <ContainerModal>
       <ContentModal className={`${isEditTitle ? "max-w-[500px]" : "max-w-[1000px]"}`}>
         <Title title="UPDATE " titleRed={isEditTitle ? "PRICING" : `PACKAGE ${data?.id}`} />
+
         <form className="space-y-3 pt-2" onSubmit={handleSubmit(onSubmit)}>
           {isEditTitle && (
             <>
@@ -86,11 +86,13 @@ const PricingForm: FC<T> = ({ data, isEditTitle, setIsEditTitle, setOpenForm, ti
               <Input color="black" errorMessage={errors.title?.titleRed?.message} label="Title Red" type="text" {...register("title.titleRed")} />
             </>
           )}
+
           {!isEditTitle && (
             <>
               <Input color="black" errorMessage={errors.data?.price?.message} label="Price" type="text" {...register("data.price")} />
               <Input color="black" errorMessage={errors.data?.pack?.message} label="Package" type="text" {...register("data.pack")} />
               <Input color="black" errorMessage={errors.data?.category?.message} label="Category" type="text" {...register("data.category")} />
+
               <div className="grid grid-cols-2 gap-3 font-semibold">
                 <Button color="red" onClick={() => fields.length < 10 && append({ label: "", qty: 0 })} size="sm" type="button" variant="outline">
                   Add
@@ -99,6 +101,7 @@ const PricingForm: FC<T> = ({ data, isEditTitle, setIsEditTitle, setOpenForm, ti
                   Remove
                 </Button>
               </div>
+
               {fields.map((dt, index) => (
                 <div className="grid grid-cols-2 gap-3" key={dt.id}>
                   <Input
@@ -121,6 +124,7 @@ const PricingForm: FC<T> = ({ data, isEditTitle, setIsEditTitle, setOpenForm, ti
               ))}
             </>
           )}
+
           <div className="grid grid-cols-2 gap-3 font-semibold sm:flex sm:items-center">
             <Button className="sm:w-full" color="red" disabled={loading} size="sm" type="submit" variant="outline">
               Update
