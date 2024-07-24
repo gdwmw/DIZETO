@@ -20,7 +20,7 @@ type T = {
   setOpenForm: (value: boolean) => void;
 };
 
-const TestimonyForm: FC<T> = ({ data, setOpenForm }): ReactElement => {
+const TestimonyForm: FC<T> = (props): ReactElement => {
   const queryClient = useQueryClient();
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -31,7 +31,7 @@ const TestimonyForm: FC<T> = ({ data, setOpenForm }): ReactElement => {
     register,
     reset,
   } = useForm<TTestimonySchema>({
-    defaultValues: { data: data },
+    defaultValues: { data: props.data },
     resolver: zodResolver(TestimonySchema),
   });
 
@@ -43,7 +43,7 @@ const TestimonyForm: FC<T> = ({ data, setOpenForm }): ReactElement => {
     onMutate: () => setLoading(true),
     onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: ["GETTestimony"] });
-      setOpenForm(false);
+      props.setOpenForm(false);
       setLoading(false);
       reset();
     },
@@ -62,6 +62,7 @@ const TestimonyForm: FC<T> = ({ data, setOpenForm }): ReactElement => {
           {/* <div className="grid grid-cols-2 gap-3 font-semibold">
             <Button
               color="red"
+              disabled={loading}
               onClick={() => fields.length < 8 && append({ comment: "", event: "", id: "", imageURL: "", name: "" })}
               size="sm"
               type="button"
@@ -69,15 +70,16 @@ const TestimonyForm: FC<T> = ({ data, setOpenForm }): ReactElement => {
             >
               Add
             </Button>
-            <Button color="red" onClick={() => remove(fields.length - 1)} size="sm" type="button" variant="outline">
+            <Button color="red" disabled={loading} onClick={() => remove(fields.length - 1)} size="sm" type="button" variant="outline">
               Remove
             </Button>
           </div> */}
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             {fields?.map((dt, index) => (
-              <div key={dt.id}>
+              <div key={dt.id ?? index + 1}>
                 <Input
                   color="black"
+                  disabled={loading}
                   errorMessage={errors.data?.[index]?.imageURL?.message}
                   label={`Image URL ${index + 1}`}
                   type="text"
@@ -85,6 +87,7 @@ const TestimonyForm: FC<T> = ({ data, setOpenForm }): ReactElement => {
                 />
                 <Input
                   color="black"
+                  disabled={loading}
                   errorMessage={errors.data?.[index]?.name?.message}
                   label={`Name ${index + 1}`}
                   type="text"
@@ -92,13 +95,15 @@ const TestimonyForm: FC<T> = ({ data, setOpenForm }): ReactElement => {
                 />
                 <Input
                   color="black"
+                  disabled={loading}
                   errorMessage={errors.data?.[index]?.event?.message}
                   label={`Event ${index + 1}`}
-                  {...register(`data.${index}.event`)}
                   type="text"
+                  {...register(`data.${index}.event`)}
                 />
                 <TextArea
                   color="black"
+                  disabled={loading}
                   errorMessage={errors.data?.[index]?.comment?.message}
                   label={`Comment ${index + 1}`}
                   {...register(`data.${index}.comment`)}
@@ -111,7 +116,7 @@ const TestimonyForm: FC<T> = ({ data, setOpenForm }): ReactElement => {
             loading={loading}
             onClick={() => {
               reset();
-              setOpenForm(false);
+              props.setOpenForm(false);
             }}
             primaryLabel="Update"
             secondaryLabel="Cancel"

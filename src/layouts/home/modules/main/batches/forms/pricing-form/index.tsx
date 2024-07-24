@@ -23,7 +23,7 @@ type T = {
   title: ITitle | undefined;
 };
 
-const PricingForm: FC<T> = ({ data, isEditTitle, setIsEditTitle, setOpenForm, title }): ReactElement => {
+const PricingForm: FC<T> = (props): ReactElement => {
   const queryClient = useQueryClient();
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -34,7 +34,7 @@ const PricingForm: FC<T> = ({ data, isEditTitle, setIsEditTitle, setOpenForm, ti
     register,
     reset,
   } = useForm<TPricingSchema>({
-    defaultValues: { data: { ...data }, title: { ...title } },
+    defaultValues: { data: { ...props.data }, title: { ...props.title } },
     resolver: zodResolver(PricingSchema),
   });
 
@@ -46,8 +46,8 @@ const PricingForm: FC<T> = ({ data, isEditTitle, setIsEditTitle, setOpenForm, ti
     onMutate: () => setLoading(true),
     onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: ["GETTitle"] });
-      setIsEditTitle(false);
-      setOpenForm(false);
+      props.setIsEditTitle(false);
+      props.setOpenForm(false);
       setLoading(false);
       reset();
     },
@@ -63,42 +63,74 @@ const PricingForm: FC<T> = ({ data, isEditTitle, setIsEditTitle, setOpenForm, ti
     onMutate: () => setLoading(true),
     onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: ["GETPricing"] });
-      setOpenForm(false);
+      props.setOpenForm(false);
       setLoading(false);
       reset();
     },
   });
 
   const onSubmit: SubmitHandler<TPricingSchema> = async (data) => {
-    isEditTitle && handleUpdateTitle.mutate(data.title);
-    !isEditTitle && handleUpdatePricing.mutate(data.data);
-    !isEditTitle && handleUpdate.mutate(data.data.listItem[0]);
+    props.isEditTitle && handleUpdateTitle.mutate(data.title);
+    !props.isEditTitle && handleUpdatePricing.mutate(data.data);
+    !props.isEditTitle && handleUpdate.mutate(data.data.listItem[0]);
   };
+
+  const TITLE_INPUT_FIELDS = [
+    { error: errors.title?.title?.message, label: "Title", name: "title.title", type: "text" },
+    { error: errors.title?.titleRed?.message, label: "Title Red", name: "title.titleRed", type: "text" },
+  ];
+
+  const PACKAGE_INPUT_FIELDS = [
+    { error: errors.data?.price?.message, label: "Price", name: "data.price", type: "text" },
+    { error: errors.data?.pack?.message, label: "Package", name: "data.pack", type: "text" },
+    { error: errors.data?.category?.message, label: "Category", name: "data.category", type: "text" },
+  ];
 
   return (
     <ContainerModal>
-      <ContentModal className={`${isEditTitle ? "max-w-[500px]" : "max-w-[1000px]"}`}>
-        <Title title="UPDATE " titleRed={isEditTitle ? "PRICING" : `PACKAGE ${data?.id}`} />
+      <ContentModal className={`${props.isEditTitle ? "max-w-[500px]" : "max-w-[1000px]"}`}>
+        <Title title="UPDATE " titleRed={props.isEditTitle ? "PRICING" : `PACKAGE ${props.data?.id}`} />
 
         <form className="space-y-3 pt-2" onSubmit={handleSubmit(onSubmit)}>
-          {isEditTitle && (
-            <>
-              <Input color="black" errorMessage={errors.title?.title?.message} label="Title" type="text" {...register("title.title")} />
-              <Input color="black" errorMessage={errors.title?.titleRed?.message} label="Title Red" type="text" {...register("title.titleRed")} />
-            </>
-          )}
+          {props.isEditTitle &&
+            TITLE_INPUT_FIELDS.map((field) => (
+              <Input
+                color="black"
+                disabled={loading}
+                errorMessage={field.error}
+                key={field.name}
+                label={field.label}
+                type={field.type}
+                {...register(field.name as any)}
+              />
+            ))}
 
-          {!isEditTitle && (
+          {!props.isEditTitle && (
             <>
-              <Input color="black" errorMessage={errors.data?.price?.message} label="Price" type="text" {...register("data.price")} />
-              <Input color="black" errorMessage={errors.data?.pack?.message} label="Package" type="text" {...register("data.pack")} />
-              <Input color="black" errorMessage={errors.data?.category?.message} label="Category" type="text" {...register("data.category")} />
+              {PACKAGE_INPUT_FIELDS.map((field) => (
+                <Input
+                  color="black"
+                  disabled={loading}
+                  errorMessage={field.error}
+                  key={field.name}
+                  label={field.label}
+                  type={field.type}
+                  {...register(field.name as any)}
+                />
+              ))}
 
               <div className="grid grid-cols-2 gap-3 font-semibold">
-                <Button color="red" onClick={() => fields.length < 10 && append({ label: "", qty: 0 })} size="sm" type="button" variant="outline">
+                <Button
+                  color="red"
+                  disabled={loading}
+                  onClick={() => fields.length < 10 && append({ label: "", qty: 0 })}
+                  size="sm"
+                  type="button"
+                  variant="outline"
+                >
                   Add
                 </Button>
-                <Button color="red" onClick={() => remove(fields.length - 1)} size="sm" type="button" variant="outline">
+                <Button color="red" disabled={loading} onClick={() => remove(fields.length - 1)} size="sm" type="button" variant="outline">
                   Remove
                 </Button>
               </div>
@@ -107,6 +139,7 @@ const PricingForm: FC<T> = ({ data, isEditTitle, setIsEditTitle, setOpenForm, ti
                 <div className="grid grid-cols-2 gap-3" key={dt.id}>
                   <Input
                     color="black"
+                    disabled={loading}
                     errorMessage={errors.data?.listItem?.[0]?.list?.[index]?.qty?.message}
                     label={`Quantity ${index + 1}`}
                     type="number"
@@ -116,6 +149,7 @@ const PricingForm: FC<T> = ({ data, isEditTitle, setIsEditTitle, setOpenForm, ti
                   />
                   <Input
                     color="black"
+                    disabled={loading}
                     errorMessage={errors.data?.listItem?.[0]?.list?.[index]?.label?.message}
                     label={`Label ${index + 1}`}
                     type="text"
@@ -130,8 +164,8 @@ const PricingForm: FC<T> = ({ data, isEditTitle, setIsEditTitle, setOpenForm, ti
             loading={loading}
             onClick={() => {
               reset();
-              setIsEditTitle(false);
-              setOpenForm(false);
+              props.setIsEditTitle(false);
+              props.setOpenForm(false);
             }}
             primaryLabel="Update"
             secondaryLabel="Cancel"

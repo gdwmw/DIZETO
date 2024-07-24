@@ -21,7 +21,7 @@ type T = {
   title: ITitle | undefined;
 };
 
-const AboutForm: FC<T> = ({ data, setOpenForm, title }): ReactElement => {
+const AboutForm: FC<T> = (props): ReactElement => {
   const queryClient = useQueryClient();
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -31,7 +31,7 @@ const AboutForm: FC<T> = ({ data, setOpenForm, title }): ReactElement => {
     register,
     reset,
   } = useForm<TAboutSchema>({
-    defaultValues: { data: { ...data }, title: { ...title } },
+    defaultValues: { data: { ...props.data }, title: { ...props.title } },
     resolver: zodResolver(AboutSchema),
   });
 
@@ -48,7 +48,7 @@ const AboutForm: FC<T> = ({ data, setOpenForm, title }): ReactElement => {
     onMutate: () => setLoading(true),
     onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: ["GETAbout"] });
-      setOpenForm(false);
+      props.setOpenForm(false);
       setLoading(false);
       reset();
     },
@@ -59,24 +59,49 @@ const AboutForm: FC<T> = ({ data, setOpenForm, title }): ReactElement => {
     handleUpdate.mutate(data.data);
   };
 
+  const INPUT_FIELDS = [
+    { errorMessage: errors.title?.title?.message, label: "Title", name: "title.title", tag: "input", type: "text" },
+    { errorMessage: errors.title?.titleRed?.message, label: "Title Red", name: "title.titleRed", tag: "input", type: "text" },
+    { errorMessage: errors.data?.subTitle?.message, label: "Sub Title", name: "data.subTitle", tag: "input", type: "text" },
+    { errorMessage: errors.data?.description?.message, label: "Description", name: "data.description", tag: "textarea" },
+    { errorMessage: errors.data?.note?.message, label: "Note", name: "data.note", tag: "input", type: "text" },
+    { errorMessage: errors.data?.logoURL?.message, label: "Logo URL", name: "data.logoURL", tag: "input", type: "text" },
+  ];
+
   return (
     <ContainerModal>
       <ContentModal className="max-w-[500px]">
         <Title title="UPDATE " titleRed="ABOUT" />
 
         <form className="space-y-3 pt-2" onSubmit={handleSubmit(onSubmit)}>
-          <Input color="black" errorMessage={errors.title?.title?.message} label="Title" type="text" {...register("title.title")} />
-          <Input color="black" errorMessage={errors.title?.titleRed?.message} label="Title Red" type="text" {...register("title.titleRed")} />
-          <Input color="black" errorMessage={errors.data?.subTitle?.message} label="Sub Title" type="text" {...register("data.subTitle")} />
-          <TextArea color="black" errorMessage={errors.data?.description?.message} label="Description" {...register("data.description")} />
-          <Input color="black" errorMessage={errors.data?.note?.message} label="Note" type="text" {...register("data.note")} />
-          <Input color="black" errorMessage={errors.data?.logoURL?.message} label="Logo URL" type="text" {...register("data.logoURL")} />
+          {INPUT_FIELDS.map((field) =>
+            field.tag === "input" ? (
+              <Input
+                color="black"
+                disabled={loading}
+                errorMessage={field.errorMessage}
+                key={field.name}
+                label={field.label}
+                type={field.type}
+                {...register(field.name as any)}
+              />
+            ) : (
+              <TextArea
+                color="black"
+                disabled={loading}
+                errorMessage={field.errorMessage}
+                key={field.name}
+                label={field.label}
+                {...register(field.name as any)}
+              />
+            ),
+          )}
 
           <FormActionButton
             loading={loading}
             onClick={() => {
               reset();
-              setOpenForm(false);
+              props.setOpenForm(false);
             }}
             primaryLabel="Update"
             secondaryLabel="Cancel"

@@ -20,7 +20,7 @@ type T = {
   title: ITitle | undefined;
 };
 
-const HighlightForm: FC<T> = ({ data, setOpenForm, title }): ReactElement => {
+const HighlightForm: FC<T> = (props): ReactElement => {
   const queryClient = useQueryClient();
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -30,7 +30,7 @@ const HighlightForm: FC<T> = ({ data, setOpenForm, title }): ReactElement => {
     register,
     reset,
   } = useForm<THighlightSchema>({
-    defaultValues: { data: { ...data }, title: { ...title } },
+    defaultValues: { data: { ...props.data }, title: { ...props.title } },
     resolver: zodResolver(HighlightSchema),
   });
 
@@ -51,7 +51,7 @@ const HighlightForm: FC<T> = ({ data, setOpenForm, title }): ReactElement => {
     onMutate: () => setLoading(true),
     onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: ["GETHighlight"] });
-      setOpenForm(false);
+      props.setOpenForm(false);
       setLoading(false);
       reset();
     },
@@ -63,20 +63,35 @@ const HighlightForm: FC<T> = ({ data, setOpenForm, title }): ReactElement => {
     handleUpdate.mutate(data.data.imageFile);
   };
 
+  const INPUT_FIELDS = [
+    { errorMessage: errors.title?.title?.message, label: "Title", name: "title.title", tag: "input", type: "text" },
+    { errorMessage: errors.title?.titleRed?.message, label: "Title Red", name: "title.titleRed", tag: "input", type: "text" },
+    { errorMessage: errors.data?.copyright?.message, label: "Copyright", name: "data.copyright", tag: "input", type: "text" },
+  ];
+
   return (
     <ContainerModal>
       <ContentModal className="max-w-[1000px]">
         <Title title="UPDATE " titleRed="HIGHLIGHT" />
 
         <form className="space-y-3 pt-2" onSubmit={handleSubmit(onSubmit)}>
-          <Input color="black" errorMessage={errors.title?.title?.message} label="Title" type="text" {...register("title.title")} />
-          <Input color="black" errorMessage={errors.title?.titleRed?.message} label="Title Red" type="text" {...register("title.titleRed")} />
-          <Input color="black" errorMessage={errors.data?.copyright?.message} label="Copyright" type="text" {...register("data.copyright")} />
+          {INPUT_FIELDS.map((field) => (
+            <Input
+              color="black"
+              disabled={loading}
+              errorMessage={field.errorMessage}
+              key={field.name}
+              label={field.label}
+              type={field.type}
+              {...register(field.name as any)}
+            />
+          ))}
 
-          {data?.imageFile.map((dt, index) => (
+          {props.data?.imageFile.map((dt, index) => (
             <div className="grid grid-cols-2 gap-3" key={dt.id}>
               <Input
                 color="black"
+                disabled={loading}
                 errorMessage={errors.data?.imageFile?.[index]?.message}
                 label={`Thumbnail URL ${index + 1}`}
                 type="text"
@@ -84,6 +99,7 @@ const HighlightForm: FC<T> = ({ data, setOpenForm, title }): ReactElement => {
               />
               <Input
                 color="black"
+                disabled={loading}
                 errorMessage={errors.data?.imageFile?.[index]?.message}
                 label={`Image URL ${index + 1}`}
                 type="text"
@@ -96,7 +112,7 @@ const HighlightForm: FC<T> = ({ data, setOpenForm, title }): ReactElement => {
             loading={loading}
             onClick={() => {
               reset();
-              setOpenForm(false);
+              props.setOpenForm(false);
             }}
             primaryLabel="Update"
             secondaryLabel="Cancel"
