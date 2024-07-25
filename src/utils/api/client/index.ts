@@ -23,62 +23,73 @@ export const GETClient = async (): Promise<IClient[]> => {
   }
 };
 
-export const POSTClient = async (data: IClient): Promise<IClient> => {
+export const POSTClient = async (data: IClient[]): Promise<IClient[]> => {
   try {
-    const res = await fetch(API_URL, {
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "POST",
+    const filteredData = data.filter((dt) => !dt.id);
+    const promises = filteredData.map(async (dt) => {
+      const res = await fetch(API_URL, {
+        body: JSON.stringify(dt),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+      });
+
+      if (!res.ok) {
+        throw new Error(`Failed to post: Client with status ${res.status}`);
+      }
+
+      return await res.json();
     });
 
-    if (!res.ok) {
-      throw new Error(`Failed to post: Client with status ${res.status}`);
-    }
-
-    return await res.json();
+    return await Promise.all(promises);
   } catch (error) {
     console.log(error);
     throw error;
   }
 };
 
-export const PUTClient = async (data: IClient): Promise<IClient> => {
+export const PUTClient = async (data: IClient[]): Promise<IClient[]> => {
   try {
-    const res = await fetch(`${API_URL}/${data.id}`, {
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "PUT",
+    const filteredData = data.filter((dt) => dt.id);
+    const promises = filteredData.map(async (dt) => {
+      const res = await fetch(`${API_URL}/${dt.id}`, {
+        body: JSON.stringify(dt),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "PUT",
+      });
+
+      if (!res.ok) {
+        throw new Error(`Failed to put: Client id ${dt.id} with status ${res.status}`);
+      }
+
+      return await res.json();
     });
 
-    if (!res.ok) {
-      throw new Error(`Failed to put: Client with status ${res.status}`);
-    }
-
-    return await res.json();
+    return await Promise.all(promises);
   } catch (error) {
     console.log(error);
     throw error;
   }
 };
 
-export const DELETEClient = async (id: string): Promise<IClient> => {
+export const DELETEClient = async (data: string[]): Promise<string[]> => {
   try {
-    const res = await fetch(`${API_URL}/${id}`, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "DELETE",
+    const promises = data.map(async (id) => {
+      const res = await fetch(`${API_URL}/${id}`, {
+        method: "DELETE",
+      });
+
+      if (!res.ok) {
+        throw new Error(`Failed to delete: Client id ${id} with status ${res.status}`);
+      }
+
+      return await res.json();
     });
 
-    if (!res.ok) {
-      throw new Error(`Failed to delete: Client with status ${res.status}`);
-    }
-
-    return await res.json();
+    return await Promise.all(promises);
   } catch (error) {
     console.log(error);
     throw error;

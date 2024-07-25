@@ -147,3 +147,23 @@ export const TestimonySchema = z.object({
 });
 
 export type TTestimonySchema = z.infer<typeof TestimonySchema>;
+
+// -----------------------------------------------------------------------------
+
+export const ClientSchema = z.object({
+  data: z.array(
+    z.object({
+      alt: z
+        .string()
+        .min(3, { message: errorMessage.string.min("Alt", 3) })
+        .max(32, { message: errorMessage.string.max("Alt", 32) }),
+      href: z.string().min(1, { message: errorMessage.string.required("Href") }),
+      id: z.string(),
+      logoURL: z.string().min(1, { message: errorMessage.string.required("Logo URL") }),
+      theme: z.string().min(1, { message: errorMessage.string.required("Theme") }),
+    }),
+  ),
+  title: TitleSchema,
+});
+
+export type TClientSchema = z.infer<typeof ClientSchema>;
