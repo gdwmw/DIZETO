@@ -68,11 +68,14 @@ const PricingForm: FC<T> = (props): ReactElement => {
 
   const onSubmit: SubmitHandler<TPricingSchema> = async (data) => {
     setLoading(true);
-    props.isEditTitle && (await handleUpdateTitle.mutateAsync(data.title));
-    !props.isEditTitle && (await handleUpdatePricing.mutateAsync(data.data));
-    !props.isEditTitle && (await handleUpdateListItem.mutateAsync(data.data.listItem[0]));
-    props.setIsEditTitle(false);
+    if (props.isEditTitle) {
+      await handleUpdateTitle.mutateAsync(data.title);
+    } else {
+      await handleUpdatePricing.mutateAsync(data.data);
+      await handleUpdateListItem.mutateAsync(data.data.listItem[0]);
+    }
     props.setOpenForm(false);
+    props.setIsEditTitle(false);
     setLoading(false);
     reset();
   };
@@ -158,9 +161,9 @@ const PricingForm: FC<T> = (props): ReactElement => {
           <FormActionButton
             loading={loading}
             onClick={() => {
-              reset();
-              props.setIsEditTitle(false);
               props.setOpenForm(false);
+              props.setIsEditTitle(false);
+              reset();
             }}
             primaryLabel="Update"
             secondaryLabel="Cancel"

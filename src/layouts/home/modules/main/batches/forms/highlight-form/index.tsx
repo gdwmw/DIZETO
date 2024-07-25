@@ -49,19 +49,19 @@ const HighlightForm: FC<T> = (props): ReactElement => {
   const handleUpdateImageFile = useMutation({
     mutationFn: PUTImageFile,
     onError: () => setLoading(false),
-    onMutate: () => setLoading(true),
     onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: ["GETHighlight"] });
       props.setOpenForm(false);
-      setLoading(false);
       reset();
     },
   });
 
   const onSubmit: SubmitHandler<THighlightSchema> = async (data) => {
+    setLoading(true);
     handleUpdateTitle.mutate(data.title);
-    handleUpdateHighlight.mutate(data.data);
-    handleUpdateImageFile.mutate(data.data.imageFile);
+    await handleUpdateHighlight.mutateAsync(data.data);
+    await handleUpdateImageFile.mutateAsync(data.data.imageFile);
+    setLoading(false);
   };
 
   const INPUT_FIELDS_DATA = [
@@ -112,8 +112,8 @@ const HighlightForm: FC<T> = (props): ReactElement => {
           <FormActionButton
             loading={loading}
             onClick={() => {
-              reset();
               props.setOpenForm(false);
+              reset();
             }}
             primaryLabel="Update"
             secondaryLabel="Cancel"

@@ -13,11 +13,14 @@ import { TextArea } from "@/src/components/interfaces/inputs/text-area";
 import { ContainerModal, ContentModal } from "@/src/components/interfaces/modal";
 import { Title } from "@/src/components/interfaces/title";
 import { TestimonySchema, TTestimonySchema } from "@/src/schemas/home";
-import { ITestimony } from "@/src/types/api";
-import { DELETETestimony, POSTTestimony, PUTTestimony } from "@/src/utils/api";
+import { ICounting, ITestimony } from "@/src/types/api";
+import { DELETETestimony, POSTTestimony, PUTCounting, PUTTestimony } from "@/src/utils/api";
 
 type T = {
+  counting: ICounting[] | undefined;
   data: ITestimony[] | undefined;
+  isEditTestimony: boolean;
+  setIsEditTestimony: (value: boolean) => void;
   setOpenForm: (value: boolean) => void;
 };
 
@@ -38,7 +41,7 @@ const TestimonyForm: FC<T> = (props): ReactElement => {
     register,
     reset,
   } = useForm<TTestimonySchema>({
-    defaultValues: { data: props.data },
+    defaultValues: { counting: props.counting, data: props.data },
     resolver: zodResolver(TestimonySchema),
   });
 
@@ -79,17 +82,24 @@ const TestimonyForm: FC<T> = (props): ReactElement => {
     onSuccess: async () => await queryClient.invalidateQueries({ queryKey: ["GETTestimony"] }),
   });
 
+  const handleUpdateCounting = useMutation({
+    mutationFn: PUTCounting,
+    onError: () => setLoading(false),
+    onSuccess: async () => await queryClient.invalidateQueries({ queryKey: ["GETCounting"] }),
+  });
+
   const onSubmit: SubmitHandler<TTestimonySchema> = async (data) => {
     setLoading(true);
-    if (idsToDelete.length > 0) {
-      await handleDeleteTestimony.mutateAsync(idsToDelete);
+    if (props.isEditTestimony) {
+      idsToDelete.length > 0 && (await handleDeleteTestimony.mutateAsync(idsToDelete));
+      const hasEmptyId = data.data.some((dt) => !dt.id);
+      hasEmptyId && (await handleCreateTestimony.mutateAsync(data.data));
+      await handleUpdateTestimony.mutateAsync(data.data);
+    } else {
+      await handleUpdateCounting.mutateAsync(data.counting);
     }
-    const hasEmptyId = data.data.some((dt) => !dt.id);
-    if (hasEmptyId) {
-      await handleCreateTestimony.mutateAsync(data.data);
-    }
-    await handleUpdateTestimony.mutateAsync(data.data);
     props.setOpenForm(false);
+    props.setIsEditTestimony(false);
     setLoading(false);
     reset();
   };
@@ -97,60 +107,90 @@ const TestimonyForm: FC<T> = (props): ReactElement => {
   return (
     <ContainerModal>
       <ContentModal className="max-w-[500px] sm:max-w-[1000px]">
-        <Title title="UPDATE " titleRed="TESTIMONY" />
+        <Title title="UPDATE " titleRed={props.isEditTestimony ? "TESTIMONY" : "COUNTING"} />
 
         <form className="space-y-3 pt-2" onSubmit={handleSubmit(onSubmit)}>
-          <div className="grid grid-cols-2 gap-3 font-semibold">
-            <Button color="red" disabled={loading} onClick={handleAppend} size="sm" type="button" variant="outline">
-              Add
-            </Button>
-            <Button color="red" disabled={loading} onClick={handleRemove} size="sm" type="button" variant="outline">
-              Remove
-            </Button>
-          </div>
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-            {fields?.map((dt, index) => (
-              <div key={dt.id ?? index + 1}>
-                <Input
-                  color="black"
-                  disabled={loading}
-                  errorMessage={errors.data?.[index]?.imageURL?.message}
-                  label={`Image URL ${index + 1}`}
-                  type="text"
-                  {...register(`data.${index}.imageURL`)}
-                />
-                <Input
-                  color="black"
-                  disabled={loading}
-                  errorMessage={errors.data?.[index]?.name?.message}
-                  label={`Name ${index + 1}`}
-                  type="text"
-                  {...register(`data.${index}.name`)}
-                />
-                <Input
-                  color="black"
-                  disabled={loading}
-                  errorMessage={errors.data?.[index]?.event?.message}
-                  label={`Event ${index + 1}`}
-                  type="text"
-                  {...register(`data.${index}.event`)}
-                />
-                <TextArea
-                  color="black"
-                  disabled={loading}
-                  errorMessage={errors.data?.[index]?.comment?.message}
-                  label={`Comment ${index + 1}`}
-                  {...register(`data.${index}.comment`)}
-                />
+          {props.isEditTestimony && (
+            <>
+              <div className="grid grid-cols-2 gap-3 font-semibold">
+                <Button color="red" disabled={loading} onClick={handleAppend} size="sm" type="button" variant="outline">
+                  Add
+                </Button>
+                <Button color="red" disabled={loading} onClick={handleRemove} size="sm" type="button" variant="outline">
+                  Remove
+                </Button>
               </div>
-            ))}
-          </div>
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                {fields?.map((dt, index) => (
+                  <div key={dt.id ?? index + 1}>
+                    <Input
+                      color="black"
+                      disabled={loading}
+                      errorMessage={errors.data?.[index]?.imageURL?.message}
+                      label={`Image URL ${index + 1}`}
+                      type="text"
+                      {...register(`data.${index}.imageURL`)}
+                    />
+                    <Input
+                      color="black"
+                      disabled={loading}
+                      errorMessage={errors.data?.[index]?.name?.message}
+                      label={`Name ${index + 1}`}
+                      type="text"
+                      {...register(`data.${index}.name`)}
+                    />
+                    <Input
+                      color="black"
+                      disabled={loading}
+                      errorMessage={errors.data?.[index]?.event?.message}
+                      label={`Event ${index + 1}`}
+                      type="text"
+                      {...register(`data.${index}.event`)}
+                    />
+                    <TextArea
+                      color="black"
+                      disabled={loading}
+                      errorMessage={errors.data?.[index]?.comment?.message}
+                      label={`Comment ${index + 1}`}
+                      {...register(`data.${index}.comment`)}
+                    />
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
+
+          {!props.isEditTestimony && (
+            <>
+              {props.counting?.map((dt, index) => (
+                <div key={dt.id}>
+                  <Input
+                    color="black"
+                    disabled={loading}
+                    errorMessage={errors.counting?.[index]?.title?.message}
+                    label={`Title ${index + 1}`}
+                    type="text"
+                    {...register(`counting.${index}.title`)}
+                  />
+                  <Input
+                    color="black"
+                    disabled={loading}
+                    errorMessage={errors.counting?.[index]?.count?.message}
+                    label={`Count ${index + 1}`}
+                    type="number"
+                    {...register(`counting.${index}.count`, { valueAsNumber: true })}
+                  />
+                </div>
+              ))}
+            </>
+          )}
 
           <FormActionButton
             loading={loading}
             onClick={() => {
-              reset();
               props.setOpenForm(false);
+              props.setIsEditTestimony(false);
+              reset();
             }}
             primaryLabel="Update"
             secondaryLabel="Cancel"

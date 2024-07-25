@@ -30,6 +30,7 @@ export const Testimony: FC = (): ReactElement => {
   const [currentTime, setCurrentTime] = useState(new Date());
   const [formattedTime, setFormattedTime] = useState("");
   const [openForm, setOpenForm] = useState(false);
+  const [isEditTestimony, setIsEditTestimony] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -53,7 +54,17 @@ export const Testimony: FC = (): ReactElement => {
     <>
       <ContainerPaper id="testimony">
         <ContentPaper className="relative bg-transparent dark:bg-transparent">
-          <Button className="absolute right-3 top-3" color="black" onClick={() => setOpenForm(true)} size="sm" type="button" variant="ghost">
+          <Button
+            className="absolute right-3 top-3"
+            color="black"
+            onClick={() => {
+              setOpenForm(true);
+              setIsEditTestimony(true);
+            }}
+            size="sm"
+            type="button"
+            variant="ghost"
+          >
             <FaEdit />
           </Button>
 
@@ -81,7 +92,11 @@ export const Testimony: FC = (): ReactElement => {
             </div>
           </div>
 
-          <div className="flex flex-col items-center justify-evenly gap-5 sm:flex-row">
+          <div className="relative flex flex-col items-center justify-evenly gap-5 sm:flex-row">
+            <Button className="absolute right-3 top-3" color="black" onClick={() => setOpenForm(true)} size="sm" type="button" variant="ghost">
+              <FaEdit />
+            </Button>
+
             <div className="text-center">
               <div className="flex items-center justify-center gap-2">
                 <HiUserGroup size={25} />
@@ -123,7 +138,15 @@ export const Testimony: FC = (): ReactElement => {
         </ContentPaper>
       </ContainerPaper>
 
-      {openForm && <TestimonyForm data={dataTestimony} setOpenForm={setOpenForm} />}
+      {openForm && (
+        <TestimonyForm
+          counting={dataCounting}
+          data={dataTestimony}
+          isEditTestimony={isEditTestimony}
+          setIsEditTestimony={setIsEditTestimony}
+          setOpenForm={setOpenForm}
+        />
+      )}
     </>
   );
 };

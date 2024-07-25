@@ -100,8 +100,8 @@ const AboutForm: FC<T> = (props): ReactElement => {
           <FormActionButton
             loading={loading}
             onClick={() => {
-              reset();
               props.setOpenForm(false);
+              reset();
             }}
             primaryLabel="Update"
             secondaryLabel="Cancel"

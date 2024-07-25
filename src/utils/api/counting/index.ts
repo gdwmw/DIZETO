@@ -23,21 +23,25 @@ export const GETCounting = async (): Promise<ICounting[]> => {
   }
 };
 
-export const PUTCounting = async (data: ICounting): Promise<ICounting> => {
+export const PUTCounting = async (data: ICounting[]): Promise<ICounting[]> => {
   try {
-    const res = await fetch(`${API_URL}/${data.id}`, {
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "PUT",
+    const promises = data.map(async (dt) => {
+      const res = await fetch(`${API_URL}/${dt.id}`, {
+        body: JSON.stringify(dt),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "PUT",
+      });
+
+      if (!res.ok) {
+        throw new Error(`Failed to put: Counting id ${dt.id} with status ${res.status}`);
+      }
+
+      return await res.json();
     });
 
-    if (!res.ok) {
-      throw new Error(`Failed to put: Counting with status ${res.status}`);
-    }
-
-    return await res.json();
+    return await Promise.all(promises);
   } catch (error) {
     console.log(error);
     throw error;

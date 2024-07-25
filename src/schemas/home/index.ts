@@ -119,6 +119,13 @@ export type TPricingSchema = z.infer<typeof PricingSchema>;
 // -----------------------------------------------------------------------------
 
 export const TestimonySchema = z.object({
+  counting: z.array(
+    z.object({
+      count: z.number(),
+      id: z.string(),
+      title: z.string(),
+    }),
+  ),
   data: z.array(
     z.object({
       comment: z
