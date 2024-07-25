@@ -34,7 +34,7 @@ const PricingForm: FC<T> = (props): ReactElement => {
     register,
     reset,
   } = useForm<TPricingSchema>({
-    defaultValues: { data: { ...props.data }, title: { ...props.title } },
+    defaultValues: { data: props.data, title: props.title },
     resolver: zodResolver(PricingSchema),
   });
 
@@ -48,37 +48,48 @@ const PricingForm: FC<T> = (props): ReactElement => {
     fields.length > 0 && remove(fields.length - 1);
   };
 
-  // TODO: Nanti perbaiki error handle nya
   const handleUpdateTitle = useMutation({
     mutationFn: PUTTitle,
     onError: () => setLoading(false),
-    onSuccess: async () => await queryClient.invalidateQueries({ queryKey: ["GETTitle"] }),
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({ queryKey: ["GETTitle"] });
+      props.setOpenForm(false);
+      props.setIsEditTitle(false);
+      setLoading(false);
+      reset();
+    },
   });
 
   const handleUpdatePricing = useMutation({
     mutationFn: PUTPricing,
-    onError: () => setLoading(false),
   });
 
   const handleUpdateListItem = useMutation({
     mutationFn: PUTListItem,
-    onError: () => setLoading(false),
-    onSuccess: async () => await queryClient.invalidateQueries({ queryKey: ["GETPricing"] }),
   });
 
-  // TODO: Nanti cek lagi kalo API nya sudah tidak RTO lagi
-  const onSubmit: SubmitHandler<TPricingSchema> = async (data) => {
+  const onSubmit: SubmitHandler<TPricingSchema> = async (dt) => {
     setLoading(true);
+
     if (props.isEditTitle) {
-      await handleUpdateTitle.mutateAsync(data.title);
+      handleUpdateTitle.mutate(dt.title);
     } else {
-      await handleUpdatePricing.mutateAsync(data.data);
-      await handleUpdateListItem.mutateAsync(data.data.listItem[0]);
+      try {
+        const [resA, resB] = await Promise.all([
+          await handleUpdatePricing.mutateAsync(dt.data),
+          await handleUpdateListItem.mutateAsync(dt.data.listItem[0]),
+        ]);
+
+        if (!resA || !resB) {
+          setLoading(false);
+        }
+
+        await queryClient.invalidateQueries({ queryKey: ["GETPricing"] });
+        props.setOpenForm(false);
+        setLoading(false);
+        reset();
+      } catch (error) {}
     }
-    props.setOpenForm(false);
-    props.setIsEditTitle(false);
-    setLoading(false);
-    reset();
   };
 
   const TITLE_INPUT_FIELDS_DATA = [
@@ -125,7 +136,7 @@ const PricingForm: FC<T> = (props): ReactElement => {
                 />
               ))}
 
-              <div className="grid grid-cols-2 gap-3 font-semibold">
+              <div className="grid grid-cols-2 gap-5 font-semibold">
                 <Button color="red" disabled={loading} onClick={handleAppend} size="sm" type="button" variant="outline">
                   Add
                 </Button>
@@ -134,28 +145,30 @@ const PricingForm: FC<T> = (props): ReactElement => {
                 </Button>
               </div>
 
-              {fields.map((dt, index) => (
-                <div className="grid grid-cols-2 gap-3" key={dt.id}>
-                  <Input
-                    color="black"
-                    disabled={loading}
-                    errorMessage={errors.data?.listItem?.[0]?.list?.[index]?.qty?.message}
-                    label={`Quantity ${index + 1}`}
-                    type="number"
-                    {...register(`data.listItem.0.list.${index}.qty`, {
-                      valueAsNumber: true,
-                    })}
-                  />
-                  <Input
-                    color="black"
-                    disabled={loading}
-                    errorMessage={errors.data?.listItem?.[0]?.list?.[index]?.label?.message}
-                    label={`Label ${index + 1}`}
-                    type="text"
-                    {...register(`data.listItem.0.list.${index}.label`)}
-                  />
-                </div>
-              ))}
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                {fields.map((dt, index) => (
+                  <div key={dt.id}>
+                    <Input
+                      color="black"
+                      disabled={loading}
+                      errorMessage={errors.data?.listItem?.[0]?.list?.[index]?.qty?.message}
+                      label={`Quantity ${index + 1}`}
+                      type="number"
+                      {...register(`data.listItem.0.list.${index}.qty`, {
+                        valueAsNumber: true,
+                      })}
+                    />
+                    <Input
+                      color="black"
+                      disabled={loading}
+                      errorMessage={errors.data?.listItem?.[0]?.list?.[index]?.label?.message}
+                      label={`Label ${index + 1}`}
+                      type="text"
+                      {...register(`data.listItem.0.list.${index}.label`)}
+                    />
+                  </div>
+                ))}
+              </div>
             </>
           )}
 

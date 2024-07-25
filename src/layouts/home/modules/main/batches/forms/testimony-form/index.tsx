@@ -8,8 +8,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import FormActionButton from "@/src/components/form-action-button";
 import { Button } from "@/src/components/interfaces/buttons/button";
-import { Input } from "@/src/components/interfaces/inputs/input";
-import { TextArea } from "@/src/components/interfaces/inputs/text-area";
+import { Input, TextArea } from "@/src/components/interfaces/inputs";
 import { ContainerModal, ContentModal } from "@/src/components/interfaces/modal";
 import { Title } from "@/src/components/interfaces/title";
 import { TestimonySchema, TTestimonySchema } from "@/src/schemas/home";
@@ -60,60 +59,69 @@ const TestimonyForm: FC<T> = (props): ReactElement => {
     }
   };
 
-  // TODO: Nanti perbaiki error handle nya
   const handleDeleteTestimony = useMutation({
     mutationFn: DELETETestimony,
-    onError: () => setLoading(false),
     onSuccess: async () => {
       setIdsToDelete([]);
-      await queryClient.invalidateQueries({ queryKey: ["GETTestimony"] });
     },
   });
 
   const handleCreateTestimony = useMutation({
     mutationFn: POSTTestimony,
-    onError: () => setLoading(false),
-    onSuccess: async () => await queryClient.invalidateQueries({ queryKey: ["GETTestimony"] }),
   });
 
   const handleUpdateTestimony = useMutation({
     mutationFn: PUTTestimony,
-    onError: () => setLoading(false),
-    onSuccess: async () => await queryClient.invalidateQueries({ queryKey: ["GETTestimony"] }),
   });
 
   const handleUpdateCounting = useMutation({
     mutationFn: PUTCounting,
     onError: () => setLoading(false),
-    onSuccess: async () => await queryClient.invalidateQueries({ queryKey: ["GETCounting"] }),
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({ queryKey: ["GETCounting"] });
+      props.setOpenForm(false);
+      setLoading(false);
+      reset();
+    },
   });
 
-  // TODO: Nanti cek lagi kalo API nya sudah tidak RTO lagi
-  const onSubmit: SubmitHandler<TTestimonySchema> = async (data) => {
+  const onSubmit: SubmitHandler<TTestimonySchema> = async (dt) => {
     setLoading(true);
+
     if (props.isEditTestimony) {
-      idsToDelete.length > 0 && (await handleDeleteTestimony.mutateAsync(idsToDelete));
-      const hasEmptyId = data.data.some((dt) => !dt.id);
-      hasEmptyId && (await handleCreateTestimony.mutateAsync(data.data));
-      await handleUpdateTestimony.mutateAsync(data.data);
+      try {
+        const hasEmptyId = dt.data.some((dt) => !dt.id);
+
+        const [resA, resB, resC] = await Promise.all([
+          idsToDelete.length > 0 && (await handleDeleteTestimony.mutateAsync(idsToDelete)),
+          hasEmptyId && (await handleCreateTestimony.mutateAsync(dt.data)),
+          await handleUpdateTestimony.mutateAsync(dt.data),
+        ]);
+
+        if (!resA || !resB || !resC) {
+          setLoading(false);
+        }
+
+        await queryClient.invalidateQueries({ queryKey: ["GETTestimony"] });
+        props.setOpenForm(false);
+        props.setIsEditTestimony(false);
+        setLoading(false);
+        reset();
+      } catch (error) {}
     } else {
-      await handleUpdateCounting.mutateAsync(data.counting);
+      handleUpdateCounting.mutate(dt.counting);
     }
-    props.setOpenForm(false);
-    props.setIsEditTestimony(false);
-    setLoading(false);
-    reset();
   };
 
   return (
     <ContainerModal>
-      <ContentModal className="max-w-[500px] sm:max-w-[1000px]">
+      <ContentModal className={`${props.isEditTestimony ? "max-w-[1000px]" : "max-w-[500px]"}`}>
         <Title title="UPDATE " titleRed={props.isEditTestimony ? "TESTIMONY" : "COUNTING"} />
 
         <form className="space-y-3 pt-2" onSubmit={handleSubmit(onSubmit)}>
           {props.isEditTestimony && (
             <>
-              <div className="grid grid-cols-2 gap-3 font-semibold">
+              <div className="grid grid-cols-2 gap-5 font-semibold">
                 <Button color="red" disabled={loading} onClick={handleAppend} size="sm" type="button" variant="outline">
                   Add
                 </Button>
@@ -121,7 +129,8 @@ const TestimonyForm: FC<T> = (props): ReactElement => {
                   Remove
                 </Button>
               </div>
-              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                 {fields?.map((dt, index) => (
                   <div key={dt.id ?? index + 1}>
                     <Input

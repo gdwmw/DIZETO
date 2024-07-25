@@ -15,7 +15,7 @@ type T = {
 
 const FormActionButton: FC<T> = (props): ReactElement => {
   return (
-    <div className="grid grid-cols-2 gap-3 font-semibold sm:flex sm:items-center">
+    <div className="grid grid-cols-2 gap-5 font-semibold sm:flex sm:items-center">
       <Button
         className={`gap-1 sm:w-full ${props.loading ? "cursor-wait" : ""}`}
         color="red"

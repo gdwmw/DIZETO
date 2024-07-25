@@ -7,8 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import FormActionButton from "@/src/components/form-action-button";
-import { Input } from "@/src/components/interfaces/inputs/input";
-import { TextArea } from "@/src/components/interfaces/inputs/text-area";
+import { Input, TextArea } from "@/src/components/interfaces/inputs";
 import { ContainerModal, ContentModal } from "@/src/components/interfaces/modal";
 import { Title } from "@/src/components/interfaces/title";
 import { AboutSchema, TAboutSchema } from "@/src/schemas/home";
@@ -31,32 +30,34 @@ const AboutForm: FC<T> = (props): ReactElement => {
     register,
     reset,
   } = useForm<TAboutSchema>({
-    defaultValues: { data: { ...props.data }, title: { ...props.title } },
+    defaultValues: { data: props.data, title: props.title },
     resolver: zodResolver(AboutSchema),
   });
 
-  // TODO: Nanti perbaiki error handle nya
   const handleUpdateTitle = useMutation({
     mutationFn: PUTTitle,
-    onError: () => setLoading(false),
-    onSuccess: async () => await queryClient.invalidateQueries({ queryKey: ["GETTitle"] }),
   });
 
   const handleUpdateAbout = useMutation({
     mutationFn: PUTAbout,
-    onError: () => setLoading(false),
-    onMutate: () => setLoading(true),
-    onSuccess: async () => {
+  });
+
+  const onSubmit: SubmitHandler<TAboutSchema> = async (dt) => {
+    setLoading(true);
+
+    try {
+      const [resA, resB] = await Promise.all([await handleUpdateTitle.mutateAsync(dt.title), await handleUpdateAbout.mutateAsync(dt.data)]);
+
+      if (!resA || !resB) {
+        setLoading(false);
+      }
+
+      await queryClient.invalidateQueries({ queryKey: ["GETTitle"] });
       await queryClient.invalidateQueries({ queryKey: ["GETAbout"] });
       props.setOpenForm(false);
       setLoading(false);
       reset();
-    },
-  });
-
-  const onSubmit: SubmitHandler<TAboutSchema> = async (data) => {
-    handleUpdateTitle.mutate(data.title);
-    handleUpdateAbout.mutate(data.data);
+    } catch (error) {}
   };
 
   const INPUT_FIELDS_DATA = [

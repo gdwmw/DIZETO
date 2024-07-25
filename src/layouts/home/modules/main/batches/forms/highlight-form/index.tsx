@@ -30,38 +30,42 @@ const HighlightForm: FC<T> = (props): ReactElement => {
     register,
     reset,
   } = useForm<THighlightSchema>({
-    defaultValues: { data: { ...props.data }, title: { ...props.title } },
+    defaultValues: { data: props.data, title: props.title },
     resolver: zodResolver(HighlightSchema),
   });
 
-  // TODO: Nanti perbaiki error handle nya
   const handleUpdateTitle = useMutation({
     mutationFn: PUTTitle,
-    onError: () => setLoading(false),
-    onSuccess: async () => await queryClient.invalidateQueries({ queryKey: ["GETTitle"] }),
   });
 
   const handleUpdateHighlight = useMutation({
     mutationFn: PUTHighlight,
-    onError: () => setLoading(false),
   });
 
   const handleUpdateimages = useMutation({
     mutationFn: PUTImages,
-    onError: () => setLoading(false),
-    onSuccess: async () => {
-      await queryClient.invalidateQueries({ queryKey: ["GETHighlight"] });
-      props.setOpenForm(false);
-      reset();
-    },
   });
 
-  const onSubmit: SubmitHandler<THighlightSchema> = async (data) => {
+  const onSubmit: SubmitHandler<THighlightSchema> = async (dt) => {
     setLoading(true);
-    handleUpdateTitle.mutate(data.title);
-    await handleUpdateHighlight.mutateAsync(data.data);
-    await handleUpdateimages.mutateAsync(data.data.images);
-    setLoading(false);
+
+    try {
+      const [resA, resB, resC] = await Promise.all([
+        await handleUpdateTitle.mutateAsync(dt.title),
+        await handleUpdateHighlight.mutateAsync(dt.data),
+        await handleUpdateimages.mutateAsync(dt.data.images),
+      ]);
+
+      if (!resA || !resB || !resC) {
+        setLoading(false);
+      }
+
+      await queryClient.invalidateQueries({ queryKey: ["GETTitle"] });
+      await queryClient.invalidateQueries({ queryKey: ["GETHighlight"] });
+      props.setOpenForm(false);
+      setLoading(false);
+      reset();
+    } catch (error) {}
   };
 
   const INPUT_FIELDS_DATA = [
@@ -88,26 +92,28 @@ const HighlightForm: FC<T> = (props): ReactElement => {
             />
           ))}
 
-          {props.data?.images.map((dt, index) => (
-            <div className="grid grid-cols-2 gap-3" key={dt.id}>
-              <Input
-                color="black"
-                disabled={loading}
-                errorMessage={errors.data?.images?.[index]?.message}
-                label={`Thumbnail URL ${index + 1}`}
-                type="text"
-                {...register(`data.images.${index}.thumbnailURL`)}
-              />
-              <Input
-                color="black"
-                disabled={loading}
-                errorMessage={errors.data?.images?.[index]?.message}
-                label={`Image URL ${index + 1}`}
-                type="text"
-                {...register(`data.images.${index}.imgURL`)}
-              />
-            </div>
-          ))}
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+            {props.data?.images.map((dt, index) => (
+              <div key={dt.id}>
+                <Input
+                  color="black"
+                  disabled={loading}
+                  errorMessage={errors.data?.images?.[index]?.message}
+                  label={`Thumbnail URL ${index + 1}`}
+                  type="text"
+                  {...register(`data.images.${index}.thumbnailURL`)}
+                />
+                <Input
+                  color="black"
+                  disabled={loading}
+                  errorMessage={errors.data?.images?.[index]?.message}
+                  label={`Image URL ${index + 1}`}
+                  type="text"
+                  {...register(`data.images.${index}.imgURL`)}
+                />
+              </div>
+            ))}
+          </div>
 
           <FormActionButton
             loading={loading}
