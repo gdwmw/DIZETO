@@ -40,47 +40,49 @@ const PricingForm: FC<T> = (props): ReactElement => {
 
   const { append, fields, remove } = useFieldArray({ control, name: "data.listItem.0.list" });
 
+  const handleAppend = () => {
+    fields.length < 10 && append({ label: "", qty: 0 });
+  };
+
+  const handleRemove = () => {
+    fields.length > 0 && remove(fields.length - 1);
+  };
+
+  // TODO: Nanti perbaiki error handle nya
   const handleUpdateTitle = useMutation({
     mutationFn: PUTTitle,
     onError: () => setLoading(false),
-    onMutate: () => setLoading(true),
-    onSuccess: async () => {
-      await queryClient.invalidateQueries({ queryKey: ["GETTitle"] });
-      props.setIsEditTitle(false);
-      props.setOpenForm(false);
-      setLoading(false);
-      reset();
-    },
+    onSuccess: async () => await queryClient.invalidateQueries({ queryKey: ["GETTitle"] }),
   });
 
   const handleUpdatePricing = useMutation({
     mutationFn: PUTPricing,
+    onError: () => setLoading(false),
   });
 
-  const handleUpdate = useMutation({
+  const handleUpdateListItem = useMutation({
     mutationFn: PUTListItem,
     onError: () => setLoading(false),
-    onMutate: () => setLoading(true),
-    onSuccess: async () => {
-      await queryClient.invalidateQueries({ queryKey: ["GETPricing"] });
-      props.setOpenForm(false);
-      setLoading(false);
-      reset();
-    },
+    onSuccess: async () => await queryClient.invalidateQueries({ queryKey: ["GETPricing"] }),
   });
 
   const onSubmit: SubmitHandler<TPricingSchema> = async (data) => {
-    props.isEditTitle && handleUpdateTitle.mutate(data.title);
-    !props.isEditTitle && handleUpdatePricing.mutate(data.data);
-    !props.isEditTitle && handleUpdate.mutate(data.data.listItem[0]);
+    setLoading(true);
+    props.isEditTitle && (await handleUpdateTitle.mutateAsync(data.title));
+    !props.isEditTitle && (await handleUpdatePricing.mutateAsync(data.data));
+    !props.isEditTitle && (await handleUpdateListItem.mutateAsync(data.data.listItem[0]));
+    props.setIsEditTitle(false);
+    props.setOpenForm(false);
+    setLoading(false);
+    reset();
   };
 
-  const TITLE_INPUT_FIELDS = [
+  const TITLE_INPUT_FIELDS_DATA = [
     { error: errors.title?.title?.message, label: "Title", name: "title.title", type: "text" },
     { error: errors.title?.titleRed?.message, label: "Title Red", name: "title.titleRed", type: "text" },
   ];
 
-  const PACKAGE_INPUT_FIELDS = [
+  const PACKAGE_INPUT_FIELDS_DATA = [
     { error: errors.data?.price?.message, label: "Price", name: "data.price", type: "text" },
     { error: errors.data?.pack?.message, label: "Package", name: "data.pack", type: "text" },
     { error: errors.data?.category?.message, label: "Category", name: "data.category", type: "text" },
@@ -93,44 +95,37 @@ const PricingForm: FC<T> = (props): ReactElement => {
 
         <form className="space-y-3 pt-2" onSubmit={handleSubmit(onSubmit)}>
           {props.isEditTitle &&
-            TITLE_INPUT_FIELDS.map((field) => (
+            TITLE_INPUT_FIELDS_DATA.map((dt) => (
               <Input
                 color="black"
                 disabled={loading}
-                errorMessage={field.error}
-                key={field.name}
-                label={field.label}
-                type={field.type}
-                {...register(field.name as any)}
+                errorMessage={dt.error}
+                key={dt.name}
+                label={dt.label}
+                type={dt.type}
+                {...register(dt.name as any)}
               />
             ))}
 
           {!props.isEditTitle && (
             <>
-              {PACKAGE_INPUT_FIELDS.map((field) => (
+              {PACKAGE_INPUT_FIELDS_DATA.map((dt) => (
                 <Input
                   color="black"
                   disabled={loading}
-                  errorMessage={field.error}
-                  key={field.name}
-                  label={field.label}
-                  type={field.type}
-                  {...register(field.name as any)}
+                  errorMessage={dt.error}
+                  key={dt.name}
+                  label={dt.label}
+                  type={dt.type}
+                  {...register(dt.name as any)}
                 />
               ))}
 
               <div className="grid grid-cols-2 gap-3 font-semibold">
-                <Button
-                  color="red"
-                  disabled={loading}
-                  onClick={() => fields.length < 10 && append({ label: "", qty: 0 })}
-                  size="sm"
-                  type="button"
-                  variant="outline"
-                >
+                <Button color="red" disabled={loading} onClick={handleAppend} size="sm" type="button" variant="outline">
                   Add
                 </Button>
-                <Button color="red" disabled={loading} onClick={() => remove(fields.length - 1)} size="sm" type="button" variant="outline">
+                <Button color="red" disabled={loading} onClick={handleRemove} size="sm" type="button" variant="outline">
                   Remove
                 </Button>
               </div>

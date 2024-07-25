@@ -35,14 +35,14 @@ const AboutForm: FC<T> = (props): ReactElement => {
     resolver: zodResolver(AboutSchema),
   });
 
+  // TODO: Nanti perbaiki error handle nya
   const handleUpdateTitle = useMutation({
     mutationFn: PUTTitle,
-    onSuccess: async () => {
-      await queryClient.invalidateQueries({ queryKey: ["GETTitle"] });
-    },
+    onError: () => setLoading(false),
+    onSuccess: async () => await queryClient.invalidateQueries({ queryKey: ["GETTitle"] }),
   });
 
-  const handleUpdate = useMutation({
+  const handleUpdateAbout = useMutation({
     mutationFn: PUTAbout,
     onError: () => setLoading(false),
     onMutate: () => setLoading(true),
@@ -56,10 +56,10 @@ const AboutForm: FC<T> = (props): ReactElement => {
 
   const onSubmit: SubmitHandler<TAboutSchema> = async (data) => {
     handleUpdateTitle.mutate(data.title);
-    handleUpdate.mutate(data.data);
+    handleUpdateAbout.mutate(data.data);
   };
 
-  const INPUT_FIELDS = [
+  const INPUT_FIELDS_DATA = [
     { errorMessage: errors.title?.title?.message, label: "Title", name: "title.title", tag: "input", type: "text" },
     { errorMessage: errors.title?.titleRed?.message, label: "Title Red", name: "title.titleRed", tag: "input", type: "text" },
     { errorMessage: errors.data?.subTitle?.message, label: "Sub Title", name: "data.subTitle", tag: "input", type: "text" },
@@ -74,25 +74,25 @@ const AboutForm: FC<T> = (props): ReactElement => {
         <Title title="UPDATE " titleRed="ABOUT" />
 
         <form className="space-y-3 pt-2" onSubmit={handleSubmit(onSubmit)}>
-          {INPUT_FIELDS.map((field) =>
-            field.tag === "input" ? (
+          {INPUT_FIELDS_DATA.map((dt) =>
+            dt.tag === "input" ? (
               <Input
                 color="black"
                 disabled={loading}
-                errorMessage={field.errorMessage}
-                key={field.name}
-                label={field.label}
-                type={field.type}
-                {...register(field.name as any)}
+                errorMessage={dt.errorMessage}
+                key={dt.name}
+                label={dt.label}
+                type={dt.type}
+                {...register(dt.name as any)}
               />
             ) : (
               <TextArea
                 color="black"
                 disabled={loading}
-                errorMessage={field.errorMessage}
-                key={field.name}
-                label={field.label}
-                {...register(field.name as any)}
+                errorMessage={dt.errorMessage}
+                key={dt.name}
+                label={dt.label}
+                {...register(dt.name as any)}
               />
             ),
           )}

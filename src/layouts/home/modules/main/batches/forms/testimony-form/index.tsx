@@ -61,22 +61,22 @@ const TestimonyForm: FC<T> = (props): ReactElement => {
   const handleDeleteTestimony = useMutation({
     mutationFn: DELETETestimony,
     onError: () => setLoading(false),
-    onSuccess: () => {
+    onSuccess: async () => {
       setIdsToDelete([]);
+      await queryClient.invalidateQueries({ queryKey: ["GETTestimony"] });
     },
   });
 
   const handleCreateTestimony = useMutation({
     mutationFn: POSTTestimony,
     onError: () => setLoading(false),
+    onSuccess: async () => await queryClient.invalidateQueries({ queryKey: ["GETTestimony"] }),
   });
 
   const handleUpdateTestimony = useMutation({
     mutationFn: PUTTestimony,
     onError: () => setLoading(false),
-    onSuccess: async () => {
-      await queryClient.invalidateQueries({ queryKey: ["GETTestimony"] });
-    },
+    onSuccess: async () => await queryClient.invalidateQueries({ queryKey: ["GETTestimony"] }),
   });
 
   const onSubmit: SubmitHandler<TTestimonySchema> = async (data) => {
