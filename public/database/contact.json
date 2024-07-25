@@ -1,13 +1,22 @@
 [
   {
-    "addressUrl": "https://www.google.com/search?q=dizeto&oq=dizeto&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgcIARAAGKIEMgcIAhAAGKIEMgcIAxAAGKIEMgYIBBBFGDwyBggFEEUYPDIGCAYQRRhAMgYIBxBFGDwyBggIEEUYPNIBCDQwMzlqMGo5qAIAsAIA&sourceid=chrome&ie=UTF-8",
-    "emailUrl": "https://mail.google.com/mail/u/?authuser=dizetobs@gmail.com",
-    "phoneUrl": "/",
-    "websiteUrl": "https://dizeto.vercel.app/",
-    "addressLabel": "Blk. A-B No.a8, Cibeunying, Kec. Cimenyan, Kabupaten Bandung, Jawa Barat 40191, Indonesia",
-    "emailLabel": "dizetobs@gmail.com",
-    "phoneLabel": "+62 000-0000-0000",
-    "websiteLabel": "https://dizeto.vercel.app/",
+    "label": "Blk. A-B No.a8, Cibeunying, Kec. Cimenyan, Kabupaten Bandung, Jawa Barat 40191, Indonesia",
+    "href": "https://www.google.com/search?q=dizeto&oq=dizeto&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgcIARAAGKIEMgcIAhAAGKIEMgcIAxAAGKIEMgYIBBBFGDwyBggFEEUYPDIGCAYQRRhAMgYIBxBFGDwyBggIEEUYPNIBCDQwMzlqMGo5qAIAsAIA&sourceid=chrome&ie=UTF-8",
     "id": "1"
+  },
+  {
+    "label": "dizetobs@gmail.com",
+    "href": "https://mail.google.com/mail/u/?authuser=dizetobs@gmail.com",
+    "id": "2"
+  },
+  {
+    "label": "+62 000-0000-0000",
+    "href": "/",
+    "id": "3"
+  },
+  {
+    "label": "https://dizeto.vercel.app/",
+    "href": "https://dizeto.vercel.app/",
+    "id": "4"
   }
 ]

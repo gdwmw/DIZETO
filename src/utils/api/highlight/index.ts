@@ -16,7 +16,9 @@ export const GETHighlight = async (): Promise<IHighlight> => {
       throw new Error(`Failed to fetch: Highlight with status ${res.status}`);
     }
 
-    return await res.json();
+    const data = await res.json();
+
+    return data[0];
   } catch (error) {
     console.log(error);
     throw error;
@@ -25,7 +27,7 @@ export const GETHighlight = async (): Promise<IHighlight> => {
 
 export const PUTHighlight = async (data: IHighlight): Promise<IHighlight> => {
   try {
-    const res = await fetch(API_URL, {
+    const res = await fetch(`${API_URL}/1`, {
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",

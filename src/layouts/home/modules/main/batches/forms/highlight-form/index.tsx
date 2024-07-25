@@ -12,7 +12,7 @@ import { ContainerModal, ContentModal } from "@/src/components/interfaces/modal"
 import { Title } from "@/src/components/interfaces/title";
 import { HighlightSchema, THighlightSchema } from "@/src/schemas/home";
 import { IHighlight, ITitle } from "@/src/types/api";
-import { PUTHighlight, PUTImageFile, PUTTitle } from "@/src/utils/api";
+import { PUTHighlight, PUTImages, PUTTitle } from "@/src/utils/api";
 
 type T = {
   data: IHighlight | undefined;
@@ -46,8 +46,8 @@ const HighlightForm: FC<T> = (props): ReactElement => {
     onError: () => setLoading(false),
   });
 
-  const handleUpdateImageFile = useMutation({
-    mutationFn: PUTImageFile,
+  const handleUpdateimages = useMutation({
+    mutationFn: PUTImages,
     onError: () => setLoading(false),
     onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: ["GETHighlight"] });
@@ -60,7 +60,7 @@ const HighlightForm: FC<T> = (props): ReactElement => {
     setLoading(true);
     handleUpdateTitle.mutate(data.title);
     await handleUpdateHighlight.mutateAsync(data.data);
-    await handleUpdateImageFile.mutateAsync(data.data.imageFile);
+    await handleUpdateimages.mutateAsync(data.data.images);
     setLoading(false);
   };
 
@@ -88,23 +88,23 @@ const HighlightForm: FC<T> = (props): ReactElement => {
             />
           ))}
 
-          {props.data?.imageFile.map((dt, index) => (
+          {props.data?.images.map((dt, index) => (
             <div className="grid grid-cols-2 gap-3" key={dt.id}>
               <Input
                 color="black"
                 disabled={loading}
-                errorMessage={errors.data?.imageFile?.[index]?.message}
+                errorMessage={errors.data?.images?.[index]?.message}
                 label={`Thumbnail URL ${index + 1}`}
                 type="text"
-                {...register(`data.imageFile.${index}.thumbnailURL`)}
+                {...register(`data.images.${index}.thumbnailURL`)}
               />
               <Input
                 color="black"
                 disabled={loading}
-                errorMessage={errors.data?.imageFile?.[index]?.message}
+                errorMessage={errors.data?.images?.[index]?.message}
                 label={`Image URL ${index + 1}`}
                 type="text"
-                {...register(`data.imageFile.${index}.imgURL`)}
+                {...register(`data.images.${index}.imgURL`)}
               />
             </div>
           ))}

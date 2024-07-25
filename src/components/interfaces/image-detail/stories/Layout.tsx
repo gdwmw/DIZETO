@@ -4,7 +4,7 @@ import ImageDetail, { TImageDetail } from "..";
 
 const IMAGE_DETAIL_DATA = {
   copyright: "© 2022 DIZETO. All rights reserved.",
-  imageFile: [
+  images: [
     {
       imgURL: "https://dizeto-images.vercel.app/assets/images/highlight/DZT_CC1.webp",
     },

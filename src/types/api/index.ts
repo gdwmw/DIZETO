@@ -60,7 +60,7 @@ export interface IExample {
 
 // ----------------------------
 
-export interface IImageFile {
+export interface IImages {
   highlightId: string;
   id: string;
   imgURL: string;
@@ -70,7 +70,7 @@ export interface IImageFile {
 export interface IHighlight {
   copyright: string;
   id: string;
-  imageFile: IImageFile[];
+  images: IImages[];
 }
 
 // ----------------------------

@@ -8,7 +8,7 @@ export { GETContact, PUTContact } from "./contact";
 export { GETCounting, PUTCounting } from "./counting";
 export { DELETEExample, GETExample, POSTExample, PUTExample } from "./example";
 export { GETHighlight, PUTHighlight } from "./highlight";
-export { PUTImageFile } from "./highlight/image-file";
+export { PUTImages } from "./highlight/images";
 export { GETPricing, PUTPricing } from "./pricing";
 export { PUTListItem } from "./pricing/list-item";
 export { DELETETestimony, GETTestimony, POSTTestimony, PUTTestimony } from "./testimony";

@@ -61,7 +61,7 @@ export const HighlightSchema = z.object({
       .min(16, { message: errorMessage.string.min("Copyright", 16) })
       .max(48, { message: errorMessage.string.max("Copyright", 48) }),
     id: z.string(),
-    imageFile: z.array(
+    images: z.array(
       z.object({
         highlightId: z.string(),
         id: z.string(),

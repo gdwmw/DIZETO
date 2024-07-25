@@ -27,7 +27,7 @@ const ImageDetail: FC<TImageDetail> = ({ data, imageIndex, setImageIndex, setOpe
         setImageIndex((prev) => prev - 1);
         setTransitionLoaded((prev) => !prev);
       }
-      if (loaded && data && data.imageFile && imageIndex < data.imageFile.length - 1 && e.key === "ArrowRight") {
+      if (loaded && data && data.images && imageIndex < data.images.length - 1 && e.key === "ArrowRight") {
         setImageIndex((prev) => prev + 1);
         setTransitionLoaded((prev) => !prev);
       }
@@ -82,7 +82,7 @@ const ImageDetail: FC<TImageDetail> = ({ data, imageIndex, setImageIndex, setOpe
             </Button>
           )}
 
-          {loaded && data && data.imageFile && imageIndex < data.imageFile.length - 1 && (
+          {loaded && data && data.images && imageIndex < data.images.length - 1 && (
             <Button
               className="absolute inset-y-0 right-0 w-full max-w-[30%] justify-end pr-3 sm:pr-12"
               color="white"
@@ -106,7 +106,7 @@ const ImageDetail: FC<TImageDetail> = ({ data, imageIndex, setImageIndex, setOpe
               setLoaded(true);
               setTransitionLoaded((prev) => !prev);
             }}
-            src={data?.imageFile?.[imageIndex]?.imgURL ?? ""}
+            src={data?.images?.[imageIndex]?.imgURL ?? ""}
             width={2000}
           />
         </div>
@@ -115,7 +115,7 @@ const ImageDetail: FC<TImageDetail> = ({ data, imageIndex, setImageIndex, setOpe
           <span>{data?.copyright}</span>
           <br />
           <span>
-            Image {imageIndex + 1} of {data?.imageFile?.length}
+            Image {imageIndex + 1} of {data?.images?.length}
           </span>
         </div>
       </div>

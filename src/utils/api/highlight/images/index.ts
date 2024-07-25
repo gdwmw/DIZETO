@@ -1,6 +1,6 @@
 "use server";
 
-import { IImageFile } from "@/src/types/api";
+import { IImages } from "@/src/types/api";
 
 const API_URL = process.env.HIGHLIGHT_URL;
 
@@ -8,10 +8,10 @@ if (!API_URL) {
   throw new Error("The API URL is not defined. Please check your environment variables.");
 }
 
-export const PUTImageFile = async (data: IImageFile[]): Promise<IImageFile[]> => {
+export const PUTImages = async (data: IImages[]): Promise<IImages[]> => {
   try {
     const promises = data.map(async (dt) => {
-      const res = await fetch(`${API_URL}/imageFile/${dt.id}`, {
+      const res = await fetch(`${API_URL}/images/${dt.id}`, {
         body: JSON.stringify(dt),
         headers: {
           "Content-Type": "application/json",
@@ -20,7 +20,7 @@ export const PUTImageFile = async (data: IImageFile[]): Promise<IImageFile[]> =>
       });
 
       if (!res.ok) {
-        throw new Error(`Failed to put: Image File id ${dt.id} with status ${res.status}`);
+        throw new Error(`Failed to put: Image id ${dt.id} with status ${res.status}`);
       }
 
       return await res.json();
