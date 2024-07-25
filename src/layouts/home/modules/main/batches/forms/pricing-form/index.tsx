@@ -66,6 +66,7 @@ const PricingForm: FC<T> = (props): ReactElement => {
     onSuccess: async () => await queryClient.invalidateQueries({ queryKey: ["GETPricing"] }),
   });
 
+  // TODO: Nanti cek lagi kalo API nya sudah tidak RTO lagi
   const onSubmit: SubmitHandler<TPricingSchema> = async (data) => {
     setLoading(true);
     if (props.isEditTitle) {
