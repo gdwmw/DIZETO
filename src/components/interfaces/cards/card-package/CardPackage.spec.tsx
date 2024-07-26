@@ -1,6 +1,21 @@
+import { ReactNode } from "react";
+
 import { render, screen } from "@testing-library/react";
 
 import { CardPackage } from "./";
+
+jest.mock("@/src/libs/providers", () => ({
+  NextAuthProvider: ({ children }: { children: ReactNode }) => <div>{children}</div>,
+}));
+
+jest.mock("next-auth/react", () => ({
+  useSession: jest.fn(() => ({
+    data: { user: { role: "admin" } },
+    status: "authenticated",
+  })),
+}));
+
+import { NextAuthProvider } from "@/src/libs/providers";
 
 const PRICING_DATA = {
   category: "EXAMPLE\nTEXT",
@@ -23,7 +38,11 @@ const PRICING_DATA = {
   price: "1.0",
 };
 
-const component = <CardPackage {...PRICING_DATA} />;
+const component = (
+  <NextAuthProvider>
+    <CardPackage {...PRICING_DATA} />
+  </NextAuthProvider>
+);
 
 describe("CardPackage Component Testing", () => {
   it("should render the price correctly", () => {
