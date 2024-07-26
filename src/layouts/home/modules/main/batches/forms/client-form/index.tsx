@@ -88,10 +88,12 @@ const ClientForm: FC<T> = (props): ReactElement => {
       // TODO: Nanti perbaiki error handle nya
       if (!resA || !resD) {
         setLoading(false);
+        return;
       }
 
       if ((idsToDelete.length > 0 && !resB) || (hasEmptyId && !resC)) {
         setLoading(false);
+        return;
       }
 
       await queryClient.invalidateQueries({ queryKey: ["GETTitle"] });

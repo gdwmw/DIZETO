@@ -51,6 +51,7 @@ const ContactForm: FC<T> = (props): ReactElement => {
       // TODO: Nanti perbaiki error handle nya
       if (!resA || !resB) {
         setLoading(false);
+        return;
       }
 
       await queryClient.invalidateQueries({ queryKey: ["GETTitle"] });

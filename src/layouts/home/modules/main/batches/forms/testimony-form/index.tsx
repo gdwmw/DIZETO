@@ -98,10 +98,12 @@ const TestimonyForm: FC<T> = (props): ReactElement => {
         // TODO: Nanti perbaiki error handle nya
         if ((idsToDelete.length > 0 && !resA) || (hasEmptyId && !resB)) {
           setLoading(false);
+          return;
         }
 
         if (!resC) {
           setLoading(false);
+          return;
         }
 
         await queryClient.invalidateQueries({ queryKey: ["GETTestimony"] });

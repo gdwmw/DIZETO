@@ -59,6 +59,7 @@ const HighlightForm: FC<T> = (props): ReactElement => {
       // TODO: Nanti perbaiki error handle nya
       if (!resA || !resB || !resC) {
         setLoading(false);
+        return;
       }
 
       await queryClient.invalidateQueries({ queryKey: ["GETTitle"] });
