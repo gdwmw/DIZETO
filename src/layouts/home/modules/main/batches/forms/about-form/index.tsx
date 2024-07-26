@@ -48,6 +48,7 @@ const AboutForm: FC<T> = (props): ReactElement => {
     try {
       const [resA, resB] = await Promise.all([await handleUpdateTitle.mutateAsync(dt.title), await handleUpdateAbout.mutateAsync(dt.data)]);
 
+      // TODO: Nanti perbaiki error handle nya
       if (!resA || !resB) {
         setLoading(false);
       }
@@ -61,12 +62,12 @@ const AboutForm: FC<T> = (props): ReactElement => {
   };
 
   const INPUT_FIELDS_DATA = [
-    { errorMessage: errors.title?.title?.message, label: "Title", name: "title.title", tag: "input", type: "text" },
-    { errorMessage: errors.title?.titleRed?.message, label: "Title Red", name: "title.titleRed", tag: "input", type: "text" },
-    { errorMessage: errors.data?.subTitle?.message, label: "Sub Title", name: "data.subTitle", tag: "input", type: "text" },
-    { errorMessage: errors.data?.description?.message, label: "Description", name: "data.description", tag: "textarea" },
-    { errorMessage: errors.data?.note?.message, label: "Note", name: "data.note", tag: "input", type: "text" },
-    { errorMessage: errors.data?.logoURL?.message, label: "Logo URL", name: "data.logoURL", tag: "input", type: "text" },
+    { errorMessage: errors.title?.title?.message, id: "1", label: "Title", name: "title.title", tag: "input", type: "text" },
+    { errorMessage: errors.title?.titleRed?.message, id: "2", label: "Title Red", name: "title.titleRed", tag: "input", type: "text" },
+    { errorMessage: errors.data?.subTitle?.message, id: "3", label: "Sub Title", name: "data.subTitle", tag: "input", type: "text" },
+    { errorMessage: errors.data?.description?.message, id: "4", label: "Description", name: "data.description", tag: "textarea" },
+    { errorMessage: errors.data?.note?.message, id: "5", label: "Note", name: "data.note", tag: "input", type: "text" },
+    { errorMessage: errors.data?.logoURL?.message, id: "6", label: "Logo URL", name: "data.logoURL", tag: "input", type: "text" },
   ];
 
   return (
@@ -81,20 +82,13 @@ const AboutForm: FC<T> = (props): ReactElement => {
                 color="black"
                 disabled={loading}
                 errorMessage={dt.errorMessage}
-                key={dt.name}
+                key={dt.id}
                 label={dt.label}
                 type={dt.type}
                 {...register(dt.name as any)}
               />
             ) : (
-              <TextArea
-                color="black"
-                disabled={loading}
-                errorMessage={dt.errorMessage}
-                key={dt.name}
-                label={dt.label}
-                {...register(dt.name as any)}
-              />
+              <TextArea color="black" disabled={loading} errorMessage={dt.errorMessage} key={dt.id} label={dt.label} {...register(dt.name as any)} />
             ),
           )}
 

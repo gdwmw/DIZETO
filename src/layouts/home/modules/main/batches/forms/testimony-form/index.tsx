@@ -61,9 +61,6 @@ const TestimonyForm: FC<T> = (props): ReactElement => {
 
   const handleDeleteTestimony = useMutation({
     mutationFn: DELETETestimony,
-    onSuccess: async () => {
-      setIdsToDelete([]);
-    },
   });
 
   const handleCreateTestimony = useMutation({
@@ -98,13 +95,19 @@ const TestimonyForm: FC<T> = (props): ReactElement => {
           await handleUpdateTestimony.mutateAsync(dt.data),
         ]);
 
-        if (!resA || !resB || !resC) {
+        // TODO: Nanti perbaiki error handle nya
+        if ((idsToDelete.length > 0 && !resA) || (hasEmptyId && !resB)) {
+          setLoading(false);
+        }
+
+        if (!resC) {
           setLoading(false);
         }
 
         await queryClient.invalidateQueries({ queryKey: ["GETTestimony"] });
         props.setOpenForm(false);
         props.setIsEditTestimony(false);
+        setIdsToDelete([]);
         setLoading(false);
         reset();
       } catch (error) {}

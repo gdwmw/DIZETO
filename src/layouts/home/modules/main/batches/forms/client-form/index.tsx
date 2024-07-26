@@ -63,9 +63,6 @@ const ClientForm: FC<T> = (props): ReactElement => {
 
   const handleDeleteClient = useMutation({
     mutationFn: DELETEClient,
-    onSuccess: async () => {
-      setIdsToDelete([]);
-    },
   });
 
   const handleCreateClient = useMutation({
@@ -89,21 +86,27 @@ const ClientForm: FC<T> = (props): ReactElement => {
         await handleUpdateClient.mutateAsync(dt.data),
       ]);
 
-      if (!resA || !resB || !resC || !resD) {
+      // TODO: Nanti perbaiki error handle nya
+      if (!resA || !resD) {
+        setLoading(false);
+      }
+
+      if ((idsToDelete.length > 0 && !resB) || (hasEmptyId && !resC)) {
         setLoading(false);
       }
 
       await queryClient.invalidateQueries({ queryKey: ["GETTitle"] });
       await queryClient.invalidateQueries({ queryKey: ["GETClient"] });
       props.setOpenForm(false);
+      setIdsToDelete([]);
       setLoading(false);
       reset();
     } catch (error) {}
   };
 
   const INPUT_FIELDS_DATA = [
-    { errorMessage: errors.title?.title?.message, label: "Title", name: "title.title", tag: "input", type: "text" },
-    { errorMessage: errors.title?.titleRed?.message, label: "Title Red", name: "title.titleRed", tag: "input", type: "text" },
+    { errorMessage: errors.title?.title?.message, id: "1", label: "Title", name: "title.title", tag: "input", type: "text" },
+    { errorMessage: errors.title?.titleRed?.message, id: "2", label: "Title Red", name: "title.titleRed", tag: "input", type: "text" },
   ];
 
   return (
@@ -117,13 +120,14 @@ const ClientForm: FC<T> = (props): ReactElement => {
               color="black"
               disabled={loading}
               errorMessage={dt.errorMessage}
-              key={dt.name}
+              key={dt.id}
               label={dt.label}
               type={dt.type}
               {...register(dt.name as any)}
             />
           ))}
 
+          {/* TODO: Nanti jadikan ini component */}
           <div className="grid grid-cols-2 gap-5 font-semibold">
             <Button color="red" disabled={loading} onClick={handleAppend} size="sm" type="button" variant="outline">
               Add

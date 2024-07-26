@@ -80,6 +80,7 @@ const PricingForm: FC<T> = (props): ReactElement => {
           await handleUpdateListItem.mutateAsync(dt.data.listItem[0]),
         ]);
 
+        // TODO: Nanti perbaiki error handle nya
         if (!resA || !resB) {
           setLoading(false);
         }
@@ -93,14 +94,14 @@ const PricingForm: FC<T> = (props): ReactElement => {
   };
 
   const TITLE_INPUT_FIELDS_DATA = [
-    { error: errors.title?.title?.message, label: "Title", name: "title.title", type: "text" },
-    { error: errors.title?.titleRed?.message, label: "Title Red", name: "title.titleRed", type: "text" },
+    { error: errors.title?.title?.message, id: "1", label: "Title", name: "title.title", type: "text" },
+    { error: errors.title?.titleRed?.message, id: "2", label: "Title Red", name: "title.titleRed", type: "text" },
   ];
 
   const PACKAGE_INPUT_FIELDS_DATA = [
-    { error: errors.data?.price?.message, label: "Price", name: "data.price", type: "text" },
-    { error: errors.data?.pack?.message, label: "Package", name: "data.pack", type: "text" },
-    { error: errors.data?.category?.message, label: "Category", name: "data.category", type: "text" },
+    { error: errors.data?.price?.message, id: "1", label: "Price", name: "data.price", type: "text" },
+    { error: errors.data?.pack?.message, id: "2", label: "Package", name: "data.pack", type: "text" },
+    { error: errors.data?.category?.message, id: "3", label: "Category", name: "data.category", type: "text" },
   ];
 
   return (
@@ -115,7 +116,7 @@ const PricingForm: FC<T> = (props): ReactElement => {
                 color="black"
                 disabled={loading}
                 errorMessage={dt.error}
-                key={dt.name}
+                key={dt.id}
                 label={dt.label}
                 type={dt.type}
                 {...register(dt.name as any)}
@@ -129,7 +130,7 @@ const PricingForm: FC<T> = (props): ReactElement => {
                   color="black"
                   disabled={loading}
                   errorMessage={dt.error}
-                  key={dt.name}
+                  key={dt.id}
                   label={dt.label}
                   type={dt.type}
                   {...register(dt.name as any)}

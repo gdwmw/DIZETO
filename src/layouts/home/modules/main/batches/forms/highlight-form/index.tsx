@@ -56,6 +56,7 @@ const HighlightForm: FC<T> = (props): ReactElement => {
         await handleUpdateimages.mutateAsync(dt.data.images),
       ]);
 
+      // TODO: Nanti perbaiki error handle nya
       if (!resA || !resB || !resC) {
         setLoading(false);
       }
@@ -69,9 +70,9 @@ const HighlightForm: FC<T> = (props): ReactElement => {
   };
 
   const INPUT_FIELDS_DATA = [
-    { errorMessage: errors.title?.title?.message, label: "Title", name: "title.title", tag: "input", type: "text" },
-    { errorMessage: errors.title?.titleRed?.message, label: "Title Red", name: "title.titleRed", tag: "input", type: "text" },
-    { errorMessage: errors.data?.copyright?.message, label: "Copyright", name: "data.copyright", tag: "input", type: "text" },
+    { errorMessage: errors.title?.title?.message, id: "1", label: "Title", name: "title.title", tag: "input", type: "text" },
+    { errorMessage: errors.title?.titleRed?.message, id: "2", label: "Title Red", name: "title.titleRed", tag: "input", type: "text" },
+    { errorMessage: errors.data?.copyright?.message, id: "3", label: "Copyright", name: "data.copyright", tag: "input", type: "text" },
   ];
 
   return (
@@ -85,7 +86,7 @@ const HighlightForm: FC<T> = (props): ReactElement => {
               color="black"
               disabled={loading}
               errorMessage={dt.errorMessage}
-              key={dt.name}
+              key={dt.id}
               label={dt.label}
               type={dt.type}
               {...register(dt.name as any)}
