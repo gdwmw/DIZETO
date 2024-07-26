@@ -3,6 +3,7 @@
 import { FC, ReactElement, useState } from "react";
 
 import { useQuery } from "@tanstack/react-query";
+import { useSession } from "next-auth/react";
 import dynamic from "next/dynamic";
 import { FaEdit } from "react-icons/fa";
 
@@ -15,6 +16,8 @@ import { GETPricing, GETTitle } from "@/src/utils/api";
 const PricingForm = dynamic(() => import("../forms/pricing-form"));
 
 export const Pricing: FC = (): ReactElement => {
+  const session = useSession();
+
   const { data: dataTitle } = useQuery({
     queryFn: GETTitle,
     queryKey: ["GETTitle"],
@@ -32,20 +35,22 @@ export const Pricing: FC = (): ReactElement => {
     <>
       <ContainerPaper id="pricing">
         <ContentPaper className="relative pb-7">
-          <Button
-            className="absolute right-3 top-3"
-            color="black"
-            onClick={() => {
-              setDataPricingSelection(dataPricing?.[0]);
-              setIsEditTitle(true);
-              setOpenForm(true);
-            }}
-            size="sm"
-            type="button"
-            variant="ghost"
-          >
-            <FaEdit />
-          </Button>
+          {session.data?.user.role === "admin" && (
+            <Button
+              className="absolute right-3 top-3"
+              color="black"
+              onClick={() => {
+                setDataPricingSelection(dataPricing?.[0]);
+                setIsEditTitle(true);
+                setOpenForm(true);
+              }}
+              size="sm"
+              type="button"
+              variant="ghost"
+            >
+              <FaEdit />
+            </Button>
+          )}
 
           <Title title={dataTitle?.[2].title} titleRed={dataTitle?.[2].titleRed} />
 

@@ -3,6 +3,7 @@
 import { FC, ReactElement, useState } from "react";
 
 import { useQuery } from "@tanstack/react-query";
+import { useSession } from "next-auth/react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { FaEdit } from "react-icons/fa";
@@ -14,6 +15,8 @@ import { GETAbout, GETTitle } from "@/src/utils/api";
 const AboutForm = dynamic(() => import("../forms/about-form"));
 
 export const About: FC = (): ReactElement => {
+  const session = useSession();
+
   const { data: dataTitle } = useQuery({
     queryFn: GETTitle,
     queryKey: ["GETTitle"],
@@ -29,9 +32,11 @@ export const About: FC = (): ReactElement => {
     <>
       <ContainerPaper id="about">
         <ContentPaper className="relative">
-          <Button className="absolute right-3 top-3" color="black" onClick={() => setOpenForm(true)} size="sm" type="button" variant="ghost">
-            <FaEdit />
-          </Button>
+          {session.data?.user.role === "admin" && (
+            <Button className="absolute right-3 top-3" color="black" onClick={() => setOpenForm(true)} size="sm" type="button" variant="ghost">
+              <FaEdit />
+            </Button>
+          )}
 
           <Title title={dataTitle?.[0].title} titleRed={dataTitle?.[0].titleRed} />
 

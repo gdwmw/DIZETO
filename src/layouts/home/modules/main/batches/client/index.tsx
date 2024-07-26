@@ -3,6 +3,7 @@
 import { FC, ReactElement, useEffect, useState } from "react";
 
 import { useQuery } from "@tanstack/react-query";
+import { useSession } from "next-auth/react";
 import { useTheme } from "next-themes";
 import dynamic from "next/dynamic";
 import Image from "next/image";
@@ -16,6 +17,7 @@ import { GETClient, GETTitle } from "@/src/utils/api";
 const ClientForm = dynamic(() => import("../forms/client-form"));
 
 export const Client: FC = (): ReactElement => {
+  const session = useSession();
   const theme = useTheme();
 
   const { data: dataTitle } = useQuery({
@@ -38,9 +40,11 @@ export const Client: FC = (): ReactElement => {
     <>
       <ContainerPaper id="client">
         <ContentPaper className="relative">
-          <Button className="absolute right-3 top-3" color="black" onClick={() => setOpenForm(true)} size="sm" type="button" variant="ghost">
-            <FaEdit />
-          </Button>
+          {session.data?.user.role === "admin" && (
+            <Button className="absolute right-3 top-3" color="black" onClick={() => setOpenForm(true)} size="sm" type="button" variant="ghost">
+              <FaEdit />
+            </Button>
+          )}
 
           <Title title={dataTitle?.[3].title} titleRed={dataTitle?.[3].titleRed} />
 

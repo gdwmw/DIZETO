@@ -5,6 +5,7 @@ import { FC, ReactElement, useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { format } from "date-fns";
 import { enUS } from "date-fns/locale";
+import { useSession } from "next-auth/react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { BsBriefcaseFill, BsFillCircleFill, BsQuote } from "react-icons/bs";
@@ -17,6 +18,8 @@ import { GETCounting, GETTestimony } from "@/src/utils/api";
 const TestimonyForm = dynamic(() => import("../forms/testimony-form"));
 
 export const Testimony: FC = (): ReactElement => {
+  const session = useSession();
+
   const { data: dataTestimony } = useQuery({
     queryFn: GETTestimony,
     queryKey: ["GETTestimony"],
@@ -54,19 +57,21 @@ export const Testimony: FC = (): ReactElement => {
     <>
       <ContainerPaper id="testimony">
         <ContentPaper className="relative bg-transparent dark:bg-transparent">
-          <Button
-            className="absolute right-3 top-3"
-            color="black"
-            onClick={() => {
-              setOpenForm(true);
-              setIsEditTestimony(true);
-            }}
-            size="sm"
-            type="button"
-            variant="ghost"
-          >
-            <FaEdit />
-          </Button>
+          {session.data?.user.role === "admin" && (
+            <Button
+              className="absolute right-3 top-3"
+              color="black"
+              onClick={() => {
+                setOpenForm(true);
+                setIsEditTestimony(true);
+              }}
+              size="sm"
+              type="button"
+              variant="ghost"
+            >
+              <FaEdit />
+            </Button>
+          )}
 
           <div className="mx-auto flex w-fit flex-col items-center justify-center gap-5 py-10 text-center font-semibold">
             <BsQuote size={50} />
@@ -93,9 +98,11 @@ export const Testimony: FC = (): ReactElement => {
           </div>
 
           <div className="relative flex flex-col items-center justify-evenly gap-5 sm:flex-row">
-            <Button className="absolute right-3 top-3" color="black" onClick={() => setOpenForm(true)} size="sm" type="button" variant="ghost">
-              <FaEdit />
-            </Button>
+            {session.data?.user.role === "admin" && (
+              <Button className="absolute right-3 top-3" color="black" onClick={() => setOpenForm(true)} size="sm" type="button" variant="ghost">
+                <FaEdit />
+              </Button>
+            )}
 
             <div className="text-center">
               <div className="flex items-center justify-center gap-2">

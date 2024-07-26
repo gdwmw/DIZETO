@@ -3,6 +3,7 @@
 import { FC, ReactElement, useState } from "react";
 
 import { useQuery } from "@tanstack/react-query";
+import { useSession } from "next-auth/react";
 import dynamic from "next/dynamic";
 import { FaEdit } from "react-icons/fa";
 import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
@@ -16,6 +17,8 @@ import { GETContact, GETTitle } from "@/src/utils/api";
 const ContactForm = dynamic(() => import("../forms/contact-form"));
 
 export const Contact: FC = (): ReactElement => {
+  const session = useSession();
+
   const { data: dataTitle } = useQuery({
     queryFn: GETTitle,
     queryKey: ["GETTitle"],
@@ -31,9 +34,11 @@ export const Contact: FC = (): ReactElement => {
     <>
       <ContainerPaper id="contact">
         <ContentPaper className="relative">
-          <Button className="absolute right-3 top-3" color="black" onClick={() => setOpenForm(true)} size="sm" type="button" variant="ghost">
-            <FaEdit />
-          </Button>
+          {session.data?.user.role === "admin" && (
+            <Button className="absolute right-3 top-3" color="black" onClick={() => setOpenForm(true)} size="sm" type="button" variant="ghost">
+              <FaEdit />
+            </Button>
+          )}
 
           <Title title={dataTitle?.[4].title} titleRed={dataTitle?.[4].titleRed} />
 
