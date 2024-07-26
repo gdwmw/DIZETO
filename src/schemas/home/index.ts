@@ -167,3 +167,21 @@ export const ClientSchema = z.object({
 });
 
 export type TClientSchema = z.infer<typeof ClientSchema>;
+
+// -----------------------------------------------------------------------------
+
+export const ContactSchema = z.object({
+  data: z.array(
+    z.object({
+      href: z.string().min(1, { message: errorMessage.string.required("Href") }),
+      id: z.string(),
+      label: z
+        .string()
+        .min(1, { message: errorMessage.string.min("Label", 1) })
+        .max(128, { message: errorMessage.string.max("Label", 128) }),
+    }),
+  ),
+  title: TitleSchema,
+});
+
+export type TContactSchema = z.infer<typeof ContactSchema>;

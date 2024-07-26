@@ -89,6 +89,7 @@ export interface IClient {
 
 export interface IContact {
   href: string;
+  id: string;
   label: string;
 }
 
