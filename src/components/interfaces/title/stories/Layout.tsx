@@ -7,8 +7,6 @@ type TLayout = {
   titleRed: string;
 };
 
-const Layout: FC<TLayout> = (props): ReactElement => {
-  return <Title title={props.title} titleRed={props.titleRed} />;
-};
+const Layout: FC<TLayout> = (props): ReactElement => <Title title={props.title} titleRed={props.titleRed} />;
 
 export default Layout;

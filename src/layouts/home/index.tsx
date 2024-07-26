@@ -8,16 +8,14 @@ type T = {
   themeCookie: RequestCookie | undefined;
 };
 
-const HomeLayout: FC<T> = ({ themeCookie }): ReactElement => {
-  return (
-    <>
-      <Header />
-      <Nav themeCookie={themeCookie} />
-      <ASide />
-      <Main />
-      <Footer />
-    </>
-  );
-};
+const HomeLayout: FC<T> = ({ themeCookie }): ReactElement => (
+  <>
+    <Header />
+    <Nav themeCookie={themeCookie} />
+    <ASide />
+    <Main />
+    <Footer />
+  </>
+);
 
 export default HomeLayout;

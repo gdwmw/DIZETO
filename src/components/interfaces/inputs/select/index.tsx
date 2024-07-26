@@ -17,26 +17,24 @@ type TSelect = {
 
 // TODO: Jangan lupa nanti lanjutin bikin Unit Testing dan Storybook untuk Select
 
-const FieldsetSelectTWM = ({ color, disabled }: TSelect) => {
-  return twm(
+const FieldsetSelectTWM = ({ color, disabled }: TSelect) =>
+  twm(
     "group overflow-hidden rounded-md border-2 px-1 pb-2",
     color === "white" && !disabled && "border-white text-white focus-within:border-red-600 dark:border-black dark:text-black",
     color === "black" && !disabled && "border-black text-black focus-within:border-red-600 dark:border-white dark:text-white",
     disabled && "border-gray-400",
   );
-};
 
-const LegendSelectTWM = ({ color, disabled }: TSelect) => {
-  return twm(
+const LegendSelectTWM = ({ color, disabled }: TSelect) =>
+  twm(
     "ml-3 flex select-none items-center gap-1 whitespace-nowrap px-1 text-xs font-semibold",
     color === "white" && !disabled && "group-focus-within:text-red-600",
     color === "black" && !disabled && "group-focus-within:text-red-600",
     disabled && "text-gray-400",
   );
-};
 
-export const Select: FC<TSelect> = forwardRef<HTMLSelectElement, TSelect>(({ color, disabled, errorMessage, label, ...props }, ref): ReactElement => {
-  return (
+export const Select: FC<TSelect> = forwardRef<HTMLSelectElement, TSelect>(
+  ({ color, disabled, errorMessage, label, ...props }, ref): ReactElement => (
     <section className="space-y-1">
       <fieldset className={FieldsetSelectTWM({ color, disabled })}>
         <legend className={LegendSelectTWM({ color, disabled })}>
@@ -58,7 +56,7 @@ export const Select: FC<TSelect> = forwardRef<HTMLSelectElement, TSelect>(({ col
 
       {errorMessage && !disabled && <span className="ml-1 text-xs font-semibold text-red-600">{errorMessage}</span>}
     </section>
-  );
-});
+  ),
+);
 
 Select.displayName = "Select";

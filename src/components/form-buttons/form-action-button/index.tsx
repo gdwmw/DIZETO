@@ -8,15 +8,13 @@ type T = {
   loading: boolean;
 };
 
-export const FormActionButton: FC<T> = (props): ReactElement => {
-  return (
-    <div className="grid grid-cols-2 gap-5 font-semibold">
-      <Button color="red" disabled={props.loading} onClick={props.handleAppend} size="sm" type="button" variant="outline">
-        Add
-      </Button>
-      <Button color="red" disabled={props.loading} onClick={props.handleRemove} size="sm" type="button" variant="outline">
-        Remove
-      </Button>
-    </div>
-  );
-};
+export const FormActionButton: FC<T> = (props): ReactElement => (
+  <div className="grid grid-cols-2 gap-5 font-semibold">
+    <Button color="red" disabled={props.loading} onClick={props.handleAppend} size="sm" type="button" variant="outline">
+      Add
+    </Button>
+    <Button color="red" disabled={props.loading} onClick={props.handleRemove} size="sm" type="button" variant="outline">
+      Remove
+    </Button>
+  </div>
+);

@@ -13,16 +13,14 @@ type TContactInfo = {
 
 // TODO: Jangan lupa nanti lanjutin bikin Unit Testing dan Storybook untuk ContactInfo
 
-export const ContactInfo: FC<TContactInfo> = ({ href, icon, label, title }): ReactElement => {
-  return (
-    <div className="flex items-start gap-2">
-      <div className="flex items-center gap-2">
-        {icon}
-        <h3 className="font-bold">{title}:</h3>
-      </div>
-      <Link className={ButtonTWM({ color: "black", size: "sm", variant: "ghost" })} href={href ?? ""} target="_blank">
-        {label}
-      </Link>
+export const ContactInfo: FC<TContactInfo> = ({ href, icon, label, title }): ReactElement => (
+  <div className="flex items-start gap-2">
+    <div className="flex items-center gap-2">
+      {icon}
+      <h3 className="font-bold">{title}:</h3>
     </div>
-  );
-};
+    <Link className={ButtonTWM({ color: "black", size: "sm", variant: "ghost" })} href={href ?? ""} target="_blank">
+      {label}
+    </Link>
+  </div>
+);

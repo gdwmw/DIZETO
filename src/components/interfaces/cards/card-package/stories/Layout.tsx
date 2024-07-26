@@ -25,12 +25,10 @@ const PRICING_DATA = {
   price: "1.0",
 };
 
-const Layout: FC<IPricing> = (props): ReactElement => {
-  return (
-    <div className="w-[400px]">
-      <CardPackage {...PRICING_DATA} />
-    </div>
-  );
-};
+const Layout: FC<IPricing> = (props): ReactElement => (
+  <div className="w-[400px]">
+    <CardPackage {...PRICING_DATA} />
+  </div>
+);
 
 export default Layout;

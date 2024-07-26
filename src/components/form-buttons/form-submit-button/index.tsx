@@ -13,31 +13,29 @@ type T = {
   secondaryLabel: string;
 };
 
-export const FormSubmitButton: FC<T> = (props): ReactElement => {
-  return (
-    <div className="grid grid-cols-2 gap-5 font-semibold sm:flex sm:items-center">
-      <Button
-        className={`gap-1 sm:w-full ${props.loading ? "cursor-wait" : ""}`}
-        color="red"
-        disabled={props.loading}
-        size="sm"
-        type="submit"
-        variant="outline"
-      >
-        {props.loading && <Image alt="Loading..." className="h-auto" src={loadingAnimation} width={25} />}
-        {props.primaryLabel}
-      </Button>
-      <Button
-        className={props.loading ? "cursor-wait" : ""}
-        color="red"
-        disabled={props.loading}
-        onClick={props.onClick}
-        size="sm"
-        type="button"
-        variant="outline"
-      >
-        {props.secondaryLabel}
-      </Button>
-    </div>
-  );
-};
+export const FormSubmitButton: FC<T> = (props): ReactElement => (
+  <div className="grid grid-cols-2 gap-5 font-semibold sm:flex sm:items-center">
+    <Button
+      className={`gap-1 sm:w-full ${props.loading ? "cursor-wait" : ""}`}
+      color="red"
+      disabled={props.loading}
+      size="sm"
+      type="submit"
+      variant="outline"
+    >
+      {props.loading && <Image alt="Loading..." className="h-auto" src={loadingAnimation} width={25} />}
+      {props.primaryLabel}
+    </Button>
+    <Button
+      className={props.loading ? "cursor-wait" : ""}
+      color="red"
+      disabled={props.loading}
+      onClick={props.onClick}
+      size="sm"
+      type="button"
+      variant="outline"
+    >
+      {props.secondaryLabel}
+    </Button>
+  </div>
+);

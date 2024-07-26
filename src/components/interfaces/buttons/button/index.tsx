@@ -12,8 +12,8 @@ export type TButton = {
 } & DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>;
 /* eslint-enable perfectionist/sort-union-types */
 
-export const ButtonTWM = ({ className, color, disabled, size, variant }: TButton) => {
-  return twm(
+export const ButtonTWM = ({ className, color, disabled, size, variant }: TButton) =>
+  twm(
     "flex items-center gap-2",
     // ⭐ === BASE === ⭐
     variant !== "ghost" && "justify-center rounded-md",
@@ -79,12 +79,9 @@ export const ButtonTWM = ({ className, color, disabled, size, variant }: TButton
     // ⭐ === CLASSNAME === ⭐
     className,
   );
-};
 
-export const Button: FC<TButton> = ({ className, color, disabled, size, variant, ...props }): ReactElement => {
-  return (
-    <button className={ButtonTWM({ className, color, disabled, size, variant })} data-testid="button" disabled={disabled} {...props}>
-      {props.children}
-    </button>
-  );
-};
+export const Button: FC<TButton> = ({ className, color, disabled, size, variant, ...props }): ReactElement => (
+  <button className={ButtonTWM({ className, color, disabled, size, variant })} data-testid="button" disabled={disabled} {...props}>
+    {props.children}
+  </button>
+);

@@ -9,14 +9,12 @@ type TTitle = { className?: string; title: string | undefined; titleRed: string 
   HTMLHeadingElement
 >;
 
-export const Title: FC<TTitle> = ({ className, title, titleRed, ...props }): ReactElement => {
-  return (
-    <>
-      <h2 className={twm("text-center text-2xl font-semibold sm:text-3xl dark:text-white", className)} {...props} data-testid="title">
-        {title}
-        <span className="text-red-600">{titleRed}</span>
-      </h2>
-      <RedUnderline />
-    </>
-  );
-};
+export const Title: FC<TTitle> = ({ className, title, titleRed, ...props }): ReactElement => (
+  <>
+    <h2 className={twm("text-center text-2xl font-semibold sm:text-3xl dark:text-white", className)} {...props} data-testid="title">
+      {title}
+      <span className="text-red-600">{titleRed}</span>
+    </h2>
+    <RedUnderline />
+  </>
+);
