@@ -6,7 +6,7 @@ import { SubmitHandler, useFieldArray, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-import FormActionButton from "@/src/components/form-action-button";
+import { FormActionButton, FormSubmitButton } from "@/src/components/form-buttons";
 import { Button } from "@/src/components/interfaces/buttons/button";
 import { Input, TextArea } from "@/src/components/interfaces/inputs";
 import { ContainerModal, ContentModal } from "@/src/components/interfaces/modal";
@@ -124,14 +124,7 @@ const TestimonyForm: FC<T> = (props): ReactElement => {
         <form className="space-y-3 pt-2" onSubmit={handleSubmit(onSubmit)}>
           {props.isEditTestimony && (
             <>
-              <div className="grid grid-cols-2 gap-5 font-semibold">
-                <Button color="red" disabled={loading} onClick={handleAppend} size="sm" type="button" variant="outline">
-                  Add
-                </Button>
-                <Button color="red" disabled={loading} onClick={handleRemove} size="sm" type="button" variant="outline">
-                  Remove
-                </Button>
-              </div>
+              <FormActionButton handleAppend={handleAppend} handleRemove={handleRemove} loading={loading} />
 
               <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                 {fields?.map((dt, index) => (
@@ -198,7 +191,7 @@ const TestimonyForm: FC<T> = (props): ReactElement => {
             </>
           )}
 
-          <FormActionButton
+          <FormSubmitButton
             loading={loading}
             onClick={() => {
               props.setOpenForm(false);
