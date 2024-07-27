@@ -22,11 +22,11 @@ export const handleSmoothScroll = (e: FormEvent, href: string) => {
   document.getElementById(href.slice(1))?.scrollIntoView({ behavior: "smooth" });
 };
 
-type T = {
+interface I {
   themeCookie: RequestCookie | undefined;
-};
+}
 
-export const Nav: FC<T> = ({ themeCookie }): ReactElement => {
+export const Nav: FC<I> = ({ themeCookie }): ReactElement => {
   const { setTheme, theme } = useTheme();
   const { setOpenASide } = useGlobalStates();
   const [scrollPosition, setScrollPosition] = useState<number>(0);

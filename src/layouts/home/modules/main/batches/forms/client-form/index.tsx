@@ -14,13 +14,13 @@ import { ClientSchema, TClientSchema } from "@/src/schemas/home";
 import { IClient, ITitle } from "@/src/types/api";
 import { DELETEClient, POSTClient, PUTClient, PUTTitle } from "@/src/utils/api";
 
-type T = {
+interface I {
   data: IClient[] | undefined;
   setOpenForm: (value: boolean) => void;
   title: ITitle | undefined;
-};
+}
 
-const ClientForm: FC<T> = (props): ReactElement => {
+const ClientForm: FC<I> = (props): ReactElement => {
   const queryClient = useQueryClient();
   const [loading, setLoading] = useState<boolean>(false);
   const [dataLengthKeeper, setDataLengthKeeper] = useState<number>(0);
@@ -87,12 +87,10 @@ const ClientForm: FC<T> = (props): ReactElement => {
 
       // TODO: Nanti perbaiki error handle nya
       if (!resA || !resD) {
-        setLoading(false);
         return;
       }
 
       if ((idsToDelete.length > 0 && !resB) || (hasEmptyId && !resC)) {
-        setLoading(false);
         return;
       }
 
@@ -100,9 +98,10 @@ const ClientForm: FC<T> = (props): ReactElement => {
       await queryClient.invalidateQueries({ queryKey: ["GETClient"] });
       props.setOpenForm(false);
       setIdsToDelete([]);
-      setLoading(false);
       reset();
-    } catch (error) {}
+    } finally {
+      setLoading(false);
+    }
   };
 
   const INPUT_FIELDS_DATA = [
@@ -124,7 +123,7 @@ const ClientForm: FC<T> = (props): ReactElement => {
               key={dt.id}
               label={dt.label}
               type={dt.type}
-              {...register(dt.name as any)}
+              {...register(dt.name as keyof TClientSchema)}
             />
           ))}
 

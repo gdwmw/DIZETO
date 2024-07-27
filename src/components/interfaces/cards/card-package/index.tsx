@@ -9,12 +9,12 @@ import { IPricing } from "@/src/types/api";
 
 import { Button } from "../../buttons/button";
 
-type TCardPackage = {
+interface ICardPackage {
   onClick?: () => void;
   setDataPricingSelection?: (value: IPricing) => void;
-};
+}
 
-export const CardPackage: FC<IPricing & TCardPackage> = ({ onClick, setDataPricingSelection, ...data }): ReactElement => {
+export const CardPackage: FC<ICardPackage & IPricing> = ({ onClick, setDataPricingSelection, ...data }): ReactElement => {
   const session = useSession();
 
   return (

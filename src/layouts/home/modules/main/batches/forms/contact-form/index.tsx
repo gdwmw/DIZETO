@@ -14,13 +14,13 @@ import { ContactSchema, TContactSchema } from "@/src/schemas/home";
 import { IContact, ITitle } from "@/src/types/api";
 import { PUTContact, PUTTitle } from "@/src/utils/api";
 
-type T = {
+interface I {
   data: IContact[] | undefined;
   setOpenForm: (value: boolean) => void;
   title: ITitle | undefined;
-};
+}
 
-const ContactForm: FC<T> = (props): ReactElement => {
+const ContactForm: FC<I> = (props): ReactElement => {
   const queryClient = useQueryClient();
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -50,16 +50,16 @@ const ContactForm: FC<T> = (props): ReactElement => {
 
       // TODO: Nanti perbaiki error handle nya
       if (!resA || !resB) {
-        setLoading(false);
         return;
       }
 
       await queryClient.invalidateQueries({ queryKey: ["GETTitle"] });
       await queryClient.invalidateQueries({ queryKey: ["GETContact"] });
       props.setOpenForm(false);
-      setLoading(false);
       reset();
-    } catch (error) {}
+    } finally {
+      setLoading(false);
+    }
   };
 
   const INPUT_FIELDS_DATA = [
@@ -81,7 +81,7 @@ const ContactForm: FC<T> = (props): ReactElement => {
               key={dt.id}
               label={dt.label}
               type={dt.type}
-              {...register(dt.name as any)}
+              {...register(dt.name as keyof TContactSchema)}
             />
           ))}
 

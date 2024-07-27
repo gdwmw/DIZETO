@@ -7,7 +7,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { FormActionButton, FormSubmitButton } from "@/src/components/form-buttons";
-import { Button } from "@/src/components/interfaces/buttons/button";
 import { Input, TextArea } from "@/src/components/interfaces/inputs";
 import { ContainerModal, ContentModal } from "@/src/components/interfaces/modal";
 import { Title } from "@/src/components/interfaces/title";
@@ -15,15 +14,15 @@ import { TestimonySchema, TTestimonySchema } from "@/src/schemas/home";
 import { ICounting, ITestimony } from "@/src/types/api";
 import { DELETETestimony, POSTTestimony, PUTCounting, PUTTestimony } from "@/src/utils/api";
 
-type T = {
+interface I {
   counting: ICounting[] | undefined;
   data: ITestimony[] | undefined;
   isEditTestimony: boolean;
   setIsEditTestimony: (value: boolean) => void;
   setOpenForm: (value: boolean) => void;
-};
+}
 
-const TestimonyForm: FC<T> = (props): ReactElement => {
+const TestimonyForm: FC<I> = (props): ReactElement => {
   const queryClient = useQueryClient();
   const [loading, setLoading] = useState<boolean>(false);
   const [dataLengthKeeper, setDataLengthKeeper] = useState<number>(0);
@@ -97,12 +96,10 @@ const TestimonyForm: FC<T> = (props): ReactElement => {
 
         // TODO: Nanti perbaiki error handle nya
         if ((idsToDelete.length > 0 && !resA) || (hasEmptyId && !resB)) {
-          setLoading(false);
           return;
         }
 
         if (!resC) {
-          setLoading(false);
           return;
         }
 
@@ -110,9 +107,10 @@ const TestimonyForm: FC<T> = (props): ReactElement => {
         props.setOpenForm(false);
         props.setIsEditTestimony(false);
         setIdsToDelete([]);
-        setLoading(false);
         reset();
-      } catch (error) {}
+      } finally {
+        setLoading(false);
+      }
     } else {
       handleUpdateCounting.mutate(dt.counting);
     }

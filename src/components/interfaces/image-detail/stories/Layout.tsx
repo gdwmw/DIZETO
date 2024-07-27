@@ -1,56 +1,17 @@
 import { FC, ReactElement, useState } from "react";
 
-import ImageDetail, { TImageDetail } from "..";
+import IMAGE_DETAIL_DATA from "@/root/public/database/highlight.json";
 
-const IMAGE_DETAIL_DATA = {
-  copyright: "© 2022 DIZETO. All rights reserved.",
-  images: [
-    {
-      imgURL: "https://dizeto-images.vercel.app/assets/images/highlight/DZT_CC1.webp",
-    },
-    {
-      imgURL: "https://dizeto-images.vercel.app/assets/images/highlight/DZT_CC2.webp",
-    },
-    {
-      imgURL: "https://dizeto-images.vercel.app/assets/images/highlight/DZT_CC3.webp",
-    },
-    {
-      imgURL: "https://dizeto-images.vercel.app/assets/images/highlight/DZT_CC4.webp",
-    },
-    {
-      imgURL: "https://dizeto-images.vercel.app/assets/images/highlight/DZT_CC5.webp",
-    },
-    {
-      imgURL: "https://dizeto-images.vercel.app/assets/images/highlight/DZT_CC6.webp",
-    },
-    {
-      imgURL: "https://dizeto-images.vercel.app/assets/images/highlight/DZT_CC7.webp",
-    },
-    {
-      imgURL: "https://dizeto-images.vercel.app/assets/images/highlight/DZT_CC8.webp",
-    },
-    {
-      imgURL: "https://dizeto-images.vercel.app/assets/images/highlight/DZT_CC9.webp",
-    },
-    {
-      imgURL: "https://dizeto-images.vercel.app/assets/images/highlight/DZT_CC10.webp",
-    },
-    {
-      imgURL: "https://dizeto-images.vercel.app/assets/images/highlight/DZT_CC11.webp",
-    },
-    {
-      imgURL: "https://dizeto-images.vercel.app/assets/images/highlight/DZT_CC12.webp",
-    },
-  ],
-};
+import ImageDetail from "..";
 
-const Layout: FC<TImageDetail> = (props): ReactElement => {
+const Layout: FC = (): ReactElement => {
   const [imageIndex, setImageIndex] = useState(0);
+  /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
   const [openImageDetail, setOpenImageDetail] = useState(false);
 
   return (
     <div className="h-screen">
-      <ImageDetail data={IMAGE_DETAIL_DATA} imageIndex={imageIndex} setImageIndex={setImageIndex} setOpenImageDetail={setOpenImageDetail} />
+      <ImageDetail data={IMAGE_DETAIL_DATA[0]} imageIndex={imageIndex} setImageIndex={setImageIndex} setOpenImageDetail={setOpenImageDetail} />
     </div>
   );
 };

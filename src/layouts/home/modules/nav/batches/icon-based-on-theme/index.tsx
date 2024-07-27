@@ -7,11 +7,11 @@ import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
 import { BsFillMoonFill, BsFillSunFill } from "react-icons/bs";
 import { SiMoonrepo } from "react-icons/si";
 
-type T = {
+interface I {
   themeCookie: RequestCookie | undefined;
-};
+}
 
-export const IconBasedOnTheme: FC<T> = ({ themeCookie }): ReactElement => {
+export const IconBasedOnTheme: FC<I> = ({ themeCookie }): ReactElement => {
   const { theme } = useTheme();
   const [icon, setIcon] = useState<null | ReactElement>(null);
 

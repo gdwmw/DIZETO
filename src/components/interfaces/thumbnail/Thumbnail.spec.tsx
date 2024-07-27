@@ -2,8 +2,13 @@ import { fireEvent, render } from "@testing-library/react";
 
 import { Thumbnail } from "./";
 
+interface I {
+  setImageIndex?: () => void;
+  setOpenImageDetail?: (param: boolean) => void;
+}
+
 /* eslint-disable tailwindcss/no-custom-classname */
-const component = ({ setImageIndex, setOpenImageDetail }: any) => (
+const component = ({ setImageIndex, setOpenImageDetail }: I) => (
   <Thumbnail
     className="testing-class"
     id="testing-id"

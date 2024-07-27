@@ -47,7 +47,9 @@ export const Main: FC = (): ReactElement => {
       }
 
       router.push("/");
-    } catch (error) {}
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (

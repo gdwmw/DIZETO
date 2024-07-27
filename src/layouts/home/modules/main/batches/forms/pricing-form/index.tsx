@@ -7,7 +7,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { FormActionButton, FormSubmitButton } from "@/src/components/form-buttons";
-import { Button } from "@/src/components/interfaces/buttons/button";
 import { Input } from "@/src/components/interfaces/inputs/input";
 import { ContainerModal, ContentModal } from "@/src/components/interfaces/modal";
 import { Title } from "@/src/components/interfaces/title";
@@ -15,15 +14,15 @@ import { PricingSchema, TPricingSchema } from "@/src/schemas/home";
 import { IPricing, ITitle } from "@/src/types/api";
 import { PUTListItem, PUTPricing, PUTTitle } from "@/src/utils/api";
 
-type T = {
+interface I {
   data: IPricing | undefined;
   isEditTitle: boolean;
   setIsEditTitle: (value: boolean) => void;
   setOpenForm: (value: boolean) => void;
   title: ITitle | undefined;
-};
+}
 
-const PricingForm: FC<T> = (props): ReactElement => {
+const PricingForm: FC<I> = (props): ReactElement => {
   const queryClient = useQueryClient();
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -82,15 +81,15 @@ const PricingForm: FC<T> = (props): ReactElement => {
 
         // TODO: Nanti perbaiki error handle nya
         if (!resA || !resB) {
-          setLoading(false);
           return;
         }
 
         await queryClient.invalidateQueries({ queryKey: ["GETPricing"] });
         props.setOpenForm(false);
-        setLoading(false);
         reset();
-      } catch (error) {}
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
@@ -120,7 +119,7 @@ const PricingForm: FC<T> = (props): ReactElement => {
                 key={dt.id}
                 label={dt.label}
                 type={dt.type}
-                {...register(dt.name as any)}
+                {...register(dt.name as keyof TPricingSchema)}
               />
             ))}
 
@@ -134,7 +133,7 @@ const PricingForm: FC<T> = (props): ReactElement => {
                   key={dt.id}
                   label={dt.label}
                   type={dt.type}
-                  {...register(dt.name as any)}
+                  {...register(dt.name as keyof TPricingSchema)}
                 />
               ))}
 

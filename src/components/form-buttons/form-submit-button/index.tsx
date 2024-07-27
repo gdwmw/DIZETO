@@ -6,14 +6,14 @@ import loadingAnimation from "@/root/public/assets/animations/loadings/loading.s
 
 import { Button } from "../../interfaces/buttons/button";
 
-type T = {
+interface I {
   loading: boolean;
   onClick: () => void;
   primaryLabel: string;
   secondaryLabel: string;
-};
+}
 
-export const FormSubmitButton: FC<T> = (props): ReactElement => (
+export const FormSubmitButton: FC<I> = (props): ReactElement => (
   <div className="grid grid-cols-2 gap-5 font-semibold sm:flex sm:items-center">
     <Button
       className={`gap-1 sm:w-full ${props.loading ? "cursor-wait" : ""}`}

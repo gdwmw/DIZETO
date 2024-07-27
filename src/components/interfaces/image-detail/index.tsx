@@ -7,17 +7,18 @@ import { CgClose } from "react-icons/cg";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 import loading from "@/root/public/assets/animations/loadings/loading.svg";
+import { IHighlight } from "@/src/types/api";
 
 import { Button } from "../buttons/button";
 
-export type TImageDetail = {
-  data: any;
+export interface IImageDetail {
+  data: IHighlight | undefined;
   imageIndex: number;
   setImageIndex: (param: SetStateAction<number>) => void;
   setOpenImageDetail: (param: boolean) => void;
-};
+}
 
-const ImageDetail: FC<TImageDetail> = ({ data, imageIndex, setImageIndex, setOpenImageDetail }): ReactElement => {
+const ImageDetail: FC<IImageDetail> = ({ data, imageIndex, setImageIndex, setOpenImageDetail }): ReactElement => {
   const [loaded, setLoaded] = useState(false);
   const [transitionLoaded, setTransitionLoaded] = useState(false);
 
@@ -27,7 +28,7 @@ const ImageDetail: FC<TImageDetail> = ({ data, imageIndex, setImageIndex, setOpe
         setImageIndex((prev) => prev - 1);
         setTransitionLoaded((prev) => !prev);
       }
-      if (loaded && data && data.images && imageIndex < data.images.length - 1 && e.key === "ArrowRight") {
+      if (loaded && data?.images && imageIndex < data.images.length - 1 && e.key === "ArrowRight") {
         setImageIndex((prev) => prev + 1);
         setTransitionLoaded((prev) => !prev);
       }
@@ -39,7 +40,7 @@ const ImageDetail: FC<TImageDetail> = ({ data, imageIndex, setImageIndex, setOpe
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [loaded, imageIndex, data]);
+  }, [loaded, imageIndex, data, setImageIndex, setOpenImageDetail]);
 
   return (
     <section className="fixed inset-0 z-[4] flex items-center justify-center bg-black/30 p-5 backdrop-blur-md dark:bg-white/20">
@@ -82,7 +83,7 @@ const ImageDetail: FC<TImageDetail> = ({ data, imageIndex, setImageIndex, setOpe
             </Button>
           )}
 
-          {loaded && data && data.images && imageIndex < data.images.length - 1 && (
+          {loaded && data?.images && imageIndex < data.images.length - 1 && (
             <Button
               className="absolute inset-y-0 right-0 w-full max-w-[30%] justify-end pr-3 sm:pr-12"
               color="white"

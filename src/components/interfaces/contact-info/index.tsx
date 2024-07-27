@@ -4,16 +4,16 @@ import Link from "next/link";
 
 import { ButtonTWM } from "../buttons/button";
 
-type TContactInfo = {
+interface IContactInfo {
   href: string | undefined;
   icon: ReactNode;
   label: string | undefined;
   title: string | undefined;
-};
+}
 
 // TODO: Jangan lupa nanti lanjutin bikin Unit Testing dan Storybook untuk ContactInfo
 
-export const ContactInfo: FC<TContactInfo> = ({ href, icon, label, title }): ReactElement => (
+export const ContactInfo: FC<IContactInfo> = ({ href, icon, label, title }): ReactElement => (
   <div className="flex items-start gap-2">
     <div className="flex items-center gap-2">
       {icon}

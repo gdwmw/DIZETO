@@ -8,8 +8,8 @@ import { twm } from "@/src/libs/tailwind-merge";
 
 type TThumbnail = {
   className?: string;
-  setImageIndex: () => void;
-  setOpenImageDetail: (param: boolean) => void;
+  setImageIndex?: () => void;
+  setOpenImageDetail?: (param: boolean) => void;
   src: string;
 } & DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>;
 
@@ -21,8 +21,8 @@ export const Thumbnail: FC<TThumbnail> = ({ className, setImageIndex, setOpenIma
     )}
     data-testid="thumbnail"
     onClick={() => {
-      setImageIndex();
-      setOpenImageDetail(true);
+      setImageIndex?.();
+      setOpenImageDetail?.(true);
     }}
     type="button"
     {...props}

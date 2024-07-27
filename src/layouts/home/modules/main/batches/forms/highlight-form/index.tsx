@@ -14,13 +14,13 @@ import { HighlightSchema, THighlightSchema } from "@/src/schemas/home";
 import { IHighlight, ITitle } from "@/src/types/api";
 import { PUTHighlight, PUTImages, PUTTitle } from "@/src/utils/api";
 
-type T = {
+interface I {
   data: IHighlight | undefined;
   setOpenForm: (value: boolean) => void;
   title: ITitle | undefined;
-};
+}
 
-const HighlightForm: FC<T> = (props): ReactElement => {
+const HighlightForm: FC<I> = (props): ReactElement => {
   const queryClient = useQueryClient();
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -58,16 +58,16 @@ const HighlightForm: FC<T> = (props): ReactElement => {
 
       // TODO: Nanti perbaiki error handle nya
       if (!resA || !resB || !resC) {
-        setLoading(false);
         return;
       }
 
       await queryClient.invalidateQueries({ queryKey: ["GETTitle"] });
       await queryClient.invalidateQueries({ queryKey: ["GETHighlight"] });
       props.setOpenForm(false);
-      setLoading(false);
       reset();
-    } catch (error) {}
+    } finally {
+      setLoading(false);
+    }
   };
 
   const INPUT_FIELDS_DATA = [
@@ -90,7 +90,7 @@ const HighlightForm: FC<T> = (props): ReactElement => {
               key={dt.id}
               label={dt.label}
               type={dt.type}
-              {...register(dt.name as any)}
+              {...register(dt.name as keyof THighlightSchema)}
             />
           ))}
 

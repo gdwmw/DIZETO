@@ -14,13 +14,13 @@ import { AboutSchema, TAboutSchema } from "@/src/schemas/home";
 import { IAbout, ITitle } from "@/src/types/api";
 import { PUTAbout, PUTTitle } from "@/src/utils/api";
 
-type T = {
+interface I {
   data: IAbout | undefined;
   setOpenForm: (value: boolean) => void;
   title: ITitle | undefined;
-};
+}
 
-const AboutForm: FC<T> = (props): ReactElement => {
+const AboutForm: FC<I> = (props): ReactElement => {
   const queryClient = useQueryClient();
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -50,16 +50,16 @@ const AboutForm: FC<T> = (props): ReactElement => {
 
       // TODO: Nanti perbaiki error handle nya
       if (!resA || !resB) {
-        setLoading(false);
         return;
       }
 
       await queryClient.invalidateQueries({ queryKey: ["GETTitle"] });
       await queryClient.invalidateQueries({ queryKey: ["GETAbout"] });
       props.setOpenForm(false);
-      setLoading(false);
       reset();
-    } catch (error) {}
+    } finally {
+      setLoading(false);
+    }
   };
 
   const INPUT_FIELDS_DATA = [
@@ -86,10 +86,17 @@ const AboutForm: FC<T> = (props): ReactElement => {
                 key={dt.id}
                 label={dt.label}
                 type={dt.type}
-                {...register(dt.name as any)}
+                {...register(dt.name as keyof TAboutSchema)}
               />
             ) : (
-              <TextArea color="black" disabled={loading} errorMessage={dt.errorMessage} key={dt.id} label={dt.label} {...register(dt.name as any)} />
+              <TextArea
+                color="black"
+                disabled={loading}
+                errorMessage={dt.errorMessage}
+                key={dt.id}
+                label={dt.label}
+                {...register(dt.name as keyof TAboutSchema)}
+              />
             ),
           )}
 

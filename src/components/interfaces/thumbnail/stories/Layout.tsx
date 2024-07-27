@@ -2,12 +2,12 @@ import { FC, ReactElement } from "react";
 
 import { Thumbnail } from "..";
 
-type TLayout = {
+interface ILayout {
   setImageIndex: () => void;
   setOpenImageDetail: (param: boolean) => void;
-};
+}
 
-const Layout: FC<TLayout> = (props): ReactElement => (
+const Layout: FC<ILayout> = (props): ReactElement => (
   <Thumbnail
     setImageIndex={props.setImageIndex}
     setOpenImageDetail={props.setOpenImageDetail}
