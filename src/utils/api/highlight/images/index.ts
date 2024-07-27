@@ -11,7 +11,7 @@ if (!API_URL) {
 export const PUTImages = async (data: IImages[]): Promise<IImages[]> => {
   try {
     const promises = data.map(async (dt) => {
-      const res = await fetch(`${API_URL}/images/${dt.id}`, {
+      const res = await fetch(`${API_URL}/1/images/${dt.id}`, {
         body: JSON.stringify(dt),
         headers: {
           "Content-Type": "application/json",
