@@ -7,7 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { FormSubmitButton } from "@/src/components/form-buttons";
-import { Input } from "@/src/components/interfaces/inputs/input";
+import { Input } from "@/src/components/interfaces/inputs";
 import { ContainerModal, ContentModal } from "@/src/components/interfaces/modal";
 import { Title } from "@/src/components/interfaces/title";
 import { HighlightSchema, THighlightSchema } from "@/src/schemas/home";
