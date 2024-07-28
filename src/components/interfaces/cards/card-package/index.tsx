@@ -49,7 +49,7 @@ export const CardPackage: FC<ICardPackage & IPricing> = ({ onClick, setDataPrici
 
         <div className="h-full overflow-hidden rounded-lg border-4 border-gray-200 bg-white dark:border-gray-700 dark:bg-dark">
           <div className="bg-gray-200 pb-5 pt-20 dark:bg-gray-700">
-            <span className="block whitespace-pre-wrap text-center text-xl font-semibold sm:text-2xl" data-testid="category">
+            <span className="block whitespace-pre-line text-center text-xl font-semibold sm:text-2xl" data-testid="category">
               {data.category}
             </span>
           </div>

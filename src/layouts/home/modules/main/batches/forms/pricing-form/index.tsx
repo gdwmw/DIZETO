@@ -7,7 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { FormActionButton, FormSubmitButton } from "@/src/components/form-buttons";
-import { Input } from "@/src/components/interfaces/inputs/input";
+import { Input, TextArea } from "@/src/components/interfaces/inputs";
 import { ContainerModal, ContentModal } from "@/src/components/interfaces/modal";
 import { Title } from "@/src/components/interfaces/title";
 import { PricingSchema, TPricingSchema } from "@/src/schemas/home";
@@ -101,7 +101,7 @@ const PricingForm: FC<I> = (props): ReactElement => {
   const PACKAGE_INPUT_FIELDS_DATA = [
     { error: errors.data?.price?.message, id: "1", label: "Price", name: "data.price", type: "text" },
     { error: errors.data?.pack?.message, id: "2", label: "Package", name: "data.pack", type: "text" },
-    { error: errors.data?.category?.message, id: "3", label: "Category", name: "data.category", type: "text" },
+    { error: errors.data?.category?.message, id: "3", label: "Category", name: "data.category", tag: "textarea" },
   ];
 
   return (
@@ -125,17 +125,30 @@ const PricingForm: FC<I> = (props): ReactElement => {
 
           {!props.isEditTitle && (
             <>
-              {PACKAGE_INPUT_FIELDS_DATA.map((dt) => (
-                <Input
-                  color="black"
-                  disabled={loading}
-                  errorMessage={dt.error}
-                  key={dt.id}
-                  label={dt.label}
-                  type={dt.type}
-                  {...register(dt.name as keyof TPricingSchema)}
-                />
-              ))}
+              {PACKAGE_INPUT_FIELDS_DATA.map((dt) =>
+                !dt.tag ? (
+                  <Input
+                    color="black"
+                    disabled={loading}
+                    errorMessage={dt.error}
+                    key={dt.id}
+                    label={dt.label}
+                    type={dt.type}
+                    {...register(dt.name as keyof TPricingSchema)}
+                  />
+                ) : (
+                  <TextArea
+                    className="min-h-fit resize-none"
+                    color="black"
+                    disabled={loading}
+                    errorMessage={dt.error}
+                    key={dt.id}
+                    label={dt.label}
+                    rows={0}
+                    {...register(dt.name as keyof TPricingSchema)}
+                  />
+                ),
+              )}
 
               <FormActionButton handleAppend={handleAppend} handleRemove={handleRemove} loading={loading} />
 

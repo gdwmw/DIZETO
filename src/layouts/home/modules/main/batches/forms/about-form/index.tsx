@@ -63,12 +63,12 @@ const AboutForm: FC<I> = (props): ReactElement => {
   };
 
   const INPUT_FIELDS_DATA = [
-    { errorMessage: errors.title?.title?.message, id: "1", label: "Title", name: "title.title", tag: "input", type: "text" },
-    { errorMessage: errors.title?.titleRed?.message, id: "2", label: "Title Red", name: "title.titleRed", tag: "input", type: "text" },
-    { errorMessage: errors.data?.subTitle?.message, id: "3", label: "Sub Title", name: "data.subTitle", tag: "input", type: "text" },
+    { errorMessage: errors.title?.title?.message, id: "1", label: "Title", name: "title.title", type: "text" },
+    { errorMessage: errors.title?.titleRed?.message, id: "2", label: "Title Red", name: "title.titleRed", type: "text" },
+    { errorMessage: errors.data?.subTitle?.message, id: "3", label: "Sub Title", name: "data.subTitle", type: "text" },
     { errorMessage: errors.data?.description?.message, id: "4", label: "Description", name: "data.description", tag: "textarea" },
-    { errorMessage: errors.data?.note?.message, id: "5", label: "Note", name: "data.note", tag: "input", type: "text" },
-    { errorMessage: errors.data?.logoURL?.message, id: "6", label: "Logo URL", name: "data.logoURL", tag: "input", type: "text" },
+    { errorMessage: errors.data?.note?.message, id: "5", label: "Note", name: "data.note", type: "text" },
+    { errorMessage: errors.data?.logoURL?.message, id: "6", label: "Logo URL", name: "data.logoURL", type: "text" },
   ];
 
   return (
@@ -78,7 +78,7 @@ const AboutForm: FC<I> = (props): ReactElement => {
 
         <form className="space-y-3 pt-2" onSubmit={handleSubmit(onSubmit)}>
           {INPUT_FIELDS_DATA.map((dt) =>
-            dt.tag === "input" ? (
+            !dt.tag ? (
               <Input
                 color="black"
                 disabled={loading}

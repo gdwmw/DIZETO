@@ -6,10 +6,12 @@ import { twm } from "@/src/libs/tailwind-merge";
 
 /* eslint-disable perfectionist/sort-union-types */
 type TTextArea = {
+  className?: string;
   color?: "white" | "black";
   disabled?: boolean;
   errorMessage?: string;
   label?: string;
+  rows?: number;
 } & DetailedHTMLProps<TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement>;
 /* eslint-enable perfectionist/sort-union-types */
 
@@ -31,8 +33,15 @@ const LegendTextAreaTWM = ({ color, disabled }: TTextArea) =>
     disabled && "text-gray-400",
   );
 
+const TextAreaTWM = ({ className, disabled }: TTextArea) =>
+  twm(
+    "max-h-[200px] min-h-[120px] w-full rounded-sm bg-transparent px-1 outline-none disabled:cursor-not-allowed",
+    disabled && "text-gray-400",
+    className,
+  );
+
 export const TextArea: FC<TTextArea> = forwardRef<HTMLTextAreaElement, TTextArea>(
-  ({ color, disabled, errorMessage, label, ...props }, ref): ReactElement => (
+  ({ className, color, disabled, errorMessage, label, rows, ...props }, ref): ReactElement => (
     <section className="space-y-1">
       <fieldset className={FieldsetTextAreaTWM({ color, disabled })}>
         <legend className={LegendTextAreaTWM({ color, disabled })}>
@@ -40,13 +49,7 @@ export const TextArea: FC<TTextArea> = forwardRef<HTMLTextAreaElement, TTextArea
           {errorMessage && !disabled && <MdError className="text-red-600" />}
         </legend>
 
-        <textarea
-          className={`max-h-[200px] min-h-[120px] w-full rounded-sm bg-transparent px-1 outline-none disabled:cursor-not-allowed ${disabled ? "text-gray-400" : ""}`}
-          disabled={disabled}
-          ref={ref}
-          rows={5}
-          {...props}
-        />
+        <textarea className={TextAreaTWM({ className, disabled })} disabled={disabled} ref={ref} rows={rows ?? 5} {...props} />
       </fieldset>
 
       {errorMessage && !disabled && <span className="ml-1 text-xs font-semibold text-red-600">{errorMessage}</span>}

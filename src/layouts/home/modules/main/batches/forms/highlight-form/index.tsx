@@ -71,9 +71,9 @@ const HighlightForm: FC<I> = (props): ReactElement => {
   };
 
   const INPUT_FIELDS_DATA = [
-    { errorMessage: errors.title?.title?.message, id: "1", label: "Title", name: "title.title", tag: "input", type: "text" },
-    { errorMessage: errors.title?.titleRed?.message, id: "2", label: "Title Red", name: "title.titleRed", tag: "input", type: "text" },
-    { errorMessage: errors.data?.copyright?.message, id: "3", label: "Copyright", name: "data.copyright", tag: "input", type: "text" },
+    { errorMessage: errors.title?.title?.message, id: "1", label: "Title", name: "title.title", type: "text" },
+    { errorMessage: errors.title?.titleRed?.message, id: "2", label: "Title Red", name: "title.titleRed", type: "text" },
+    { errorMessage: errors.data?.copyright?.message, id: "3", label: "Copyright", name: "data.copyright", type: "text" },
   ];
 
   return (
