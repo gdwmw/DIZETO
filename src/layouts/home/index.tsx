@@ -1,17 +1,15 @@
 import { FC, ReactElement } from "react";
 
-import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
-
 import { ASide, Footer, Header, Main, Nav } from "./modules";
 
 interface I {
-  themeCookie: RequestCookie | undefined;
+  themeCookie: string;
 }
 
-const HomeLayout: FC<I> = ({ themeCookie }): ReactElement => (
+const HomeLayout: FC<I> = (props): ReactElement => (
   <>
     <Header />
-    <Nav themeCookie={themeCookie} />
+    <Nav themeCookie={props.themeCookie} />
     <ASide />
     <Main />
     <Footer />

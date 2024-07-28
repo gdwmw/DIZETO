@@ -2,18 +2,16 @@
 
 import { FC, FormEvent, ReactElement, useEffect, useState } from "react";
 
-import { useMutation } from "@tanstack/react-query";
 import { useTheme } from "next-themes";
-import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
 import Image from "next/image";
 import Link from "next/link";
 import { BsList } from "react-icons/bs";
 
 import logoDIZETO from "@/root/public/assets/images/logos/dizeto.svg";
 import { ButtonTWM } from "@/src/components/interfaces/buttons/button";
+import { setCookie } from "@/src/hooks/cookies";
 import { useGlobalStates } from "@/src/hooks/global";
 import { NAVIGATION_DATA } from "@/src/libs/constants";
-import { PUTTheme } from "@/src/utils/api";
 
 import { IconBasedOnTheme } from "./batches/icon-based-on-theme";
 
@@ -23,10 +21,10 @@ export const handleSmoothScroll = (e: FormEvent, href: string) => {
 };
 
 interface I {
-  themeCookie: RequestCookie | undefined;
+  themeCookie: string;
 }
 
-export const Nav: FC<I> = ({ themeCookie }): ReactElement => {
+export const Nav: FC<I> = (props): ReactElement => {
   const { setTheme, theme } = useTheme();
   const { setOpenASide } = useGlobalStates();
   const [scrollPosition, setScrollPosition] = useState<number>(0);
@@ -45,20 +43,16 @@ export const Nav: FC<I> = ({ themeCookie }): ReactElement => {
     }
   }, [scrollPosition]);
 
-  const mutateUpdateTheme = useMutation({
-    mutationFn: PUTTheme,
-  });
-
   const handleUpdateTheme = () => {
     if (theme === "dark") {
       setTheme("system");
-      mutateUpdateTheme.mutate("system");
+      setCookie({ name: "theme", options: { path: "/" }, value: "system" });
     } else if (theme === "system") {
       setTheme("light");
-      mutateUpdateTheme.mutate("light");
+      setCookie({ name: "theme", options: { path: "/" }, value: "light" });
     } else {
       setTheme("dark");
-      mutateUpdateTheme.mutate("dark");
+      setCookie({ name: "theme", options: { path: "/" }, value: "dark" });
     }
   };
 
@@ -89,7 +83,7 @@ export const Nav: FC<I> = ({ themeCookie }): ReactElement => {
           <ul className="flex gap-2">
             <li className="flex size-[40px] items-center justify-end">
               <button className={ButtonTWM({ color: "black", size: "sm", variant: "ghost" })} onClick={handleUpdateTheme} type="button">
-                <IconBasedOnTheme themeCookie={themeCookie} />
+                <IconBasedOnTheme themeCookie={props.themeCookie} />
               </button>
             </li>
             <li className="flex size-[40px] items-center justify-end sm:hidden">

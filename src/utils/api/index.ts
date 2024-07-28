@@ -9,5 +9,4 @@ export { PUTImages } from "./highlight/images";
 export { GETPricing, PUTPricing } from "./pricing";
 export { PUTListItem } from "./pricing/list-item";
 export { DELETETestimony, GETTestimony, POSTTestimony, PUTTestimony } from "./testimony";
-export { PUTTheme } from "./theme";
 export { GETTitle, PUTTitle } from "./title";
