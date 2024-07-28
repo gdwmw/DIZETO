@@ -50,13 +50,13 @@ const classes = {
 type TVariant = "solid" | "outline" | "ghost";
 type TColor = "red" | "white" | "black";
 type TSize = "sm" | "md" | "lg";
+/* eslint-enable perfectionist/sort-union-types */
 
 const variants: TVariant[] = ["solid", "outline", "ghost"];
 const colors: TColor[] = ["red", "white", "black"];
 const sizes: TSize[] = ["sm", "md", "lg"];
 const ghostSizes: TSize[] = ["sm", "md", "lg"];
 const disabled: boolean[] = [false, true];
-/* eslint-enable perfectionist/sort-union-types */
 
 interface I {
   color?: TColor;
