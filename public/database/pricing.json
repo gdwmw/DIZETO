@@ -1,18 +1,18 @@
 [
   {
-    "price": "1.0",
+    "price": "1.5",
     "pack": "A",
-    "category": "PHOTO\nAPA AJA",
+    "category": "PHOTO\nPRE-WEDDING",
     "id": "1",
     "listItem": [
       {
         "list": [
-          { "qty": 1, "label": "BEBAS DAH" },
-          { "qty": 1, "label": "BEBAS DAH" },
-          { "qty": 1, "label": "BEBAS DAH" },
-          { "qty": 1, "label": "BEBAS DAH" },
-          { "qty": 1, "label": "BEBAS DAH" },
-          { "qty": 1, "label": "BEBAS DAH" }
+          { "label": "CONCEPT PHOTO", "qty": 1 },
+          { "label": "LOCATION", "qty": 1 },
+          { "label": "EDITED PHOTO", "qty": 20 },
+          { "label": "PHOTOGRAPHER", "qty": 1 },
+          { "label": "PHOTO EDITOR", "qty": 1 },
+          { "label": "MINOR REVISION", "qty": 1 }
         ],
         "id": "1",
         "pricingId": "1"
@@ -20,17 +20,19 @@
     ]
   },
   {
-    "price": "2.0",
-    "pack": "A",
-    "category": "PHOTO\nAPA AJA",
+    "price": "1.0",
+    "pack": "D",
+    "category": "PHOTO\nPRE-WEDDING",
     "id": "2",
     "listItem": [
       {
         "list": [
-          { "qty": 1, "label": "BEBAS DAH" },
-          { "qty": 1, "label": "BEBAS DAH" },
-          { "qty": 1, "label": "BEBAS DAH" },
-          { "qty": 1, "label": "BEBAS DAH" }
+          { "label": "CONCEPT PHOTO", "qty": 3 },
+          { "label": "LOCATION", "qty": 3 },
+          { "label": "EDITED PHOTO", "qty": 60 },
+          { "label": "PHOTOGRAPHER", "qty": 1 },
+          { "label": "PHOTO EDITOR", "qty": 1 },
+          { "label": "MINOR REVISION", "qty": 1 }
         ],
         "id": "2",
         "pricingId": "2"
@@ -38,17 +40,20 @@
     ]
   },
   {
-    "price": "3.0",
-    "pack": "A",
-    "category": "PHOTO\nAPA AJA",
+    "price": "1.5",
+    "pack": "B",
+    "category": "PHOTO\nDOCUMENTATION",
     "id": "3",
     "listItem": [
       {
         "list": [
-          { "qty": 1, "label": "BEBAS DAH" },
-          { "qty": 1, "label": "BEBAS DAH" },
-          { "qty": 1, "label": "BEBAS DAH" },
-          { "qty": 1, "label": "BEBAS DAH" }
+          { "label": "HOURS", "qty": 6 },
+          { "label": "LOCATION", "qty": 1 },
+          { "label": "EDITED PHOTO", "qty": 300 },
+          { "label": "PHOTOGRAPHER", "qty": 1 },
+          { "label": "PHOTO EDITOR", "qty": 1 },
+          { "label": "CAMERA", "qty": 1 },
+          { "label": "MINOR REVISION", "qty": 1 }
         ],
         "id": "3",
         "pricingId": "3"
@@ -56,17 +61,21 @@
     ]
   },
   {
-    "price": "4.0",
+    "price": "0.6",
     "pack": "A",
-    "category": "PHOTO\nAPA AJA",
+    "category": "PHOTO\nCATALOG PRODUCT",
     "id": "4",
     "listItem": [
       {
         "list": [
-          { "qty": 1, "label": "BEBAS DAH" },
-          { "qty": 1, "label": "BEBAS DAH" },
-          { "qty": 1, "label": "BEBAS DAH" },
-          { "qty": 1, "label": "BEBAS DAH" }
+          { "label": "PRODUCT", "qty": 5 },
+          { "label": "ANGLE PHOTO", "qty": 4 },
+          { "label": "B&W BACKGROUND COLOR", "qty": 2 },
+          { "label": "REQUEST BACKGROUND COLOR", "qty": 3 },
+          { "label": "TOTAL PHOTO", "qty": 100 },
+          { "label": "PHOTOGRAPHER", "qty": 1 },
+          { "label": "PHOTO EDITOR", "qty": 1 },
+          { "label": "MINOR REVISION", "qty": 1 }
         ],
         "id": "4",
         "pricingId": "4"
