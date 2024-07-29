@@ -52,7 +52,7 @@ export const TextArea: FC<TTextArea> = forwardRef<HTMLTextAreaElement, TTextArea
         <textarea className={TextAreaTWM({ className, disabled })} disabled={disabled} ref={ref} rows={rows ?? 5} {...props} />
       </fieldset>
 
-      {errorMessage && !disabled && <span className="ml-1 text-xs font-semibold text-red-600">{errorMessage}</span>}
+      {errorMessage && !disabled && <span className="ml-1 block text-xs font-semibold text-red-600">{errorMessage}</span>}
     </section>
   ),
 );

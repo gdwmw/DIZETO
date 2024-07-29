@@ -54,7 +54,7 @@ export const Select: FC<TSelect> = forwardRef<HTMLSelectElement, TSelect>(
         </div>
       </fieldset>
 
-      {errorMessage && !disabled && <span className="ml-1 text-xs font-semibold text-red-600">{errorMessage}</span>}
+      {errorMessage && !disabled && <span className="ml-1 block text-xs font-semibold text-red-600">{errorMessage}</span>}
     </section>
   ),
 );
