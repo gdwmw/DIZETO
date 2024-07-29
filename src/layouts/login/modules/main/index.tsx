@@ -13,7 +13,7 @@ import logoDIZETO from "@/root/public/assets/images/logos/dizeto.svg";
 import { Button } from "@/src/components/interfaces/buttons/button";
 import { Input } from "@/src/components/interfaces/inputs";
 import { ContentModal } from "@/src/components/interfaces/modal";
-import { LoginSchema, TLoginSchema } from "@/src/schemas/home";
+import { LoginSchema, TLoginSchema } from "@/src/schemas/auth";
 
 export const Main: FC = (): ReactElement => {
   const router = useRouter();
@@ -79,7 +79,7 @@ export const Main: FC = (): ReactElement => {
 
           <Button className={`gap-1 ${loading ? "cursor-wait" : ""}`} color="red" disabled={loading} size="sm" type="submit" variant="outline">
             {loading && <Image alt="Loading..." priority src={loadingAnimation} width={25} />}
-            Login
+            Submit
           </Button>
         </form>
 
