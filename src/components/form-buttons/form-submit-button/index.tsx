@@ -23,7 +23,7 @@ export const FormSubmitButton: FC<I> = (props): ReactElement => (
       type="submit"
       variant="outline"
     >
-      {props.loading && <Image alt="Loading..." className="h-auto" src={loadingAnimation} width={25} />}
+      {props.loading && <Image alt="Loading..." priority src={loadingAnimation} width={25} />}
       {props.primaryLabel}
     </Button>
     <Button

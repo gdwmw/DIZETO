@@ -57,7 +57,7 @@ export const Main: FC = (): ReactElement => {
     <main className="flex h-screen items-center justify-center px-5">
       <ContentModal className="max-w-[350px] space-y-5">
         <div className="flex items-center gap-2">
-          <Image alt="DIZETO" className="h-auto" src={logoDIZETO} width={50} />
+          <Image alt="DIZETO" priority src={logoDIZETO} width={50} />
           <span className="text-2xl font-semibold text-black dark:text-white">LOGIN</span>
           <div className="h-0.5 w-full rounded-full bg-red-600" />
         </div>
@@ -78,7 +78,7 @@ export const Main: FC = (): ReactElement => {
           <span className="text-center text-sm text-red-600"> {invalidCredentials && "Invalid Username or Password"}</span>
 
           <Button className={`gap-1 ${loading ? "cursor-wait" : ""}`} color="red" disabled={loading} size="sm" type="submit" variant="outline">
-            {loading && <Image alt="Loading..." className="h-auto" src={loadingAnimation} width={25} />}
+            {loading && <Image alt="Loading..." priority src={loadingAnimation} width={25} />}
             Login
           </Button>
         </form>
