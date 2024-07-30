@@ -2,6 +2,7 @@
 
 import { FC, FormEvent, ReactElement, useEffect, useState } from "react";
 
+import { signOut } from "next-auth/react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
@@ -21,6 +22,7 @@ export const handleSmoothScroll = (e: FormEvent, href: string) => {
 };
 
 interface I {
+  authStatus: null | string | undefined;
   themeCookie: string;
 }
 
@@ -81,11 +83,19 @@ export const Nav: FC<I> = (props): ReactElement => {
         </li>
         <li>
           <ul className="flex gap-2">
-            <li className="hidden min-[840px]:flex min-[840px]:items-center min-[840px]:justify-end">
-              <Link className={ButtonTWM({ className: "h-8 min-w-[80px] px-0", color: "red", size: "sm", variant: "outline" })} href={"/login"}>
-                Login
-              </Link>
-            </li>
+            {!props.authStatus ? (
+              <li className="hidden min-[840px]:flex min-[840px]:items-center min-[840px]:justify-end">
+                <Link className={ButtonTWM({ className: "h-8 min-w-[80px] px-0", color: "red", size: "sm", variant: "outline" })} href={"/login"}>
+                  Login
+                </Link>
+              </li>
+            ) : (
+              <li className="hidden min-[840px]:flex min-[840px]:items-center min-[840px]:justify-end">
+                <Button className="h-8 min-w-[80px] px-0" color="red" onClick={() => signOut()} size="sm" variant="outline">
+                  Logout
+                </Button>
+              </li>
+            )}
             <li className="flex size-[40px] items-center justify-end">
               <Button color="black" onClick={handleUpdateTheme} size="sm" type="button" variant="ghost">
                 <IconBasedOnTheme themeCookie={props.themeCookie} />

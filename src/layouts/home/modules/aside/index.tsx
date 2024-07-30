@@ -2,6 +2,7 @@
 
 import { FC, ReactElement } from "react";
 
+import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { CgClose } from "react-icons/cg";
 
@@ -11,7 +12,11 @@ import { NAVIGATION_DATA } from "@/src/libs/constants";
 
 import { handleSmoothScroll } from "../nav";
 
-export const ASide: FC = (): ReactElement => {
+interface I {
+  authStatus: null | string | undefined;
+}
+
+export const ASide: FC<I> = (props): ReactElement => {
   const { openASide, setOpenASide } = useGlobalStates();
 
   return (
@@ -37,11 +42,19 @@ export const ASide: FC = (): ReactElement => {
               </Link>
             </li>
           ))}
-          <li>
-            <Link className={ButtonTWM({ className: "h-8 min-w-[80px] px-0", color: "red", size: "sm", variant: "outline" })} href={"/login"}>
-              Login
-            </Link>
-          </li>
+          {!props.authStatus ? (
+            <li>
+              <Link className={ButtonTWM({ className: "w-full", color: "red", size: "sm", variant: "outline" })} href={"/login"}>
+                Login
+              </Link>
+            </li>
+          ) : (
+            <li>
+              <Button className="w-full" color="red" onClick={() => signOut()} size="sm" variant="outline">
+                Logout
+              </Button>
+            </li>
+          )}
         </ul>
       </div>
     </aside>

@@ -1,19 +1,22 @@
 import { FC, ReactElement } from "react";
 
+import { getCookie } from "@/src/hooks/cookies";
+import { getSession } from "@/src/hooks/session";
+
 import { ASide, Footer, Header, Main, Nav } from "./modules";
 
-interface I {
-  themeCookie: string;
-}
+const HomeLayout: FC = async (): Promise<ReactElement> => {
+  const session = await getSession("status");
 
-const HomeLayout: FC<I> = (props): ReactElement => (
-  <>
-    <Header />
-    <Nav themeCookie={props.themeCookie} />
-    <ASide />
-    <Main />
-    <Footer />
-  </>
-);
+  return (
+    <>
+      <Header />
+      <Nav authStatus={session} themeCookie={(await getCookie("theme"))?.value ?? "system"} />
+      <ASide authStatus={session} />
+      <Main />
+      <Footer />
+    </>
+  );
+};
 
 export default HomeLayout;

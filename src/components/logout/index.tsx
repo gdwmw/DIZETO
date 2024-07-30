@@ -4,10 +4,10 @@ import { FC, ReactElement } from "react";
 
 import { signOut } from "next-auth/react";
 
-import { ExampleA } from "@/src/components/interfaces/example/A";
+import { Button } from "@/src/components/interfaces/buttons/button";
 
 export const Logout: FC = (): ReactElement => (
-  <ExampleA color="rose" onClick={() => signOut()} size="sm" variant="solid">
+  <Button color="red" onClick={() => signOut()} size="sm" variant="outline">
     Logout
-  </ExampleA>
+  </Button>
 );

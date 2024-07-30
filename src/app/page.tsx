@@ -2,7 +2,6 @@ import { FC, ReactElement } from "react";
 
 import { Metadata, Viewport } from "next";
 
-import { getCookie } from "@/src/hooks/cookies";
 import HomeLayout from "@/src/layouts/home";
 
 export const viewport: Viewport = {
@@ -66,6 +65,6 @@ export const metadata: Metadata = {
   },
 };
 
-const HomePage: FC = async (): Promise<ReactElement> => <HomeLayout themeCookie={(await getCookie("theme"))?.value ?? "system"} />;
+const HomePage: FC = async (): Promise<ReactElement> => <HomeLayout />;
 
 export default HomePage;
