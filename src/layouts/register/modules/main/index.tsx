@@ -6,11 +6,12 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 import loadingAnimation from "@/root/public/assets/animations/loadings/loading.svg";
 import logoDIZETO from "@/root/public/assets/images/logos/dizeto.svg";
-import { Button } from "@/src/components/interfaces/buttons/button";
+import { Button, ButtonTWM } from "@/src/components/interfaces/buttons/button";
 import { Input } from "@/src/components/interfaces/inputs";
 import { ContentModal } from "@/src/components/interfaces/modal";
 import { RegisterSchema, TRegisterSchema } from "@/src/schemas/auth";
@@ -138,6 +139,12 @@ export const Main: FC = (): ReactElement => {
           </Button>
         </form>
 
+        <span className="flex items-center justify-center gap-1 text-center text-xs text-black dark:text-white">
+          Already have an account?
+          <Link className={ButtonTWM({ className: "text-xs", color: "red", size: "sm", variant: "ghost" })} href={"/login"}>
+            Login
+          </Link>
+        </span>
         <span className="block text-center text-xs text-black dark:text-white">&copy; 2021 DIZETO. All rights reserved.</span>
       </ContentModal>
     </main>

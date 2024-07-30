@@ -8,7 +8,7 @@ import Link from "next/link";
 import { BsList } from "react-icons/bs";
 
 import logoDIZETO from "@/root/public/assets/images/logos/dizeto.svg";
-import { ButtonTWM } from "@/src/components/interfaces/buttons/button";
+import { Button, ButtonTWM } from "@/src/components/interfaces/buttons/button";
 import { useGlobalStates } from "@/src/context";
 import { setCookie } from "@/src/hooks/cookies";
 import { NAVIGATION_DATA } from "@/src/libs/constants";
@@ -59,13 +59,13 @@ export const Nav: FC<I> = (props): ReactElement => {
   return (
     <nav className={`fixed inset-x-0 top-0 z-[2] ${isActive ? "shadow-md shadow-black/50 backdrop-blur-md dark:shadow-white/50" : ""}`}>
       <ul className="flex items-center justify-between px-5 py-3 font-semibold sm:px-10">
-        <li className="flex size-[40px] items-center">
+        <li className="flex size-10 items-center min-[840px]:h-10 min-[840px]:w-[120px]">
           <Link href="#hero" onClick={(e) => handleSmoothScroll(e, "#hero")}>
             <Image alt="DIZETO" priority src={logoDIZETO} width={35} />
           </Link>
         </li>
         <li>
-          <ul className="hidden sm:flex sm:items-center sm:gap-5 md:gap-10 lg:gap-16">
+          <ul className="hidden min-[840px]:flex min-[840px]:items-center min-[840px]:gap-5 min-[940px]:gap-8 min-[1000px]:gap-10 min-[1060px]:gap-12 min-[1100px]:gap-14 min-[1160px]:gap-16">
             {NAVIGATION_DATA.map((dt) => (
               <li key={dt.id}>
                 <Link
@@ -81,15 +81,20 @@ export const Nav: FC<I> = (props): ReactElement => {
         </li>
         <li>
           <ul className="flex gap-2">
-            <li className="flex size-[40px] items-center justify-end">
-              <button className={ButtonTWM({ color: "black", size: "sm", variant: "ghost" })} onClick={handleUpdateTheme} type="button">
-                <IconBasedOnTheme themeCookie={props.themeCookie} />
-              </button>
+            <li className="hidden min-[840px]:flex min-[840px]:items-center min-[840px]:justify-end">
+              <Link className={ButtonTWM({ className: "h-8 min-w-[80px] px-0", color: "red", size: "sm", variant: "outline" })} href={"/login"}>
+                Login
+              </Link>
             </li>
-            <li className="flex size-[40px] items-center justify-end sm:hidden">
-              <button className={ButtonTWM({ color: "black", size: "sm", variant: "ghost" })} onClick={() => setOpenASide(true)} type="button">
+            <li className="flex size-[40px] items-center justify-end">
+              <Button color="black" onClick={handleUpdateTheme} size="sm" type="button" variant="ghost">
+                <IconBasedOnTheme themeCookie={props.themeCookie} />
+              </Button>
+            </li>
+            <li className="flex size-[40px] items-center justify-end min-[840px]:hidden">
+              <Button color="black" onClick={() => setOpenASide(true)} size="sm" type="button" variant="ghost">
                 <BsList className="mr-[-4px]" size={30} />
-              </button>
+              </Button>
             </li>
           </ul>
         </li>
