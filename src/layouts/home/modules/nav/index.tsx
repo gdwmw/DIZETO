@@ -9,8 +9,8 @@ import { BsList } from "react-icons/bs";
 
 import logoDIZETO from "@/root/public/assets/images/logos/dizeto.svg";
 import { ButtonTWM } from "@/src/components/interfaces/buttons/button";
+import { useGlobalStates } from "@/src/context";
 import { setCookie } from "@/src/hooks/cookies";
-import { useGlobalStates } from "@/src/hooks/global";
 import { NAVIGATION_DATA } from "@/src/libs/constants";
 
 import { IconBasedOnTheme } from "./batches/icon-based-on-theme";
