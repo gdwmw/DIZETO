@@ -48,7 +48,7 @@ export const RegisterSchema = z.object({
     }),
   username: z
     .string()
-    .min(6, { message: errorMessage.string.min("Username", 6) })
+    .min(3, { message: errorMessage.string.min("Username", 3) })
     .max(12, { message: errorMessage.string.min("Username", 12) })
     .toLowerCase(),
 });

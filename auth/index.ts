@@ -4,33 +4,7 @@ import { JWT } from "next-auth/jwt";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 import { IAuthPayload, IAuthResponse } from "@/src/types/api";
-
-interface IUserData extends IAuthResponse {
-  password: string;
-}
-
-const USER_DATA: IUserData[] = [
-  {
-    email: "admin@gmail.com",
-    id: "1",
-    image: "image url",
-    name: "Admin",
-    password: "admin",
-    role: "admin",
-    token: "123456789",
-    username: "admin",
-  },
-  {
-    email: "user@gmail.com",
-    id: "2",
-    image: "image url",
-    name: "User",
-    password: "user",
-    role: "user",
-    token: "987654321",
-    username: "user",
-  },
-];
+import { GETAuth } from "@/src/utils/api";
 
 export const options: NextAuthOptions = {
   callbacks: {
@@ -67,8 +41,9 @@ export const options: NextAuthOptions = {
         try {
           //   const res = await POSTAuth(credentials as IAuthPayload);
 
+          const data = await GETAuth();
           const payload = credentials as IAuthPayload;
-          const res = USER_DATA.find((user) => user.username === payload.username && user.password === payload.password);
+          const res = data.find((user) => user.username === payload.username && user.password === payload.password);
 
           if (!res) {
             return null;

@@ -1,5 +1,5 @@
 export { GETAbout, PUTAbout } from "./about";
-export { POSTAuth } from "./auth";
+export { GETAuth, POSTAuth } from "./auth";
 export { DELETEClient, GETClient, POSTClient, PUTClient } from "./client";
 export { GETContact, PUTContact } from "./contact";
 export { GETCounting, PUTCounting } from "./counting";

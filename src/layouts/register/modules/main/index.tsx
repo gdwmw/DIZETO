@@ -35,6 +35,7 @@ export const Main: FC = (): ReactElement => {
   const handleCreateAccount = useMutation({
     mutationFn: POSTAuth,
     onError: () => setLoading(false),
+    onMutate: () => setLoading(true),
     onSuccess: async () => {
       router.push("/login");
       reset();
@@ -42,6 +43,7 @@ export const Main: FC = (): ReactElement => {
   });
 
   const onSubmit: SubmitHandler<TRegisterSchema> = async (dt) => {
+    setDoesNotMatch(false);
     if (dt.confirmPassword === dt.password) {
       handleCreateAccount.mutate(dt);
     } else {
