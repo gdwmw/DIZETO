@@ -40,7 +40,7 @@ export const Client: FC = (): ReactElement => {
     <>
       <ContainerPaper id="client">
         <ContentPaper className="relative pb-10">
-          {session.data?.user.role === "admin" && (
+          {session.data?.user?.role === "admin" && (
             <Button className="absolute right-3 top-3" color="black" onClick={() => setOpenForm(true)} size="sm" type="button" variant="ghost">
               <FaEdit />
             </Button>

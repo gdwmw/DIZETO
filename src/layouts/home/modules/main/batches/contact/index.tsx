@@ -34,7 +34,7 @@ export const Contact: FC = (): ReactElement => {
     <>
       <ContainerPaper id="contact">
         <ContentPaper className="relative">
-          {session.data?.user.role === "admin" && (
+          {session.data?.user?.role === "admin" && (
             <Button className="absolute right-3 top-3" color="black" onClick={() => setOpenForm(true)} size="sm" type="button" variant="ghost">
               <FaEdit />
             </Button>

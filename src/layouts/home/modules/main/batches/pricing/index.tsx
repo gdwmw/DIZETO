@@ -35,7 +35,7 @@ export const Pricing: FC = (): ReactElement => {
     <>
       <ContainerPaper id="pricing">
         <ContentPaper className="relative pb-7">
-          {session.data?.user.role === "admin" && (
+          {session.data?.user?.role === "admin" && (
             <Button
               className="absolute right-3 top-3"
               color="black"

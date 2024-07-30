@@ -66,8 +66,6 @@ export const metadata: Metadata = {
   },
 };
 
-const HomePage: FC = async (): Promise<ReactElement> => (
-  <HomeLayout themeCookie={((await getCookie("theme"))?.value as string | undefined) ?? "system"} />
-);
+const HomePage: FC = async (): Promise<ReactElement> => <HomeLayout themeCookie={(await getCookie("theme"))?.value ?? "system"} />;
 
 export default HomePage;

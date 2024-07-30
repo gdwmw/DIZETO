@@ -3,7 +3,7 @@ import type { NextAuthOptions, Session, User } from "next-auth";
 import { JWT } from "next-auth/jwt";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-import { IAuthPayload, IAuthResponse } from "@/src/types/api";
+import { IAuthPayload } from "@/src/types/api";
 import { GETAuth } from "@/src/utils/api";
 
 export const options: NextAuthOptions = {
@@ -33,7 +33,7 @@ export const options: NextAuthOptions = {
 
   providers: [
     CredentialsProvider({
-      async authorize(credentials: Record<never, string> | undefined): Promise<IAuthResponse | null> {
+      async authorize(credentials: Record<never, string> | undefined): Promise<null | User> {
         if (!credentials) {
           return null;
         }

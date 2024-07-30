@@ -14,13 +14,13 @@ export interface IAuthPayload {
 }
 
 export interface IAuthResponse {
-  email: string;
+  email?: null | string;
   id: string;
   image?: null | string;
-  name: string;
-  role: string;
-  token: string;
-  username: string;
+  name?: null | string;
+  role?: null | string;
+  token?: null | string;
+  username?: null | string;
 }
 
 // ----------------------------

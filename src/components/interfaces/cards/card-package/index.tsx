@@ -20,7 +20,7 @@ export const CardPackage: FC<ICardPackage & IPricing> = ({ onClick, setDataPrici
   return (
     <section className="h-full pt-20 dark:text-white">
       <div className="relative h-full rounded-lg transition-card hover:scale-105 hover:shadow-md hover:shadow-black/50 dark:hover:shadow-white/50">
-        {session.data?.user.role === "admin" && (
+        {session.data?.user?.role === "admin" && (
           <Button
             className="absolute right-3 top-3 z-[1]"
             color="black"

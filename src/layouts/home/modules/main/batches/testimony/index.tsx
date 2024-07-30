@@ -57,7 +57,7 @@ export const Testimony: FC = (): ReactElement => {
     <>
       <ContainerPaper id="testimony">
         <ContentPaper className="relative bg-transparent dark:bg-transparent">
-          {session.data?.user.role === "admin" && (
+          {session.data?.user?.role === "admin" && (
             <Button
               className="absolute right-3 top-3"
               color="black"
@@ -98,7 +98,7 @@ export const Testimony: FC = (): ReactElement => {
           </div>
 
           <div className="relative flex flex-col items-center justify-evenly gap-5 sm:flex-row">
-            {session.data?.user.role === "admin" && (
+            {session.data?.user?.role === "admin" && (
               <Button className="absolute right-3 top-3" color="black" onClick={() => setOpenForm(true)} size="sm" type="button" variant="ghost">
                 <FaEdit />
               </Button>
