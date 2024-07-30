@@ -61,7 +61,7 @@ export const Nav: FC<I> = (props): ReactElement => {
   return (
     <nav className={`fixed inset-x-0 top-0 z-[2] ${isActive ? "shadow-md shadow-black/50 backdrop-blur-md dark:shadow-white/50" : ""}`}>
       <ul className="flex items-center justify-between px-5 py-3 font-semibold sm:px-10">
-        <li className="flex size-10 items-center min-[840px]:h-10 min-[840px]:w-[120px]">
+        <li className="flex size-10 items-center min-[840px]:h-10 min-[840px]:w-[128px]">
           <Link href="#hero" onClick={(e) => handleSmoothScroll(e, "#hero")}>
             <Image alt="DIZETO" priority src={logoDIZETO} width={35} />
           </Link>
