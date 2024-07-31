@@ -8,6 +8,7 @@ const config: Config = {
     extend: {
       animation: {
         backgroundGradient: "gradient 15s ease infinite",
+        opacity: "opacityChange 10s infinite",
       },
       colors: {
         dark: "#23272d",
@@ -22,6 +23,17 @@ const config: Config = {
           },
           "50%": {
             backgroundPosition: "100% 0%",
+          },
+        },
+        opacityChange: {
+          "0%, 10%": {
+            opacity: "0.5",
+          },
+          "50%": {
+            opacity: "1",
+          },
+          "60%, 100%": {
+            opacity: "0.5",
           },
         },
       },
