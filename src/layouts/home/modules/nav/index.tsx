@@ -9,7 +9,7 @@ import Link from "next/link";
 import { BsList } from "react-icons/bs";
 
 import logoDIZETO from "@/root/public/assets/images/logos/dizeto.svg";
-import { Button, ButtonTWM } from "@/src/components/interfaces/buttons/button";
+import { Button, ButtonTWM } from "@/src/components/interfaces/button";
 import { useGlobalStates } from "@/src/context";
 import { setCookie } from "@/src/hooks/cookies";
 import { NAVIGATION_DATA } from "@/src/libs/constants";

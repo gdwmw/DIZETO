@@ -1,6 +1,6 @@
 import { FC, ReactElement } from "react";
 
-import { Button } from "../../interfaces/buttons/button";
+import { Button } from "../../interfaces/button";
 
 interface I {
   handleAppend: () => void;

@@ -2,7 +2,7 @@ import { FC, ReactElement, ReactNode } from "react";
 
 import Link from "next/link";
 
-import { ButtonTWM } from "../buttons/button";
+import { ButtonTWM } from "../button";
 
 interface IContactInfo {
   href: string | undefined;

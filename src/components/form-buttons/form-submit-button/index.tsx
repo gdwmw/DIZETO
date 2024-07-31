@@ -4,7 +4,7 @@ import Image from "next/image";
 
 import loadingAnimation from "@/root/public/assets/animations/loadings/loading.svg";
 
-import { Button } from "../../interfaces/buttons/button";
+import { Button } from "../../interfaces/button";
 
 interface I {
   loading: boolean;

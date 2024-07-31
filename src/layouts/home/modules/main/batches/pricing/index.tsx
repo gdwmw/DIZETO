@@ -7,7 +7,7 @@ import { useSession } from "next-auth/react";
 import dynamic from "next/dynamic";
 import { FaEdit } from "react-icons/fa";
 
-import { Button } from "@/src/components/interfaces/buttons/button";
+import { Button } from "@/src/components/interfaces/button";
 import { CardPackage } from "@/src/components/interfaces/cards/card-package";
 import { ContainerPaper, ContentPaper } from "@/src/components/interfaces/paper";
 import { Title } from "@/src/components/interfaces/title";

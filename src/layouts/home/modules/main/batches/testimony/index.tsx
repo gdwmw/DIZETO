@@ -12,7 +12,7 @@ import { BsBriefcaseFill, BsFillCircleFill, BsQuote } from "react-icons/bs";
 import { FaEdit, FaThumbsUp } from "react-icons/fa";
 import { HiUserGroup } from "react-icons/hi";
 
-import { Button } from "@/src/components/interfaces/buttons/button";
+import { Button } from "@/src/components/interfaces/button";
 import { ContainerPaper, ContentPaper } from "@/src/components/interfaces/paper";
 import { GETCounting, GETTestimony } from "@/src/utils/api";
 const TestimonyForm = dynamic(() => import("../forms/testimony-form"));

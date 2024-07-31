@@ -8,7 +8,7 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { FaEdit } from "react-icons/fa";
 
-import { Button, ButtonTWM } from "@/src/components/interfaces/buttons/button";
+import { Button, ButtonTWM } from "@/src/components/interfaces/button";
 import { ContainerPaper, ContentPaper } from "@/src/components/interfaces/paper";
 import { Thumbnail } from "@/src/components/interfaces/thumbnail";
 import { Title } from "@/src/components/interfaces/title";

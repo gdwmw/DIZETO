@@ -6,7 +6,7 @@ import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { CgClose } from "react-icons/cg";
 
-import { Button, ButtonTWM } from "@/src/components/interfaces/buttons/button";
+import { Button, ButtonTWM } from "@/src/components/interfaces/button";
 import { useGlobalStates } from "@/src/context";
 import { NAVIGATION_DATA } from "@/src/libs/constants";
 

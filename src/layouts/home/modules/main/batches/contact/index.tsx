@@ -9,7 +9,7 @@ import { FaEdit } from "react-icons/fa";
 import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
 import { TbWorldWww } from "react-icons/tb";
 
-import { Button } from "@/src/components/interfaces/buttons/button";
+import { Button } from "@/src/components/interfaces/button";
 import { ContactInfo } from "@/src/components/interfaces/contact-info";
 import { ContainerPaper, ContentPaper } from "@/src/components/interfaces/paper";
 import { Title } from "@/src/components/interfaces/title";

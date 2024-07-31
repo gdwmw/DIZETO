@@ -9,7 +9,7 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import loading from "@/root/public/assets/animations/loadings/loading.svg";
 import { IHighlight } from "@/src/types/api";
 
-import { Button } from "../buttons/button";
+import { Button } from "../button";
 
 export interface IImageDetail {
   data: IHighlight | undefined;

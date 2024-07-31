@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 
 import loadingAnimation from "@/root/public/assets/animations/loadings/loading.svg";
 import logoDIZETO from "@/root/public/assets/images/logos/dizeto.svg";
-import { Button, ButtonTWM } from "@/src/components/interfaces/buttons/button";
+import { Button, ButtonTWM } from "@/src/components/interfaces/button";
 import { Input } from "@/src/components/interfaces/inputs";
 import { ContentModal } from "@/src/components/interfaces/modal";
 import { LoginSchema, TLoginSchema } from "@/src/schemas/auth";

@@ -6,7 +6,7 @@ import { MdError } from "react-icons/md";
 
 import { twm } from "@/src/libs/tailwind-merge";
 
-import { Button } from "../../buttons/button";
+import { Button } from "../../button";
 
 /* eslint-disable perfectionist/sort-union-types */
 type TInput = {

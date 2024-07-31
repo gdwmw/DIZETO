@@ -29,7 +29,7 @@ const meta: Meta<typeof Layout> = {
     layout: "centered",
   },
   tags: ["autodocs"],
-  title: "Components/Interfaces/Buttons/button",
+  title: "Components/Interfaces/button",
 };
 
 export default meta;
