@@ -35,12 +35,12 @@ const PRICING_DATA = {
     },
   ],
   pack: "A",
-  price: "1.0",
+  price: "1.000.000",
 };
 
 const component = (
   <NextAuthProvider>
-    <CardPackage {...PRICING_DATA} />
+    <CardPackage data={PRICING_DATA} />
   </NextAuthProvider>
 );
 

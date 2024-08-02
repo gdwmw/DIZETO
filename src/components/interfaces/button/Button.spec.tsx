@@ -143,7 +143,7 @@ describe("Button Component Testing", () => {
 
               !disabled ? expect(getByTestId("button")).toHaveClass(classes.base.b) : expect(getByTestId("button")).not.toHaveClass(classes.base.b);
 
-              !disabled ? expect(getByTestId("button")).not.toHaveClass(classes.base.c) : expect(getByTestId("button")).toHaveClass(classes.base.c);
+              disabled ? expect(getByTestId("button")).toHaveClass(classes.base.c) : expect(getByTestId("button")).not.toHaveClass(classes.base.c);
 
               // ⭐ === SOLID === ⭐
               variant === "solid" && color === "red" && !disabled

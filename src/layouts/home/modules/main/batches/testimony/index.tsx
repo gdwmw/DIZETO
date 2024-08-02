@@ -97,7 +97,7 @@ export const Testimony: FC = (): ReactElement => {
             </div>
           </div>
 
-          <div className="relative flex flex-col items-center justify-evenly gap-5 sm:flex-row">
+          <div className="relative hidden items-center justify-evenly gap-5 sm:flex">
             {session.data?.user?.role === "admin" && (
               <Button className="absolute right-3 top-3" color="black" onClick={() => setOpenForm(true)} size="sm" type="button" variant="ghost">
                 <FaEdit />
@@ -112,8 +112,7 @@ export const Testimony: FC = (): ReactElement => {
               <span className="text-xl font-semibold">{dataCounting?.[0]?.title}</span>
             </div>
 
-            <div className="hidden h-16 w-0.5 bg-black sm:block dark:bg-white" />
-            <div className="h-0.5 w-16 bg-black sm:hidden dark:bg-white" />
+            <div className="h-16 w-0.5 bg-black dark:bg-white" />
 
             <div className="text-center">
               <div className="flex items-center justify-center gap-2">
@@ -123,8 +122,7 @@ export const Testimony: FC = (): ReactElement => {
               <span className="text-xl font-semibold">{dataCounting?.[1]?.title}</span>
             </div>
 
-            <div className="hidden h-16 w-0.5 bg-black sm:block dark:bg-white" />
-            <div className="h-0.5 w-16 bg-black sm:hidden dark:bg-white" />
+            <div className="h-16 w-0.5 bg-black dark:bg-white" />
 
             <div className="text-center">
               <div className="flex items-center justify-center gap-2">

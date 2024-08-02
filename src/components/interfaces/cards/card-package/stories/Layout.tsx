@@ -1,5 +1,7 @@
 import { FC, ReactElement } from "react";
 
+import { NextAuthProvider } from "@/src/libs/providers";
+
 import { CardPackage } from "..";
 
 const PRICING_DATA = {
@@ -20,12 +22,14 @@ const PRICING_DATA = {
     },
   ],
   pack: "A",
-  price: "1.0",
+  price: "1.000.000",
 };
 
 const Layout: FC = (): ReactElement => (
   <div className="w-[400px]">
-    <CardPackage {...PRICING_DATA} />
+    <NextAuthProvider>
+      <CardPackage data={PRICING_DATA} />
+    </NextAuthProvider>
   </div>
 );
 
