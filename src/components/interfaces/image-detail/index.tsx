@@ -1,6 +1,7 @@
 "use client";
 
-import { FC, ReactElement, SetStateAction, useEffect, useState } from "react";
+import { FC, ReactElement, SetStateAction, useState } from "react";
+import { useHotkeys } from "react-hotkeys-hook";
 
 import Image from "next/image";
 import { CgClose } from "react-icons/cg";
@@ -22,25 +23,25 @@ const ImageDetail: FC<IImageDetail> = ({ data, imageIndex, setImageIndex, setOpe
   const [loaded, setLoaded] = useState(false);
   const [transitionLoaded, setTransitionLoaded] = useState(false);
 
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (loaded && imageIndex >= 1 && e.key === "ArrowLeft") {
-        setImageIndex((prev) => prev - 1);
-        setTransitionLoaded((prev) => !prev);
-      }
-      if (loaded && data?.images && imageIndex < data.images.length - 1 && e.key === "ArrowRight") {
-        setImageIndex((prev) => prev + 1);
-        setTransitionLoaded((prev) => !prev);
-      }
-      if (loaded && e.key === "Escape") {
-        setOpenImageDetail(false);
-      }
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [loaded, imageIndex, data, setImageIndex, setOpenImageDetail]);
+  useHotkeys("left", () => {
+    if (loaded && imageIndex >= 1) {
+      setImageIndex((prev) => prev - 1);
+      setTransitionLoaded((prev) => !prev);
+    }
+  });
+
+  useHotkeys("right", () => {
+    if (loaded && data?.images && imageIndex < data.images.length - 1) {
+      setImageIndex((prev) => prev + 1);
+      setTransitionLoaded((prev) => !prev);
+    }
+  });
+
+  useHotkeys("esc", () => {
+    if (loaded) {
+      setOpenImageDetail(false);
+    }
+  });
 
   return (
     <section className="fixed inset-0 z-[4] flex items-center justify-center bg-black/30 p-5 backdrop-blur-md dark:bg-white/20">
