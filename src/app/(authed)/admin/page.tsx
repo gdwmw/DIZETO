@@ -10,7 +10,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Admin",
+  title: "ADMIN",
 };
 
 const AdminPage: FC = async (): Promise<ReactElement> => {

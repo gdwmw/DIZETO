@@ -10,7 +10,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "User",
+  title: "USER",
 };
 
 const UserPage: FC = async (): Promise<ReactElement> => {

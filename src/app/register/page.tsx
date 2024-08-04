@@ -10,7 +10,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Register",
+  title: "REGISTER",
 };
 
 const RegisterPage: FC = (): ReactElement => <RegisterLayout />;

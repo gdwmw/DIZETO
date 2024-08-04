@@ -8,7 +8,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Not Found",
+  title: "NOT FOUND",
 };
 
 const NotFoundPage: FC = (): ReactElement => (

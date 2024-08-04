@@ -10,7 +10,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Login",
+  title: "LOGIN",
 };
 
 const LoginPage: FC = (): ReactElement => <LoginLayout />;

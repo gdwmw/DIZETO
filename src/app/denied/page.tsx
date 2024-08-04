@@ -8,7 +8,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Denied",
+  title: "DENIED",
 };
 
 const DeniedPage: FC = (): ReactElement => (
