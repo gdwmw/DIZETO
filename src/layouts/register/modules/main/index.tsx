@@ -8,6 +8,7 @@ import { useMutation } from "@tanstack/react-query";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { IoIosEyeOff, IoMdEye } from "react-icons/io";
 
 import loadingAnimation from "@/root/public/assets/animations/loadings/loading.svg";
 import logoDIZETO from "@/root/public/assets/images/logos/dizeto.svg";
@@ -19,6 +20,7 @@ import { POSTAuth } from "@/src/utils/api";
 
 export const Main: FC = (): ReactElement => {
   const router = useRouter();
+  const [visibility, setVisibility] = useState(false);
   const [loading, setLoading] = useState(false);
   const [doesNotMatch, setDoesNotMatch] = useState(false);
 
@@ -101,7 +103,7 @@ export const Main: FC = (): ReactElement => {
 
   const INPUT_FIELDS_DATA = [
     { errorMessage: errors.name?.message, id: "1", label: "Name", name: "name", type: "text" },
-    { errorMessage: errors.email?.message, id: "2", label: "Email", name: "email", type: "text" },
+    { errorMessage: errors.email?.message, id: "2", inputMode: "email" as const, label: "Email", name: "email", type: "text" },
     { errorMessage: errors.username?.message, id: "3", label: "Username", name: "username", type: "text" },
     { errorMessage: errors.password?.message, id: "4", label: "Password", name: "password", type: "password" },
     { errorMessage: errors.confirmPassword?.message, id: "5", label: "Confirm Password", name: "confirmPassword", type: "password" },
@@ -123,9 +125,12 @@ export const Main: FC = (): ReactElement => {
                 color="black"
                 disabled={loading}
                 errorMessage={dt.errorMessage}
+                icon={dt.type !== "password" ? null : visibility ? <IoMdEye size={18} /> : <IoIosEyeOff size={18} />}
+                iconOnClick={() => setVisibility((prev) => !prev)}
+                inputMode={dt.inputMode}
                 key={dt.id}
                 label={dt.label}
-                type={dt.type}
+                type={dt.type !== "password" ? dt.type : visibility ? "text" : "password"}
                 {...register(dt.name as keyof TRegisterSchema)}
               />
             ))}
