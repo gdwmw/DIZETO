@@ -93,19 +93,13 @@ export const PricingSchema = z.object({
               .string()
               .min(1, { message: errorMessage.string.min("Label", 1) })
               .max(100, { message: errorMessage.string.max("Label", 100) }),
-            qty: z
-              .number()
-              .min(1, { message: errorMessage.number.min("Quantity", 1) })
-              .max(1000, { message: errorMessage.number.max("Quantity", 1000) }),
+            qty: z.number().min(1, { message: errorMessage.number.min("Quantity", 1) }),
           }),
         ),
         pricingId: z.string(),
       }),
     ),
-    pack: z
-      .string()
-      .min(1, { message: errorMessage.string.min("Pack", 1) })
-      .max(100, { message: errorMessage.string.max("Pack", 100) }),
+    package: z.string().min(1, { message: errorMessage.string.required("Package") }),
     price: z
       .string()
       .min(5, { message: errorMessage.string.min("Price", 5) })

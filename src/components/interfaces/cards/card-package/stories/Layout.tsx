@@ -21,7 +21,7 @@ const PRICING_DATA = {
       pricingId: "1",
     },
   ],
-  pack: "A",
+  package: "A",
   price: "1.000.000",
 };
 

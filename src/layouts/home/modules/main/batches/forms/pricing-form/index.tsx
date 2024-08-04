@@ -7,7 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { FormActionButton, FormSubmitButton } from "@/src/components/form-buttons";
-import { Input, TextArea } from "@/src/components/interfaces/inputs";
+import { Input, Select, TextArea } from "@/src/components/interfaces/inputs";
 import { ContainerModal, ContentModal } from "@/src/components/interfaces/modal";
 import { Title } from "@/src/components/interfaces/title";
 import { PricingSchema, TPricingSchema } from "@/src/schemas/home";
@@ -100,7 +100,15 @@ const PricingForm: FC<I> = (props): ReactElement => {
 
   const PACKAGE_INPUT_FIELDS_DATA = [
     { error: errors.data?.price?.message, id: "1", label: "Price", name: "data.price", type: "text" },
-    { error: errors.data?.pack?.message, id: "2", label: "Package", name: "data.pack", type: "text" },
+    {
+      error: errors.data?.package?.message,
+      id: "2",
+      label: "Package",
+      name: "data.package",
+      options: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
+      tag: "select",
+      type: "text",
+    },
     { error: errors.data?.category?.message, id: "3", label: "Category", name: "data.category", tag: "textarea" },
   ];
 
@@ -136,7 +144,7 @@ const PricingForm: FC<I> = (props): ReactElement => {
                     type={dt.type}
                     {...register(dt.name as keyof TPricingSchema)}
                   />
-                ) : (
+                ) : dt.tag === "textarea" ? (
                   <TextArea
                     className="min-h-fit resize-none"
                     color="black"
@@ -147,6 +155,21 @@ const PricingForm: FC<I> = (props): ReactElement => {
                     rows={0}
                     {...register(dt.name as keyof TPricingSchema)}
                   />
+                ) : (
+                  <Select
+                    color="black"
+                    disabled={loading}
+                    errorMessage={dt.error}
+                    key={dt.id}
+                    label={dt.label}
+                    {...register(dt.name as keyof TPricingSchema)}
+                  >
+                    {dt.options?.map((value) => (
+                      <option className="text-black" key={value} value={value}>
+                        {value}
+                      </option>
+                    ))}
+                  </Select>
                 ),
               )}
 

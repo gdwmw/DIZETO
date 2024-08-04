@@ -32,8 +32,8 @@ export const CardPackage: FC<I> = (props): ReactElement => {
             <span className="text-2xl font-bold sm:text-3xl" data-testid="price">
               IDR {props.data.price}
             </span>
-            <span className="font-semibold sm:text-base sm:tracking-wider" data-testid="pack">
-              PACKAGE {props.data.pack}
+            <span className="font-semibold sm:text-base sm:tracking-wider" data-testid="package">
+              PACKAGE {props.data.package}
             </span>
           </div>
         </div>
