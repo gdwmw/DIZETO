@@ -1,14 +1,14 @@
-# DIZETO Project Documentation
+# Next.js Boilerplate Documentation
 
 Boilerplate By [Gede Dewo Wahyu M.W](https://github.com/gdwmw) ❤️
 
-## Project Description 📖
+## Boilerplate Description 📖
 
-This project is a web application built using Next.js, which is a React framework for web application development. The project includes various features such as authentication, theme management, state management, form validation, and more.
+This boilerplate is a web application built using Next.js, which is a React framework for web application development. The boilerplate includes various features such as authentication, theme management, state management, form validation, and more. Additionally, this boilerplate follows the principles of Atomic Design for organizing components.
 
-## Project Structure 📂
+## Boilerplate Structure 📂
 
-Below is the main directory structure of the project:
+Below is the main directory structure of the boilerplate:
 
 ```
 /auth
@@ -34,10 +34,10 @@ Below is the main directory structure of the project:
 - **/auth**: Contains authentication-related files and logic.
 - **/public**: Contains static assets such as images, animations, and other static files.
 - **/src/app**: Contains the main application pages, including login, admin, user, and others.
-- **/src/components**: Contains reusable UI components throughout the application.
+- **/src/components**: Contains reusable components throughout the application, organized following the principles of Atomic Design.
 - **/src/context**: Contains context providers for state management and sharing data across components.
 - **/src/hooks**: Contains custom hooks for managing state and side effects in functional components.
-- **/src/layouts**: Contains layouts for various parts of the application, such as header, footer, aside, and others.
+- **/src/layouts**: Contains layouts for various parts of the application, such as header, footer, aside, and others. The layouts are organized following the principles of Atomic Design, with components broken down into smaller, reusable pieces.
 - **/src/libs**: Contains libraries such as providers for authentication and theme management, as well as constants and others.
 - **/src/schemas**: Contains validation schemas using Zod to ensure incoming data meets expectations.
 - **/src/types**: Contains TypeScript type definitions to ensure type safety throughout the application.
@@ -46,13 +46,13 @@ Below is the main directory structure of the project:
 
 ## Installation 🚀
 
-To get started with this project, follow these steps:
+To get started with this boilerplate, follow these steps:
 
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/gdwmw/DIZETO.git
-   cd DIZETO
+   git clone https://github.com/gdwmw/Next.js-Boilerplate.git
+   cd Next.js-Boilerplate
    ```
 
 2. **Install Dependencies**
@@ -132,7 +132,7 @@ By following these guidelines, you ensure that your commit messages are informat
 
 ## Contribution 🤝
 
-If you would like to contribute to this project, please follow these steps:
+If you would like to contribute to this boilerplate, please follow these steps:
 
 1. **Fork the Repository**  
    Click on the "Fork" button at the top right corner of the repository page to create your own copy.
@@ -141,8 +141,8 @@ If you would like to contribute to this project, please follow these steps:
    Clone your forked repository to your local machine:
 
    ```bash
-   git clone https://github.com/your-username/DIZETO.git
-   cd DIZETO
+   git clone https://github.com/your-username/Next.js-Boilerplate.git
+   cd Next.js-Boilerplate
    ```
 
 3. **Create a New Branch**  
@@ -176,11 +176,11 @@ Thank you for your contribution!
 
 ## MIT License ⚖️
 
-This project is licensed under the MIT License. Please see the `LICENSE` file for more information.
+This boilerplate is licensed under the MIT License. Please see the `LICENSE` file for more information.
 
 ## How to Ask Questions❓
 
-If you have any questions regarding the project or its usage, please follow these guidelines:
+If you have any questions regarding the boilerplate or its usage, please follow these guidelines:
 
 1. **Be Clear and Concise**  
    Clearly state your question or issue. Provide enough context for others to understand your problem.
@@ -199,4 +199,4 @@ If you have any questions regarding the project or its usage, please follow thes
 
 By following these guidelines, you can help ensure that your questions are understood and addressed promptly.
 
-This documentation provides a clear overview of the project, installation instructions, commit guidelines, and contribution guidelines. If you have any further questions, feel free to ask!
+This documentation provides a clear overview of the boilerplate, installation instructions, commit guidelines, and contribution guidelines. If you have any further questions, feel free to ask!
