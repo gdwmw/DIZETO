@@ -8,7 +8,7 @@ import { signIn } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { IoIosEyeOff, IoMdEye } from "react-icons/io";
+import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 
 import loadingAnimation from "@/root/public/assets/animations/loadings/loading.svg";
 import logoDIZETO from "@/root/public/assets/images/logos/dizeto.svg";
@@ -72,7 +72,7 @@ export const Main: FC = (): ReactElement => {
               color="black"
               disabled={loading}
               errorMessage={errors.password?.message}
-              icon={visibility ? <IoMdEye size={18} /> : <IoIosEyeOff size={18} />}
+              icon={visibility ? <IoIosEye size={18} /> : <IoIosEyeOff size={18} />}
               iconOnClick={() => setVisibility((prev) => !prev)}
               label="Password"
               type={visibility ? "text" : "password"}

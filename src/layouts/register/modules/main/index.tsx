@@ -8,7 +8,7 @@ import { useMutation } from "@tanstack/react-query";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { IoIosEyeOff, IoMdEye } from "react-icons/io";
+import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 
 import loadingAnimation from "@/root/public/assets/animations/loadings/loading.svg";
 import logoDIZETO from "@/root/public/assets/images/logos/dizeto.svg";
@@ -125,7 +125,7 @@ export const Main: FC = (): ReactElement => {
                 color="black"
                 disabled={loading}
                 errorMessage={dt.errorMessage}
-                icon={dt.type !== "password" ? null : visibility ? <IoMdEye size={18} /> : <IoIosEyeOff size={18} />}
+                icon={dt.type !== "password" ? null : visibility ? <IoIosEye size={18} /> : <IoIosEyeOff size={18} />}
                 iconOnClick={() => setVisibility((prev) => !prev)}
                 inputMode={dt.inputMode}
                 key={dt.id}
