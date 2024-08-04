@@ -30,7 +30,7 @@ export const CardPackage: FC<I> = (props): ReactElement => {
         <div className="absolute inset-x-0 top-[-50px] flex items-center justify-center sm:top-[-60px]">
           <div className="flex h-[100px] w-fit flex-col items-center justify-center rounded-full border-4 border-gray-200 bg-red-600 px-8 text-center text-white sm:h-[120px] sm:px-10 dark:border-gray-700">
             <span className="text-2xl font-bold sm:text-3xl" data-testid="price">
-              IDR {props.data.price}
+              IDR {props.data.price.toLocaleString()}
             </span>
             <span className="font-semibold sm:text-base sm:tracking-wider" data-testid="package">
               PACKAGE {props.data.package}
