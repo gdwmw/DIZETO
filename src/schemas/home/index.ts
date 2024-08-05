@@ -101,9 +101,9 @@ export const PricingSchema = z.object({
     ),
     package: z.string().min(1, { message: errorMessage.string.required("Package") }),
     price: z
-      .string()
-      .min(5, { message: errorMessage.string.min("Price", 5) })
-      .max(10, { message: errorMessage.string.max("Price", 10) }),
+      .number()
+      .min(1000, { message: errorMessage.number.min("Price", 1000) })
+      .max(10000000, { message: errorMessage.number.max("Price", 10000000) }),
   }),
   title: TitleSchema,
 });

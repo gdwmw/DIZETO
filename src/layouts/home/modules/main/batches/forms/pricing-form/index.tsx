@@ -99,7 +99,7 @@ const PricingForm: FC<I> = (props): ReactElement => {
   ];
 
   const PACKAGE_INPUT_FIELDS_DATA = [
-    { error: errors.data?.price?.message, id: "1", label: "Price", name: "data.price", type: "text" },
+    { error: errors.data?.price?.message, id: "1", label: "Price", name: "data.price", type: "number" },
     {
       error: errors.data?.package?.message,
       id: "2",
@@ -127,7 +127,7 @@ const PricingForm: FC<I> = (props): ReactElement => {
                 key={dt.id}
                 label={dt.label}
                 type={dt.type}
-                {...register(dt.name as keyof TPricingSchema)}
+                {...register(dt.name as keyof TPricingSchema, { valueAsNumber: dt.type === "number" })}
               />
             ))}
 

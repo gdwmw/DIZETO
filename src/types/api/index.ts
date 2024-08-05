@@ -74,7 +74,7 @@ export interface IPricing {
   id: string;
   listItem: IListItem[];
   package: string;
-  price: string;
+  price: number;
 }
 
 // ----------------------------
