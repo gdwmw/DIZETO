@@ -13,7 +13,7 @@ export const GETExample = async (): Promise<IExample[]> => {
     const res = await fetch(API_URL);
 
     if (!res.ok) {
-      throw new Error(`Failed to fetch: Example with status ${res.status}`);
+      throw new Error(`Failed to get: Example with status ${res.status}`);
     }
 
     return await res.json();

@@ -13,7 +13,7 @@ export const GETHighlight = async (): Promise<IHighlight> => {
     const res = await fetch(API_URL);
 
     if (!res.ok) {
-      throw new Error(`Failed to fetch: Highlight with status ${res.status}`);
+      throw new Error(`Failed to get: Highlight with status ${res.status}`);
     }
 
     const data = await res.json();

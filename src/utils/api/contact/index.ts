@@ -13,7 +13,7 @@ export const GETContact = async (): Promise<IContact[]> => {
     const res = await fetch(API_URL);
 
     if (!res.ok) {
-      throw new Error(`Failed to fetch: Contact with status ${res.status}`);
+      throw new Error(`Failed to get: Contact with status ${res.status}`);
     }
 
     return await res.json();

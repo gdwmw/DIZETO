@@ -18,7 +18,7 @@ export const GETAuth = async (): Promise<ITemporaryAuthResponse[]> => {
     const res = await fetch(API_URL);
 
     if (!res.ok) {
-      throw new Error(`Failed to fetch: Auth with status ${res.status}`);
+      throw new Error(`Failed to get: Auth with status ${res.status}`);
     }
 
     return await res.json();

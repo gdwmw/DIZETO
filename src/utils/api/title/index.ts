@@ -13,7 +13,7 @@ export const GETTitle = async (): Promise<ITitle[]> => {
     const res = await fetch(API_URL);
 
     if (!res.ok) {
-      throw new Error(`Failed to fetch: Title with status ${res.status}`);
+      throw new Error(`Failed to get: Title with status ${res.status}`);
     }
 
     return await res.json();

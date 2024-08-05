@@ -13,7 +13,7 @@ export const GETPricing = async (): Promise<IPricing[]> => {
     const res = await fetch(API_URL);
 
     if (!res.ok) {
-      throw new Error(`Failed to fetch: Pricing with status ${res.status}`);
+      throw new Error(`Failed to get: Pricing with status ${res.status}`);
     }
 
     return await res.json();

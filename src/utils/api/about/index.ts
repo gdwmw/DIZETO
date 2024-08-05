@@ -13,7 +13,7 @@ export const GETAbout = async (): Promise<IAbout> => {
     const res = await fetch(API_URL);
 
     if (!res.ok) {
-      throw new Error(`Failed to fetch: About with status ${res.status}`);
+      throw new Error(`Failed to get: About with status ${res.status}`);
     }
 
     const data = await res.json();
