@@ -23,6 +23,21 @@ export const GETPricing = async (): Promise<IPricing[]> => {
   }
 };
 
+export const GETPricingById = async (id: string): Promise<IPricing> => {
+  try {
+    const res = await fetch(`${API_URL}/${id}`);
+
+    if (!res.ok) {
+      throw new Error(`Failed to get: Pricing ${id} with status ${res.status}`);
+    }
+
+    return await res.json();
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
+
 export const PUTPricing = async (data: IPricing): Promise<IPricing> => {
   try {
     const res = await fetch(`${API_URL}/${data.id}`, {

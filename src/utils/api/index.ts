@@ -1,12 +1,13 @@
 export { GETAbout, PUTAbout } from "./about";
 export { GETAuth, POSTAuth } from "./auth";
+export { DELETEBooking, GETBooking, POSTBooking, PUTBooking } from "./booking";
 export { DELETEClient, GETClient, POSTClient, PUTClient } from "./client";
 export { GETContact, PUTContact } from "./contact";
 export { GETCounting, PUTCounting } from "./counting";
 export { DELETEExample, GETExample, POSTExample, PUTExample } from "./example";
 export { GETHighlight, PUTHighlight } from "./highlight";
 export { PUTImages } from "./highlight/images";
-export { GETPricing, PUTPricing } from "./pricing";
+export { GETPricing, GETPricingById, PUTPricing } from "./pricing";
 export { PUTListItem } from "./pricing/list-item";
 export { DELETETestimony, GETTestimony, POSTTestimony, PUTTestimony } from "./testimony";
 export { GETTitle, PUTTitle } from "./title";

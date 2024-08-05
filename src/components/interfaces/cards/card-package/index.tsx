@@ -3,20 +3,28 @@
 import { FC, ReactElement } from "react";
 
 import { useSession } from "next-auth/react";
+import Link from "next/link";
 import { FaEdit } from "react-icons/fa";
 
 import { IPricing } from "@/src/types/api";
 
-import { Button } from "../../button";
+import { Button, ButtonTWM } from "../../button";
 
 interface I {
+  bookingHref?: string;
   data: IPricing;
   onClick?: () => void;
-  onClickBooking?: () => void;
 }
 
 export const CardPackage: FC<I> = (props): ReactElement => {
   const session = useSession();
+
+  const formatPrice = (price: number | undefined) => {
+    if (price === undefined) {
+      return "Loading...";
+    }
+    return `IDR ${new Intl.NumberFormat("en-US", { minimumFractionDigits: 0 }).format(price)}`;
+  };
 
   return (
     <section className="h-full pt-20 dark:text-white">
@@ -30,7 +38,7 @@ export const CardPackage: FC<I> = (props): ReactElement => {
         <div className="absolute inset-x-0 top-[-50px] flex items-center justify-center sm:top-[-60px]">
           <div className="flex h-[100px] w-fit flex-col items-center justify-center rounded-full border-4 border-gray-200 bg-red-600 px-8 text-center text-white sm:h-[120px] sm:px-10 dark:border-gray-700">
             <span className="text-2xl font-bold sm:text-3xl" data-testid="price">
-              IDR {props.data.price.toLocaleString()}
+              {formatPrice(props.data.price)}
             </span>
             <span className="font-semibold sm:text-base sm:tracking-wider" data-testid="package">
               PACKAGE {props.data.package}
@@ -64,9 +72,12 @@ export const CardPackage: FC<I> = (props): ReactElement => {
               </span>
             </li>
             <li>
-              <Button className="mx-auto w-full max-w-52" color="red" onClick={props.onClickBooking} size="sm" type="button" variant="outline">
+              <Link
+                className={ButtonTWM({ className: "mx-auto w-full max-w-52", color: "red", size: "sm", variant: "outline" })}
+                href={props.bookingHref ?? "/"}
+              >
                 BOOKING
-              </Button>
+              </Link>
             </li>
           </ul>
         </div>

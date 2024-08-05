@@ -4,6 +4,7 @@ import { FC, PropsWithChildren, ReactElement } from "react";
 
 import { Inter } from "next/font/google";
 
+import "react-calendar/dist/Calendar.css";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });

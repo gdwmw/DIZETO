@@ -57,6 +57,7 @@ export const Pricing: FC = (): ReactElement => {
           <div className="mt-5 grid gap-5 sm:mt-0 sm:grid-cols-2 xl:grid-cols-4">
             {dataPricing?.map((dt) => (
               <CardPackage
+                bookingHref={`/booking/${dt.id}`}
                 data={dt}
                 key={dt.id}
                 onClick={() => {
