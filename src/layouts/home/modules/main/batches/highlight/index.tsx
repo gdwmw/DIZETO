@@ -47,7 +47,7 @@ export const Highlight: FC = (): ReactElement => {
           <div className="my-5 flex items-center justify-center">
             <Link
               className={ButtonTWM({ className: "text-sm font-semibold sm:text-base", color: "red", size: "sm", variant: "outline" })}
-              href={"/portfoliolist"}
+              href={"https://dizeto.vercel.app/portfoliolist"}
             >
               CHECK ALL PORTFOLIO
             </Link>

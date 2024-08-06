@@ -13,11 +13,6 @@ interface I {
 const BookingLayout: FC<I> = async (props): Promise<ReactElement> => {
   const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery({
-    queryFn: () => GETPricingById(props.id),
-    queryKey: ["GETPricingById", props.id],
-  });
-
   await Promise.all([
     queryClient.prefetchQuery({
       queryFn: () => GETPricingById(props.id),

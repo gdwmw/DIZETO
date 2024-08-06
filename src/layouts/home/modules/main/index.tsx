@@ -70,7 +70,7 @@ export const Main: FC = async (): Promise<ReactElement> => {
               <FaList size={23} />
             </FloatingButton>
           ) : (
-            <FloatingButton href="/status">
+            <FloatingButton href="/dashboard">
               <FaList size={23} />
             </FloatingButton>
           )

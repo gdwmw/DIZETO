@@ -50,24 +50,23 @@ export const Main: FC<I> = (props): ReactElement => {
 
           <div className="flex flex-col gap-5 pt-5 min-[560px]:flex-row min-[560px]:gap-0">
             <div className="w-full space-y-5 min-[560px]:order-2 min-[560px]:pl-5">
-              {
-                <Input
-                  className={resultURL && "!cursor-text"}
-                  disabled
-                  icon={
-                    resultURL ? (
-                      <Link className="cursor-pointer hover:text-red-600" href={resultURL} target="_blank">
-                        <MdOpenInNew />
-                      </Link>
-                    ) : (
+              <Input
+                className={resultURL && "!cursor-text"}
+                disabled
+                icon={
+                  resultURL ? (
+                    <Link className="cursor-pointer hover:text-red-600" href={resultURL} target="_blank">
                       <MdOpenInNew />
-                    )
-                  }
-                  iconClassName={resultURL && "cursor-text"}
-                  label="Result URL"
-                  value={resultURL}
-                />
-              }
+                    </Link>
+                  ) : (
+                    <MdOpenInNew />
+                  )
+                }
+                iconClassName={resultURL && "cursor-text"}
+                label="Result URL"
+                value={resultURL}
+              />
+
               <div className="space-y-2">
                 <Button
                   className="w-full"
