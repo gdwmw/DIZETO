@@ -2,7 +2,7 @@
 
 import { FC, ReactElement, useState } from "react";
 
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
@@ -11,15 +11,18 @@ import { POSTBooking } from "@/src/utils/api";
 
 interface I {
   activeTime: number;
+  category: string;
+  package: string;
   packageId: string;
+  price: number;
   selectedDate: Date | null;
   selectedTime: string;
   setActiveTime: (time: number) => void;
   setSelectedTime: (time: string) => void;
-  total: number;
 }
 
 export const TimePicker: FC<I> = (props): ReactElement => {
+  const queryClient = useQueryClient();
   const router = useRouter();
   const session = useSession();
   const [loading, setLoading] = useState(false);
@@ -27,7 +30,8 @@ export const TimePicker: FC<I> = (props): ReactElement => {
   const handleCreateBooking = useMutation({
     mutationFn: POSTBooking,
     onMutate: () => setLoading(true),
-    onSuccess: (res) => {
+    onSuccess: async (res) => {
+      await queryClient.invalidateQueries({ queryKey: ["GETAuth"] });
       router.push(`/booking/payment/${res.authId}/${res.id}`);
     },
   });
@@ -44,17 +48,20 @@ export const TimePicker: FC<I> = (props): ReactElement => {
   const onSubmit = () => {
     handleCreateBooking.mutate({
       authId: session.data?.user?.id ?? "",
+      category: props.category,
       date: toISOStringWithTimezone(props.selectedDate) ?? "",
+      package: props.package,
       packageId: props.packageId,
       paymentMethod: "",
+      price: props.price,
+      resultURL: "",
       status: "pending",
       time: props.selectedTime,
-      total: props.total,
     });
   };
 
   return (
-    <section className="w-full max-w-[300px] space-y-3">
+    <section className="w-full space-y-3 min-[630px]:max-w-[300px]">
       <Button
         className={`w-full ${props.activeTime === 1 ? "bg-red-600 text-white" : ""}`}
         color="red"

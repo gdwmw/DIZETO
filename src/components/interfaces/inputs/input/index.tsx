@@ -16,6 +16,7 @@ type TInput = {
   errorMessage?: string;
   fieldsetClassName?: string;
   icon?: ReactNode;
+  iconClassName?: string;
   iconOnClick?: () => void;
   label?: string;
   legendClassName?: string;
@@ -27,9 +28,24 @@ type TInput = {
 const InputTWM = ({ className, disabled }: TInput) =>
   twm("w-full rounded-sm bg-transparent px-1 outline-none disabled:cursor-not-allowed", disabled && "text-gray-400", className);
 
+const iconTWM = ({ iconClassName }: TInput) => twm("pr-1", iconClassName);
+
 export const Input: FC<TInput> = forwardRef<HTMLInputElement, TInput>(
   (
-    { className, color, containerClassName, disabled, errorMessage, fieldsetClassName, icon, iconOnClick, label, legendClassName, ...props },
+    {
+      className,
+      color,
+      containerClassName,
+      disabled,
+      errorMessage,
+      fieldsetClassName,
+      icon,
+      iconClassName,
+      iconOnClick,
+      label,
+      legendClassName,
+      ...props
+    },
     ref,
   ): ReactElement => (
     <InputsContainer className={containerClassName}>
@@ -44,7 +60,15 @@ export const Input: FC<TInput> = forwardRef<HTMLInputElement, TInput>(
         <input className={InputTWM({ className, disabled })} disabled={disabled} ref={ref} {...props} />
 
         {icon && (
-          <Button className="pr-1" color={color} disabled={disabled} onClick={iconOnClick} size="sm" type="button" variant="ghost">
+          <Button
+            className={iconTWM({ iconClassName })}
+            color={color}
+            disabled={disabled}
+            onClick={iconOnClick}
+            size="sm"
+            type="button"
+            variant="ghost"
+          >
             {icon}
           </Button>
         )}

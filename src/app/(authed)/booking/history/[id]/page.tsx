@@ -2,7 +2,7 @@ import { FC, ReactElement } from "react";
 
 import { Metadata, Viewport } from "next";
 
-import PaymentLayout from "@/src/layouts/booking/pages/payment";
+import HistoryLayout from "@/src/layouts/booking/pages/history";
 
 export const viewport: Viewport = {
   initialScale: 1.0,
@@ -10,15 +10,15 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "PAYMENT",
+  title: "HISTORY",
 };
 
 interface I {
   params: {
-    slug: string[];
+    id: string;
   };
 }
 
-const PaymentPage: FC<I> = (props): ReactElement => <PaymentLayout slug={props.params.slug} />;
+const HistoryPage: FC<I> = (props): ReactElement => <HistoryLayout id={props.params.id} />;
 
-export default PaymentPage;
+export default HistoryPage;

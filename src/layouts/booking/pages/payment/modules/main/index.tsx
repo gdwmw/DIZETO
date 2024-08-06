@@ -2,7 +2,7 @@
 
 import { FC, ReactElement, useState } from "react";
 
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 
 import { Button } from "@/src/components/interfaces/button";
@@ -15,6 +15,7 @@ interface I {
 }
 
 export const Main: FC<I> = (props): ReactElement => {
+  const queryClient = useQueryClient();
   const router = useRouter();
   const { data, error, isLoading } = useQuery({
     queryFn: () => GETBookingById({ authId: props.authId, id: props.id }),
@@ -28,8 +29,9 @@ export const Main: FC<I> = (props): ReactElement => {
   const updateBooking = useMutation({
     mutationFn: PUTBooking,
     onMutate: () => setLoading(true),
-    onSuccess: () => {
-      router.push("/");
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({ queryKey: ["GETAuthById", props.id] });
+      router.push(`/booking/history/${props.authId}`);
     },
   });
 
@@ -72,7 +74,13 @@ export const Main: FC<I> = (props): ReactElement => {
           {data ? (
             <div className="space-y-4">
               <div className="flex justify-between">
-                <span className="font-semibold">Total:</span> <span>{formatPrice(data.total)}</span>
+                <span className="font-semibold">Category:</span> <span>{data.category}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="font-semibold">Package:</span> <span>{data.package}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="font-semibold">Price:</span> <span>{formatPrice(data.price)}</span>
               </div>
               <div className="flex justify-between">
                 <span className="font-semibold">Status:</span> <span>{capitalizeWords(data.status)}</span>

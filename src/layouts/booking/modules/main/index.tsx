@@ -1,8 +1,10 @@
 "use client";
 
-import { FC, ReactElement, useCallback, useMemo, useState } from "react";
+import { FC, ReactElement, useCallback, useEffect, useMemo, useState } from "react";
 
 import { useQuery } from "@tanstack/react-query";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 import { ContentModal } from "@/src/components/interfaces/modal";
 import { GETAuth, GETPricingById } from "@/src/utils/api";
@@ -14,6 +16,9 @@ interface I {
 }
 
 export const Main: FC<I> = (props): ReactElement => {
+  const session = useSession();
+  const router = useRouter();
+
   const { data: dataPricing } = useQuery({
     queryFn: () => GETPricingById(props.id),
     queryKey: ["GETPricingById", props.id],
@@ -23,6 +28,18 @@ export const Main: FC<I> = (props): ReactElement => {
     queryFn: GETAuth,
     queryKey: ["GETAuth"],
   });
+
+  useEffect(() => {
+    if (dataAuth) {
+      const user = dataAuth.find((user) => user.id === session.data?.user?.id);
+      if (user) {
+        const hasIncompleteBooking = user?.booking?.some((booking) => booking.status !== "complete");
+        if (hasIncompleteBooking) {
+          router.push(`/booking/history/${session.data?.user?.id}`);
+        }
+      }
+    }
+  }, [dataAuth, router, session.data?.user?.id]);
 
   const userBookings = useMemo(() => {
     if (!dataAuth) {
@@ -58,16 +75,18 @@ export const Main: FC<I> = (props): ReactElement => {
             <span className="block text-sm">PACKAGE {dataPricing?.package ?? "Loading..."}</span>
             <span className="block text-xl">{formatPrice(dataPricing?.price)}</span>
           </div>
-          <div className="flex gap-5">
+          <div className="flex flex-col gap-5 min-[630px]:flex-row">
             <Calendar isDateBooked={isDateBooked} selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
             <TimePicker
               activeTime={activeTime}
+              category={dataPricing?.category ?? ""}
+              package={dataPricing?.package ?? ""}
               packageId={dataPricing?.id ?? ""}
+              price={dataPricing?.price ?? 0}
               selectedDate={selectedDate}
               selectedTime={selectedTime}
               setActiveTime={setActiveTime}
               setSelectedTime={setSelectedTime}
-              total={dataPricing?.price ?? 0}
             />
           </div>
         </ContentModal>

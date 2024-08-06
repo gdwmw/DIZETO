@@ -31,6 +31,21 @@ export const GETAuth = async (): Promise<ITemporaryAuthResponse[]> => {
   }
 };
 
+export const GETAuthById = async (id: string): Promise<ITemporaryAuthResponse> => {
+  try {
+    const res = await fetch(`${API_URL}/${id}`, { cache: "no-store" });
+
+    if (!res.ok) {
+      throw new Error(`Failed to get: Auth ${id} with status ${res.status}`);
+    }
+
+    return await res.json();
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
+
 export const POSTAuth = async (data: IAuthPayload): Promise<IAuthResponse> => {
   try {
     /* eslint-disable-next-line @typescript-eslint/no-unused-vars */

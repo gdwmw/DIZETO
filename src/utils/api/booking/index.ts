@@ -1,6 +1,6 @@
 "use server;";
 
-const API_URL = "https://66a21dd9967c89168f1ed971.mockapi.io/dizeto/auth/";
+const API_URL = "https://66a21dd9967c89168f1ed971.mockapi.io/dizeto/auth";
 
 if (!API_URL) {
   throw new Error("The API URL is not defined. Please check your environment variables.");
@@ -8,13 +8,16 @@ if (!API_URL) {
 
 export interface IBooking {
   authId: string;
+  category: string;
   date: string;
   id?: string;
+  package: string;
   packageId: string;
   paymentMethod?: string;
+  price: number;
+  resultURL: string;
   status: string;
   time: string;
-  total: number;
 }
 
 export const GETBooking = async ({ authId }: { authId: string }): Promise<IBooking[]> => {

@@ -1,14 +1,18 @@
 import { FC, ReactElement } from "react";
 
 import { dehydrate, HydrationBoundary, QueryClient } from "@tanstack/react-query";
+import { FaList, FaWhatsapp } from "react-icons/fa";
 
-// import { BookingButton } from "@/src/components/booking-button";
+import { FloatingButton } from "@/src/components/booking-button";
+import { getAllSession } from "@/src/hooks/session";
 import { GETAbout, GETClient, GETContact, GETCounting, GETHighlight, GETPricing, GETTestimony, GETTitle } from "@/src/utils/api";
 
 import { About, Client, Contact, Hero, Highlight, Pricing, Testimony } from "./batches";
 
 export const Main: FC = async (): Promise<ReactElement> => {
   const queryClient = new QueryClient();
+
+  const session = await getAllSession();
 
   await Promise.all([
     queryClient.prefetchQuery({
@@ -57,7 +61,20 @@ export const Main: FC = async (): Promise<ReactElement> => {
           <Client />
           <Contact />
         </div>
-        {/* <BookingButton /> */}
+        <FloatingButton className={session?.user?.status ? "bottom-[70px] sm:bottom-[110px]" : ""} href="https://www.whatsapp.com/" target="_blank">
+          <FaWhatsapp size={30} />
+        </FloatingButton>
+        {session?.user?.status ? (
+          session?.user?.role === "user" ? (
+            <FloatingButton href={`/booking/history/${session?.user?.id}`}>
+              <FaList size={23} />
+            </FloatingButton>
+          ) : (
+            <FloatingButton href="/status">
+              <FaList size={23} />
+            </FloatingButton>
+          )
+        ) : null}
       </main>
     </HydrationBoundary>
   );
