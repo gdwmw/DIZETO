@@ -5,7 +5,7 @@ import { FC, ReactElement, useCallback, useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 import { ContentModal } from "@/src/components/interfaces/modal";
-import { GETPricingById } from "@/src/utils/api";
+import { GETAuth, GETPricingById } from "@/src/utils/api";
 
 import { Calendar, TimePicker } from "./batches";
 
@@ -19,15 +19,27 @@ export const Main: FC<I> = (props): ReactElement => {
     queryKey: ["GETPricingById", props.id],
   });
 
-  const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
-  const bookedDatesData = useMemo(() => ["2024-08-05", "2024-08-15"], []);
-  const bookedDates = useMemo(() => bookedDatesData.map((date) => new Date(date)), [bookedDatesData]);
+  const { data: dataAuth } = useQuery({
+    queryFn: GETAuth,
+    queryKey: ["GETAuth"],
+  });
+
+  const userBookings = useMemo(() => {
+    if (!dataAuth) {
+      return [];
+    }
+    return dataAuth.flatMap((user) => user?.booking?.map((booking) => booking.date.slice(0, 10)));
+  }, [dataAuth]);
+
+  const bookedDatesData = useMemo(() => userBookings.filter(Boolean), [userBookings]);
+  const bookedDates = useMemo(() => bookedDatesData.map((date) => new Date(date!)), [bookedDatesData]);
   const isDateBooked = useCallback(
     (date: Date) => bookedDates.some((bookedDate) => bookedDate.toDateString() === date.toDateString()),
     [bookedDates],
   );
 
   const [activeTime, setActiveTime] = useState<number>(0);
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [selectedTime, setSelectedTime] = useState<string>("");
 
   const formatPrice = (price: number | undefined) => {

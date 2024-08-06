@@ -72,11 +72,10 @@ const TestimonyForm: FC<I> = (props): ReactElement => {
 
   const handleUpdateCounting = useMutation({
     mutationFn: PUTCounting,
-    onError: () => setLoading(false),
+    onSettled: () => setLoading(false),
     onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: ["GETCounting"] });
       props.setOpenForm(false);
-      setLoading(false);
       reset();
     },
   });

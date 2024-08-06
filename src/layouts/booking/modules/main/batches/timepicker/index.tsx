@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, ReactElement } from "react";
+import { FC, ReactElement, useState } from "react";
 
 import { useMutation } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
@@ -12,7 +12,7 @@ import { POSTBooking } from "@/src/utils/api";
 interface I {
   activeTime: number;
   packageId: string;
-  selectedDate: Date | undefined;
+  selectedDate: Date | null;
   selectedTime: string;
   setActiveTime: (time: number) => void;
   setSelectedTime: (time: string) => void;
@@ -22,22 +22,35 @@ interface I {
 export const TimePicker: FC<I> = (props): ReactElement => {
   const router = useRouter();
   const session = useSession();
+  const [loading, setLoading] = useState(false);
 
   const handleCreateBooking = useMutation({
     mutationFn: POSTBooking,
+    onMutate: () => setLoading(true),
+    onSuccess: (res) => {
+      router.push(`/booking/payment/${res.authId}/${res.id}`);
+    },
   });
 
-  const onSubmit = async () => {
-    await handleCreateBooking.mutateAsync({
+  const toISOStringWithTimezone = (date: Date | null) => {
+    if (!date) {
+      return null;
+    }
+    const timezoneOffset = date.getTimezoneOffset() * 60000;
+    const localISOTime = new Date(date.getTime() - timezoneOffset).toISOString().slice(0, -1);
+    return localISOTime;
+  };
+
+  const onSubmit = () => {
+    handleCreateBooking.mutate({
       authId: session.data?.user?.id ?? "",
-      date: props.selectedDate?.toISOString() ?? "",
+      date: toISOStringWithTimezone(props.selectedDate) ?? "",
       packageId: props.packageId,
       paymentMethod: "",
       status: "pending",
       time: props.selectedTime,
       total: props.total,
     });
-    router.push("/booking/payment");
   };
 
   return (
@@ -64,7 +77,7 @@ export const TimePicker: FC<I> = (props): ReactElement => {
         size="sm"
         variant="outline"
       >
-        12:00 AM - 02:00 PM
+        12:00 PM - 02:00 PM
       </Button>
       <Button
         className={`w-full ${props.activeTime === 3 ? "bg-red-600 text-white" : ""}`}
@@ -88,8 +101,15 @@ export const TimePicker: FC<I> = (props): ReactElement => {
           </span>
           <span className="block">Time: {props.selectedTime}</span>
         </div>
-        <Button className="w-full" color="red" disabled={!props.selectedTime || !props.selectedDate} onClick={onSubmit} size="sm" variant="outline">
-          Continue Payment
+        <Button
+          className="w-full"
+          color="red"
+          disabled={!props.selectedTime || !props.selectedDate || loading}
+          onClick={onSubmit}
+          size="sm"
+          variant="outline"
+        >
+          {loading ? "Loading..." : "Continue Payment"}
         </Button>
       </div>
     </section>

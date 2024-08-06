@@ -32,6 +32,21 @@ export const GETBooking = async ({ authId }: { authId: string }): Promise<IBooki
   }
 };
 
+export const GETBookingById = async ({ authId, id }: { authId: string; id: string }): Promise<IBooking> => {
+  try {
+    const res = await fetch(`${API_URL}/${authId}/booking/${id}`);
+
+    if (!res.ok) {
+      throw new Error(`Failed to get: Booking with status ${res.status}`);
+    }
+
+    return await res.json();
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
+
 export const POSTBooking = async (data: IBooking): Promise<IBooking> => {
   try {
     const res = await fetch(`${API_URL}/${data.authId}/booking`, {

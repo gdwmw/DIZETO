@@ -2,6 +2,8 @@
 
 import { IAuthPayload, IAuthResponse } from "@/src/types/api";
 
+import { IBooking } from "../booking";
+
 const API_URL = process.env.AUTH_URL;
 
 if (!API_URL) {
@@ -10,12 +12,13 @@ if (!API_URL) {
 
 // TODO: Response sementara
 interface ITemporaryAuthResponse extends IAuthResponse {
+  booking?: IBooking[];
   password: string;
 }
 
 export const GETAuth = async (): Promise<ITemporaryAuthResponse[]> => {
   try {
-    const res = await fetch(API_URL);
+    const res = await fetch(API_URL, { cache: "no-store" });
 
     if (!res.ok) {
       throw new Error(`Failed to get: Auth with status ${res.status}`);

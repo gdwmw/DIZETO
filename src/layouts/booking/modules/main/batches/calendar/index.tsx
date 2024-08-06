@@ -5,7 +5,7 @@ import { Calendar as ReactCalendar } from "react-calendar";
 
 interface I {
   isDateBooked: (date: Date) => boolean;
-  selectedDate: Date | undefined;
+  selectedDate: Date | null;
   setSelectedDate: (date: Date) => undefined | void;
 }
 

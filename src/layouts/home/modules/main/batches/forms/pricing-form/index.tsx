@@ -49,12 +49,11 @@ const PricingForm: FC<I> = (props): ReactElement => {
 
   const handleUpdateTitle = useMutation({
     mutationFn: PUTTitle,
-    onError: () => setLoading(false),
+    onSettled: () => setLoading(false),
     onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: ["GETTitle"] });
       props.setOpenForm(false);
       props.setIsEditTitle(false);
-      setLoading(false);
       reset();
     },
   });
