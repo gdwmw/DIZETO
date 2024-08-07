@@ -22,7 +22,7 @@ const PRICING_DATA = {
     },
   ],
   package: "A",
-  price: "1.000.000",
+  price: 1000000,
 };
 
 const Layout: FC = (): ReactElement => (

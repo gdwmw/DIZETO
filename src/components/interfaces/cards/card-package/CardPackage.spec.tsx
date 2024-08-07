@@ -35,7 +35,7 @@ const PRICING_DATA = {
     },
   ],
   package: "A",
-  price: "1.000.000",
+  price: 1000000,
 };
 
 const component = (
@@ -48,7 +48,7 @@ describe("CardPackage Component Testing", () => {
   it("should render the price correctly", () => {
     render(component);
     const priceElement = screen.getByTestId("price");
-    expect(priceElement).toHaveTextContent("IDR 1.0");
+    expect(priceElement).toHaveTextContent("IDR 1,000,000");
   });
 
   it("should render the package correctly", () => {
