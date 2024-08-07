@@ -1,6 +1,6 @@
 import { FC, ReactElement, useState } from "react";
 
-import IMAGE_DETAIL_DATA from "@/root/public/database/highlight.json";
+import IMAGE_DETAIL_DATA from "@/public/database/highlight.json";
 
 import ImageDetail from "..";
 

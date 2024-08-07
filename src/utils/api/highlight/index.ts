@@ -1,8 +1,6 @@
-"use server";
-
 import { IHighlight } from "@/src/types/api";
 
-const API_URL = process.env.HIGHLIGHT_URL;
+const API_URL = process.env.NEXT_PUBLIC_HIGHLIGHT_URL;
 
 if (!API_URL) {
   throw new Error("The API URL is not defined. Please check your environment variables.");

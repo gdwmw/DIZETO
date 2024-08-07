@@ -1,8 +1,6 @@
-"use server";
-
 import { ITitle } from "@/src/types/api";
 
-const API_URL = process.env.TITLE_URL;
+const API_URL = process.env.NEXT_PUBLIC_TITLE_URL;
 
 if (!API_URL) {
   throw new Error("The API URL is not defined. Please check your environment variables.");

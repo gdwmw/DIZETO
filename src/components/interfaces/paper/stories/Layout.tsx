@@ -2,7 +2,7 @@ import { FC, PropsWithChildren, ReactElement } from "react";
 
 import Image from "next/image";
 
-import logoDIZETO from "@/root/public/assets/images/logos/dizeto.svg";
+import logoDIZETO from "@/public/assets/images/logos/dizeto.svg";
 
 import { ContainerPaper, ContentPaper } from "..";
 import { Title } from "../../title";

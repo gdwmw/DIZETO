@@ -36,10 +36,22 @@ const AboutForm: FC<I> = (props): ReactElement => {
 
   const handleUpdateTitle = useMutation({
     mutationFn: PUTTitle,
+    onError: (error) => {
+      console.error("Error updating title:", error);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["GETTitle"] });
+    },
   });
 
   const handleUpdateAbout = useMutation({
     mutationFn: PUTAbout,
+    onError: (error) => {
+      console.error("Error updating about:", error);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["GETAbout"] });
+    },
   });
 
   const onSubmit: SubmitHandler<TAboutSchema> = async (dt) => {
@@ -48,15 +60,15 @@ const AboutForm: FC<I> = (props): ReactElement => {
     try {
       const [resA, resB] = await Promise.all([await handleUpdateTitle.mutateAsync(dt.title), await handleUpdateAbout.mutateAsync(dt.data)]);
 
-      // TODO: Nanti perbaiki error handle nya
       if (!resA || !resB) {
+        console.error("Failed to update title or about");
         return;
       }
 
-      await queryClient.invalidateQueries({ queryKey: ["GETTitle"] });
-      await queryClient.invalidateQueries({ queryKey: ["GETAbout"] });
       props.setOpenForm(false);
       reset();
+    } catch (error) {
+      console.error("Error submitting form:", error);
     } finally {
       setLoading(false);
     }

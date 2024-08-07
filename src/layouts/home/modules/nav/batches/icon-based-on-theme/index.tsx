@@ -7,10 +7,10 @@ import { BsFillMoonFill, BsFillSunFill } from "react-icons/bs";
 import { SiMoonrepo } from "react-icons/si";
 
 interface I {
-  themeCookie: string;
+  themeCookie: string | undefined;
 }
 
-export const IconBasedOnTheme: FC<I> = (props): null | ReactElement => {
+export const IconBasedOnTheme: FC<I> = (props): ReactElement => {
   const { theme } = useTheme();
   const [icon, setIcon] = useState<null | ReactElement>(null);
 
@@ -39,7 +39,7 @@ export const IconBasedOnTheme: FC<I> = (props): null | ReactElement => {
       case "dark":
         return <BsFillMoonFill size={22} />;
       default:
-        return null;
+        return <SiMoonrepo size={22} />;
     }
   };
 

@@ -36,14 +36,32 @@ const HighlightForm: FC<I> = (props): ReactElement => {
 
   const handleUpdateTitle = useMutation({
     mutationFn: PUTTitle,
+    onError: (error) => {
+      console.error("Error updating title:", error);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["GETTitle"] });
+    },
   });
 
   const handleUpdateHighlight = useMutation({
     mutationFn: PUTHighlight,
+    onError: (error) => {
+      console.error("Error updating highlight:", error);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["GETHighlight"] });
+    },
   });
 
   const handleUpdateimages = useMutation({
     mutationFn: PUTImages,
+    onError: (error) => {
+      console.error("Error updating images:", error);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["GETHighlight"] });
+    },
   });
 
   const onSubmit: SubmitHandler<THighlightSchema> = async (dt) => {
@@ -56,15 +74,15 @@ const HighlightForm: FC<I> = (props): ReactElement => {
         await handleUpdateimages.mutateAsync(dt.data.images),
       ]);
 
-      // TODO: Nanti perbaiki error handle nya
       if (!resA || !resB || !resC) {
+        console.error("Failed to update title, highlight, or images");
         return;
       }
 
-      await queryClient.invalidateQueries({ queryKey: ["GETTitle"] });
-      await queryClient.invalidateQueries({ queryKey: ["GETHighlight"] });
       props.setOpenForm(false);
       reset();
+    } catch (error) {
+      console.error("Error submitting form:", error);
     } finally {
       setLoading(false);
     }

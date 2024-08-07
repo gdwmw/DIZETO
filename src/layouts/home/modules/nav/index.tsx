@@ -8,7 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { BsList } from "react-icons/bs";
 
-import logoDIZETO from "@/root/public/assets/images/logos/dizeto.svg";
+import logoDIZETO from "@/public/assets/images/logos/dizeto.svg";
 import { Button, ButtonTWM } from "@/src/components/interfaces/button";
 import { useGlobalStates } from "@/src/context";
 import { setCookie } from "@/src/hooks/cookies";
@@ -23,7 +23,7 @@ export const handleSmoothScroll = (e: FormEvent, href: string) => {
 
 interface I {
   authStatus: null | string | undefined;
-  themeCookie: string;
+  themeCookie: string | undefined;
 }
 
 export const Nav: FC<I> = (props): ReactElement => {

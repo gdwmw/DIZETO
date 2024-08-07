@@ -10,8 +10,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 
-import loadingAnimation from "@/root/public/assets/animations/loadings/loading.svg";
-import logoDIZETO from "@/root/public/assets/images/logos/dizeto.svg";
+import loadingAnimation from "@/public/assets/animations/loadings/loading.svg";
+import logoDIZETO from "@/public/assets/images/logos/dizeto.svg";
 import { Button, ButtonTWM } from "@/src/components/interfaces/button";
 import { Input } from "@/src/components/interfaces/inputs";
 import { ContentModal } from "@/src/components/interfaces/modal";

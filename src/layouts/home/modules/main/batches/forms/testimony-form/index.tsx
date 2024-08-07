@@ -60,19 +60,40 @@ const TestimonyForm: FC<I> = (props): ReactElement => {
 
   const handleDeleteTestimony = useMutation({
     mutationFn: DELETETestimony,
+    onError: (error) => {
+      console.error("Error deleting testimony:", error);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["GETTestimony"] });
+    },
   });
 
   const handleCreateTestimony = useMutation({
     mutationFn: POSTTestimony,
+    onError: (error) => {
+      console.error("Error creating testimony:", error);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["GETTestimony"] });
+    },
   });
 
   const handleUpdateTestimony = useMutation({
     mutationFn: PUTTestimony,
+    onError: (error) => {
+      console.error("Error updating testimony:", error);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["GETTestimony"] });
+    },
   });
 
   const handleUpdateCounting = useMutation({
     mutationFn: PUTCounting,
-    onError: () => setLoading(false),
+    onError: (error) => {
+      console.error("Error updating counting:", error);
+      setLoading(false);
+    },
     onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: ["GETCounting"] });
       props.setOpenForm(false);
@@ -94,20 +115,17 @@ const TestimonyForm: FC<I> = (props): ReactElement => {
           await handleUpdateTestimony.mutateAsync(dt.data),
         ]);
 
-        // TODO: Nanti perbaiki error handle nya
-        if ((idsToDelete.length > 0 && !resA) || (hasEmptyId && !resB)) {
+        if ((idsToDelete.length > 0 && !resA) || (hasEmptyId && !resB) || !resC) {
+          console.error("Failed to update testimony");
           return;
         }
 
-        if (!resC) {
-          return;
-        }
-
-        await queryClient.invalidateQueries({ queryKey: ["GETTestimony"] });
         props.setOpenForm(false);
         props.setIsEditTestimony(false);
         setIdsToDelete([]);
         reset();
+      } catch (error) {
+        console.error("Error submitting form:", error);
       } finally {
         setLoading(false);
       }

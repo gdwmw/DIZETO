@@ -7,7 +7,7 @@ import Image from "next/image";
 import { CgClose } from "react-icons/cg";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
-import loading from "@/root/public/assets/animations/loadings/loading.svg";
+import loading from "@/public/assets/animations/loadings/loading.svg";
 import { IHighlight } from "@/src/types/api";
 
 import { Button } from "../button";

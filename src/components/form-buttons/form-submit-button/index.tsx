@@ -2,7 +2,7 @@ import { FC, ReactElement } from "react";
 
 import Image from "next/image";
 
-import loadingAnimation from "@/root/public/assets/animations/loadings/loading.svg";
+import loadingAnimation from "@/public/assets/animations/loadings/loading.svg";
 
 import { Button } from "../../interfaces/button";
 

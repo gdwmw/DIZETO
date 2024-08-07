@@ -36,10 +36,22 @@ const ContactForm: FC<I> = (props): ReactElement => {
 
   const handleUpdateTitle = useMutation({
     mutationFn: PUTTitle,
+    onError: (error) => {
+      console.error("Error updating title:", error);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["GETTitle"] });
+    },
   });
 
   const handleUpdateContact = useMutation({
     mutationFn: PUTContact,
+    onError: (error) => {
+      console.error("Error updating contact:", error);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["GETContact"] });
+    },
   });
 
   const onSubmit: SubmitHandler<TContactSchema> = async (dt) => {
@@ -48,15 +60,15 @@ const ContactForm: FC<I> = (props): ReactElement => {
     try {
       const [resA, resB] = await Promise.all([await handleUpdateTitle.mutateAsync(dt.title), await handleUpdateContact.mutateAsync(dt.data)]);
 
-      // TODO: Nanti perbaiki error handle nya
       if (!resA || !resB) {
+        console.error("Failed to update title or contact");
         return;
       }
 
-      await queryClient.invalidateQueries({ queryKey: ["GETTitle"] });
-      await queryClient.invalidateQueries({ queryKey: ["GETContact"] });
       props.setOpenForm(false);
       reset();
+    } catch (error) {
+      console.error("Error submitting form:", error);
     } finally {
       setLoading(false);
     }

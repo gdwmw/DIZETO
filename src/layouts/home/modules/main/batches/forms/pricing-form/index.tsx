@@ -49,7 +49,10 @@ const PricingForm: FC<I> = (props): ReactElement => {
 
   const handleUpdateTitle = useMutation({
     mutationFn: PUTTitle,
-    onError: () => setLoading(false),
+    onError: (error) => {
+      console.error("Error updating title:", error);
+      setLoading(false);
+    },
     onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: ["GETTitle"] });
       props.setOpenForm(false);
@@ -61,10 +64,22 @@ const PricingForm: FC<I> = (props): ReactElement => {
 
   const handleUpdatePricing = useMutation({
     mutationFn: PUTPricing,
+    onError: (error) => {
+      console.error("Error updating pricing:", error);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["GETPricing"] });
+    },
   });
 
   const handleUpdateListItem = useMutation({
     mutationFn: PUTListItem,
+    onError: (error) => {
+      console.error("Error updating list item:", error);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["GETPricing"] });
+    },
   });
 
   const onSubmit: SubmitHandler<TPricingSchema> = async (dt) => {
@@ -79,14 +94,15 @@ const PricingForm: FC<I> = (props): ReactElement => {
           await handleUpdateListItem.mutateAsync(dt.data.listItem[0]),
         ]);
 
-        // TODO: Nanti perbaiki error handle nya
         if (!resA || !resB) {
+          console.error("Failed to update pricing or list item");
           return;
         }
 
-        await queryClient.invalidateQueries({ queryKey: ["GETPricing"] });
         props.setOpenForm(false);
         reset();
+      } catch (error) {
+        console.error("Error submitting form:", error);
       } finally {
         setLoading(false);
       }

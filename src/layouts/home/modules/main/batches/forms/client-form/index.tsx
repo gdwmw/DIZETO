@@ -58,18 +58,42 @@ const ClientForm: FC<I> = (props): ReactElement => {
 
   const handleUpdateTitle = useMutation({
     mutationFn: PUTTitle,
+    onError: (error) => {
+      console.error("Error updating title:", error);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["GETTitle"] });
+    },
   });
 
   const handleDeleteClient = useMutation({
     mutationFn: DELETEClient,
+    onError: (error) => {
+      console.error("Error deleting client:", error);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["GETClient"] });
+    },
   });
 
   const handleCreateClient = useMutation({
     mutationFn: POSTClient,
+    onError: (error) => {
+      console.error("Error creating client:", error);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["GETClient"] });
+    },
   });
 
   const handleUpdateClient = useMutation({
     mutationFn: PUTClient,
+    onError: (error) => {
+      console.error("Error updating client:", error);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["GETClient"] });
+    },
   });
 
   const onSubmit: SubmitHandler<TClientSchema> = async (dt) => {
@@ -85,20 +109,21 @@ const ClientForm: FC<I> = (props): ReactElement => {
         await handleUpdateClient.mutateAsync(dt.data),
       ]);
 
-      // TODO: Nanti perbaiki error handle nya
       if (!resA || !resD) {
+        console.error("Failed to update title or client");
         return;
       }
 
       if ((idsToDelete.length > 0 && !resB) || (hasEmptyId && !resC)) {
+        console.error("Failed to delete or create client");
         return;
       }
 
-      await queryClient.invalidateQueries({ queryKey: ["GETTitle"] });
-      await queryClient.invalidateQueries({ queryKey: ["GETClient"] });
       props.setOpenForm(false);
       setIdsToDelete([]);
       reset();
+    } catch (error) {
+      console.error("Error submitting form:", error);
     } finally {
       setLoading(false);
     }
