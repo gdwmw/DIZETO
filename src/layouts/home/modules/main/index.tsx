@@ -2,7 +2,6 @@ import { FC, ReactElement } from "react";
 
 import { dehydrate, HydrationBoundary, QueryClient } from "@tanstack/react-query";
 
-import { BookingButton } from "@/src/components/booking-button";
 import { GETAbout, GETClient, GETContact, GETCounting, GETHighlight, GETPricing, GETTestimony, GETTitle } from "@/src/utils/api";
 
 import { About, Client, Contact, Hero, Highlight, Pricing, Testimony } from "./batches";
@@ -57,7 +56,6 @@ export const Main: FC = async (): Promise<ReactElement> => {
           <Client />
           <Contact />
         </div>
-        <BookingButton />
       </main>
     </HydrationBoundary>
   );
