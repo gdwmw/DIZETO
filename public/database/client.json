@@ -29,7 +29,7 @@
   },
   {
     "logoURL": "/assets/images/logos/client/irma.png",
-    "theme": "",
+    "theme": "both",
     "href": "https://irmajabar.com/",
     "alt": "IRMA",
     "id": "5"
@@ -50,14 +50,14 @@
   },
   {
     "logoURL": "/assets/images/logos/client/sk.png",
-    "theme": "",
+    "theme": "both",
     "href": "https://www.youtube.com/@vittosafiy748",
     "alt": "Safiy Kitchen",
     "id": "8"
   },
   {
     "logoURL": "/assets/images/logos/client/aa.png",
-    "theme": "",
+    "theme": "both",
     "href": "https://pesantrentahfidzashrmadani.wordpress.com/",
     "alt": "Al-'Ashr Al-Madani",
     "id": "9"
@@ -78,7 +78,7 @@
   },
   {
     "logoURL": "/assets/images/logos/client/kp.png",
-    "theme": "",
+    "theme": "both",
     "href": "https://shopee.co.id/topnapurnama?categoryId=100629&entryPoint=ShopByPDP&itemId=15208206609",
     "alt": "Kopi Purnama",
     "id": "12"
