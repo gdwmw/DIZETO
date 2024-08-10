@@ -3,8 +3,8 @@ import type { NextAuthOptions, Session, User } from "next-auth";
 import { JWT } from "next-auth/jwt";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-import { IAuthPayload } from "@/src/types/api";
-import { GETAuth } from "@/src/utils/api";
+import { ILoginPayload } from "@/src/types/api";
+import { GETDataUsersById, POSTLogin } from "@/src/utils/api";
 
 export const options: NextAuthOptions = {
   callbacks: {
@@ -39,21 +39,34 @@ export const options: NextAuthOptions = {
         }
 
         try {
-          //   const res = await POSTAuth(credentials as IAuthPayload);
+          const { identifier, password } = credentials as ILoginPayload;
 
-          const data = await GETAuth();
-          const payload = credentials as IAuthPayload;
-          const res = data.find((user) => user.username === payload.username && user.password === payload.password);
+          const res = await POSTLogin({ identifier, password });
 
           if (!res) {
             return null;
           }
 
-          /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
-          const { password, ...resWithoutPassword } = res;
-          const newRes = { ...resWithoutPassword, status: "authenticated" };
+          const resdDataUsers = await GETDataUsersById({ id: res.id, jwt: res.jwt });
 
-          return newRes;
+          if (!resdDataUsers) {
+            return null;
+          }
+
+          const mapDataToResponse: User = {
+            email: res.email,
+            firstName: resdDataUsers.firstName,
+            id: res.id.toString(),
+            image: resdDataUsers.image as null | string,
+            jwt: res.jwt,
+            lastName: resdDataUsers.lastName,
+            name: resdDataUsers.firstName + " " + resdDataUsers.lastName,
+            role: resdDataUsers.role as string,
+            status: "authenticated",
+            username: res.username,
+          };
+
+          return mapDataToResponse;
         } catch (error) {
           console.error("Authorization:", error);
           return null;

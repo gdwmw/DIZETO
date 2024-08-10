@@ -1,0 +1,80 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "attributes": {
+        "firstName": "Admin",
+        "lastName": "Admin",
+        "role": "admin",
+        "createdAt": "2024-08-09T15:26:19.756Z",
+        "updatedAt": "2024-08-09T15:26:36.414Z",
+        "publishedAt": "2024-08-09T15:26:36.413Z",
+        "image": {
+          "data": {
+            "id": 1,
+            "attributes": {
+              "name": "dizeto.svg",
+              "alternativeText": null,
+              "caption": null,
+              "width": 842,
+              "height": 842,
+              "formats": null,
+              "hash": "dizeto_cc29417724",
+              "ext": ".svg",
+              "mime": "image/svg+xml",
+              "size": 1.67,
+              "url": "/uploads/dizeto_cc29417724.svg",
+              "previewUrl": null,
+              "provider": "local",
+              "provider_metadata": null,
+              "createdAt": "2024-08-09T09:02:03.953Z",
+              "updatedAt": "2024-08-09T09:02:03.953Z"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 2,
+      "attributes": {
+        "firstName": "User",
+        "lastName": "User",
+        "role": "user",
+        "createdAt": "2024-08-09T15:26:44.040Z",
+        "updatedAt": "2024-08-09T15:26:45.726Z",
+        "publishedAt": "2024-08-09T15:26:45.724Z",
+        "image": {
+          "data": {
+            "id": 1,
+            "attributes": {
+              "name": "dizeto.svg",
+              "alternativeText": null,
+              "caption": null,
+              "width": 842,
+              "height": 842,
+              "formats": null,
+              "hash": "dizeto_cc29417724",
+              "ext": ".svg",
+              "mime": "image/svg+xml",
+              "size": 1.67,
+              "url": "/uploads/dizeto_cc29417724.svg",
+              "previewUrl": null,
+              "provider": "local",
+              "provider_metadata": null,
+              "createdAt": "2024-08-09T09:02:03.953Z",
+              "updatedAt": "2024-08-09T09:02:03.953Z"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "meta": {
+    "pagination": {
+      "page": 1,
+      "pageSize": 25,
+      "pageCount": 1,
+      "total": 2
+    }
+  }
+}

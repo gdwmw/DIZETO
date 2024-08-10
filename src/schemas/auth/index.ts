@@ -31,26 +31,34 @@ export const RegisterSchema = z.object({
     .string()
     .min(8, { message: errorMessage.string.min("Confirm Password", 8) })
     .max(16, { message: errorMessage.string.min("Confirm Password", 16) }),
-  email: z
-    .string()
-    .min(1, { message: errorMessage.string.required("Email") })
-    .email({ message: errorMessage.string.email }),
-  name: z
-    .string()
-    .min(3, { message: errorMessage.string.min("Name", 3) })
-    .max(32, { message: errorMessage.string.max("Name", 32) }),
-  password: z
-    .string()
-    .min(8, { message: errorMessage.string.min("Password", 8) })
-    .max(16, { message: errorMessage.string.max("Password", 16) })
-    .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/, {
-      message: "Password must contain at least one uppercase letter, one lowercase letter, and one number",
-    }),
-  username: z
-    .string()
-    .min(3, { message: errorMessage.string.min("Username", 3) })
-    .max(12, { message: errorMessage.string.min("Username", 12) })
-    .toLowerCase(),
+  data: z.object({
+    email: z
+      .string()
+      .min(1, { message: errorMessage.string.required("Email") })
+      .email({ message: errorMessage.string.email }),
+    password: z
+      .string()
+      .min(8, { message: errorMessage.string.min("Password", 8) })
+      .max(16, { message: errorMessage.string.max("Password", 16) })
+      .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/, {
+        message: "Password must contain at least one uppercase letter, one lowercase letter, and one number",
+      }),
+    username: z
+      .string()
+      .min(3, { message: errorMessage.string.min("Username", 3) })
+      .max(12, { message: errorMessage.string.min("Username", 12) })
+      .toLowerCase(),
+  }),
+  dataUsers: z.object({
+    firstName: z
+      .string()
+      .min(3, { message: errorMessage.string.min("First Name", 3) })
+      .max(32, { message: errorMessage.string.max("First Name", 32) }),
+    lastName: z
+      .string()
+      .min(3, { message: errorMessage.string.min("Last Name", 3) })
+      .max(32, { message: errorMessage.string.max("Last Name", 32) }),
+  }),
 });
 
 export type TRegisterSchema = z.infer<typeof RegisterSchema>;

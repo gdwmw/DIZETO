@@ -16,13 +16,13 @@ import { Button, ButtonTWM } from "@/src/components/interfaces/button";
 import { Input } from "@/src/components/interfaces/inputs";
 import { ContentModal } from "@/src/components/interfaces/modal";
 import { RegisterSchema, TRegisterSchema } from "@/src/schemas/auth";
-import { POSTAuth } from "@/src/utils/api";
+import { POSTDataUsers, POSTRegister } from "@/src/utils/api";
 
 export const Main: FC = (): ReactElement => {
   const router = useRouter();
   const [visibility, setVisibility] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [doesNotMatch, setDoesNotMatch] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const {
     formState: { errors },
@@ -31,40 +31,80 @@ export const Main: FC = (): ReactElement => {
     reset,
     setValue,
   } = useForm<TRegisterSchema>({
-    defaultValues: { confirmPassword: "", email: "", name: "", password: "", username: "" },
+    defaultValues: { confirmPassword: "", data: { email: "", password: "", username: "" }, dataUsers: { firstName: "", lastName: "" } },
     resolver: zodResolver(RegisterSchema),
   });
 
-  const handleCreateAccount = useMutation({
-    mutationFn: POSTAuth,
-    onError: () => setLoading(false),
-    onMutate: () => setLoading(true),
-    onSuccess: () => {
-      router.push("/login");
-      reset();
+  const handleRegisterAccount = useMutation({
+    mutationFn: POSTRegister,
+    onError: (error) => {
+      console.error("Error register account:", error);
     },
   });
 
-  const onSubmit: SubmitHandler<TRegisterSchema> = (dt) => {
-    setDoesNotMatch(false);
-    if (dt.confirmPassword === dt.password) {
-      handleCreateAccount.mutate(dt);
+  const handleRegisterDataUsers = useMutation({
+    mutationFn: POSTDataUsers,
+    onError: (error) => {
+      console.error("Error register data users:", error);
+    },
+  });
+
+  const onSubmit: SubmitHandler<TRegisterSchema> = async (dt) => {
+    setErrorMessage("");
+    if (dt.confirmPassword === dt.data.password) {
+      try {
+        setLoading(true);
+        const resA = await handleRegisterAccount.mutateAsync(dt.data);
+
+        if (!resA) {
+          return;
+        }
+
+        const resB = await handleRegisterDataUsers.mutateAsync({ data: dt.dataUsers, jwt: resA.jwt });
+
+        if (!resB) {
+          return;
+        }
+
+        router.push("/login");
+        reset();
+      } catch (error) {
+        if (error instanceof Error && error.message.includes("400")) {
+          setErrorMessage("Email or Username are already taken");
+        } else {
+          console.error("Failed to register account or data users");
+          console.error("Error submitting form:", error);
+          setErrorMessage(`Error submitting form: ${error}`);
+        }
+      } finally {
+        setLoading(false);
+      }
     } else {
-      setDoesNotMatch(true);
+      setErrorMessage("Confirm Password does not match Password");
     }
   };
 
   useEffect(() => {
-    const nameInput = document.querySelector('input[name="name"]');
-    const usernameInput = document.querySelector('input[name="username"]');
-    const passwordInput = document.querySelector('input[name="password"]');
+    const firstNameInput = document.querySelector('input[name="dataUsers.firstName"]');
+    const lastNameInput = document.querySelector('input[name="dataUsers.lastName"]');
+    const usernameInput = document.querySelector('input[name="data.username"]');
+    const passwordInput = document.querySelector('input[name="data.password"]');
 
-    if (nameInput) {
-      nameInput.addEventListener("input", (e) => {
+    if (firstNameInput) {
+      firstNameInput.addEventListener("input", (e) => {
         const target = e.target as HTMLInputElement;
         const newValue = target.value.replace(/[^a-zA-Z\s]/g, "");
         target.value = newValue;
-        setValue("name", newValue, { shouldValidate: true });
+        setValue("dataUsers.firstName", newValue, { shouldValidate: true });
+      });
+    }
+
+    if (lastNameInput) {
+      lastNameInput.addEventListener("input", (e) => {
+        const target = e.target as HTMLInputElement;
+        const newValue = target.value.replace(/[^a-zA-Z\s]/g, "");
+        target.value = newValue;
+        setValue("dataUsers.lastName", newValue, { shouldValidate: true });
       });
     }
 
@@ -73,7 +113,7 @@ export const Main: FC = (): ReactElement => {
         const target = e.target as HTMLInputElement;
         const newValue = target.value.replace(/[^a-z]/g, "");
         target.value = newValue;
-        setValue("username", newValue, { shouldValidate: true });
+        setValue("data.username", newValue, { shouldValidate: true });
       });
     }
 
@@ -82,14 +122,17 @@ export const Main: FC = (): ReactElement => {
         const target = e.target as HTMLInputElement;
         const newValue = target.value.replace(/\s/g, "");
         target.value = newValue;
-        setValue("password", newValue, { shouldValidate: true });
+        setValue("data.password", newValue, { shouldValidate: true });
       });
     }
 
     return () => {
       /* eslint-disable @typescript-eslint/no-empty-function */
-      if (nameInput) {
-        nameInput.removeEventListener("input", () => {});
+      if (firstNameInput) {
+        firstNameInput.removeEventListener("input", () => {});
+      }
+      if (lastNameInput) {
+        lastNameInput.removeEventListener("input", () => {});
       }
       if (usernameInput) {
         usernameInput.removeEventListener("input", () => {});
@@ -102,11 +145,12 @@ export const Main: FC = (): ReactElement => {
   }, [setValue]);
 
   const INPUT_FIELDS_DATA = [
-    { errorMessage: errors.name?.message, id: "1", label: "Name", name: "name", type: "text" },
-    { errorMessage: errors.email?.message, id: "2", inputMode: "email" as const, label: "Email", name: "email", type: "text" },
-    { errorMessage: errors.username?.message, id: "3", label: "Username", name: "username", type: "text" },
-    { errorMessage: errors.password?.message, id: "4", label: "Password", name: "password", type: "password" },
-    { errorMessage: errors.confirmPassword?.message, id: "5", label: "Confirm Password", name: "confirmPassword", type: "password" },
+    { errorMessage: errors.dataUsers?.firstName?.message, id: "1", label: "First Name", name: "dataUsers.firstName", type: "text" },
+    { errorMessage: errors.dataUsers?.lastName?.message, id: "2", label: "Last Name", name: "dataUsers.lastName", type: "text" },
+    { errorMessage: errors.data?.email?.message, id: "3", inputMode: "email" as const, label: "Email", name: "data.email", type: "text" },
+    { errorMessage: errors.data?.username?.message, id: "4", label: "Username", name: "data.username", type: "text" },
+    { errorMessage: errors.data?.password?.message, id: "5", label: "Password", name: "data.password", type: "password" },
+    { errorMessage: errors.confirmPassword?.message, id: "6", label: "Confirm Password", name: "confirmPassword", type: "password" },
   ];
 
   return (
@@ -137,7 +181,7 @@ export const Main: FC = (): ReactElement => {
               ))}
             </div>
 
-            <span className="text-center text-sm text-red-600"> {doesNotMatch && "Confirm Password does not match Password"}</span>
+            <span className="text-center text-sm text-red-600"> {errorMessage}</span>
 
             <Button className={`gap-1 ${loading ? "cursor-wait" : ""}`} color="red" disabled={loading} size="sm" type="submit" variant="outline">
               {loading && <Image alt="Loading..." priority src={loadingAnimation} width={25} />}

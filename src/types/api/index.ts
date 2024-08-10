@@ -5,22 +5,43 @@ export interface IExample {
 
 // ----------------------------
 
-export interface IAuthPayload {
-  confirmPassword?: string;
-  email?: string;
-  name?: string;
+export interface IRegisterPayload {
+  email: string;
   password: string;
   username: string;
 }
 
+export interface ILoginPayload {
+  identifier: string;
+  password: string;
+}
+
 export interface IAuthResponse {
+  email: string;
+  id: number;
+  jwt: string;
+  username: string;
+}
+
+export interface IDataUsers {
+  firstName: string;
+  id?: number;
+  image?: File | null | string;
+  lastName: string;
+  role?: string;
+}
+
+export interface INextAuthResponse {
   email?: null | string;
+  firstName: string;
   id: string;
   image?: null | string;
+  jwt: string;
+  lastName: string;
   name?: null | string;
-  role?: null | string;
-  token?: null | string;
-  username?: null | string;
+  role: string;
+  status: string;
+  username: string;
 }
 
 // ----------------------------

@@ -1,0 +1,13 @@
+{
+  "jwt": "012345678910",
+  "user": {
+    "id": 2,
+    "username": "user",
+    "email": "user@gmail.com",
+    "provider": "local",
+    "confirmed": true,
+    "blocked": false,
+    "createdAt": "2024-08-09T09:22:57.160Z",
+    "updatedAt": "2024-08-09T12:05:44.590Z"
+  }
+}
