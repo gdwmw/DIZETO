@@ -1,0 +1,48 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "attributes": {
+        "title": "ABO",
+        "createdAt": "2024-08-09T09:02:06.976Z",
+        "updatedAt": "2024-08-09T10:09:03.277Z",
+        "publishedAt": "2024-08-09T09:02:26.340Z",
+        "redTitle": "UT",
+        "subTitle": "What is Dizeto?",
+        "description": "DIZETO is a vendor that offers photography, videography, talent, and music services. We have a professional team that can help you meet business needs, events, and your special moments to make them more beautiful, real, and lasting. You can learn more about us by viewing our portfolio, YouTube channel, and customer testimonials.",
+        "note": "*Please take note that we currently only offer photography and videography services.",
+        "logo": {
+          "data": {
+            "id": 1,
+            "attributes": {
+              "name": "dizeto.svg",
+              "alternativeText": null,
+              "caption": null,
+              "width": 842,
+              "height": 842,
+              "formats": null,
+              "hash": "dizeto_cc29417724",
+              "ext": ".svg",
+              "mime": "image/svg+xml",
+              "size": 1.67,
+              "url": "/uploads/dizeto_cc29417724.svg",
+              "previewUrl": null,
+              "provider": "local",
+              "provider_metadata": null,
+              "createdAt": "2024-08-09T09:02:03.953Z",
+              "updatedAt": "2024-08-09T09:02:03.953Z"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "meta": {
+    "pagination": {
+      "page": 1,
+      "pageSize": 25,
+      "pageCount": 1,
+      "total": 1
+    }
+  }
+}
