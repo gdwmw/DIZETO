@@ -35,7 +35,8 @@ export const POSTRegister = async (data: IRegisterPayload): Promise<IAuthRespons
     });
 
     if (!res.ok) {
-      throw new Error(`Failed to post: Register with status ${res.status}`);
+      const resError = await res.json();
+      throw new Error(`Failed to post: Register with status ${res.status} || ${resError.error.message}`);
     }
 
     const resData: IRegisterSchema = await res.json();

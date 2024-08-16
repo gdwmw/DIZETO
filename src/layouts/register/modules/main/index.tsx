@@ -38,22 +38,27 @@ export const Main: FC = (): ReactElement => {
   const handleRegisterAccount = useMutation({
     mutationFn: POSTRegister,
     onError: (error) => {
-      console.error("Error register account:", error);
+      if (error instanceof Error && error.message.includes("already taken")) {
+        setErrorMessage("Email or Username are already taken");
+      } else {
+        setErrorMessage("An error occurred in the registration process!");
+      }
     },
   });
 
   const handleRegisterDataUsers = useMutation({
     mutationFn: POSTDataUsers,
-    onError: (error) => {
-      console.error("Error register data users:", error);
+    onError: () => {
+      setErrorMessage("An error occurred in the registration data user process!");
     },
   });
 
   const onSubmit: SubmitHandler<TRegisterSchema> = async (dt) => {
+    setLoading(true);
     setErrorMessage("");
+
     if (dt.confirmPassword === dt.data.password) {
       try {
-        setLoading(true);
         const resA = await handleRegisterAccount.mutateAsync(dt.data);
 
         if (!resA) {
@@ -66,20 +71,17 @@ export const Main: FC = (): ReactElement => {
           return;
         }
 
+        console.log("Register Success!");
         router.push("/login");
         reset();
       } catch (error) {
-        if (error instanceof Error && error.message.includes("400")) {
-          setErrorMessage("Email or Username are already taken");
-        } else {
-          console.error("Failed to register account or data users");
-          console.error("Error submitting form:", error);
-          setErrorMessage(`Error submitting form: ${error}`);
-        }
+        console.log("Register Failed!");
+        console.error("--- Registration Error Message ---", error);
       } finally {
         setLoading(false);
       }
     } else {
+      setLoading(false);
       setErrorMessage("Confirm Password does not match Password");
     }
   };
