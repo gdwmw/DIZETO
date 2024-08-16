@@ -16,7 +16,7 @@ export const GETPricing = async (): Promise<IPricing[]> => {
 
     return await res.json();
   } catch (error) {
-    console.log(error);
+    console.error("--- Fetch Error Message ---", error);
     throw error;
   }
 };
@@ -31,7 +31,7 @@ export const GETPricingById = async (id: string): Promise<IPricing> => {
 
     return await res.json();
   } catch (error) {
-    console.log(error);
+    console.error("--- Fetch Error Message ---", error);
     throw error;
   }
 };
@@ -52,7 +52,7 @@ export const PUTPricing = async (data: IPricing): Promise<IPricing> => {
 
     return await res.json();
   } catch (error) {
-    console.log(error);
+    console.error("--- Fetch Error Message ---", error);
     throw error;
   }
 };

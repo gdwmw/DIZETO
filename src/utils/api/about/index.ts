@@ -18,7 +18,7 @@ export const GETAbout = async (): Promise<IAbout> => {
 
     return data[0];
   } catch (error) {
-    console.log(error);
+    console.error("--- Fetch Error Message ---", error);
     throw error;
   }
 };
@@ -39,7 +39,7 @@ export const PUTAbout = async (data: IAbout): Promise<IAbout> => {
 
     return await res.json();
   } catch (error) {
-    console.log(error);
+    console.error("--- Fetch Error Message ---", error);
     throw error;
   }
 };

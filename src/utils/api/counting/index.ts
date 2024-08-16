@@ -16,7 +16,7 @@ export const GETCounting = async (): Promise<ICounting[]> => {
 
     return await res.json();
   } catch (error) {
-    console.log(error);
+    console.error("--- Fetch Error Message ---", error);
     throw error;
   }
 };
@@ -41,7 +41,7 @@ export const PUTCounting = async (data: ICounting[]): Promise<ICounting[]> => {
 
     return await Promise.all(promises);
   } catch (error) {
-    console.log(error);
+    console.error("--- Fetch Error Message ---", error);
     throw error;
   }
 };

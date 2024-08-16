@@ -42,7 +42,7 @@ export const POSTRegister = async (data: IRegisterPayload): Promise<IAuthRespons
 
     return mapDataToResponse(resData);
   } catch (error) {
-    console.log(error);
+    console.error("--- Fetch Error Message ---", error);
     throw error;
   }
 };

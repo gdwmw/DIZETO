@@ -16,7 +16,7 @@ export const GETClient = async (): Promise<IClient[]> => {
 
     return await res.json();
   } catch (error) {
-    console.log(error);
+    console.error("--- Fetch Error Message ---", error);
     throw error;
   }
 };
@@ -42,7 +42,7 @@ export const POSTClient = async (data: IClient[]): Promise<IClient[]> => {
 
     return await Promise.all(promises);
   } catch (error) {
-    console.log(error);
+    console.error("--- Fetch Error Message ---", error);
     throw error;
   }
 };
@@ -68,7 +68,7 @@ export const PUTClient = async (data: IClient[]): Promise<IClient[]> => {
 
     return await Promise.all(promises);
   } catch (error) {
-    console.log(error);
+    console.error("--- Fetch Error Message ---", error);
     throw error;
   }
 };
@@ -89,7 +89,7 @@ export const DELETEClient = async (data: string[]): Promise<string[]> => {
 
     return await Promise.all(promises);
   } catch (error) {
-    console.log(error);
+    console.error("--- Fetch Error Message ---", error);
     throw error;
   }
 };

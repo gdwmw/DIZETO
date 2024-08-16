@@ -42,7 +42,7 @@ export const POSTLogin = async (data: ILoginPayload): Promise<IAuthResponse> => 
 
     return mapDataToResponse(resData);
   } catch (error) {
-    console.log(error);
+    console.error("--- Fetch Error Message ---", error);
     throw error;
   }
 };

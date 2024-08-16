@@ -16,7 +16,7 @@ export const GETContact = async (): Promise<IContact[]> => {
 
     return await res.json();
   } catch (error) {
-    console.log(error);
+    console.error("--- Fetch Error Message ---", error);
     throw error;
   }
 };
@@ -41,7 +41,7 @@ export const PUTContact = async (data: IContact[]): Promise<IContact[]> => {
 
     return await Promise.all(promises);
   } catch (error) {
-    console.log(error);
+    console.error("--- Fetch Error Message ---", error);
     throw error;
   }
 };

@@ -16,7 +16,7 @@ export const GETTestimony = async (): Promise<ITestimony[]> => {
 
     return await res.json();
   } catch (error) {
-    console.log(error);
+    console.error("--- Fetch Error Message ---", error);
     throw error;
   }
 };
@@ -42,7 +42,7 @@ export const POSTTestimony = async (data: ITestimony[]): Promise<ITestimony[]> =
 
     return await Promise.all(promises);
   } catch (error) {
-    console.log(error);
+    console.error("--- Fetch Error Message ---", error);
     throw error;
   }
 };
@@ -68,7 +68,7 @@ export const PUTTestimony = async (data: ITestimony[]): Promise<ITestimony[]> =>
 
     return await Promise.all(promises);
   } catch (error) {
-    console.log(error);
+    console.error("--- Fetch Error Message ---", error);
     throw error;
   }
 };
@@ -89,7 +89,7 @@ export const DELETETestimony = async (data: string[]): Promise<string[]> => {
 
     return await Promise.all(promises);
   } catch (error) {
-    console.log(error);
+    console.error("--- Fetch Error Message ---", error);
     throw error;
   }
 };

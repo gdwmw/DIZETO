@@ -18,7 +18,7 @@ export const GETHighlight = async (): Promise<IHighlight> => {
 
     return data[0];
   } catch (error) {
-    console.log(error);
+    console.error("--- Fetch Error Message ---", error);
     throw error;
   }
 };
@@ -39,7 +39,7 @@ export const PUTHighlight = async (data: IHighlight): Promise<IHighlight> => {
 
     return await res.json();
   } catch (error) {
-    console.log(error);
+    console.error("--- Fetch Error Message ---", error);
     throw error;
   }
 };

@@ -22,7 +22,7 @@ export const PUTListItem = async (data: IListItem): Promise<IListItem> => {
 
     return await res.json();
   } catch (error) {
-    console.log(error);
+    console.error("--- Fetch Error Message ---", error);
     throw error;
   }
 };

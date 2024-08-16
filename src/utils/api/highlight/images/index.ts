@@ -26,7 +26,7 @@ export const PUTImages = async (data: IImages[]): Promise<IImages[]> => {
 
     return await Promise.all(promises);
   } catch (error) {
-    console.log(error);
+    console.error("--- Fetch Error Message ---", error);
     throw error;
   }
 };

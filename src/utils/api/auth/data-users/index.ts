@@ -44,7 +44,7 @@ export const GETDataUsers = async (jwt: string): Promise<IDataUsers[]> => {
 
     return resData.data.map(mapDataToResponse);
   } catch (error) {
-    console.log(error);
+    console.error("--- Fetch Error Message ---", error);
     throw error;
   }
 };
@@ -65,7 +65,7 @@ export const GETDataUsersById = async ({ id, jwt }: { id: number; jwt: string })
 
     return mapDataToResponse(resData.data);
   } catch (error) {
-    console.log(error);
+    console.error("--- Fetch Error Message ---", error);
     throw error;
   }
 };
@@ -89,7 +89,7 @@ export const POSTDataUsers = async ({ data, jwt }: { data: IDataUsers; jwt: stri
 
     return mapDataToResponse(resData.data);
   } catch (error) {
-    console.log(error);
+    console.error("--- Fetch Error Message ---", error);
     throw error;
   }
 };
@@ -113,7 +113,7 @@ export const PUTDataUsers = async ({ data, jwt }: { data: IDataUsers; jwt: strin
 
     return mapDataToResponse(resData.data);
   } catch (error) {
-    console.log(error);
+    console.error("--- Fetch Error Message ---", error);
     throw error;
   }
 };
@@ -135,7 +135,7 @@ export const DELETEDataUsers = async ({ id, jwt }: { id: number; jwt: string }):
 
     return mapDataToResponse(resData.data);
   } catch (error) {
-    console.log(error);
+    console.error("--- Fetch Error Message ---", error);
     throw error;
   }
 };

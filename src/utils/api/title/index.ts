@@ -16,7 +16,7 @@ export const GETTitle = async (): Promise<ITitle[]> => {
 
     return await res.json();
   } catch (error) {
-    console.log(error);
+    console.error("--- Fetch Error Message ---", error);
     throw error;
   }
 };
@@ -37,7 +37,7 @@ export const PUTTitle = async (data: ITitle): Promise<ITitle> => {
 
     return await res.json();
   } catch (error) {
-    console.log(error);
+    console.error("--- Fetch Error Message ---", error);
     throw error;
   }
 };
