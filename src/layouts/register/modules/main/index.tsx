@@ -60,7 +60,7 @@ export const Main: FC = (): ReactElement => {
           return;
         }
 
-        const resB = await handleRegisterDataUsers.mutateAsync({ data: dt.dataUsers, jwt: resA.jwt });
+        const resB = await handleRegisterDataUsers.mutateAsync({ data: dt.dataUsers, token: resA.token });
 
         if (!resB) {
           return;

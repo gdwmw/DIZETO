@@ -20,7 +20,7 @@ interface IRegisterSchema {
 const mapDataToResponse = (data: IRegisterSchema): IAuthResponse => ({
   email: data.user.email,
   id: data.user.id,
-  jwt: data.jwt,
+  token: data.jwt,
   username: data.user.username,
 });
 

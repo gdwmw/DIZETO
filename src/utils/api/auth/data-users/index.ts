@@ -28,11 +28,11 @@ const mapDataToResponse = (data: IData): IDataUsers => ({
   role: data.attributes.role,
 });
 
-export const GETDataUsers = async (jwt: string): Promise<IDataUsers[]> => {
+export const GETDataUsers = async (token: string): Promise<IDataUsers[]> => {
   try {
     const res = await fetch(`${API_URL}?populate=*`, {
       headers: {
-        Authorization: `Bearer ${jwt}`,
+        Authorization: `Bearer ${token}`,
       },
     });
 
@@ -49,11 +49,11 @@ export const GETDataUsers = async (jwt: string): Promise<IDataUsers[]> => {
   }
 };
 
-export const GETDataUsersById = async ({ id, jwt }: { id: number; jwt: string }): Promise<IDataUsers> => {
+export const GETDataUsersById = async ({ id, token }: { id: number; token: string }): Promise<IDataUsers> => {
   try {
     const res = await fetch(`${API_URL}/${id}?populate=*`, {
       headers: {
-        Authorization: `Bearer ${jwt}`,
+        Authorization: `Bearer ${token}`,
       },
     });
 
@@ -70,12 +70,12 @@ export const GETDataUsersById = async ({ id, jwt }: { id: number; jwt: string })
   }
 };
 
-export const POSTDataUsers = async ({ data, jwt }: { data: IDataUsers; jwt: string }): Promise<IDataUsers> => {
+export const POSTDataUsers = async ({ data, token }: { data: IDataUsers; token: string }): Promise<IDataUsers> => {
   try {
     const res = await fetch(`${API_URL}?populate=*`, {
       body: JSON.stringify({ data: data }),
       headers: {
-        Authorization: `Bearer ${jwt}`,
+        Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
       method: "POST",
@@ -94,12 +94,12 @@ export const POSTDataUsers = async ({ data, jwt }: { data: IDataUsers; jwt: stri
   }
 };
 
-export const PUTDataUsers = async ({ data, jwt }: { data: IDataUsers; jwt: string }): Promise<IDataUsers> => {
+export const PUTDataUsers = async ({ data, token }: { data: IDataUsers; token: string }): Promise<IDataUsers> => {
   try {
     const res = await fetch(`${API_URL}/${data.id}?populate=*`, {
       body: JSON.stringify({ data: data }),
       headers: {
-        Authorization: `Bearer ${jwt}`,
+        Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
       method: "PUT",
@@ -118,11 +118,11 @@ export const PUTDataUsers = async ({ data, jwt }: { data: IDataUsers; jwt: strin
   }
 };
 
-export const DELETEDataUsers = async ({ id, jwt }: { id: number; jwt: string }): Promise<IDataUsers> => {
+export const DELETEDataUsers = async ({ id, token }: { id: number; token: string }): Promise<IDataUsers> => {
   try {
     const res = await fetch(`${API_URL}/${id}?populate=*`, {
       headers: {
-        Authorization: `Bearer ${jwt}`,
+        Authorization: `Bearer ${token}`,
       },
       method: "DELETE",
     });

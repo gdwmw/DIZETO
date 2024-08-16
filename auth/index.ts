@@ -47,7 +47,7 @@ export const options: NextAuthOptions = {
             return null;
           }
 
-          const resdDataUsers = await GETDataUsersById({ id: res.id, jwt: res.jwt });
+          const resdDataUsers = await GETDataUsersById({ id: res.id, token: res.token });
 
           if (!resdDataUsers) {
             return null;
@@ -58,11 +58,11 @@ export const options: NextAuthOptions = {
             firstName: resdDataUsers.firstName,
             id: res.id.toString(),
             image: resdDataUsers.image as null | string,
-            jwt: res.jwt,
             lastName: resdDataUsers.lastName,
-            name: resdDataUsers.firstName + " " + resdDataUsers.lastName,
+            name: `${resdDataUsers.firstName} ${resdDataUsers.lastName}`,
             role: resdDataUsers.role as string,
             status: "authenticated",
+            token: res.token,
             username: res.username,
           };
 

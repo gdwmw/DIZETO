@@ -19,7 +19,7 @@ export interface ILoginPayload {
 export interface IAuthResponse {
   email: string;
   id: number;
-  jwt: string;
+  token: string;
   username: string;
 }
 
@@ -36,11 +36,11 @@ export interface INextAuthResponse {
   firstName: string;
   id: string;
   image?: null | string;
-  jwt: string;
   lastName: string;
   name?: null | string;
   role: string;
   status: string;
+  token: string;
   username: string;
 }
 
