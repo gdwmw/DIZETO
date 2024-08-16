@@ -68,8 +68,8 @@ export const options: NextAuthOptions = {
 
           return mapDataToResponse;
         } catch (error) {
-          console.error("Authorization:", error);
-          return null;
+          console.log("An error occurred in the authentication process!");
+          throw error;
         }
       },
       credentials: {},

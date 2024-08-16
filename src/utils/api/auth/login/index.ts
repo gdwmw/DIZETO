@@ -35,7 +35,8 @@ export const POSTLogin = async (data: ILoginPayload): Promise<IAuthResponse> => 
     });
 
     if (!res.ok) {
-      throw new Error(`Failed to post: Login with status ${res.status}`);
+      const resError = await res.json();
+      throw new Error(`Failed to post: Login with status ${res.status} || ${resError.error.message}`);
     }
 
     const resData: IRegisterSchema = await res.json();

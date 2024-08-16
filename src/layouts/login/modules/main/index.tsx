@@ -20,7 +20,7 @@ import { LoginSchema, TLoginSchema } from "@/src/schemas/auth";
 export const Main: FC = (): ReactElement => {
   const router = useRouter();
   const [visibility, setVisibility] = useState(false);
-  const [invalidCredentials, setInvalidCredentials] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
   const {
@@ -34,7 +34,7 @@ export const Main: FC = (): ReactElement => {
 
   const onSubmit: SubmitHandler<TLoginSchema> = async (dt) => {
     setLoading(true);
-    setInvalidCredentials(false);
+    setErrorMessage("");
 
     try {
       const res = await signIn("credentials", {
@@ -43,15 +43,21 @@ export const Main: FC = (): ReactElement => {
         redirect: false,
       });
 
-      if (res?.ok) {
-        setInvalidCredentials(true);
-        throw new Error("Invalid Username or Password");
+      if (!res?.ok) {
+        if (res?.error?.includes("Invalid")) {
+          setErrorMessage("Invalid Username or Password");
+          throw new Error("Invalid Username or Password");
+        } else {
+          setErrorMessage("An error occurred in the authentication process!");
+        }
       }
 
+      console.log("Login Success!");
       router.push("/");
       router.refresh();
     } catch (error) {
-      console.error(error);
+      console.log("Login Failed!");
+      console.error("--- Authentication Error Message ---", error);
     } finally {
       setLoading(false);
     }
@@ -89,7 +95,7 @@ export const Main: FC = (): ReactElement => {
               />
             </div>
 
-            <span className="text-center text-sm text-red-600"> {invalidCredentials && "Invalid Username or Password"}</span>
+            <span className="text-center text-sm text-red-600"> {errorMessage}</span>
 
             <Button className={`gap-1 ${loading ? "cursor-wait" : ""}`} color="red" disabled={loading} size="sm" type="submit" variant="outline">
               {loading && <Image alt="Loading..." priority src={loadingAnimation} width={25} />}
