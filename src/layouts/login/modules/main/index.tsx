@@ -20,7 +20,7 @@ import { LoginSchema, TLoginSchema } from "@/src/schemas/auth";
 export const Main: FC = (): ReactElement => {
   const router = useRouter();
   const [visibility, setVisibility] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [invalidCredentials, setInvalidCredentials] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const {
@@ -28,34 +28,30 @@ export const Main: FC = (): ReactElement => {
     handleSubmit,
     register,
   } = useForm<TLoginSchema>({
-    defaultValues: { password: "", username: "" },
+    defaultValues: { identifier: "", password: "" },
     resolver: zodResolver(LoginSchema),
   });
 
   const onSubmit: SubmitHandler<TLoginSchema> = async (dt) => {
     setLoading(true);
-    setErrorMessage("");
+    setInvalidCredentials(false);
 
     try {
       const res = await signIn("credentials", {
-        identifier: dt.username,
+        identifier: dt.identifier,
         password: dt.password,
         redirect: false,
       });
 
-      if (res?.status === 401) {
-        setErrorMessage("Invalid Username or Password");
-        return;
-      }
-
-      if (!res?.ok) {
-        setErrorMessage(`Error submitting form: Status ${res?.status}`);
-        console.error("Error submitting form: Status", res?.status);
-        return;
+      if (res?.ok) {
+        setInvalidCredentials(true);
+        throw new Error("Invalid Username or Password");
       }
 
       router.push("/");
       router.refresh();
+    } catch (error) {
+      console.error(error);
     } finally {
       setLoading(false);
     }
@@ -76,10 +72,10 @@ export const Main: FC = (): ReactElement => {
               <Input
                 color="black"
                 disabled={loading}
-                errorMessage={errors.username?.message}
+                errorMessage={errors.identifier?.message}
                 label="Username"
                 type="text"
-                {...register("username")}
+                {...register("identifier")}
               />
               <Input
                 color="black"
@@ -93,7 +89,7 @@ export const Main: FC = (): ReactElement => {
               />
             </div>
 
-            <span className="text-center text-sm text-red-600"> {errorMessage}</span>
+            <span className="text-center text-sm text-red-600"> {invalidCredentials && "Invalid Username or Password"}</span>
 
             <Button className={`gap-1 ${loading ? "cursor-wait" : ""}`} color="red" disabled={loading} size="sm" type="submit" variant="outline">
               {loading && <Image alt="Loading..." priority src={loadingAnimation} width={25} />}

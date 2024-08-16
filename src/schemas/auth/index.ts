@@ -18,8 +18,8 @@ const errorMessage = {
 // -----------------------------------------------------------------------------
 
 export const LoginSchema = z.object({
+  identifier: z.string().min(1, { message: errorMessage.string.required("Username") }),
   password: z.string().min(1, { message: errorMessage.string.required("Password") }),
-  username: z.string().min(1, { message: errorMessage.string.required("Username") }),
 });
 
 export type TLoginSchema = z.infer<typeof LoginSchema>;
