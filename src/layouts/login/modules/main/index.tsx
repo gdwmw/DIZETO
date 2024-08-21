@@ -27,6 +27,7 @@ export const Main: FC = (): ReactElement => {
     formState: { errors },
     handleSubmit,
     register,
+    reset,
   } = useForm<TLoginSchema>({
     defaultValues: { identifier: "", password: "" },
     resolver: zodResolver(LoginSchema),
@@ -55,6 +56,7 @@ export const Main: FC = (): ReactElement => {
       console.log("Login Success!");
       router.push("/");
       router.refresh();
+      reset();
     } catch (error) {
       console.log("Login Failed!");
       console.error("--- Authentication Error Message ---", error);
