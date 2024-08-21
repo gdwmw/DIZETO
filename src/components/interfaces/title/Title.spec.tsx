@@ -3,7 +3,7 @@ import { render } from "@testing-library/react";
 import { Title } from "./";
 
 /* eslint-disable tailwindcss/no-custom-classname */
-const component = <Title className="testing-class" id="testing-id" style={{ color: "#ff0000" }} title="This is " titleRed="testing text" />;
+const component = <Title className="testing-class" id="testing-id" redColor={8} style={{ color: "#ff0000" }} title="This is testing text" />;
 /* eslint-enable tailwindcss/no-custom-classname */
 
 describe("Title Component Testing", () => {

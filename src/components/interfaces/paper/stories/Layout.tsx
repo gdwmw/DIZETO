@@ -14,7 +14,7 @@ type TLayout = {
 const Layout: FC<TLayout> = (props): ReactElement => (
   <ContainerPaper id={props.id}>
     <ContentPaper>
-      <Title title="ABO" titleRed="UT" />
+      <Title redColor={3} title="ABOUT" />
       <div className="space-y-14 py-10 md:grid md:grid-cols-2 md:space-y-0">
         <div className="space-y-5">
           <h3 className="text-xl font-semibold sm:text-2xl">

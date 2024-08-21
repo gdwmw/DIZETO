@@ -3,10 +3,10 @@ import { FC, ReactElement } from "react";
 import { Title } from "..";
 
 interface ILayout {
+  redColor: number;
   title: string;
-  titleRed: string;
 }
 
-const Layout: FC<ILayout> = (props): ReactElement => <Title title={props.title} titleRed={props.titleRed} />;
+const Layout: FC<ILayout> = (props): ReactElement => <Title redColor={props.redColor} title={props.title} />;
 
 export default Layout;

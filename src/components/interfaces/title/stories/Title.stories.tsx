@@ -19,8 +19,8 @@ type Story = StoryObj<typeof Layout>;
 /* eslint-disable perfectionist/sort-objects */
 export const Primary: Story = {
   args: {
-    title: "THIS IS ",
-    titleRed: "EXAMPLE TEXT",
+    title: "THIS IS EXAMPLE TEXT",
+    redColor: 8,
   },
 };
 /* eslint-enable perfectionist/sort-objects */
