@@ -1,6 +1,6 @@
 import { IAuthResponse, IRegisterPayload } from "@/src/types/api";
 
-const API_URL = process.env.NEXT_PUBLIC_REGISTER_URL;
+const API_URL = process.env.NEXT_PUBLIC_BASE_API_URL;
 
 if (!API_URL) {
   throw new Error("The API URL is not defined. Please check your environment variables.");
@@ -26,7 +26,7 @@ const mapDataToResponse = (data: IRegisterSchema): IAuthResponse => ({
 
 export const POSTRegister = async (data: IRegisterPayload): Promise<IAuthResponse> => {
   try {
-    const res = await fetch(`${API_URL}?populate=*`, {
+    const res = await fetch(`${API_URL}/api/auth/local/register?populate=*`, {
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",
