@@ -111,7 +111,7 @@ const PricingForm: FC<I> = (props): ReactElement => {
 
   const TITLE_INPUT_FIELDS_DATA = [
     { error: errors.title?.title?.message, id: "1", label: "Title", name: "title.title", type: "text" },
-    { error: errors.title?.titleRed?.message, id: "2", label: "Title Red", name: "title.titleRed", type: "text" },
+    // { error: errors.title?.titleRed?.message, id: "2", label: "Title Red", name: "title.titleRed", type: "text" },
   ];
 
   const PACKAGE_INPUT_FIELDS_DATA = [
@@ -131,7 +131,7 @@ const PricingForm: FC<I> = (props): ReactElement => {
   return (
     <ContainerModal>
       <ContentModal className={`${props.isEditTitle ? "max-w-[500px]" : "max-w-[1000px]"}`}>
-        <Title title="UPDATE " titleRed={props.isEditTitle ? "PRICING" : `PACKAGE ${props.data?.id}`} />
+        <Title redColor={7} title={`UPDATE ${props.isEditTitle ? "PRICING" : `PACKAGE ${props.data?.id}`}`} />
 
         <form className="space-y-3 pt-2" onSubmit={handleSubmit(onSubmit)}>
           {props.isEditTitle &&

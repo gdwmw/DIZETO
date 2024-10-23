@@ -137,7 +137,7 @@ const TestimonyForm: FC<I> = (props): ReactElement => {
   return (
     <ContainerModal>
       <ContentModal className={`${props.isEditTestimony ? "max-w-[1000px]" : "max-w-[500px]"}`}>
-        <Title title="UPDATE " titleRed={props.isEditTestimony ? "TESTIMONY" : "COUNTING"} />
+        <Title redColor={7} title={`UPDATE ${props.isEditTestimony ? "TESTIMONY" : "COUNTING"}`} />
 
         <form className="space-y-3 pt-2" onSubmit={handleSubmit(onSubmit)}>
           {props.isEditTestimony && (

@@ -10,7 +10,6 @@ import { FaEdit } from "react-icons/fa";
 import { Button } from "@/src/components/interfaces/button";
 import { CardPackage } from "@/src/components/interfaces/cards/card-package";
 import { ContainerPaper, ContentPaper } from "@/src/components/interfaces/paper";
-import { Title } from "@/src/components/interfaces/title";
 import { IPricing } from "@/src/types/api";
 import { GETPricing, GETTitle } from "@/src/utils/api";
 const PricingForm = dynamic(() => import("../forms/pricing-form"));
@@ -52,7 +51,7 @@ export const Pricing: FC = (): ReactElement => {
             </Button>
           )}
 
-          <Title title={dataTitle?.[2].title} titleRed={dataTitle?.[2].titleRed} />
+          {/* <Title title={dataTitle?.[2].title} titleRed={dataTitle?.[2].titleRed} /> */}
 
           <div className="mt-5 grid gap-5 sm:mt-0 sm:grid-cols-2 xl:grid-cols-4">
             {dataPricing?.map((dt) => (

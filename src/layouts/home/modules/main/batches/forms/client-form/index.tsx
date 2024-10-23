@@ -131,13 +131,13 @@ const ClientForm: FC<I> = (props): ReactElement => {
 
   const INPUT_FIELDS_DATA = [
     { errorMessage: errors.title?.title?.message, id: "1", label: "Title", name: "title.title", type: "text" },
-    { errorMessage: errors.title?.titleRed?.message, id: "2", label: "Title Red", name: "title.titleRed", type: "text" },
+    // { errorMessage: errors.title?.titleRed?.message, id: "2", label: "Title Red", name: "title.titleRed", type: "text" },
   ];
 
   return (
     <ContainerModal>
       <ContentModal className="max-w-[1000px]">
-        <Title title="UPDATE " titleRed="CLIENT" />
+        <Title redColor={7} title="UPDATE CLIENT" />
 
         <form className="space-y-3 pt-2" onSubmit={handleSubmit(onSubmit)}>
           {INPUT_FIELDS_DATA.map((dt) => (

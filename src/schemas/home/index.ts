@@ -17,37 +17,49 @@ const errorMessage = {
 // -----------------------------------------------------------------------------
 
 const TitleSchema = z.object({
-  id: z.string(),
+  redColor: z
+    .number()
+    .min(0, { message: errorMessage.number.min("Red Color", 0) })
+    .max(100, { message: errorMessage.number.max("Red Color", 100) }),
   title: z
     .string()
     .min(2, { message: errorMessage.string.min("Title", 2) })
     .max(20, { message: errorMessage.string.max("Title", 20) }),
-  titleRed: z
-    .string()
-    .min(2, { message: errorMessage.string.min("Title Red", 2) })
-    .max(20, { message: errorMessage.string.max("Title Red", 20) }),
 });
 
 // -----------------------------------------------------------------------------
 
 export const AboutSchema = z.object({
-  data: z.object({
-    description: z
-      .string()
-      .min(100, { message: errorMessage.string.min("Description", 100) })
-      .max(1000, { message: errorMessage.string.max("Description", 1000) }),
-    id: z.string(),
-    logoURL: z.string().min(1, { message: errorMessage.string.required("Logo URL") }),
-    note: z
-      .string()
-      .min(20, { message: errorMessage.string.min("Note", 20) })
-      .max(100, { message: errorMessage.string.max("Note", 100) }),
-    subTitle: z
-      .string()
-      .min(8, { message: errorMessage.string.min("Sub Title", 8) })
-      .max(32, { message: errorMessage.string.max("Sub Title", 32) }),
-  }),
-  title: TitleSchema,
+  data: z
+    .object({
+      description: z
+        .string()
+        .min(100, { message: errorMessage.string.min("Description", 100) })
+        .max(1000, { message: errorMessage.string.max("Description", 1000) }),
+      id: z.number(),
+      image: z.object({
+        file: z.instanceof(FileList).optional(),
+        id: z.number().min(1, { message: errorMessage.number.min("Select Photo", 1) }),
+        url: z.string().optional(),
+      }),
+      note: z
+        .string()
+        .min(20, { message: errorMessage.string.min("Note", 20) })
+        .max(100, { message: errorMessage.string.max("Note", 100) }),
+      redColorDesc: z
+        .number()
+        .min(0, { message: errorMessage.number.min("Red Color", 0) })
+        .max(100, { message: errorMessage.number.max("Red Color", 100) }),
+      redColorSub: z
+        .number()
+        .min(0, { message: errorMessage.number.min("Red Color", 0) })
+        .max(100, { message: errorMessage.number.max("Red Color", 100) }),
+      subTitle: z
+        .string()
+        .min(8, { message: errorMessage.string.min("Sub Title", 8) })
+        .max(32, { message: errorMessage.string.max("Sub Title", 32) }),
+    })
+    .merge(TitleSchema),
 });
 
 export type TAboutSchema = z.infer<typeof AboutSchema>;

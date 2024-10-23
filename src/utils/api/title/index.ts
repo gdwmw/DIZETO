@@ -23,7 +23,7 @@ export const GETTitle = async (): Promise<ITitle[]> => {
 
 export const PUTTitle = async (data: ITitle): Promise<ITitle> => {
   try {
-    const res = await fetch(`${API_URL}/${data.id}`, {
+    const res = await fetch(`${API_URL}`, {
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",

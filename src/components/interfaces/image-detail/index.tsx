@@ -64,7 +64,7 @@ const ImageDetail: FC<IImageDetail> = ({ data, imageIndex, setImageIndex, setOpe
               type="button"
               variant="ghost"
             >
-              <CgClose size={30} />
+              <CgClose size={25} />
             </Button>
           )}
 

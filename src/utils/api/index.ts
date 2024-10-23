@@ -10,3 +10,4 @@ export * from "./pricing";
 export * from "./pricing/list-item";
 export * from "./testimony";
 export * from "./title";
+export * from "./upload";

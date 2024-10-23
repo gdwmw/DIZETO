@@ -12,7 +12,6 @@ import { TbWorldWww } from "react-icons/tb";
 import { Button } from "@/src/components/interfaces/button";
 import { ContactInfo } from "@/src/components/interfaces/contact-info";
 import { ContainerPaper, ContentPaper } from "@/src/components/interfaces/paper";
-import { Title } from "@/src/components/interfaces/title";
 import { GETContact, GETTitle } from "@/src/utils/api";
 const ContactForm = dynamic(() => import("../forms/contact-form"));
 
@@ -40,7 +39,7 @@ export const Contact: FC = (): ReactElement => {
             </Button>
           )}
 
-          <Title title={dataTitle?.[4].title} titleRed={dataTitle?.[4].titleRed} />
+          {/* <Title title={dataTitle?.[4].title} titleRed={dataTitle?.[4].titleRed} /> */}
 
           <iframe
             className="my-5 h-[500px] w-full rounded-md border border-black dark:border-white"

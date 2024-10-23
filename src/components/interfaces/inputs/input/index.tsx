@@ -20,6 +20,7 @@ type TInput = {
   iconOnClick?: () => void;
   label?: string;
   legendClassName?: string;
+  secLabel?: string;
 } & DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
 /* eslint-enable perfectionist/sort-union-types */
 
@@ -44,6 +45,7 @@ export const Input: FC<TInput> = forwardRef<HTMLInputElement, TInput>(
       iconOnClick,
       label,
       legendClassName,
+      secLabel,
       ...props
     },
     ref,
@@ -57,6 +59,8 @@ export const Input: FC<TInput> = forwardRef<HTMLInputElement, TInput>(
         label={label}
         legendClassName={legendClassName}
       >
+        {secLabel && <span className="px-1">{secLabel}</span>}
+
         <input className={InputTWM({ className, disabled })} disabled={disabled} ref={ref} {...props} />
 
         {icon && (

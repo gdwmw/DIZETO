@@ -12,7 +12,6 @@ import { FaEdit } from "react-icons/fa";
 
 import { Button } from "@/src/components/interfaces/button";
 import { ContainerPaper, ContentPaper } from "@/src/components/interfaces/paper";
-import { Title } from "@/src/components/interfaces/title";
 import { GETClient, GETTitle } from "@/src/utils/api";
 const ClientForm = dynamic(() => import("../forms/client-form"));
 
@@ -46,7 +45,7 @@ export const Client: FC = (): ReactElement => {
             </Button>
           )}
 
-          <Title title={dataTitle?.[3].title} titleRed={dataTitle?.[3].titleRed} />
+          {/* <Title title={dataTitle?.[3].title} titleRed={dataTitle?.[3].titleRed} /> */}
 
           <div className="mt-5 grid grid-cols-3 gap-5 xl:grid-cols-4">
             {/* TODO: Jangan lupa nanti bikin loading component */}

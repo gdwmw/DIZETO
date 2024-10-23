@@ -46,19 +46,32 @@ export interface INextAuthResponse {
 
 // ----------------------------
 
-export interface ITitle {
-  id: string;
-  title: string;
-  titleRed: string;
+export interface ISelectImage {
+  id: number;
+  name: string;
+  url: string;
 }
 
 // ----------------------------
 
-export interface IAbout {
+export interface ITitle {
+  redColor: number;
+  title: string;
+}
+
+// ----------------------------
+
+export interface IAbout extends ITitle {
   description: string;
-  id: string;
-  logoURL: string;
+  id: number;
+  image: {
+    file?: FileList;
+    id: number;
+    url?: string;
+  };
   note: string;
+  redColorDesc: number;
+  redColorSub: number;
   subTitle: string;
 }
 
