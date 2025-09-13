@@ -134,6 +134,30 @@ export interface IUploadResponse {
 
 // ----------------------------
 
+export interface IFormatCommon {
+  name: string;
+  width: number;
+  height: number;
+  url: string;
+}
+
+export interface IImageCommon {
+  id: number;
+  documentId: string;
+  name: string;
+  width: number;
+  height: number;
+  formats: {
+    thumbnail: IFormatCommon;
+    large: IFormatCommon;
+    medium: IFormatCommon;
+    small: IFormatCommon;
+  };
+  url: string;
+}
+
+// ----------------------------
+
 interface IDataCommon {
   name: string;
   phoneNumber: string;
@@ -151,4 +175,43 @@ export interface IDataResponse extends IDataCommon {
   documentId: string;
   image: IUploadResponse | null;
   role: TRole;
+}
+
+// ----------------------------
+
+export interface IHighlightResponse {
+  id: number;
+  documentId: string;
+  image: IImageCommon[];
+}
+
+export interface IPortfolioResponse {
+  id: number;
+  documentId: string;
+  thumbnail: IImageCommon;
+  title: string;
+  date: string;
+  category: string;
+  image: IImageCommon[];
+}
+
+// ----------------------------
+
+export interface IList {
+  label: string;
+  qty: number;
+}
+
+export interface IListItem {
+  id: string;
+  list: IList[];
+  pricingId: string;
+}
+
+export interface IPricing {
+  category: string;
+  id: string;
+  listItem: IListItem[];
+  package: string;
+  price: number;
 }

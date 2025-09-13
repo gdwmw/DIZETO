@@ -2,21 +2,20 @@ import type { Metadata } from "next";
 
 import { FC, PropsWithChildren, ReactElement } from "react";
 
-import { NextAuthProvider, NextThemesProvider, ReactQueryProvider } from "@/src/libs/providers";
+import { NextAuthProvider, NextThemesProvider, ReactQueryProvider } from "@/src/libs";
 
-import { APIConnectionChecker } from "../components";
 import { geistMono, geistSans } from "./fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
   authors: [{ name: "Gede Dewo Wahyu M.W", url: "https://github.com/gdwmw" }],
-  category: "Boilerplate",
+  category: "Photography, Videography, Talent, Music Services",
   creator: "Gede Dewo Wahyu M.W",
   publisher: "Gede Dewo Wahyu M.W",
   referrer: "strict-origin-when-cross-origin",
   title: {
-    default: "Next.js | Home",
-    template: "Next.js | %s",
+    default: "DIZETO | PROFESSIONAL SERVICES",
+    template: "DIZETO | %s",
   },
 };
 
@@ -27,10 +26,7 @@ const RootLayout: FC<T> = (props): ReactElement => (
     <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
       <NextThemesProvider>
         <ReactQueryProvider>
-          <NextAuthProvider>
-            {props.children}
-            <APIConnectionChecker />
-          </NextAuthProvider>
+          <NextAuthProvider>{props.children}</NextAuthProvider>
         </ReactQueryProvider>
       </NextThemesProvider>
     </body>

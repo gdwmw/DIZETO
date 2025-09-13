@@ -1,18 +1,22 @@
 import { create } from "zustand";
 
 interface IStates {
-  openA?: boolean;
-  openB?: boolean;
+  imageIndex: number;
+  openASide: boolean;
+  openImageDetail: boolean;
 }
 
 interface IActions {
-  setOpenA: (param: boolean) => void;
-  setOpenB: (param: boolean) => void;
+  setImageIndex: (param: number) => void;
+  setOpenASide: (param: boolean) => void;
+  setOpenImageDetail: (param: boolean) => void;
 }
 
 export const useGlobalStates = create<IActions & IStates>((set) => ({
-  openA: false,
-  openB: false,
-  setOpenA: (openA: boolean) => set({ openA }),
-  setOpenB: (openB: boolean) => set({ openB }),
+  imageIndex: 0,
+  openASide: false,
+  openImageDetail: false,
+  setImageIndex: (imageIndex: number) => set({ imageIndex }),
+  setOpenASide: (openASide: boolean) => set({ openASide }),
+  setOpenImageDetail: (openImageDetail: boolean) => set({ openImageDetail }),
 }));

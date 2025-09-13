@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  @apply bg-white;
+}
+
+:root[data-theme="dark"] {
+  @apply bg-dark;
+}
+
+body {
+  @apply bg-gradient-to-r from-[#ffdcdc] to-white bg-fixed bg-no-repeat dark:from-[#402227] dark:to-dark;
+}
+
+@media (min-width: 840px) {
+  body {
+    @apply animate-backgroundGradient bg-gradient-to-r from-[#ffdcdc] via-white to-[#ffdcdc] bg-[length:400%_100%] bg-fixed bg-no-repeat dark:from-[#402227] dark:via-dark dark:to-[#402227];
+  }
+}

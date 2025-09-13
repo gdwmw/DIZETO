@@ -1,3 +1,5 @@
 import { FC, ReactElement } from "react";
 
-export const Footer: FC = (): ReactElement => <footer></footer>;
+import { Footer as FooterComponent } from "@/src/components";
+
+export const Footer: FC = (): ReactElement => <FooterComponent />;

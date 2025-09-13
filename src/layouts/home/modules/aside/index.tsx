@@ -1,7 +1,5 @@
 import { FC, ReactElement } from "react";
 
-export const ASide: FC = (): ReactElement => (
-  <aside>
-    <nav></nav>
-  </aside>
-);
+import { Content } from "./batches";
+
+export const ASide: FC = (): ReactElement => <Content />;

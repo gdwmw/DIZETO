@@ -1,7 +1,7 @@
 import { Metadata, Viewport } from "next";
 import { FC, ReactElement } from "react";
 
-import { Main } from "@/src/layouts/home/modules/main/index-example";
+import HomeLayout from "@/src/layouts/home";
 
 export const viewport: Viewport = {
   initialScale: 1.0,
@@ -9,23 +9,38 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  description: "Boilerplate by Gede Dewo Wahyu M.W",
-  keywords: ["Boilerplate"],
+  description: "DIZETO is a vendor that offers photography, videography, talent, and music services.",
+  keywords: [
+    "dizeto",
+    "bandung",
+    "indonesia",
+    "vendor",
+    "jasa foto",
+    "jasa video",
+    "jasa fotografer",
+    "jasa videografer",
+    "pre-wedding",
+    "wedding",
+    "dokumentasi",
+    "foto produk",
+    "fotografi",
+    "videografi",
+  ],
   openGraph: {
-    description: "Boilerplate by Gede Dewo Wahyu M.W",
+    description: "DIZETO is a vendor that offers photography, videography, talent, and music services.",
     images: [
       {
-        alt: "Next.js",
+        alt: "DIZETO",
         height: 800,
-        url: "https://website-name.com/assets/images/logos/logo-name.png", // Must be an absolute URL and PNG format
+        url: "https://dizeto.vercel.app/assets/images/logos/dizeto.png", // Must be an absolute URL and PNG format
         width: 800,
       },
     ],
     locale: "en_US",
-    siteName: "Next.js",
-    title: "Next.js | Home",
+    siteName: "DIZETO",
+    title: "DIZETO | ROFESSIONAL SERVICES",
     type: "website",
-    url: "https://website-name.com/",
+    url: "https://dizeto.vercel.app/",
   },
   robots: {
     follow: true,
@@ -43,12 +58,12 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     creator: "@gdwmw",
-    description: "Boilerplate by Gede Dewo Wahyu M.W",
-    images: ["https://website-name.com/assets/images/logos/logo-name.png"], // Must be an absolute URL and PNG format
-    title: "Next.js | Home",
+    description: "DIZETO is a vendor that offers photography, videography, talent, and music services.",
+    images: ["https://dizeto.vercel.app/assets/images/logos/dizeto.png"], // Must be an absolute URL and PNG format
+    title: "DIZETO | ROFESSIONAL SERVICES",
   },
 };
 
-const HomePage: FC = (): ReactElement => <Main />;
+const HomePage: FC = (): ReactElement => <HomeLayout />;
 
 export default HomePage;
