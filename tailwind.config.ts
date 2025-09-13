@@ -23,6 +23,8 @@ const config: Config = {
       fontFamily: {
         geistMono: ["var(--font-geist-sans)"],
         geistSans: ["var(--font-geist-mono)"],
+        inter: ["var(--font-inter)"],
+        roboto: ["var(--font-roboto)"],
       },
       keyframes: {
         gradient: {
