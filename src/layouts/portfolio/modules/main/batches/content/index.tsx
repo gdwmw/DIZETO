@@ -1,11 +1,10 @@
 "use client";
 
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { FC, PropsWithChildren, ReactElement } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 
-import { ButtonTWM, ContainerPaper, ContentPaper, PortfolioTitle } from "@/src/components";
-import ImageDetail from "@/src/components/templates/image-detail";
+import { Button, ContainerPaper, ContentPaper, ImageDetail, PortfolioTitle } from "@/src/components";
 import { useGlobalStates } from "@/src/context";
 import { IPortfolioResponse } from "@/src/types";
 
@@ -14,6 +13,7 @@ interface I extends PropsWithChildren {
 }
 
 export const Content: FC<I> = (props): ReactElement => {
+  const router = useRouter();
   const { imageIndex, openImageDetail, setImageIndex, setOpenImageDetail } = useGlobalStates();
 
   return (
@@ -22,9 +22,9 @@ export const Content: FC<I> = (props): ReactElement => {
         <section className="flex items-center justify-center gap-5">
           <PortfolioTitle date={props.data[0].date} title={props.data[0].title} />
 
-          <Link className={ButtonTWM({ className: "min-w-fit", color: "red", size: "sm", variant: "outline" })} href={"/list-portfolio"}>
+          <Button className="min-w-fit" color="red" onClick={() => router.back()} size="sm" variant="outline">
             <FaArrowLeft size={18} />
-          </Link>
+          </Button>
 
           <div className="h-0.5 w-full rounded-full bg-red-600" />
         </section>

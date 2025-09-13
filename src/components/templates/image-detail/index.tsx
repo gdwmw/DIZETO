@@ -24,7 +24,7 @@ interface I {
   setOpenImageDetail: (param: boolean) => void;
 }
 
-const ImageDetail: FC<I> = (props): ReactElement => {
+export const ImageDetail: FC<I> = (props): ReactElement => {
   const [loaded, setLoaded] = useState(false);
   const [transitionLoaded, setTransitionLoaded] = useState(false);
 
@@ -136,5 +136,3 @@ const ImageDetail: FC<I> = (props): ReactElement => {
     </section>
   );
 };
-
-export default ImageDetail;

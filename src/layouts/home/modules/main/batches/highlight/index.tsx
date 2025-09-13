@@ -1,13 +1,11 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import Link from "next/link";
 import { FC, PropsWithChildren, ReactElement } from "react";
 
-import { ButtonTWM, ContainerPaper, ContentPaper, RedUnderline } from "@/src/components";
+import { ButtonTWM, ContainerPaper, ContentPaper, ImageDetail, RedUnderline } from "@/src/components";
 import { useGlobalStates } from "@/src/context";
 import { IHighlightResponse } from "@/src/types";
-const ImageDetail = dynamic(() => import("@/src/components/templates/image-detail"));
 
 interface I extends PropsWithChildren {
   data: IHighlightResponse[];
