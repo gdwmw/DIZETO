@@ -35,6 +35,7 @@ export const Main: FC = async (): Promise<ReactElement> => {
                   alt="Thumbnail"
                   blurDataURL={await getBase64(API_URL + dt.formats.small.url)}
                   height={dt.height}
+                  loading="lazy"
                   placeholder="blur"
                   src={API_URL + dt.formats.small.url}
                   width={dt.width}
