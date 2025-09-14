@@ -4,12 +4,12 @@ import { twm } from "@/src/libs";
 
 import { RedUnderline } from "../red-underline";
 
-type TTitle = {
+interface I extends DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement> {
   className?: string;
   title: string;
-} & DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>;
+}
 
-export const Title: FC<TTitle> = ({ className, title, ...props }): ReactElement => {
+export const Title: FC<I> = ({ className, title, ...props }): ReactElement => {
   const titleLength = title.length;
 
   return (

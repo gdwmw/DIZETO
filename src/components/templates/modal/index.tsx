@@ -2,12 +2,14 @@ import { DetailedHTMLProps, FC, HTMLAttributes, ReactElement } from "react";
 
 import { twm } from "@/src/libs";
 
-type TContainerModal = { className?: string } & DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
-type TContentModal = { className?: string } & DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
+interface IContainerModal extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {
+  className?: string;
+}
+interface IContentModal extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+  className?: string;
+}
 
-// TODO: Jangan lupa nanti lanjutin bikin Unit Testing dan Storybook untuk Modal
-
-export const ContainerModal: FC<TContainerModal> = ({ className, ...props }): ReactElement => (
+export const ContainerModal: FC<IContainerModal> = ({ className, ...props }): ReactElement => (
   <section
     className={twm("fixed inset-0 z-[5] !mt-0 flex items-center justify-center px-5 backdrop-blur-md", className)}
     data-testid="container-modal"
@@ -17,7 +19,7 @@ export const ContainerModal: FC<TContainerModal> = ({ className, ...props }): Re
   </section>
 );
 
-export const ContentModal: FC<TContentModal> = ({ className, ...props }): ReactElement => (
+export const ContentModal: FC<IContentModal> = ({ className, ...props }): ReactElement => (
   <div
     className={twm("max-h-[95dvh] w-full overflow-auto rounded-xl border border-black bg-white p-5 dark:border-white dark:bg-dark", className)}
     data-testid="content-modal"

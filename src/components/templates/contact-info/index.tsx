@@ -1,25 +1,23 @@
 import Link from "next/link";
 import { FC, ReactElement, ReactNode } from "react";
 
-import { ButtonTWM } from "../../";
+import { ButtonTWM } from "../..";
 
-interface IContactInfo {
-  href: string | undefined;
+interface I {
+  href: string;
   icon: ReactNode;
-  label: string | undefined;
-  title: string | undefined;
+  label: string;
+  title: string;
 }
 
-// TODO: Jangan lupa nanti lanjutin bikin Unit Testing dan Storybook untuk ContactInfo
-
-export const ContactInfo: FC<IContactInfo> = ({ href, icon, label, title }): ReactElement => (
+export const ContactInfo: FC<I> = (props): ReactElement => (
   <div className="flex items-start gap-2">
     <div className="flex items-center gap-2">
-      {icon}
-      <h3 className="font-bold">{title}:</h3>
+      {props.icon}
+      <h3 className="font-bold">{props.title}:</h3>
     </div>
-    <Link className={ButtonTWM({ color: "black", size: "sm", variant: "ghost" })} href={href ?? ""} target="_blank">
-      {label}
+    <Link className={ButtonTWM({ color: "black", size: "sm", variant: "ghost" })} href={props.href ?? ""} target="_blank">
+      {props.label}
     </Link>
   </div>
 );

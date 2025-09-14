@@ -12,7 +12,7 @@ export const Pricing: FC = (): ReactElement => (
 
       <div className="mt-5 grid gap-5 sm:mt-0 sm:grid-cols-2 xl:grid-cols-4">
         {PRICING_DATA?.map((dt) => (
-          <CardPackage bookingHref={"/unmaintained"} data={dt} key={dt.id} />
+          <CardPackage data={dt} href={"/unmaintained"} key={dt.id} />
         ))}
       </div>
     </ContentPaper>

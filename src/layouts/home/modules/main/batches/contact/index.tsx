@@ -1,5 +1,3 @@
-"use client";
-
 import { FC, ReactElement } from "react";
 import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
 import { TbWorldWww } from "react-icons/tb";

@@ -1,11 +1,6 @@
 import { FC, ReactElement } from "react";
 
-interface I {
-  date: string;
-  title: string;
-}
-
-function getDaySuffix(day: number): string {
+const getDaySuffix = (day: number): string => {
   if (day >= 11 && day <= 13) {
     return "TH";
   }
@@ -19,15 +14,20 @@ function getDaySuffix(day: number): string {
     default:
       return "TH";
   }
-}
+};
 
-function formatDate(dateStr: string): string {
-  const date = new Date(dateStr);
+const formatDate = (param: string): string => {
+  const date = new Date(param);
   const day = date.getDate();
   const suffix = getDaySuffix(day);
   const month = date.toLocaleString("en-US", { month: "long" }).toUpperCase();
   const year = date.getFullYear();
   return `${day}${suffix} ${month}, ${year}`;
+};
+
+interface I {
+  date: string;
+  title: string;
 }
 
 export const PortfolioTitle: FC<I> = (props): ReactElement => {

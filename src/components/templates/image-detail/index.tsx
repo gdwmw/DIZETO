@@ -9,7 +9,7 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import loading from "@/public/assets/animations/loadings/loading.svg";
 import { IHighlightResponse, IPortfolioResponse } from "@/src/types";
 
-import { Button } from "../../";
+import { Button } from "../..";
 
 const API_URL = process.env.NEXT_PUBLIC_BASE_API_URL;
 

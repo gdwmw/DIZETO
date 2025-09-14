@@ -1,24 +1,20 @@
 import { ButtonHTMLAttributes, DetailedHTMLProps, FC, ReactElement } from "react";
 
 import { twm } from "@/src/libs";
+import { TButtonColor, TButtonSize, TButtonVariant } from "@/src/types";
 
-/* eslint-disable perfectionist/sort-union-types */
-export type TButton = {
-  className?: string;
-  color?: "red" | "white" | "black";
-  disabled?: boolean;
-  size?: "sm" | "md" | "lg";
-  variant?: "solid" | "outline" | "ghost";
-} & DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>;
-/* eslint-enable perfectionist/sort-union-types */
+export interface IButton extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
+  color: TButtonColor;
+  size: TButtonSize;
+  variant: TButtonVariant;
+}
 
-export const ButtonTWM = ({ className, color, disabled, size, variant }: TButton) =>
+export const ButtonTWM = ({ className, color, disabled, size, variant }: IButton) =>
   twm(
-    "flex items-center gap-2",
+    "flex items-center gap-2 font-semibold",
     // ⭐ === BASE === ⭐
     variant !== "ghost" && "justify-center rounded-md",
-    !disabled && "active:scale-95",
-    disabled && "cursor-not-allowed",
+    disabled ? "cursor-not-allowed" : "active:scale-95",
 
     // ⭐ === SOLID === ⭐
     variant === "solid" && color === "red" && !disabled && "bg-red-600 text-white hover:bg-red-700 hover:ring-1 hover:ring-red-800 active:bg-red-800",
@@ -80,8 +76,8 @@ export const ButtonTWM = ({ className, color, disabled, size, variant }: TButton
     className,
   );
 
-export const Button: FC<TButton> = ({ className, color, disabled, size, variant, ...props }): ReactElement => (
-  <button className={ButtonTWM({ className, color, disabled, size, variant })} data-testid="button" disabled={disabled} {...props}>
+export const Button: FC<IButton> = ({ className, color, disabled, size, variant, ...props }): ReactElement => (
+  <button className={ButtonTWM({ className, color, disabled, size, variant })} disabled={disabled} {...props}>
     {props.children}
   </button>
 );
