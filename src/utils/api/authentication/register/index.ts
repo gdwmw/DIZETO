@@ -1,10 +1,9 @@
 import { IAuthResponse, IAuthSchema, IDataPayload, IDataResponse, IRegisterPayload } from "@/src/types";
 
+import { POSTData, PUTUser } from "../..";
 import { postApi } from "../../base";
-import { POSTData } from "../../data";
-import { PUTUser } from "../../user";
 
-const API_URL = process.env.NEXT_PUBLIC_EXAMPLE_URL;
+const API_URL = process.env.NEXT_PUBLIC_BASE_API_URL;
 
 if (!API_URL) {
   throw new Error("The API URL is not defined. Please check your environment variables.");

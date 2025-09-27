@@ -1,10 +1,9 @@
 import { IAuthResponse, IAuthSchema, IDataResponse, ILoginPayload } from "@/src/types";
 
+import { GETDataByDocumentId, GETUserByDocumentId } from "../..";
 import { postApi } from "../../base";
-import { GETDataByDocumentId } from "../../data";
-import { GETUserByDocumentId } from "../../user";
 
-const API_URL = process.env.NEXT_PUBLIC_EXAMPLE_URL;
+const API_URL = process.env.NEXT_PUBLIC_BASE_API_URL;
 
 if (!API_URL) {
   throw new Error("The API URL is not defined. Please check your environment variables.");
@@ -32,8 +31,8 @@ const label = "Login";
 export const POSTLogin = async (payload: ILoginPayload): Promise<IAuthResponse> => {
   const authResponse = await postApi<IAuthSchema>({ data: payload, endpoint: "/api/auth/local", label: label });
 
-  const userResponse = await GETUserByDocumentId(authResponse.user.id);
-  const dataResponse = await GETDataByDocumentId(userResponse.relation_data?.documentId ?? "");
+  const userResponse = await GETUserByDocumentId(authResponse.user.id, "populate=relation_data");
+  const dataResponse = await GETDataByDocumentId(userResponse.relation_data?.documentId ?? "", "populate=*");
 
   return rearrange(authResponse, dataResponse);
 };
