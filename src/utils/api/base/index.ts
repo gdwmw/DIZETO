@@ -20,7 +20,7 @@ interface I {
 
 export const apiRequest = async <T>(props: I): Promise<T> => {
   const queryParams = props.params ? new URLSearchParams(props.params).toString() : "";
-  const url = `${API_URL}${props.endpoint}${queryParams ? `?${queryParams}&` : "?"}populate=*`;
+  const url = `${API_URL}${props.endpoint}${queryParams && `?${queryParams}&`}`;
 
   const isFormData = props.data instanceof FormData;
   const token = await getSession("token");

@@ -18,7 +18,7 @@ interface I {
 }
 
 export const Main: FC<I> = async (props): Promise<ReactElement> => {
-  const res = await GETPortfolioByDocumentId(props.slug);
+  const res = await GETPortfolioByDocumentId(`${props.slug}?populate=image`);
 
   return (
     <main className="container mx-auto px-5 pt-10">

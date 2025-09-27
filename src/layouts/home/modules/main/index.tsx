@@ -14,7 +14,7 @@ if (!API_URL) {
 }
 
 export const Main: FC = async (): Promise<ReactElement> => {
-  const res = await GETHighlight();
+  const res = await GETHighlight("populate=*");
 
   return (
     <main className="container mx-auto px-5">

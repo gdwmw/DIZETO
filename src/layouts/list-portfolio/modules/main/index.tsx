@@ -14,7 +14,7 @@ if (!API_URL) {
 }
 
 export const Main: FC = async (): Promise<ReactElement> => {
-  const res = await GETPortfolio("sort[0]=category:asc");
+  const res = await GETPortfolio("sort[0]=category:asc&populate=thumbnail");
 
   return (
     <main className="container mx-auto px-5 pt-10">
