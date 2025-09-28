@@ -15,6 +15,11 @@ if (!API_URL) {
 
 export const Main: FC = async (): Promise<ReactElement> => {
   const res = await GETHighlight("populate=*");
+  const sort = res[0].image.slice().sort((a, b) => {
+    const numA = parseInt(/\d+/.exec(a.name)?.[0] ?? "0", 10);
+    const numB = parseInt(/\d+/.exec(b.name)?.[0] ?? "0", 10);
+    return numA - numB;
+  });
 
   return (
     <main className="container mx-auto px-5">
@@ -22,25 +27,19 @@ export const Main: FC = async (): Promise<ReactElement> => {
       <div className="space-y-10">
         <About />
         <Highlight data={res}>
-          {res[0].image
-            .slice()
-            .sort((a, b) => {
-              const numA = parseInt(/\d+/.exec(a.name)?.[0] ?? "0", 10);
-              const numB = parseInt(/\d+/.exec(b.name)?.[0] ?? "0", 10);
-              return numA - numB;
-            })
-            .map(async (dt, i) => (
-              <Thumbnail index={i} key={i}>
-                <Image
-                  alt="Thumbnail"
-                  blurDataURL={await getBase64(API_URL + dt.formats.small.url)}
-                  height={225}
-                  placeholder="blur"
-                  src={API_URL + dt.formats.small.url}
-                  width={337}
-                />
-              </Thumbnail>
-            ))}
+          {sort.map(async (dt, i) => (
+            <Thumbnail index={i} key={i}>
+              <Image
+                alt="Thumbnail"
+                blurDataURL={await getBase64(API_URL + dt.formats.small.url)}
+                height={dt.height}
+                placeholder="blur"
+                quality={50}
+                src={API_URL + dt.formats.small.url}
+                width={dt.width}
+              />
+            </Thumbnail>
+          ))}
         </Highlight>
         <Pricing />
         <Testimony />

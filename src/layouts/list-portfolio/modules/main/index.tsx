@@ -25,10 +25,11 @@ export const Main: FC = async (): Promise<ReactElement> => {
               <Image
                 alt="Thumbnail"
                 blurDataURL={await getBase64(API_URL + dt.thumbnail.url)}
-                height={250}
+                height={500}
                 placeholder="blur"
+                quality={50}
                 src={API_URL + dt.thumbnail.url}
-                width={250}
+                width={500}
               />
               <div className="mx-auto my-3 h-0.5 w-24 rounded-full bg-red-600" />
               <div>
