@@ -29,14 +29,15 @@ export const Main: FC<I> = async (props): Promise<ReactElement> => {
     <main className="container mx-auto px-5 pt-10">
       <Content data={[res]}>
         {sort.map(async (dt, i) => (
-          <Thumbnail className={i === 0 ? "mt-5" : ""} index={i} key={i}>
+          <Thumbnail className={`min-w-full ${i === 0 ? "mt-5" : ""}`} index={i} key={i}>
             <Image
               alt="Thumbnail"
-              blurDataURL={await getBase64(API_URL + dt.formats.small.url)}
+              blurDataURL={await getBase64(API_URL + (dt.formats?.small.url || dt.url))}
+              className="min-w-full"
               height={dt.height}
               placeholder="blur"
               quality={50}
-              src={API_URL + dt.formats.small.url}
+              src={API_URL + (dt.formats?.small.url || dt.url)}
               width={dt.width}
             />
           </Thumbnail>

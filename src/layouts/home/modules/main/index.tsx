@@ -28,14 +28,15 @@ export const Main: FC = async (): Promise<ReactElement> => {
         <About />
         <Highlight data={res}>
           {sort.map(async (dt, i) => (
-            <Thumbnail index={i} key={i}>
+            <Thumbnail className="min-w-full" index={i} key={i}>
               <Image
                 alt="Thumbnail"
-                blurDataURL={await getBase64(API_URL + dt.formats.small.url)}
+                blurDataURL={await getBase64(API_URL + (dt.formats?.small.url || dt.url))}
+                className="min-w-full"
                 height={dt.height}
                 placeholder="blur"
                 quality={50}
-                src={API_URL + dt.formats.small.url}
+                src={API_URL + (dt.formats?.small.url || dt.url)}
                 width={dt.width}
               />
             </Thumbnail>

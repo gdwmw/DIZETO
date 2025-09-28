@@ -21,15 +21,15 @@ export const Main: FC = async (): Promise<ReactElement> => {
       <Content>
         {res.map(async (dt, i) => (
           <Link href={`/portfolio/${dt.documentId}`} key={i}>
-            <div className="size-fit border-2 border-gray-300 bg-white p-3 hover:border-red-600 dark:border-gray-700 dark:bg-dark dark:hover:border-red-600">
+            <div className="min-w-full border-2 border-gray-300 bg-white p-3 hover:border-red-600 dark:border-gray-700 dark:bg-dark dark:hover:border-red-600">
               <Image
                 alt="Thumbnail"
                 blurDataURL={await getBase64(API_URL + dt.thumbnail.url)}
-                height={500}
+                className="min-w-full"
+                height={300}
                 placeholder="blur"
-                quality={50}
                 src={API_URL + dt.thumbnail.url}
-                width={500}
+                width={300}
               />
               <div className="mx-auto my-3 h-0.5 w-24 rounded-full bg-red-600" />
               <div>

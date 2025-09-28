@@ -30,7 +30,7 @@ export const Content: FC<T> = (props): ReactElement => {
         </section>
 
         <section className="flex items-start justify-center">
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">{props.children}</div>
+          <div className="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">{props.children}</div>
         </section>
       </ContentPaper>
     </ContainerPaper>
