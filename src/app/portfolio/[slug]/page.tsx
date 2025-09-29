@@ -1,3 +1,4 @@
+import axios from "axios";
 import { Metadata, Viewport } from "next";
 import { FC, ReactElement } from "react";
 
@@ -16,8 +17,8 @@ if (!API_URL) {
 }
 
 export const generateStaticParams = async () => {
-  const res: { data: IPortfolioResponse[] } = await fetch(API_URL + "/api/portfolios").then((res) => res.json());
-  return res.data.map((dt) => ({
+  const res = await axios.get<{ data: IPortfolioResponse[] }>(API_URL + "/api/portfolios");
+  return res.data.data.map((dt) => ({
     slug: dt.documentId,
   }));
 };
@@ -25,9 +26,8 @@ export const generateStaticParams = async () => {
 export const generateMetadata = async ({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> => {
   const { slug } = await params;
 
-  const title = await fetch(API_URL + `/api/portfolios/${slug}`)
-    .then((res) => res.json())
-    .then((res) => res.data.title);
+  const res = await axios.get(API_URL + `/api/portfolios/${slug}`);
+  const title = res.data.data.title;
 
   return {
     description: "Let's see the photo results from DIZETO, hope you like it.",

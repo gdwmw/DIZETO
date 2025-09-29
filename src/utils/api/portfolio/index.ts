@@ -7,7 +7,7 @@ const label = "Portfolio";
 export const GETPortfolio = async (query?: string): Promise<IPortfolioResponse[]> => {
   const params = query ? Object.fromEntries(new URLSearchParams(query).entries()) : undefined;
   const response = await getApi<{ data: IPortfolioResponse[] }>({
-    cache: "force-cache",
+    auth: false,
     endpoint: "/api/portfolios",
     label: label,
     params: params,
@@ -18,7 +18,7 @@ export const GETPortfolio = async (query?: string): Promise<IPortfolioResponse[]
 export const GETPortfolioByDocumentId = async (documentId: string, query?: string): Promise<IPortfolioResponse> => {
   const params = query ? Object.fromEntries(new URLSearchParams(query).entries()) : undefined;
   const response = await getApi<{ data: IPortfolioResponse }>({
-    cache: "force-cache",
+    auth: false,
     endpoint: `/api/portfolios/${documentId}`,
     label: label,
     params: params,
