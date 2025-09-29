@@ -3,7 +3,6 @@ import { Metadata, Viewport } from "next";
 import { FC, ReactElement } from "react";
 
 import PortfolioLayout from "@/src/layouts/portfolio";
-import { IPortfolioResponse } from "@/src/types";
 
 export const viewport: Viewport = {
   initialScale: 1.0,
@@ -15,13 +14,6 @@ const API_URL = process.env.NEXT_PUBLIC_BASE_API_URL;
 if (!API_URL) {
   throw new Error("The API URL is not defined. Please check your environment variables.");
 }
-
-export const generateStaticParams = async () => {
-  const res = await axios.get<{ data: IPortfolioResponse[] }>(API_URL + "/api/portfolios");
-  return res.data.data.map((dt) => ({
-    slug: dt.documentId,
-  }));
-};
 
 export const generateMetadata = async ({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> => {
   const { slug } = await params;

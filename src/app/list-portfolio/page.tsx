@@ -3,6 +3,8 @@ import { FC, ReactElement } from "react";
 
 import ListPortfolioLayout from "@/src/layouts/list-portfolio";
 
+export const dynamic = "force-dynamic";
+
 export const viewport: Viewport = {
   initialScale: 1.0,
   width: "device-width",
