@@ -18,12 +18,6 @@ const nextConfig: NextConfig = {
         protocol: "https",
         search: "",
       },
-      {
-        hostname: "dizeto-images.vercel.app",
-        pathname: "/assets/images/**",
-        port: "",
-        protocol: "https",
-      },
     ],
   },
 };
