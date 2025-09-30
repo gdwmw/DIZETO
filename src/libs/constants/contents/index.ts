@@ -459,8 +459,8 @@ export const CONTACT_DATA = [
     label: "+62 000-0000-0000",
   },
   {
-    href: "https://dizeto.vercel.app/",
+    href: "https://dizeto.zettara.com/",
     id: "4",
-    label: "https://dizeto.vercel.app/",
+    label: "https://dizeto.zettara.com/",
   },
 ];

@@ -19,7 +19,7 @@ export const metadata: Metadata = {
       {
         alt: "DIZETO",
         height: 800,
-        url: "https://dizeto.vercel.app/assets/images/logos/dizeto.png",
+        url: "https://dizeto.zettara.com/assets/images/logos/dizeto.png",
         width: 800,
       },
     ],
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     siteName: "DIZETO",
     title: "DIZETO | LIST PORTFOLIO",
     type: "website",
-    url: "https://dizeto.vercel.app/list-portfolio",
+    url: "https://dizeto.zettara.com/list-portfolio",
   },
   robots: {
     follow: true,
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     creator: "@gdwmw",
     description: "See our portfolio for examples of our work. We believe that our portfolio demonstrates our abilities and creativity.",
-    images: ["https://dizeto.vercel.app/assets/images/logos/dizeto.png"],
+    images: ["https://dizeto.zettara.com/assets/images/logos/dizeto.png"],
     title: "DIZETO | LIST PORTFOLIO",
   },
 };

@@ -30,7 +30,7 @@ export const generateMetadata = async ({ params }: { params: Promise<{ slug: str
         {
           alt: "DIZETO",
           height: 800,
-          url: "https://dizeto.vercel.app/assets/images/logos/dizeto.png",
+          url: "https://dizeto.zettara.com/assets/images/logos/dizeto.png",
           width: 800,
         },
       ],
@@ -38,7 +38,7 @@ export const generateMetadata = async ({ params }: { params: Promise<{ slug: str
       siteName: "DIZETO",
       title: `DIZETO | ${title}`,
       type: "website",
-      url: `https://dizeto.vercel.app/portfolio/${slug}`,
+      url: `https://dizeto.zettara.com/portfolio/${slug}`,
     },
     robots: {
       follow: true,
@@ -58,7 +58,7 @@ export const generateMetadata = async ({ params }: { params: Promise<{ slug: str
       card: "summary_large_image",
       creator: "@gdwmw",
       description: "Let's see the photo results from DIZETO, hope you like it.",
-      images: ["https://dizeto.vercel.app/assets/images/logos/dizeto.png"],
+      images: ["https://dizeto.zettara.com/assets/images/logos/dizeto.png"],
       title: `DIZETO | ${title}`,
     },
   };

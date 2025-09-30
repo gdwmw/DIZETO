@@ -32,7 +32,7 @@ export const metadata: Metadata = {
       {
         alt: "DIZETO",
         height: 800,
-        url: "https://dizeto.vercel.app/assets/images/logos/dizeto.png", // Must be an absolute URL and PNG format
+        url: "https://dizeto.zettara.com/assets/images/logos/dizeto.png", // Must be an absolute URL and PNG format
         width: 800,
       },
     ],
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     siteName: "DIZETO",
     title: "DIZETO | ROFESSIONAL SERVICES",
     type: "website",
-    url: "https://dizeto.vercel.app/",
+    url: "https://dizeto.zettara.com/",
   },
   robots: {
     follow: true,
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     creator: "@gdwmw",
     description: "DIZETO is a vendor that offers photography, videography, talent, and music services.",
-    images: ["https://dizeto.vercel.app/assets/images/logos/dizeto.png"], // Must be an absolute URL and PNG format
+    images: ["https://dizeto.zettara.com/assets/images/logos/dizeto.png"], // Must be an absolute URL and PNG format
     title: "DIZETO | ROFESSIONAL SERVICES",
   },
 };
